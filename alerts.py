@@ -234,6 +234,26 @@ def cells(kind, r):
     return [r[0], cm(r[1]), cm(r[3]), cm(r[4])]   # snipe
 
 
+def todo_lines(fresh):
+    """Cok kisa 'simdi ne yap' listesi."""
+    lines = []
+    for kind in ("sell", "snipe", "flip", "favor", "mat"):
+        items = sorted([f for f in fresh if f[0] == kind], key=lambda f: -f[2])[:1 if kind == "favor" else 2]
+        for _, r, _s in items:
+            if kind == "sell":
+                lines.append(f"SELL {r[0]} now ({cm(r[1])}, {r[3]} above normal)")
+            elif kind == "snipe":
+                lines.append(f"SNIPE {r[0]} at {cm(r[1])} (resell {cm(r[3])})")
+            elif kind == "flip":
+                lines.append(f"CRAFT {r[0]} -> sell to NPC (+{cm(r[3])} each)")
+            elif kind == "favor":
+                n = r[5].split("x")[0]
+                lines.append(f"FAVOR buy {n}x {short(r[0])} crate + {r[3]} per crate")
+            else:
+                lines.append(f"BUY {r[0]} at {cm(r[1])} (need {r[5]})")
+    return lines[:6]
+
+
 def send_embeds(fresh, local_now, demo=False):
     embeds = []
     for kind in ("sell", "flip", "favor", "mat", "snipe"):
@@ -246,7 +266,40 @@ def send_embeds(fresh, local_now, demo=False):
     names_ = {"flip": "Flips", "sell": "SELL", "favor": "Favor", "mat": "Mats", "snipe": "Snipes"}
     summary = " | ".join(f"{names_[k]} {sum(1 for f in fresh if f[0] == k)}" for k in ("sell", "flip", "favor", "mat", "snipe") if any(f[0] == k for f in fresh))
     embeds[-1]["footer"] = {"text": f"Data: {local_now:%H:%M} (TR time)" + (" | SAMPLE DATA" if demo else "")}
-    post({"content": ("**SAMPLE** " if demo else "") + "AH opportunities: " + summary, "embeds": embeds})
+    todo = todo_lines(fresh)
+    content = ("**SAMPLE** " if demo else "") + "**DO NOW**\n" + "\n".join("\u2022 " + t for t in todo)
+    post({"content": content, "embeds": embeds})
+
+
+def digest(snap, route_lines, force=False):
+    """Gunde bir kez (TR ~09:00 sonrasi) kisa ozet. state['_digest'] ile tekrarlanmaz."""
+    ts = snap["fetched_at"]
+    now = datetime.datetime.strptime(ts, "%Y-%m-%dT%H:%M:%SZ")
+    state_path = "data/alert_state.json"
+    try:
+        state = json.load(open(state_path, encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        state = {}
+    today = now.strftime("%Y-%m-%d")
+    if not force and (now.hour < 6 or state.get("_digest", {}).get("day") == today):
+        return
+    best = ""
+    if W is not None:
+        book = {int(k): [(p, q) for p, q in v["l"]] for k, v in snap["items"].items()}
+        try:
+            rows, _ = W.evaluate(book)
+            r = rows[0]
+            best = f"Favor: best is {short(r['crate'])} at {cm(money(r['per_favor']))}/Favor"
+        except Exception:  # noqa: BLE001
+            pass
+    lines = [best] + [l for l in route_lines if l]
+    local = now + datetime.timedelta(hours=3)
+    body = "\n".join(lines)
+    post({"content": f"**Daily summary** ({local:%d %b %H:%M} TR)",
+          "embeds": [{"title": "Where prices stand", "color": 0x95A5A6, "description": "```\n" + body + "\n```"}]})
+    state["_digest"] = {"day": today, "ts": ts, "price": 0}
+    with open(state_path, "w", encoding="utf-8") as f:
+        json.dump(state, f)
 
 
 def post(payload):

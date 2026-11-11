@@ -155,6 +155,7 @@ def main():
             out.append(f"{name:<34}{money(cur):>10}{money(statistics.mean(d1)):>10}{money(med):>11}{money(mn):>10}{s[-1][3]:>7}  {signal}")
         out.append("")
     out.append("== ROTA MALIYETI (ort. en ucuz 200 birim fiyatiyla) ==")
+    route_lines = []
     for name, mats in ROUTES.items():
         def cost(pick):
             t = 0.0
@@ -168,11 +169,13 @@ def main():
         w = cost(lambda s: min(x[2] for x in s if x[0] >= week) if any(x[0] >= week for x in s) else s[-1][2])
         m = cost(lambda s: statistics.median([x[2] for x in s if x[0] >= week] or [s[-1][2]]))
         out.append(f"{name}: simdi {money(cur)} | 7g medyan {money(m)} | 7g en ucuz {money(w)}")
+        route_lines.append(f"{name.split(' ')[0]} route: {money(cur).replace(' ', '')} now (7d low {money(w).replace(' ', '')})")
     out.append("")
     out.append("Not: AL = fiyat son 7 gunun en ucuz %20'lik dilimi; en az 12 olcum (12 saat) sonra anlamli.")
     try:
         import alerts
         alerts.run(snap, {k: v for k, v in series.items()}, WATCH, set(HOLD), NEED)
+        alerts.digest(snap, route_lines)
     except Exception as e:  # noqa: BLE001
         print("alerts hatasi:", e)
     with open("data/report.txt", "w", encoding="utf-8") as f:

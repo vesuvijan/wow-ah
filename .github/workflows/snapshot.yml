@@ -61,7 +61,7 @@ jobs:
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
-          python -c "import alerts; alerts.demo()"
+          python -c "import alerts, json; alerts.demo(); alerts.digest(json.load(open('data/house_123.json')), ['Tailoring route: 22g now (7d low 20g)', 'Engineering route: 37g now (7d low 30g)'], force=True)"
       - name: Publish to snapshot branch
         run: |
           rm -f data/names.json data/recipes.json
