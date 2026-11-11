@@ -19,7 +19,7 @@ report = []
 
 def slug(s):
     s = s.lower().replace("'", "").replace(" ", "-")
-    return re.sub(r"[^a-z0-9\-]", "", s)
+    return re.sub(r"[^a-z0-9\-_]", "", s)
 
 
 def call(path, ns, token):
@@ -48,23 +48,30 @@ def main():
                 json.dump({"ns": ns, "realms": realms}, f, indent=0)
             report.append({"ns": ns, "realms_found": len(realms)})
             break
-    realm = slug(REALM)
+    realms = [slug(REALM), slug(REALM).replace("_", "-"), "pvp_rp", "pvp-rp", "rp-pvp"] if REALM else []
+    names = [CHAR, CHAR.replace(" ", "-"), CHAR.replace("-", " "), CHAR.replace(" ", "")]
     ok = False
     for ns in NS:
-        base = f"/profile/wow/character/{realm}/{urllib.parse.quote(CHAR)}"
-        prof = call(base, ns, token)
-        if not prof:
-            continue
-        ok = True
-        out = {"namespace": ns, "profile": prof}
-        for part in ("equipment", "statistics", "specializations", "appearance", "pvp-summary", "professions", "reputations", "achievements/statistics"):
-            d = call(f"{base}/{part}", ns, token)
-            if d is not None:
-                out[part] = d
-        with open(f"data/char_{CHAR}_{ns}.json", "w", encoding="utf-8") as f:
-            json.dump(out, f, indent=1)
-        report.append({"ns": ns, "character_ok": True, "parts": [k for k in out if k not in ("namespace", "profile")]})
-        break
+        for realm in dict.fromkeys(realms):
+            for nm_ in dict.fromkeys(names):
+                base = f"/profile/wow/character/{realm}/{urllib.parse.quote(nm_)}"
+                prof = call(base, ns, token)
+                if not prof:
+                    continue
+                ok = True
+                out = {"namespace": ns, "profile": prof}
+                for part in ("equipment", "statistics", "specializations", "appearance", "pvp-summary", "professions", "reputations"):
+                    d = call(f"{base}/{part}", ns, token)
+                    if d is not None:
+                        out[part] = d
+                with open(f"data/char_{slug(nm_)}_{ns}.json", "w", encoding="utf-8") as f:
+                    json.dump(out, f, indent=1)
+                report.append({"ns": ns, "realm": realm, "name": nm_, "character_ok": True, "parts": [k for k in out if k not in ("namespace", "profile")]})
+                break
+            if ok:
+                break
+        if ok:
+            break
     with open("data/char_report.json", "w", encoding="utf-8") as f:
         json.dump(report, f, indent=1)
     print(json.dumps(report, indent=1)[:3000])
