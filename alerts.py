@@ -27,7 +27,7 @@ def load_names():
         return {}
 
 
-def run(snap, series, watch, cfg_path="alerts.json"):
+def run(snap, series, watch, hold=(), cfg_path="alerts.json"):
     cfg = json.load(open(cfg_path, encoding="utf-8"))
     names = load_names()
     ts = snap["fetched_at"]
@@ -60,6 +60,30 @@ def run(snap, series, watch, cfg_path="alerts.json"):
             disc = round(100 - 100 * cur / med) if med else 0
             row = [name[:22], money(cur), money(med), f"-%{disc}", str(s[-1][3]), str(need) if need else "-"]
             found.append(("mat", f"mat{iid}", cur, row, disc))
+
+    # 1b) fiyat firlamasi: elde tutulan item'lar -> SAT
+    for iid in hold:
+        s = series.get(iid)
+        if not s:
+            continue
+        cur = s[-1][1]
+        if cur < cfg.get("sell_min_price", 100):
+            continue
+        w7 = [x[1] for x in s if x[0] >= week]
+        spike = None
+        if len(w7) >= cfg["min_samples"]:
+            med = statistics.median(w7)
+            rank = sum(1 for v in w7 if v <= cur) / len(w7)
+            if cur >= med * cfg.get("sell_up_vs_median", 1.15) and rank >= 0.9:
+                spike = med
+        if spike is None and len(s) >= 8:
+            med8 = statistics.median([x[1] for x in s[-8:-1]])
+            if cur >= med8 * cfg.get("sell_jump", 1.3):
+                spike = med8
+        if spike:
+            up = round(100 * cur / spike - 100)
+            nm = watch[iid][0]
+            found.append(("sell", f"sell{iid}", cur, [nm, money(cur), money(spike), f"+{up}%", str(s[-1][3]), ""], up))
 
     # 2) Favor crate
     if W is not None:
@@ -95,7 +119,10 @@ def run(snap, series, watch, cfg_path="alerts.json"):
         prev = state.get(key)
         if prev:
             age = (now - datetime.datetime.strptime(prev["ts"], "%Y-%m-%dT%H:%M:%SZ")).total_seconds() / 3600
-            if age < cfg["realert_hours"] and price >= prev["price"] * 0.9:
+            if kind == "sell":
+                if age < cfg["realert_hours"] and price <= prev["price"] * 1.1:
+                    continue
+            elif age < cfg["realert_hours"] and price >= prev["price"] * 0.9:
                 continue
         state[key] = {"ts": ts, "price": price}
         fresh.append((kind, row, score))
@@ -133,6 +160,8 @@ SECTIONS = {
               "Fill the crate, hand it in to Marcy Baker. Net = after turn-in reward."),
     "mat": ("Raw mats - bulk buy", 0x3498DB, ["Item", "Now", "Off", "Need"], (13, 7, 5, 5),
             "Price is in the cheapest 7-day band. Need = route requirement."),
+    "sell": ("Price spike - sell what you hold", 0xE74C3C, ["Item", "Now", "Typical", "Up"], (13, 7, 7, 5),
+             "Price is well above its usual level. Good time to sell stock."),
     "snipe": ("Snipe - buy and relist", 0xE67E22, ["Item", "Ask", "Next", "Gain"], (13, 6, 6, 5),
               "Cheapest listing is <60% of the next one. Verify in game."),
 }
@@ -143,20 +172,22 @@ def cells(kind, r):
         return [short(r[0]), cm(r[1]), cm(r[5])]
     if kind == "mat":     # [name, now, median, "-%20", stock, need]
         return [r[0], cm(r[1]), r[3].replace("-%", "-") + "%", r[5]]
+    if kind == "sell":    # [name, now, typical, "+25%", stock, ""]
+        return [r[0], cm(r[1]), cm(r[2]), r[3]]
     return [r[0], cm(r[1]), cm(r[3]), cm(r[4])]   # snipe
 
 
 def send_embeds(fresh, local_now, demo=False):
     embeds = []
-    for kind in ("favor", "mat", "snipe"):
+    for kind in ("sell", "favor", "mat", "snipe"):
         items = sorted([f for f in fresh if f[0] == kind], key=lambda f: -f[2])[:10]
         if not items:
             continue
         title, color, headers, widths, hint = SECTIONS[kind]
         embeds.append({"title": f"{title} ({len(items)})", "color": color,
                        "description": hint + "\n" + grid(headers, [cells(kind, f[1]) for f in items], widths)})
-    names_ = {"favor": "Favor", "mat": "Mats", "snipe": "Snipes"}
-    summary = " | ".join(f"{names_[k]} {sum(1 for f in fresh if f[0] == k)}" for k in ("favor", "mat", "snipe") if any(f[0] == k for f in fresh))
+    names_ = {"sell": "SELL", "favor": "Favor", "mat": "Mats", "snipe": "Snipes"}
+    summary = " | ".join(f"{names_[k]} {sum(1 for f in fresh if f[0] == k)}" for k in ("sell", "favor", "mat", "snipe") if any(f[0] == k for f in fresh))
     embeds[-1]["footer"] = {"text": f"Data: {local_now:%H:%M} (TR time)" + (" | SAMPLE DATA" if demo else "")}
     post({"content": ("**SAMPLE** " if demo else "") + "AH opportunities: " + summary, "embeds": embeds})
 
@@ -181,6 +212,7 @@ def demo():
         ("favor", ["Journeyman Herbs", "1s 38c/F", "10", "10x Bruiseweed", "8s 28c", "6x ~82s 80c"], -138),
         ("mat", ["Silk Cloth", "1s 52c", "1s 90c", "-%20", "3525", "640"], 20),
         ("mat", ["Bronze Bar", "1s 70c", "2s 10c", "-%19", "1869", "110"], 19),
+        ("sell", ["Mithril Ore", "1g 85s", "1g 30s", "+42%", "530", ""], 42),
         ("snipe", ["Plans: Mithril Spurs", "5g 99s", "x2", "9g 99s", "~8g", "5"], 80000),
     ]
     send_embeds(fresh, datetime.datetime.utcnow() + datetime.timedelta(hours=3), demo=True)

@@ -36,6 +36,19 @@ WATCH = {
     4382: ("Bronze Framework", "F"), 2453: ("Bruiseweed", "F"), 765: ("Silverleaf", "F"), 3820: ("Stranglekelp", "F"),
 }
 
+# Mining / Skinning ciktilari (elde tutulanlar): fiyat firlarsa SAT uyarisi
+HOLD = {
+    2770: "Copper Ore", 2771: "Tin Ore", 2772: "Iron Ore", 2775: "Silver Ore", 2776: "Gold Ore", 3858: "Mithril Ore",
+    2835: "Rough Stone", 2836: "Coarse Stone", 2838: "Heavy Stone", 7912: "Solid Stone",
+    774: "Malachite", 818: "Tigerseye", 1210: "Shadowgem", 1705: "Lesser Moonstone", 1206: "Moss Agate", 1529: "Jade",
+    3864: "Citrine", 7909: "Aquamarine", 7910: "Star Ruby", 12800: "Azerothian Diamond",
+    2934: "Ruined Leather Scraps", 2318: "Light Leather", 2319: "Medium Leather", 4234: "Heavy Leather",
+    4304: "Thick Leather", 8170: "Rugged Leather", 783: "Light Hide", 4232: "Medium Hide", 4235: "Heavy Hide",
+    8169: "Thick Hide", 8167: "Turtle Scale", 8165: "Worn Dragonscale", 7392: "Green Whelp Scale", 15417: "Devilsaur Leather",
+}
+for _i, _n in HOLD.items():
+    WATCH.setdefault(_i, (_n, "H"))
+
 # Rota toplam malzemeleri (id: adet). Kaynak: wow-professions.com Forever rotalari; tahmini.
 ROUTES = {
     "Tailoring 1->190 (kumas)": {2589: 60, 2592: 459, 4306: 640, 4338: 115},
@@ -106,7 +119,7 @@ def main():
     week = (now - datetime.timedelta(days=7)).strftime("%Y-%m-%dT%H:%M:%SZ")
     day = (now - datetime.timedelta(days=1)).strftime("%Y-%m-%dT%H:%M:%SZ")
     sig = {}
-    for grp, title in (("T", "TAILORING"), ("E", "ENGINEERING"), ("F", "FAVOR")):
+    for grp, title in (("T", "TAILORING"), ("E", "ENGINEERING"), ("F", "FAVOR"), ("H", "ELINDEKILER (mining/skinning)")):
         out.append(f"== {title} ==")
         out.append(f"{'item':<34}{'simdi':>10}{'24s ort':>10}{'7g medyan':>11}{'7g min':>10}{'stok':>7}  sinyal")
         for iid, (name, g) in WATCH.items():
@@ -143,7 +156,7 @@ def main():
     out.append("Not: AL = fiyat son 7 gunun en ucuz %20'lik dilimi; en az 12 olcum (12 saat) sonra anlamli.")
     try:
         import alerts
-        alerts.run(snap, {k: v for k, v in series.items()}, WATCH)
+        alerts.run(snap, {k: v for k, v in series.items()}, WATCH, set(HOLD))
     except Exception as e:  # noqa: BLE001
         print("alerts hatasi:", e)
     with open("data/report.txt", "w", encoding="utf-8") as f:
