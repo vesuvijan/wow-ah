@@ -63,7 +63,7 @@ def parse(iid, t):
         r["cls"], r["sub"] = int(m.group(1)), int(m.group(2))
         if r["cls"] == 4:
             r["armor_type"] = ARMOR.get(str(r["sub"]), "")
-    for sid, v, n in re.findall(r"<!--stat(\d+)-->\+(\d+) ([A-Za-z ]+)", tip):
+    for sid, v, n in re.findall(r"<!--stat(\d+)-->\+?(\d+) ([A-Za-z ]+)", tip):
         r["stats"][n.strip()] = r["stats"].get(n.strip(), 0) + int(v)
     m = re.search(r"<!--amr-->(\d+)", tip); r["armor"] = int(m.group(1)) if m else 0
     m = re.search(r"<!--dps-->\(([\d.]+) damage per second\)", tip); r["dps"] = float(m.group(1)) if m else 0
@@ -308,7 +308,7 @@ def main():
                 pairs.append((value(a, w_now, "MH") + value(b, w_now, "OH"), a, b))
         return sorted(pairs, key=lambda x: -x[0])[:6]
     def wi(c):
-        return {"id": c["id"], "name": c["name"], "q": c["q"], "req": c["req"], "dps": c["dps"], "spd": c["spd"], "bind": c["bind"], "src": src_text(c["id"], ah), "stats": stat_str(c)}
+        return {"id": c["id"], "name": c["name"], "q": c["q"], "req": c["req"], "dps": c["dps"], "spd": c["spd"], "bind": c["bind"], "src": src_text(c["id"], ah), "stats": stat_str(c), "val_oh": round(value(c, w_now, "OH"), 1), "val_mh": round(value(c, w_now, "MH"), 1)}
     wq = {}
     for tag, lvl in (("NOW", LEVEL), ("LVL", PLAN_MAX)):
         for v, a, b in best_pairs(lvl)[:5]:
@@ -325,6 +325,11 @@ def main():
     plan["weapons"] = wq
     plan["ranged"] = [{"id": c["id"], "name": c["name"], "q": c["q"], "req": c["req"], "dps": c["dps"], "spd": c["spd"], "bind": c["bind"], "src": src_text(c["id"], ah), "stats": stat_str(c)} for c in rg]
     plan["equipped"] = [{"slot": k, "name": v["name"], "ilvl": v["ilvl"], "q": v["quality"], "id": v["id"], "enchant": v.get("enchant")} for k, v in equipped.items()]
+    plan["eqval"] = {k: round(v, 2) for k, v in eq_val.items()}
+    rr = items.get(equipped.get("RANGED", {}).get("id"))
+    if rr:
+        plan["eqval"]["RANGED"] = round(value(rr, w_now), 2)
+    plan["total"] = round(total, 2)
     plan["meta"] = {"level": LEVEL, "plan_max": PLAN_MAX, "tooltips": len(items), "candidates": len(cands), "skipped_random": len(skipped_random)}
     lines.append("")
     lines.append(f"Skipped (random suffix, stats unknown until you see the item): {len(skipped_random)} items")

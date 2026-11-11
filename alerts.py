@@ -59,7 +59,7 @@ def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
             hit = rank <= cfg["mat_max_rank"] and cur <= med * cfg["mat_drop_vs_median"]
         if hit:
             disc = round(100 - 100 * cur / med) if med else 0
-            row = [name[:22], money(cur), money(med), f"-%{disc}", str(s[-1][3]), str(need) if need else "-"]
+            row = [name, money(cur), money(med), f"-%{disc}", str(s[-1][3]), str(need) if need else "-"]
             found.append(("mat", f"mat{iid}", cur, row, disc))
 
     # 1b) fiyat firlamasi: elde tutulan item'lar -> SAT
@@ -89,7 +89,7 @@ def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
     # 1c) vendor flip: craft -> NPC'ye sat
     try:
         for r in vendor_flips(snap, cfg):
-            found.append(("flip", f"flip{r['rid']}", r["profit"], [r["recipe"], money(r["cost"]), money(r["vendor"]), money(r["profit"]), r["prof"], ""], r["profit"]))
+            found.append(("flip", f"flip{r['rid']}", r["profit"], [r["recipe"], money(r["cost"]), money(r["vendor"]), money(r["profit"]), r["prof"], r["mats"]], r["profit"]))
     except Exception as e:  # noqa: BLE001
         print("flip hatasi:", e)
 
@@ -155,7 +155,7 @@ def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
         nm = names.get(iid) or f"item {iid}"
         if ":" in k:
             nm += " #" + k.split(":")[1]
-        row = [nm[:26], money(p0), f"x{q0}", money(nxt), "~" + money(gain), str(n)]
+        row = [nm, money(p0), f"x{q0}", money(nxt), "~" + money(gain), str(n)]
         found.append(("snipe", f"snipe{k}", p0, row, gain))
 
     # tekrar bildirimi bastir
@@ -219,7 +219,7 @@ def vendor_flips(snap, cfg):
                 continue
             profit = sp * qty - cost
             if profit >= cfg.get("flip_min_profit", 3000) and profit >= cost * cfg.get("flip_min_roi", 0.2):
-                out.append({"rid": rid, "recipe": rc["name"][:13], "prof": _PROF.get(pr["name"], pr["name"][:4]),
+                out.append({"rid": rid, "recipe": rc["name"], "prof": pr["name"], "mats": ", ".join(f"{q}x {nm_}" for _i, nm_, q in rc["reagents"]),
                             "cost": cost, "vendor": sp * qty, "profit": profit})
     return sorted(out, key=lambda r: -r["profit"])[:15]
 
@@ -234,7 +234,7 @@ def cm(x):
 
 
 def short(n):
-    return n.replace("Journeyman", "Jrny").replace("Apprentice", "Appr").replace("Expert", "Exp")
+    return n   # no abbreviations: always the full name
 
 
 def grid(headers, rows, widths):
@@ -307,7 +307,7 @@ def todo_lines(fresh):
             elif kind == "snipe":
                 lines.append(f"SNIPE {r[0]} at {cm(r[1])} (resell {cm(r[3])})")
             elif kind == "flip":
-                lines.append(f"CRAFT {r[0]} -> sell to NPC (+{cm(r[3])} each)")
+                lines.append(f"CRAFT {r[0]} ({r[4]}) -> sell to NPC for +{cm(r[3])} profit each. Mats: {r[5]}")
             elif kind == "favor":
                 if len(r) > 6:
                     d = r[6]
@@ -331,8 +331,12 @@ def send_embeds(fresh, local_now, demo=False, status=None):
             body_ = "```\n" + "\n\n".join(favor_card(f[1]) for f in items[:3]) + "\n```"
             embeds.append({"title": f"{title} ({len(items)})", "color": color, "description": hint + "\n" + body_})
             continue
+        rows_ = [[str(i + 1)] + cells(kind, f[1])[1:] for i, f in enumerate(items)]
+        if kind == "flip":
+            headers, widths, rows_ = ["#", "Cost", "NPC", "Profit"], (2, 8, 8, 8), [r_[:4] for r_ in rows_]
+        listing = "\n".join(f"{i + 1}. **{f[1][0]}**" + (f" ({f[1][4]})\n    Mats: {f[1][5]}" if kind == "flip" else "") for i, f in enumerate(items))
         embeds.append({"title": f"{title} ({len(items)})", "color": color,
-                       "description": hint + "\n" + grid(headers, [cells(kind, f[1]) for f in items], widths)})
+                       "description": hint + "\n" + listing + "\n" + grid(["#"] + list(headers[1:]), rows_, (2,) + tuple(widths[1:]))})
     names_ = {"flip": "Flips", "sell": "SELL", "favor": "Favor", "mat": "Mats", "snipe": "Snipes"}
     summary = " | ".join(f"{names_[k]} {sum(1 for f in fresh if f[0] == k)}" for k in ("sell", "flip", "favor", "mat", "snipe") if any(f[0] == k for f in fresh))
     if status:
@@ -355,7 +359,7 @@ def status(snap, series, watch, hold, need_map, route_lines, cfg_path="alerts.js
         try:
             rows, _ = W.evaluate(book)
             r = rows[0]
-            lines.append(f"Favor best: {short(r['crate'])} {cm(money(r['per_favor']))}/F (buy <= {cm(money(cfg['favor_per_favor_max']))})")
+            lines.append(f"Favor best: {crate_full(r['crate'])} {cm(money(r['per_favor']))}/F (buy <= {cm(money(cfg['favor_per_favor_max']))})")
         except Exception:  # noqa: BLE001
             pass
     lines += route_lines
