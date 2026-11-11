@@ -1,0 +1,34 @@
+name: Tooltip crawl
+on:
+  workflow_dispatch:
+    inputs:
+      ids_file:
+        description: "ID listesi JSON (repo icinde)"
+        required: true
+        default: "ofa/all_ids.json"
+      tag:
+        description: "Cikti etiketi"
+        required: true
+        default: "ofa"
+permissions:
+  contents: write
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Crawl tooltips
+        env:
+          IDS_FILE: ${{ inputs.ids_file }}
+          TAG: ${{ inputs.tag }}
+        run: python tooltip_crawl.py
+      - name: Publish to tooltips branch (keeps older chunks)
+        run: |
+          git config user.name "ah-bot"; git config user.email "ah-bot@users.noreply.github.com"
+          mkdir -p /tmp/keep; git fetch --depth=1 origin tooltips && git archive FETCH_HEAD data | tar -x -C /tmp/keep || true
+          cp -n /tmp/keep/data/*.json data/ 2>/dev/null || true
+          git checkout --orphan tooltips; git rm -rf --cached . > /dev/null; git add -f data; git commit -qm "tooltips ${{ inputs.tag }}"; git push -f origin tooltips
