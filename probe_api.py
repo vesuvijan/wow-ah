@@ -19,7 +19,7 @@ import fetch_ah as F
 REGION = os.environ.get("REGION", "eu")
 RULESET = os.environ.get("RULESET", "15")
 HOUSE = int(os.environ.get("HOUSE", "123"))
-DEADLINE = time.time() + 40 * 60  # 40 dk sonra kalan isleri birak
+DEADLINE = time.time() + 100 * 60  # 40 dk sonra kalan isleri birak
 NAMESPACES = [f"static-forever-{REGION}", f"static-1.60.1_70399-forever-{REGION}",
               f"static-classic1x-{REGION}", f"static-classic-{REGION}"]
 report = []
@@ -103,7 +103,8 @@ def dump_names(ids, token):
             pv = d.get("preview_item") or {}
             bind = ((pv.get("binding") or {}).get("type")) if isinstance(pv, dict) else None
             names[i] = {"n": nm(d.get("name")), "c": nm((d.get("item_class") or {}).get("name")),
-                        "s": nm((d.get("item_subclass") or {}).get("name")), "b": bind, "ns": ns}
+                        "s": nm((d.get("item_subclass") or {}).get("name")), "b": bind, "ns": ns,
+                        "sp": d.get("sell_price"), "pp": d.get("purchase_price")}
         report.append({"names_namespace": ns, "tried": len(todo), "found": hits})
     return names
 
@@ -117,6 +118,7 @@ def main():
 
     # 1) recipe dokumu: calisan her (farkli) namespace icin
     seen_idx = []
+    extra_ids = set()
     for ns in NAMESPACES:
         if time.time() > DEADLINE:
             break
@@ -131,6 +133,13 @@ def main():
         seen_idx.append(sig)
         out, n = dump_recipes(ns, token)
         if out:
+            for pr in out["professions"].values():
+                for rc in pr["recipes"].values():
+                    if rc.get("crafted") and rc["crafted"][0]:
+                        extra_ids.add(int(rc["crafted"][0]))
+                    for rg in rc.get("reagents", []) or []:
+                        if rg[0]:
+                            extra_ids.add(int(rg[0]))
             with open(f"data/recipes_{ns}.json", "w", encoding="utf-8") as f:
                 json.dump(out, f, separators=(",", ":"))
             report.append({"ns": ns, "recipes_dumped": n})
@@ -138,7 +147,7 @@ def main():
     # 2) AH'deki item ID'leri icin isimler
     base, dyn = f"https://{REGION}.api.blizzard.com", f"dynamic-forever-{REGION}"
     ah = F.snapshot_house(base, dyn, RULESET, HOUSE, token)
-    ids = sorted(int(i) for i in ah)
+    ids = sorted({int(i) for i in ah} | extra_ids)
     names = dump_names(ids, token)
     with open("data/names.json", "w", encoding="utf-8") as f:
         json.dump({str(k): v for k, v in names.items()}, f, separators=(",", ":"))

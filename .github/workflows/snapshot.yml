@@ -1,32 +1,46 @@
-   name: Snapshot AH
-   on:
-     schedule:
-       - cron: "17 * * * *"
-     workflow_dispatch:
-   permissions:
-     contents: write
-   jobs:
-     snapshot:
-       runs-on: ubuntu-latest
-       steps:
-         - uses: actions/checkout@v4
-         - uses: actions/setup-python@v5
-           with:
-             python-version: "3.12"
-         - name: Fetch AH data
-           env:
-             BLIZZARD_CLIENT_ID: ${{ secrets.BLIZZARD_CLIENT_ID }}
-             BLIZZARD_CLIENT_SECRET: ${{ secrets.BLIZZARD_CLIENT_SECRET }}
-             REGION: eu
-             RULESET: "15"
-             HOUSES: "123"
-           run: python fetch_ah.py
-         - name: Publish to snapshot branch
-           run: |
-             git config user.name "ah-bot"
-             git config user.email "ah-bot@users.noreply.github.com"
-             git checkout --orphan snapshot
-             git rm -rf --cached . > /dev/null
-             git add -f data
-             git commit -m "snapshot $(date -u +%Y-%m-%dT%H:%MZ)"
-             git push -f origin snapshot
+name: Snapshot AH
+on:
+  schedule:
+    - cron: "7,22,37,52 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: snapshot
+  cancel-in-progress: false
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch AH data
+        env:
+          BLIZZARD_CLIENT_ID: ${{ secrets.BLIZZARD_CLIENT_ID }}
+          BLIZZARD_CLIENT_SECRET: ${{ secrets.BLIZZARD_CLIENT_SECRET }}
+          REGION: eu
+          RULESET: "15"
+          HOUSES: "123"
+        run: python fetch_ah.py
+      - name: Restore history and item names
+        run: |
+          git fetch --depth=1 origin snapshot && for f in history.csv alert_state.json last_hash.txt; do git show FETCH_HEAD:data/$f > data/$f 2>/dev/null || true; done || true
+          git fetch --depth=1 origin probe && git show FETCH_HEAD:data/names.json > data/names.json 2>/dev/null || true
+      - name: History, report and Discord alerts
+        env:
+          HOUSES: "123"
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: python history.py
+      - name: Publish to snapshot branch
+        run: |
+          rm -f data/names.json
+          git config user.name "ah-bot"
+          git config user.email "ah-bot@users.noreply.github.com"
+          git checkout --orphan snapshot
+          git rm -rf --cached . > /dev/null
+          git add -f data
+          git commit -m "snapshot $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -f origin snapshot

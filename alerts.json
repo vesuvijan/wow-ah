@@ -1,0 +1,10 @@
+{
+  "favor_per_favor_max": 120,
+  "snipe_min_gain": 50000,
+  "snipe_max_listing_qty": 20,
+  "mat_drop_vs_median": 0.85,
+  "mat_max_rank": 0.10,
+  "min_samples": 24,
+  "realert_hours": 6,
+  "max_price": {}
+}
