@@ -137,8 +137,6 @@ def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
     state = {k: v for k, v in state.items() if v["ts"] >= cutoff}
     with open(state_path, "w", encoding="utf-8") as f:
         json.dump(state, f)
-    if fresh:
-        send_embeds(fresh, now + datetime.timedelta(hours=3))
     return fresh
 
 
@@ -254,7 +252,7 @@ def todo_lines(fresh):
     return lines[:6]
 
 
-def send_embeds(fresh, local_now, demo=False):
+def send_embeds(fresh, local_now, demo=False, status=None):
     embeds = []
     for kind in ("sell", "flip", "favor", "mat", "snipe"):
         items = sorted([f for f in fresh if f[0] == kind], key=lambda f: -f[2])[:10]
@@ -265,10 +263,66 @@ def send_embeds(fresh, local_now, demo=False):
                        "description": hint + "\n" + grid(headers, [cells(kind, f[1]) for f in items], widths)})
     names_ = {"flip": "Flips", "sell": "SELL", "favor": "Favor", "mat": "Mats", "snipe": "Snipes"}
     summary = " | ".join(f"{names_[k]} {sum(1 for f in fresh if f[0] == k)}" for k in ("sell", "flip", "favor", "mat", "snipe") if any(f[0] == k for f in fresh))
+    if status:
+        embeds.append({"title": "Status", "color": 0x95A5A6, "description": "```\n" + "\n".join(status) + "\n```"})
     embeds[-1]["footer"] = {"text": f"Data: {local_now:%H:%M} (TR time)" + (" | SAMPLE DATA" if demo else "")}
     todo = todo_lines(fresh)
-    content = ("**SAMPLE** " if demo else "") + "**DO NOW**\n" + "\n".join("\u2022 " + t for t in todo)
+    body = "\n".join("\u2022 " + t for t in todo) if todo else "\u2022 Nothing to do right now - wait for a better price"
+    content = ("**SAMPLE** " if demo else "") + "**DO NOW**\n" + body
     post({"content": content, "embeds": embeds})
+
+
+def status(snap, series, watch, hold, need_map, route_lines, cfg_path="alerts.json"):
+    """Her veri guncellemesinde kisa durum degerlendirmesi (satirlar)."""
+    cfg = json.load(open(cfg_path, encoding="utf-8"))
+    now = datetime.datetime.strptime(snap["fetched_at"], "%Y-%m-%dT%H:%M:%SZ")
+    week = (now - datetime.timedelta(days=7)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    lines = []
+    if W is not None:
+        book = {int(k): [(p, q) for p, q in v["l"]] for k, v in snap["items"].items()}
+        try:
+            rows, _ = W.evaluate(book)
+            r = rows[0]
+            lines.append(f"Favor best: {short(r['crate'])} {cm(money(r['per_favor']))}/F (buy <= {cm(money(cfg['favor_per_favor_max']))})")
+        except Exception:  # noqa: BLE001
+            pass
+    lines += route_lines
+    # alim bandina en yakin rota malzemeleri
+    ranked = []
+    nsamp = 0
+    for iid in (need_map or {}):
+        s = series.get(iid)
+        if not s:
+            continue
+        w7 = [x[1] for x in s if x[0] >= week]
+        nsamp = max(nsamp, len(w7))
+        if len(w7) >= cfg["min_samples"]:
+            rank = sum(1 for v in w7 if v < s[-1][1]) / len(w7)
+            ranked.append((rank, watch[iid][0], s[-1][1]))
+    if ranked:
+        ranked.sort()
+        lines.append("Cheapest vs 7d: " + ", ".join(f"{n} {cm(money(p))} (p{round(r * 100)})" for r, n, p in ranked[:3]))
+    else:
+        lines.append(f"Price history: {nsamp}/{cfg['min_samples']} samples, buy signals start after that")
+    movers = []
+    for iid in hold:
+        s = series.get(iid)
+        if not s or s[-1][1] < cfg.get("sell_min_price", 100):
+            continue
+        w7 = [x[1] for x in s if x[0] >= week]
+        if len(w7) >= cfg["min_samples"]:
+            med = statistics.median(w7)
+            movers.append((s[-1][1] / med - 1, watch[iid][0]))
+    if movers:
+        movers.sort()
+        up, dn = movers[-1], movers[0]
+        lines.append(f"Holdings: top {up[1]} {up[0] * 100:+.0f}%, low {dn[1]} {dn[0] * 100:+.0f}%")
+    return lines
+
+
+def notify(fresh, status_lines, snap):
+    local = datetime.datetime.strptime(snap["fetched_at"], "%Y-%m-%dT%H:%M:%SZ") + datetime.timedelta(hours=3)
+    send_embeds(fresh, local, status=status_lines)
 
 
 def digest(snap, route_lines, force=False):
@@ -326,4 +380,5 @@ def demo():
         ("sell", ["Mithril Ore", "1g 85s", "1g 30s", "+42%", "530", ""], 42),
         ("snipe", ["Plans: Mithril Spurs", "5g 99s", "x2", "9g 99s", "~8g", "5"], 80000),
     ]
-    send_embeds(fresh, datetime.datetime.utcnow() + datetime.timedelta(hours=3), demo=True)
+    send_embeds(fresh, datetime.datetime.utcnow() + datetime.timedelta(hours=3), demo=True,
+                status=["Favor best: Jrny Parts 1s27c/F (buy <= 1s20c)", "Tailoring route: 22g now (7d low 20g)", "Cheapest vs 7d: Silk 1s89c (p35)", "Holdings: top Iron Ore +8%, low Heavy Leather -3%"])

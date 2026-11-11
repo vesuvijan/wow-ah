@@ -174,8 +174,8 @@ def main():
     out.append("Not: AL = fiyat son 7 gunun en ucuz %20'lik dilimi; en az 12 olcum (12 saat) sonra anlamli.")
     try:
         import alerts
-        alerts.run(snap, {k: v for k, v in series.items()}, WATCH, set(HOLD), NEED)
-        alerts.digest(snap, route_lines)
+        fresh = alerts.run(snap, series, WATCH, set(HOLD), NEED)
+        alerts.notify(fresh, alerts.status(snap, series, WATCH, set(HOLD), NEED, route_lines), snap)
     except Exception as e:  # noqa: BLE001
         print("alerts hatasi:", e)
     with open("data/report.txt", "w", encoding="utf-8") as f:
