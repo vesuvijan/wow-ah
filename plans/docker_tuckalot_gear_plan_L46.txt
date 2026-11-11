@@ -1,0 +1,181 @@
+Hunter gear plan | level 46 -> 60 | weights: Sharpie Gear Judge leveling curve | tooltips 5125 | candidates 2366
+
+== HEAD: now Tracker's Headband of the Bandit (ilvl 45) value 55 [random-suffix, estimated]
+  NOW Helm of Exile                  req 38 ilvl 55 BoP  +9.2%  Dungeon quest: Jammal'an the Prophet (The Temple of Atal'Hakkar, lvl 53) | Quest: Jammal'an the Prophet (lvl 0) @ Atal'ai Exile
+  NOW Engineer's Guild Headpiece     req 40 ilvl 49 BoP  +3.8%  Dungeon quest: Divino-matic Rod (Zul'Farrak, lvl 47) | Quest: Divino-matic Rod (lvl 0) @ Chief Engineer Bilgewhizzle  [+effect not scored: Equip: Increases healing done by up to]
+  NOW Mithril Coif                   req 41 ilvl 46 BoE  +3.3%  Craft: Blacksmithing 205
+  NOW Zorbin's Water Resistant Hat   req 43 ilvl 48 BoP  +2.9%  Quest: Fuel for the Zapping (lvl 0) @ Zorbin Fandazzle
+  NOW Drakefire Headguard            req 46 ilvl 51 BoP  +2.9%  Quest: Set Them Ablaze! (lvl 0) @ Squire Maltrake
+  NOW Helm of Fire                   req 45 ilvl 50 BoE  +2.4%  Craft: Leatherworking 225  [+effect not scored: Use:]
+  LVL Black Dragonscale Helm         req 56 ilvl 61 BoE +11.5%  Craft: Leatherworking 300
+  LVL Beastmaster's Cap              req 60 ilvl 60 BoP  +8.0%  Quest: Saving the Best for Last (lvl 0) @ Deliana | Set: Beastmaster Armor  [+effect not scored: Equip:]
+  LVL Outlaw's Collar                req 60 ilvl 65 BoE  +7.9%  Craft: Leatherworking 300
+  LVL Mask of the Unforgiven         req 52 ilvl 57 BoP  +7.4%  Drop: The Unforgiven (Stratholme) 20%  [+effect not scored: Equip: Increased Defense +]
+
+== NECK: now Amberglow Talisman (ilvl 44) value 60
+  NOW Explorers' League Commendation req 35 ilvl 40 BoP  -0.2%  Quest: Mythology of the Titans (lvl 0) @ Librarian Mae Paledust
+  NOW Pulsating Crystalline Shard    req 45 ilvl 50 BoP  -0.9%  Quest: Summoning the Princess (lvl 0) @ Theldurin the Lost
+  NOW Triune Amulet                  req 39 ilvl 44 BoP  -1.6%  Drop: High Inquisitor Whitemane (Scarlet Monastery: Cathedral) 37%  [+effect not scored: Equip: Increases damage and healing done by magical spells and effects]
+  NOW Chain of the Corruptor         req 41 ilvl 46 BoP  -2.1%  Drop: Nar'gurk (Krol'dok Stronghold)  [+effect not scored: Equip: Increases damage and healing done by magical spells and effects]
+  NOW Thermaplugg Medal of Honor     req 29 ilvl 34 BoP  -2.3%  Drop: Crowd Pummeler 9-60 (Gnomeregan)  [+effect not scored: Equip: +]
+  NOW Lifeblood Amulet               req 45 ilvl 50 BoP  -2.8%  Drop: Antu'sul (Zul'Farrak) 35%
+  LVL Star of Mystaria               req 58 ilvl 63 BoP  +0.7%  Drop: Balnazzar (Stratholme) 23%
+  LVL Amulet of the Darkmoon         req 60 ilvl 65 BoP  -0.1%  Quest: 1200 Tickets - Amulet of the Darkmoon (lvl 60) @ Gelvas Grimegate
+  LVL Maelstrom's Tendril            req 60 ilvl 68 BoP  -0.5%  Quest: The Maelstrom's Tendril (lvl 0) @ Falthir the Sightless
+  LVL Maelstrom's Wrath              req 60 ilvl 65 BoP  -0.5%  Quest: Maelstrom's Wrath (lvl 0) @ Falthir the Sightless | Set: Predator's Armor  [+effect not scored: Equip:]
+
+== SHOULDER: now Fleshhide Shoulders (ilvl 42) value 57
+  NOW Stalker's Mail Shoulders       req 42 ilvl 47 BoP  +4.2%  Craft: Leatherworking 210
+  NOW Skulker's Leather Shoulder     req 42 ilvl 47 BoP  +2.2%  Craft: Leatherworking 210
+  NOW Resistance Breaker Spaulder    req 39 ilvl 44 BoP  +1.4%  Drop: Slavecrusher Grox (Krol'dok Stronghold)
+  NOW Phytoskin Spaulders            req 46 ilvl 51 BoP  +1.3%  Drop: Razorlash (Maraudon) 25%
+  NOW Mithril Plate Shoulders        req 42 ilvl 47 BoE  +1.2%  Craft: Blacksmithing 210
+  NOW Mender's Mail Shoulders        req 42 ilvl 47 BoP  +0.8%  Craft: Leatherworking 210  [+effect not scored: Equip: Increases healing done by up to]
+  LVL Theramore Pauldrons            req 60 ilvl 65 BoP  +7.2%  Rep: Theramore Expeditionary Force Exalted
+  LVL Zandalar Madcap's Mantle       req 60 ilvl 61 BoP  +5.0%  Quest: Paragons of Power: The Madcap's Mantle (lvl 0) @ Falthir the Sightless | Set: Madcap's Outfit
+  LVL Highlander's Chain Pauldrons   req 60 ilvl 65 BoP  +3.5%  Set: The Highlander's Determination
+  LVL Defiler's Chain Pauldrons      req 60 ilvl 65 BoP  +3.5%  Set: The Defiler's Determination
+
+== BACK: now Ranger Cloak of the Wolf (ilvl 40) value 24 [random-suffix, estimated]
+  NOW Medicine Blanket               req 40 ilvl 45 BoP  +2.4%  Quest: Stranglethorn Fever (lvl 0) @ Fin Fizracket
+  NOW Chainlink Towel                req 43 ilvl 48 BoP  +2.4%  Quest: Rescue OOX-22/FE! (lvl 0) @ Homing Robot OOX-22/FE
+  NOW Ceremonial Centaur Blanket     req 35 ilvl 42 BoP  +1.7%  Quest: Khan Hratha (lvl 0) @ Warug
+  NOW Nightscape Cloak               req 41 ilvl 46 BoE  +1.4%  Craft: Leatherworking 205 | AH 3g
+  NOW Darktide Cape                  req 37 ilvl 42 BoP  +1.2%  Quest: Keep An Eye Out (lvl 0) @ Dizzy One-Eye
+  NOW Emberscale Cape                req 42 ilvl 47 BoP  +1.1%  Drop: Galgann Firehammer (Uldaman) 38%
+  LVL Cloak of Veiled Shadows        req 60 ilvl 67 BoP  +7.9%  Quest: Cloak of Veiled Shadows (lvl 60) @ Keyl Swiftclaw | Set: Emblems of Veiled Shadows
+  LVL Cloak of the Unseen Path       req 60 ilvl 67 BoP  +7.6%  Quest: Cloak of the Unseen Path (lvl 60) @ Keyl Swiftclaw | Set: Trappings of the Unseen Path
+  LVL Earthweave Cloak               req 60 ilvl 62 BoP  +6.7%  Quest: Volunteer's Battlegear (lvl 0) @ Vargus
+  LVL Drape of Unyielding Strength   req 60 ilvl 67 BoP  +4.9%  Quest: Drape of Unyielding Strength (lvl 60) @ Keyl Swiftclaw | Set: Battlegear of Unyielding Strength
+
+== CHEST: now Tunic of Westfall (ilvl 24) value 47
+  NOW Feathered Breastplate          req 45 ilvl 50 BoE  +7.7%  Craft: Leatherworking 225  [+effect not scored: Equip: Increases damage and healing done by magical spells and effects]
+  NOW Fungus Shroud Armor            req 46 ilvl 51 BoP  +5.9%  Drop: Meshlok the Harvester (Maraudon) 32%
+  NOW Gahz'rilla Scale Armor         req 43 ilvl 48 BoP  +5.2%  Drop: Gahz'rilla (Zul'Farrak) 45%  [+effect not scored: Equip: Increases healing done by up to]
+  NOW Deathchill Armor               req 39 ilvl 43 BoP  +4.7%  Drop: Amnennar the Coldbringer (Razorfen Downs) 29%  [+effect not scored: Equip: Increases healing done by up to]
+  NOW Seared Mail Vest               req 45 ilvl 50 BoP  +4.2%  Quest: WANTED: Overseer Maltorius (lvl 0) @ Wanted/Missing/Lost & Found
+  NOW Jinxed Hoodoo Skin             req 44 ilvl 49 BoP  +4.2%  Drop: Shadowpriest Sezz'ziz (Zul'Farrak) 22%
+  LVL Dawn Armor                     req 56 ilvl 61 BoE +15.9%  Craft: Leatherworking 300
+  LVL Darkmantle Tunic               req 60 ilvl 60 BoP +14.2%  Quest: Saving the Best for Last (lvl 0) @ Deliana | Set: Darkmantle Armor
+  LVL Primal Batskin Jerkin          req 60 ilvl 65 BoE +10.0%  Set: Primal Batskin | Craft: Leatherworking 300
+  LVL Beastmaster's Tunic            req 60 ilvl 60 BoP  +9.9%  Quest: Saving the Best for Last (lvl 0) @ Deliana | Set: Beastmaster Armor  [+effect not scored: Equip:]
+
+== WRIST: now Duracin Bracers (ilvl 38) value 41
+  NOW Stalker's Mail Bracers         req 45 ilvl 50 BoP  +4.0%  Craft: Leatherworking 225
+  NOW Skulker's Leather Bracers      req 45 ilvl 50 BoP  +2.5%  Craft: Leatherworking 225
+  NOW Mender's Mail Bracers          req 45 ilvl 50 BoP  +1.2%  Craft: Leatherworking 225  [+effect not scored: Equip: Increases healing done by up to]
+  NOW Mender's Leather Bracers       req 45 ilvl 50 BoP  +1.1%  Craft: Leatherworking 225  [+effect not scored: Equip: Increases healing done by up to]
+  NOW Skycaller's Mail Bracers       req 45 ilvl 50 BoP  +1.0%  Craft: Leatherworking 225  [+effect not scored: Equip: Increases damage and healing done by magical spells and effects]
+  NOW Skycaller's Leather Bracers    req 45 ilvl 50 BoP  +0.9%  Craft: Leatherworking 225  [+effect not scored: Equip: Increases damage and healing done by magical spells and effects]
+  LVL Primal Batskin Bracers         req 60 ilvl 65 BoE  +4.7%  Set: Primal Batskin | Craft: Leatherworking 300
+  LVL Slashclaw Bracers              req 55 ilvl 60 BoP  +2.7%  Drop: Halycon (Lower Blackrock Spire) 28%
+  LVL Beastmaster's Bindings         req 60 ilvl 65 BoP  +1.7%  Quest: An Earnest Proposition (lvl 0) @ Deliana | Set: Beastmaster Armor
+  LVL Bracers of Subterfuge          req 60 ilvl 60 BoP  +0.7%  Quest: Epic Armaments of Battle - Friend of the Dawn (lvl 0) @ Quartermaster Miranda Breechlock
+
+== HANDS: now Fists of Impending Doom (ilvl 42) value 16
+  NOW Dragonscale Gauntlets          req 40 ilvl 45 BoE  +5.6%  Craft: Leatherworking 225
+  NOW Stalker's Leather Gloves       req 35 ilvl 40 BoP  +5.4%  Craft: Leatherworking 175
+  NOW Mithril Plate Gloves           req 40 ilvl 44 BoE  +5.3%  Craft: Blacksmithing 200
+  NOW Cartilage Shapers              req 28 ilvl 33 BoP  +4.8%  Drop: Lyn the Ignored (City of Dalaran) 35%  [+effect not scored: Equip: Increased Skinning +]
+  NOW Grubbis Paws                   req 29 ilvl 34 BoP  +4.2%  Drop: Grubbis (Gnomeregan) 8.8%
+  NOW Tough Scorpid Gloves           req 40 ilvl 45 BoE  +3.6%  Craft: Leatherworking 200
+  LVL Primal Batskin Gloves          req 60 ilvl 65 BoE +10.5%  Set: Primal Batskin | Craft: Leatherworking 300
+  LVL Gauntlets of Accuracy          req 56 ilvl 61 BoP  +8.0%  Drop: Illyanna Ravenoak (Dire Maul: West) 24%
+  LVL Mourning Handguards            req 60 ilvl 65 BoE  +7.7%  Craft: Leatherworking 300
+  LVL Gordok's Gloves                req 56 ilvl 60 BoP  +7.4%  Dungeon quest: Unfinished Gordok Business (Dire Maul: North, lvl 60) | Quest: None (lvl 0)
+
+== WAIST: now Warden's Waistband (ilvl 40) value 56
+  NOW Stalker's Leather Belt         req 30 ilvl 35 BoP  +1.5%  Craft: Leatherworking 150
+  NOW Skulker's Leather Belt         req 30 ilvl 35 BoP  +0.4%  Craft: Leatherworking 150
+  NOW Seared Mail Girdle             req 44 ilvl 49 BoP  +0.0%  Quest: Fiery Menace! (lvl 0) @ Hansel Heavyhands
+  NOW Charged Scorpid Belt           req 46 ilvl 51 BoE  -0.2%  Craft: Leatherworking 230  [+effect not scored: Equip: Increases damage and healing done by magical spells and effects]
+  NOW Sagebrush Girdle               req 41 ilvl 49 BoP  -0.5%  Dungeon quest: Vyletongue Corruption (Maraudon, lvl 47) | Quest: Vyletongue Corruption (lvl 0) @ Vark Battlescar
+  NOW Kolkar Hunter's Belt           req 35 ilvl 42 BoP  -0.9%  Quest: Khan Hratha (lvl 0) @ Warug
+  LVL Zandalar Predator's Belt       req 60 ilvl 61 BoP  +7.4%  Quest: Paragons of Power: The Predator's Belt (lvl 0) @ Falthir the Sightless | Set: Predator's Armor
+  LVL Marksman's Girdle              req 56 ilvl 61 BoP  +5.3%  Drop: Urok Doomhowl (Lower Blackrock Spire) 17%
+  LVL Warpwood Binding               req 56 ilvl 61 BoP  +3.7%  Drop: Tendris Warpwood (Dire Maul: West) 24%
+  LVL Belt of Preserved Heads        req 60 ilvl 70 BoP  +3.5%  Quest: A Collection of Heads (lvl 0) @ Exzhal
+
+== LEGS: now Oilskin Leggings (ilvl 47) value 100
+  NOW Infernal Trickster Leggings    req 45 ilvl 50 BoP  +2.1%  Drop: Lord Vyletongue (Maraudon) 29%  [+effect not scored: Equip:]
+  NOW Brinebelly Leggings            req 35 ilvl 40 BoP  +1.0%  Drop: Var'Taka (The Drowned City)
+  NOW Jinxed Hoodoo Kilt             req 44 ilvl 49 BoP  -0.2%  Drop: Shadowpriest Sezz'ziz (Zul'Farrak) 21%  [+effect not scored: Equip: Increases healing done by up to]
+  NOW Trapper's Leather Legguards    req 25 ilvl 30 BoP  -1.8%  Craft: Leatherworking 125
+  NOW Misplaced Pantaloons           req 40 ilvl 45 BoP  -2.0%  Rep: Powderfuse Friendly
+  NOW Stormrider's Leather Kilt      req 25 ilvl 30 BoP  -2.7%  Craft: Leatherworking 125
+  LVL Leggings of the Plague Hunter  req 60 ilvl 66 BoP  +2.0%  Quest: Superior Armaments of Battle - Friend of the Dawn (lvl 0) @ Quartermaster Miranda Breechlock
+  LVL Legguards of the Chromatic Def req 60 ilvl 62 BoP  +0.8%  Quest: Legplates of the Chromatic Defier (lvl 0) @ Catalogue of the Wayward
+  LVL Leggings of Destruction        req 58 ilvl 63 BoP  +0.6%  Drop: King Gordok (Dire Maul: North) 24%
+  LVL Beastmaster's Pants            req 60 ilvl 66 BoP  +0.1%  Quest: Anthion's Parting Words (lvl 0) @ Anthion Harmon | Set: Beastmaster Armor
+
+== FEET: now Excelsior Boots (ilvl 41) value 29
+  NOW Stalker's Mail Boots           req 40 ilvl 45 BoP  +6.2%  Craft: Leatherworking 200
+  NOW Skulker's Leather Shoes        req 40 ilvl 45 BoP  +4.7%  Craft: Leatherworking 200
+  NOW Sandstalker Ankleguards        req 42 ilvl 47 BoP  +3.9%  Drop: Zerillis (Zul'Farrak) 18%
+  NOW Worn Running Boots             req 37 ilvl 42 BoP  +3.8%  Drop: Eric \ (Uldaman)
+  NOW Vorrel's Boots                 req 30 ilvl 35 BoP  +3.1%  Quest: None (lvl 0)
+  NOW Mender's Mail Boots            req 40 ilvl 45 BoP  +3.0%  Craft: Leatherworking 200  [+effect not scored: Equip: Increases healing done by up to]
+  LVL Windreaver Greaves             req 56 ilvl 61 BoP  +8.5%  Drop: Kirtonos the Herald (Scholomance) 18%
+  LVL Bloodmail Boots                req 56 ilvl 61 BoP  +5.7%  Drop: Instructor Malicia (Scholomance) 4.3% | Drop: Doctor Theolen Krastinov (Scholomance) 4.3% | Drop: Lorekeeper Polkelt (Scholomance) 4.5%
+  LVL Shadowcraft Boots              req 54 ilvl 59 BoP  +5.2%  Drop: Rattlegore (Scholomance) 19% | Set: Shadowcraft Armor
+  LVL Darkmantle Boots               req 60 ilvl 60 BoP  +4.9%  Quest: Anthion's Parting Words (lvl 0) @ Anthion Harmon | Set: Darkmantle Armor  [+effect not scored: Equip:]
+
+== FINGER: now Archaedic Stone of Power (ilvl 47) value 41 [random-suffix, estimated]
+  NOW Masons Fraternity Ring         req 40 ilvl 49 BoP  +1.4%  Dungeon quest: Divino-matic Rod (Zul'Farrak, lvl 47) | Quest: Divino-matic Rod (lvl 0) @ Chief Engineer Bilgewhizzle
+  NOW Disengagement Ring             req 40 ilvl 45 BoP  +0.3%  Rep: Powderfuse Friendly
+  NOW Coldwater Ring                 req 41 ilvl 46 BoP  +0.1%  Quest: Death From Below (lvl 0) @ Shakes O'Breen
+  NOW Seedtime Hoop                  req 45 ilvl 50 BoP  +0.0%  Quest: The Morrow Stone (lvl 0) @ Equinex Monolith
+  NOW Seal of Wrynn                  req 26 ilvl 31 BoP  -0.2%  Quest: An Audience with the King (lvl 0) @ Baros Alexston
+  NOW Electrocutioner Lagnut         req 29 ilvl 34 BoP  -0.3%  Drop: Electrocutioner 6000 (Gnomeregan) 31%  [+effect not scored: Equip: Increases healing done by up to]
+  LVL Signet Ring of the Bronze Drag req 60 ilvl 70 BoP  +7.1%  Quest: The Path of the Conqueror (lvl 60) @ Anachronos
+  LVL Signet Ring of the Bronze Drag req 60 ilvl 65 BoP  +6.4%  Quest: The Path of the Conqueror (lvl 60) @ Anachronos
+  LVL Signet Ring of the Bronze Drag req 60 ilvl 60 BoP  +6.0%  Quest: The Path of the Conqueror (lvl 60) @ Anachronos
+  LVL Ring of Unspoken Names         req 60 ilvl 65 BoP  +4.6%  Quest: Ring of Unspoken Names (lvl 60) @ Windcaller Yessendra | Set: Implements of Unspoken Names  [+effect not scored: Equip: Increases damage and healing done by magical spells and effects]
+
+== TRINKET: now Satchel of Potions (ilvl 33) value 0
+  NOW Evonice's Landin' Pilla        req 45 ilvl 50 BoP  +4.3%  Quest: None (lvl 0)  [+effect not scored: Equip:]
+  NOW Thunderbrew's Boot Flask       req 39 ilvl 44 BoP  +3.5%  Quest: Sweet Amber (lvl 0) @ Grimbooze Thunderbrew  [+effect not scored: Use:]
+  NOW Roogug's Severed Head          req 25 ilvl 30 BoP  +2.6%  Drop: Roogug (Razorfen Kraul)  [+effect not scored: Use:]
+  NOW Volunteer's Lucky Seal         req 33 ilvl 38 BoP  +1.8%  Rep: Theramore Expeditionary Force Friendly  [+effect not scored: Equip:]
+  NOW Alchemist's Stone              req 45 ilvl 50 BoP  +1.7%  Craft: Alchemy 275  [+effect not scored: Equip:]
+  NOW Lookie's Spyglass              req 18 ilvl 23 BoP  +0.4%  Drop: Cookie (The Deadmines)  [+effect not scored: Use:]
+  LVL Smolderweb's Eye               req 55 ilvl 60 BoP  +4.4%  Drop: Mother Smolderweb (Lower Blackrock Spire) 12%  [+effect not scored: Use:]
+  LVL Royal Seal of Eldre'Thalas     req 60 ilvl 62 BoP  +4.4%  Quest: None (lvl 0)  [+effect not scored: Equip: +]
+  LVL Devilsaur Tooth                req 50 ilvl 52 BoP  +2.3%  Dungeon quest: The Green Drake (The Temple of Atal'Hakkar, lvl 52) | Quest: The Green Drake (lvl 0) @ Ogtinc  [+effect not scored: Use:]
+  LVL Cannonball Runner              req 56 ilvl 61 BoP  +2.2%  Drop: Cannon Master Willey (Stratholme) 18%  [+effect not scored: Use:]
+
+== WEAPONS (dual wield)
+  NOW MH Lifeforce Dirk (35.9 dps, 1.6s, req40: Dungeon quest: The God Hakkar (The Temple of Atal'Hakkar, lvl 53))
+      OH Sword of Serenity (30.0 dps, 2.2s, req34: Dungeon quest: In the Name of the Light (Scarlet Monastery: Armory, lvl 40))  value 172
+  NOW MH Lifeforce Dirk (35.9 dps, 1.6s, req40: Dungeon quest: The God Hakkar (The Temple of Atal'Hakkar, lvl 53))
+      OH Nordic Longshank (29.3 dps, 2.2s, req38: Drop: Baelog (Uldaman) 9.3%)  value 169
+  NOW MH Sword of Serenity (30.0 dps, 2.2s, req34: Dungeon quest: In the Name of the Light (Scarlet Monastery: Armory, lvl 40))
+      OH Nordic Longshank (29.3 dps, 2.2s, req38: Drop: Baelog (Uldaman) 9.3%)  value 168
+  NOW MH Nordic Longshank (29.3 dps, 2.2s, req38: Drop: Baelog (Uldaman) 9.3%)
+      OH Sword of Serenity (30.0 dps, 2.2s, req34: Dungeon quest: In the Name of the Light (Scarlet Monastery: Armory, lvl 40))  value 167
+  NOW MH Sword of Serenity (30.0 dps, 2.2s, req34: Dungeon quest: In the Name of the Light (Scarlet Monastery: Armory, lvl 40))
+      OH Lifeforce Dirk (35.9 dps, 1.6s, req40: Dungeon quest: The God Hakkar (The Temple of Atal'Hakkar, lvl 53))  value 166
+  NOW MH Lifeforce Dirk (35.9 dps, 1.6s, req40: Dungeon quest: The God Hakkar (The Temple of Atal'Hakkar, lvl 53))
+      OH Zorbin's Mega-Slicer (28.7 dps, 2.3s, req43: Quest: Zapped Giants (lvl 0) @ Zorbin Fandazzle)  value 162
+  LVL MH Dagger of Veiled Shadows (51.7 dps, 1.8s, req60: Quest: Dagger of Veiled Shadows (lvl 60) @ Warden Haro)
+      OH Greenhammer (47.4 dps, 2.3s, req60: Craft: Blacksmithing 300)  value 318
+  LVL MH Greenhammer (47.4 dps, 2.3s, req60: Craft: Blacksmithing 300)
+      OH Dagger of Veiled Shadows (51.7 dps, 1.8s, req60: Quest: Dagger of Veiled Shadows (lvl 60) @ Warden Haro)  value 313
+  LVL MH Scythe of the Unseen Pat (51.5 dps, 2.4s, req60: Quest: Scythe of the Unseen Path (lvl 60) @ Warden Haro)
+      OH Greenhammer (47.4 dps, 2.3s, req60: Craft: Blacksmithing 300)  value 311
+  LVL MH Dagger of Veiled Shadows (51.7 dps, 1.8s, req60: Quest: Dagger of Veiled Shadows (lvl 60) @ Warden Haro)
+      OH Scythe of the Unseen Pat (51.5 dps, 2.4s, req60: Quest: Scythe of the Unseen Path (lvl 60) @ Warden Haro)  value 308
+  LVL MH Scythe of the Unseen Pat (51.5 dps, 2.4s, req60: Quest: Scythe of the Unseen Path (lvl 60) @ Warden Haro)
+      OH Dagger of Veiled Shadows (51.7 dps, 1.8s, req60: Quest: Dagger of Veiled Shadows (lvl 60) @ Warden Haro)  value 308
+  LVL MH Greenhammer (47.4 dps, 2.3s, req60: Craft: Blacksmithing 300)
+      OH Scythe of the Unseen Pat (51.5 dps, 2.4s, req60: Quest: Scythe of the Unseen Path (lvl 60) @ Warden Haro)  value 306
+  2H reference (you chose dual wield): Premier High Warlord's Battle Axe (61.6 dps, req60); Premier High Warlord's Pulverizer (61.6 dps, req60); Premier High Warlord's Pig Sticker (61.6 dps, req60)
+== RANGED now: Truthseeker's Bow
+  Hyper Deluxe Sniper Rifle Mk req 60 36.8 dps BoE | Craft: Engineering 300
+  Core Marksman Rifle          req 60 36.8 dps BoE | Craft: Engineering 300
+  Premier High Warlord's Recur req 60 36.9 dps BoP | Set: High Warlord's Weapons
+  Premier Grand Marshal's Bull req 60 36.9 dps BoP | Set: Grand Marshal's Weapons
+  Premier High Warlord's Cross req 60 36.9 dps BoP | Set: High Warlord's Weapons
+  Premier High Warlord's Stree req 60 36.9 dps BoP | Set: High Warlord's Weapons
+
+Skipped (random suffix, stats unknown until you see the item): 36 items

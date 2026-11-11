@@ -14,6 +14,7 @@ LEVEL = int(next((sys.argv[i + 1] for i, a in enumerate(sys.argv) if a == "--lev
 PLAN_MAX = int(next((sys.argv[i + 1] for i, a in enumerate(sys.argv) if a == "--max"), 60))
 W = json.load(open("ofa/hunter_weights.json"))
 SRC = json.load(open("ofa/ofa_sources.json"))["items"]
+REQ = json.load(open("ofa/req_levels.json"))
 
 SLOT = {"Head": "HEAD", "Neck": "NECK", "Shoulder": "SHOULDER", "Back": "BACK", "Chest": "CHEST", "Wrist": "WRIST", "Hands": "HANDS",
         "Waist": "WAIST", "Legs": "LEGS", "Feet": "FEET", "Finger": "FINGER", "Trinket": "TRINKET", "One-Hand": "1H", "Main Hand": "MH",
@@ -82,6 +83,66 @@ def parse(iid, t):
     return r
 
 
+def fix_req(r):
+    """Tooltip'te level sarti yoksa: wago/Blizzard tablosu -> kaynak (quest/dungeon quest) -> ilvl tahmini."""
+    if r["req"]:
+        return r["req"]
+    v = REQ.get(str(r["id"]))
+    if v:
+        return v
+    lv = [s.get("need") or s.get("qlvl") for s in SRC.get(str(r["id"]), {}).get("src", []) if s["type"] == "dquest"]
+    lv = [x for x in lv if x]
+    if lv:
+        return min(lv)
+    il = r.get("ilvl") or 0
+    return 60 if il >= 60 else max(0, il - 5)
+
+
+def valid_source(s):
+    """Alliance Hunter icin gecerli mi (karsi taraf / baska sinif quest'lerini ele)."""
+    if s.get("side") in ("H",) or s.get("faction") in ("Horde",):
+        return False
+    c = s.get("cls")
+    if c not in (None, "", "0"):
+        try:
+            if not int(c) & 4:
+                return False
+        except ValueError:
+            pass
+    return True
+
+
+DUNG = json.load(open("ofa/ofa_sources.json")).get("dungeons", {})
+
+
+def dmin(dn):
+    m = re.match(r"(\d+)", str((DUNG.get(dn) or {}).get("level") or ""))
+    return int(m.group(1)) if m else 0
+
+
+def reachable(r, level):
+    """Kaynaklardan en az biri su level'da erisilebilir mi (kaynak bilinmiyorsa True)."""
+    srcs = [x for x in SRC.get(str(r["id"]), {}).get("src", []) if valid_source(x)]
+    if not srcs:
+        return True
+    for x in srcs:
+        t = x["type"]
+        if t == "boss" and dmin(x["dungeon"]) <= level + 2:
+            return True
+        if t == "dquest" and (x.get("need") or 0) <= level and dmin(x["dungeon"]) <= level + 2:
+            return True
+        if t == "quest" and (x.get("req") or 0) <= level:
+            return True
+        if t in ("rep", "craft", "set"):
+            return True
+    return False
+
+
+def obtainable(r):
+    srcs = SRC.get(str(r["id"]), {}).get("src", [])
+    return (not srcs) or any(valid_source(s) for s in srcs)
+
+
 def usable(r):
     if r.get("slot") is None:
         return False
@@ -148,6 +209,7 @@ def main():
     for iid, t in tips.items():
         try:
             items[int(iid)] = parse(iid, t)
+            items[int(iid)]["req"] = fix_req(items[int(iid)])
         except Exception as e:  # noqa: BLE001
             print("parse hatasi", iid, e, file=sys.stderr)
     ah = {}
@@ -162,7 +224,7 @@ def main():
     equipped = {}
     for it in char["items"]:
         equipped[it["slot"]] = it
-    cands = [r for r in items.values() if usable(r) and (r["q"] or 0) >= 2 and r["req"] <= PLAN_MAX and r["id"] not in (11285, 8)]
+    cands = [r for r in items.values() if usable(r) and (r["q"] or 0) >= 2 and r["req"] <= PLAN_MAX and (r["ilvl"] or 0) <= 70 and obtainable(r) and r["id"] not in (11285, 8)]
     skipped_random = [r for r in cands if r["random"]]
     cands = [r for r in cands if not r["random"]]
     # ekipman degerleri (random suffix'ler tahmini)
@@ -184,6 +246,7 @@ def main():
             eq_val[sl] = value(r, w_now)
             eq_note[sl] = ""
         eq_val[sl] += 0
+    eq_ids = {it["id"] for it in equipped.values()}
     total = sum(eq_val.values()) or 1
     lines = [f"Hunter gear plan | level {LEVEL} -> {PLAN_MAX} | weights: Sharpie Gear Judge leveling curve | tooltips {len(items)} | candidates {len(cands)}", ""]
     plan = {}
@@ -192,8 +255,8 @@ def main():
     for esl, cs in SLOTS:
         cur = eq_val.get(esl, 0)
         it = equipped.get(esl, {})
-        pool = [c for c in cands if c["slot"] == cs]
-        now = sorted([c for c in pool if c["req"] <= LEVEL], key=lambda c: -value(c, w_now))[:6]
+        pool = [c for c in cands if c["slot"] == cs and c["id"] not in eq_ids]
+        now = sorted([c for c in pool if c["req"] <= LEVEL and reachable(c, LEVEL)], key=lambda c: -value(c, w_now))[:6]
         later = sorted([c for c in pool if LEVEL < c["req"] <= PLAN_MAX], key=lambda c: -value(c, w_late))[:4]
         lines.append(f"== {cs}: now {it.get('name','-')} (ilvl {it.get('ilvl','-')}) value {cur:.0f}{' ['+eq_note.get(esl,'')+']' if eq_note.get(esl) else ''}")
         rows = []
@@ -211,12 +274,12 @@ def main():
     mh_pool = [c for c in cands if c["slot"] in ("1H", "MH") and c.get("cls") == 2 and c["req"] <= PLAN_MAX]
     oh_pool = [c for c in cands if c["slot"] in ("1H", "OH") and c.get("cls") == 2 and c["req"] <= PLAN_MAX]
     def best_pairs(lvl):
-        mh = sorted([c for c in mh_pool if c["req"] <= lvl], key=lambda c: -value(c, w_now, "MH"))[:25]
-        oh = sorted([c for c in oh_pool if c["req"] <= lvl], key=lambda c: -value(c, w_now, "OH"))[:25]
+        mh = sorted([c for c in mh_pool if c["req"] <= lvl and (lvl > LEVEL or reachable(c, LEVEL))], key=lambda c: -value(c, w_now, "MH"))[:25]
+        oh = sorted([c for c in oh_pool if c["req"] <= lvl and (lvl > LEVEL or reachable(c, LEVEL))], key=lambda c: -value(c, w_now, "OH"))[:25]
         pairs = []
         for a in mh:
             for b in oh:
-                if a["id"] == b["id"] and not (a["slot"] == "1H"):
+                if a["id"] == b["id"]:
                     continue
                 pairs.append((value(a, w_now, "MH") + value(b, w_now, "OH"), a, b))
         return sorted(pairs, key=lambda x: -x[0])[:6]
