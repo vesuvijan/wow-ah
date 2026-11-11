@@ -116,22 +116,34 @@ def short(n):
     return n.replace("Journeyman", "Jrny").replace("Apprentice", "Appr").replace("Expert", "Exp")
 
 
-def fmt_row(kind, r):
-    if kind == "favor":   # [crate, per_favor, F, bundle, crate_price, "3x ~44s 30c"]
-        return f"{short(r[0])[:14]:<15}{cm(r[1]) + '/F':>9} {cm(r[5])}"
-    if kind == "mat":     # [name, simdi, medyan, "-%20", stok, ihtiyac]
-        return f"{r[0][:17]:<17}{cm(r[1]):>8}{r[3].replace('%', ''):>6}{r[5]:>6}"
-    return f"{r[0][:16]:<17}{cm(r[1]) + '>' + cm(r[3]):>13} {cm(r[4])}"   # snipe
+def grid(headers, rows, widths):
+    """Box-drawn table (monospace, for a Discord code block)."""
+    def line(l, m, r):
+        return l + m.join("\u2500" * (w + 1) for w in widths) + r
+    def cell_row(cells):
+        return "\u2502" + "\u2502".join(" " + str(c)[:w].ljust(w) for c, w in zip(cells, widths)) + "\u2502"
+    out = [line("\u250c", "\u252c", "\u2510"), cell_row(headers), line("\u251c", "\u253c", "\u2524")]
+    out += [cell_row(r) for r in rows]
+    out.append(line("\u2514", "\u2534", "\u2518"))
+    return "```\n" + "\n".join(out) + "\n```"
 
 
 SECTIONS = {
-    "favor": ("Favor - ucuz crate", 0x2ECC71, f"{'Crate':<15}{'Net/Fav':>9} 60F icin",
-              "Doldur, Marcy Baker'a teslim et."),
-    "mat": ("Malzeme dustu - toplu al", 0x3498DB, f"{'Item':<17}{'Simdi':>8}{'Fark':>6}{'Lazim':>6}",
-            "7 gunun en ucuz dilimi. 'Lazim' = rota ihtiyaci."),
-    "snipe": ("Snipe - al ve yeniden sat", 0xE67E22, f"{'Item':<17}{'Ilan>Sonraki':>13} Kar",
-              "Oyunda fiyati dogrula."),
+    "favor": ("Merchant's Favor - cheap crates", 0x2ECC71, ["Crate", "Net/Fav", "For 60F"], (13, 7, 9),
+              "Fill the crate, hand it in to Marcy Baker. Net = after turn-in reward."),
+    "mat": ("Raw mats - bulk buy", 0x3498DB, ["Item", "Now", "Off", "Need"], (13, 7, 5, 5),
+            "Price is in the cheapest 7-day band. Need = route requirement."),
+    "snipe": ("Snipe - buy and relist", 0xE67E22, ["Item", "Ask", "Next", "Gain"], (13, 6, 6, 5),
+              "Cheapest listing is <60% of the next one. Verify in game."),
 }
+
+
+def cells(kind, r):
+    if kind == "favor":   # [crate, per_favor, F, bundle, crate_price, "3x ~44s 30c"]
+        return [short(r[0]), cm(r[1]), cm(r[5])]
+    if kind == "mat":     # [name, now, median, "-%20", stock, need]
+        return [r[0], cm(r[1]), r[3].replace("-%", "-") + "%", r[5]]
+    return [r[0], cm(r[1]), cm(r[3]), cm(r[4])]   # snipe
 
 
 def send_embeds(fresh, local_now, demo=False):
@@ -140,13 +152,13 @@ def send_embeds(fresh, local_now, demo=False):
         items = sorted([f for f in fresh if f[0] == kind], key=lambda f: -f[2])[:10]
         if not items:
             continue
-        title, color, header, hint = SECTIONS[kind]
-        body = "\n".join([header] + [fmt_row(kind, f[1]) for f in items])
+        title, color, headers, widths, hint = SECTIONS[kind]
         embeds.append({"title": f"{title} ({len(items)})", "color": color,
-                       "description": hint + "\n```\n" + body + "\n```"})
-    summary = " | ".join(f"{SECTIONS[k][0].split(' - ')[0]} {sum(1 for f in fresh if f[0] == k)}" for k in ("favor", "mat", "snipe") if any(f[0] == k for f in fresh))
-    embeds[-1]["footer"] = {"text": f"Veri: {local_now:%H:%M} (TR)" + (" | ORNEK VERI" if demo else "")}
-    post({"content": ("**ORNEK** " if demo else "") + "AH firsatlari: " + summary, "embeds": embeds})
+                       "description": hint + "\n" + grid(headers, [cells(kind, f[1]) for f in items], widths)})
+    names_ = {"favor": "Favor", "mat": "Mats", "snipe": "Snipes"}
+    summary = " | ".join(f"{names_[k]} {sum(1 for f in fresh if f[0] == k)}" for k in ("favor", "mat", "snipe") if any(f[0] == k for f in fresh))
+    embeds[-1]["footer"] = {"text": f"Data: {local_now:%H:%M} (TR time)" + (" | SAMPLE DATA" if demo else "")}
+    post({"content": ("**SAMPLE** " if demo else "") + "AH opportunities: " + summary, "embeds": embeds})
 
 
 def post(payload):
@@ -165,27 +177,10 @@ def post(payload):
 
 def demo():
     fresh = [
-        ("favor", ["Journeyman Parts", "1s 18c", "20", "4x Bronze Framework", "7s 10c", "3x ~70s 80c"], -118),
+        ("favor", ["Journeyman Parts", "1s 18c/F", "20", "4x Bronze Framework", "7s 10c", "3x ~70s 80c"], -118),
+        ("favor", ["Journeyman Herbs", "1s 38c/F", "10", "10x Bruiseweed", "8s 28c", "6x ~82s 80c"], -138),
         ("mat", ["Silk Cloth", "1s 52c", "1s 90c", "-%20", "3525", "640"], 20),
         ("mat", ["Bronze Bar", "1s 70c", "2s 10c", "-%19", "1869", "110"], 19),
         ("snipe", ["Plans: Mithril Spurs", "5g 99s", "x2", "9g 99s", "~8g", "5"], 80000),
     ]
     send_embeds(fresh, datetime.datetime.utcnow() + datetime.timedelta(hours=3), demo=True)
-
-
-def send(text):
-    post({"content": text[:1900]})
-
-
-def _old_send(text):
-    url = os.environ.get("DISCORD_WEBHOOK_URL")
-    print(text)
-    if not url:
-        print("(DISCORD_WEBHOOK_URL yok, gonderilmedi)")
-        return
-    req = urllib.request.Request(url, data=json.dumps({"content": text[:1900]}).encode(),
-                                 headers={"Content-Type": "application/json", "User-Agent": "wow-ah-bot/1.0"})
-    try:
-        urllib.request.urlopen(req, timeout=30).read()
-    except Exception as e:  # noqa: BLE001
-        print("Discord gonderilemedi:", e)
