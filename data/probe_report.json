@@ -1,0 +1,405 @@
+[
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/index",
+  "status": 200,
+  "keys": [
+   "_links",
+   "professions"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/197",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "description",
+   "type",
+   "media",
+   "skill_tiers"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/197/skill-tier/2948",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "minimum_skill_level",
+   "maximum_skill_level",
+   "categories"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/185",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "description",
+   "type",
+   "media",
+   "skill_tiers"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/185/skill-tier/2939",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "minimum_skill_level",
+   "maximum_skill_level",
+   "categories"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/165",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "description",
+   "type",
+   "media",
+   "skill_tiers"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/165/skill-tier/2945",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "minimum_skill_level",
+   "maximum_skill_level",
+   "categories"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/393",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "description",
+   "type",
+   "media",
+   "skill_tiers"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/393/skill-tier/2947",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "minimum_skill_level",
+   "maximum_skill_level",
+   "categories"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/333",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "description",
+   "type",
+   "media",
+   "skill_tiers"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/333/skill-tier/2940",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "minimum_skill_level",
+   "maximum_skill_level",
+   "categories"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/186",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "description",
+   "type",
+   "media",
+   "skill_tiers"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/186/skill-tier/2946",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "minimum_skill_level",
+   "maximum_skill_level",
+   "categories"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/164",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "description",
+   "type",
+   "media",
+   "skill_tiers"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/164/skill-tier/2938",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "minimum_skill_level",
+   "maximum_skill_level",
+   "categories"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/202",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "description",
+   "type",
+   "media",
+   "skill_tiers"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/202/skill-tier/2941",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "minimum_skill_level",
+   "maximum_skill_level",
+   "categories"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/356",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "description",
+   "type",
+   "media",
+   "skill_tiers"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/356/skill-tier/2943",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "minimum_skill_level",
+   "maximum_skill_level",
+   "categories"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/171",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "description",
+   "type",
+   "media",
+   "skill_tiers"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/171/skill-tier/2937",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "minimum_skill_level",
+   "maximum_skill_level",
+   "categories"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/182",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "description",
+   "type",
+   "media",
+   "skill_tiers"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/182/skill-tier/2944",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "minimum_skill_level",
+   "maximum_skill_level",
+   "categories"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/129",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "description",
+   "type",
+   "media",
+   "skill_tiers"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/129/skill-tier/2942",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "minimum_skill_level",
+   "maximum_skill_level",
+   "categories"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/2933",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "description",
+   "type",
+   "media",
+   "skill_tiers"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "path": "/data/wow/profession/2933/skill-tier/2934",
+  "status": 200,
+  "keys": [
+   "_links",
+   "id",
+   "name",
+   "minimum_skill_level",
+   "maximum_skill_level",
+   "categories"
+  ]
+ },
+ {
+  "ns": "static-forever-eu",
+  "recipes_dumped": 2494
+ },
+ {
+  "ns": "static-1.60.1_70399-forever-eu",
+  "path": "/data/wow/profession/index",
+  "status": "oncekiyle ayni, atlandi"
+ },
+ {
+  "ns": "static-classic1x-eu",
+  "path": "/data/wow/profession/index",
+  "status": "yok"
+ },
+ {
+  "ns": "static-classic-eu",
+  "path": "/data/wow/profession/index",
+  "status": "yok"
+ },
+ {
+  "names_namespace": "static-forever-eu",
+  "tried": 4700,
+  "found": 3234
+ },
+ {
+  "names_namespace": "static-1.60.1_70399-forever-eu",
+  "tried": 1466,
+  "found": 0
+ },
+ {
+  "names_namespace": "static-classic1x-eu",
+  "tried": 1466,
+  "found": 1341
+ },
+ {
+  "names_namespace": "static-classic-eu",
+  "tried": 125,
+  "found": 0
+ },
+ {
+  "ah_items": 4700,
+  "names_found": 4575
+ }
+]
