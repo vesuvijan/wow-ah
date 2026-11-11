@@ -27,7 +27,7 @@ def load_names():
         return {}
 
 
-def run(snap, series, watch, hold=(), cfg_path="alerts.json"):
+def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
     cfg = json.load(open(cfg_path, encoding="utf-8"))
     names = load_names()
     ts = snap["fetched_at"]
@@ -42,7 +42,7 @@ def run(snap, series, watch, hold=(), cfg_path="alerts.json"):
 
     # 1) mat dususu (izlenen item'lar)
     for iid, (name, grp) in watch.items():
-        if "satis" in name or grp == "F":
+        if iid not in (need_map or {}):
             continue
         s = series.get(iid)
         if not s:
@@ -50,7 +50,7 @@ def run(snap, series, watch, hold=(), cfg_path="alerts.json"):
         cur = s[-1][1]
         w7 = [x[1] for x in s if x[0] >= week]
         manual = cfg["max_price"].get(str(iid))
-        need = cfg.get("targets", {}).get(str(iid))
+        need = (need_map or {}).get(iid)
         med = statistics.median(w7) if w7 else cur
         hit = manual is not None and cur <= manual
         if not hit and len(w7) >= cfg["min_samples"]:
@@ -84,6 +84,13 @@ def run(snap, series, watch, hold=(), cfg_path="alerts.json"):
             up = round(100 * cur / spike - 100)
             nm = watch[iid][0]
             found.append(("sell", f"sell{iid}", cur, [nm, money(cur), money(spike), f"+{up}%", str(s[-1][3]), ""], up))
+
+    # 1c) vendor flip: craft -> NPC'ye sat
+    try:
+        for r in vendor_flips(snap, cfg):
+            found.append(("flip", f"flip{r['rid']}", r["profit"], [r["recipe"], money(r["cost"]), money(r["vendor"]), money(r["profit"]), r["prof"], ""], r["profit"]))
+    except Exception as e:  # noqa: BLE001
+        print("flip hatasi:", e)
 
     # 2) Favor crate
     if W is not None:
@@ -135,6 +142,52 @@ def run(snap, series, watch, hold=(), cfg_path="alerts.json"):
     return fresh
 
 
+_PROF = {"Alchemy": "Alc", "Enchanting": "Ench", "Engineering": "Eng", "Tailoring": "Tail", "Leatherworking": "LW",
+         "Blacksmithing": "BS", "Cooking": "Cook", "Mining": "Min", "First Aid": "FA"}
+
+
+def vendor_flips(snap, cfg):
+    """Craft maliyeti (AH reagent fiyati; AH'de yoksa vendor alis fiyati) < NPC satis fiyati ise listele."""
+    try:
+        recipes = json.load(open("data/recipes.json", encoding="utf-8"))["professions"]
+        names = json.load(open("data/names.json", encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return []
+    if not any(v.get("sp") for v in names.values()):
+        return []
+    book = {int(k): [(p, q) for p, q in v["l"]] for k, v in snap["items"].items()}
+    out = []
+    allow = cfg.get("flip_professions")
+    for pr in recipes.values():
+        if allow and pr["name"] not in allow:
+            continue
+        for rid, rc in pr["recipes"].items():
+            ci = rc.get("crafted")
+            if not ci or not ci[0] or not rc.get("reagents"):
+                continue
+            sp = (names.get(str(ci[0])) or {}).get("sp")
+            if not sp:
+                continue
+            qty = int(rc.get("qty") or 1)
+            cost, ok = 0.0, True
+            for rid_, _nm, q in rc["reagents"]:
+                c = W.cost_to_buy(book, int(rid_), q) if W else None
+                if c is None:
+                    pp = (names.get(str(rid_)) or {}).get("pp")
+                    if not pp:
+                        ok = False
+                        break
+                    c = pp * q
+                cost += c
+            if not ok:
+                continue
+            profit = sp * qty - cost
+            if profit >= cfg.get("flip_min_profit", 3000) and profit >= cost * cfg.get("flip_min_roi", 0.2):
+                out.append({"rid": rid, "recipe": rc["name"][:13], "prof": _PROF.get(pr["name"], pr["name"][:4]),
+                            "cost": cost, "vendor": sp * qty, "profit": profit})
+    return sorted(out, key=lambda r: -r["profit"])[:15]
+
+
 def cm(x):
     return str(x).replace(" ", "")
 
@@ -162,6 +215,8 @@ SECTIONS = {
             "Price is in the cheapest 7-day band. Need = route requirement."),
     "sell": ("Price spike - sell what you hold", 0xE74C3C, ["Item", "Now", "Typical", "Up"], (13, 7, 7, 5),
              "Price is well above its usual level. Good time to sell stock."),
+    "flip": ("Vendor flip - craft, sell to NPC", 0x9B59B6, ["Recipe", "Cost", "NPC", "Profit", "Prof"], (13, 7, 7, 7, 4),
+             "Craft from AH mats and sell to a vendor. Profit after cost."),
     "snipe": ("Snipe - buy and relist", 0xE67E22, ["Item", "Ask", "Next", "Gain"], (13, 6, 6, 5),
               "Cheapest listing is <60% of the next one. Verify in game."),
 }
@@ -172,6 +227,8 @@ def cells(kind, r):
         return [short(r[0]), cm(r[1]), cm(r[5])]
     if kind == "mat":     # [name, now, median, "-%20", stock, need]
         return [r[0], cm(r[1]), r[3].replace("-%", "-") + "%", r[5]]
+    if kind == "flip":    # [recipe, cost, vendor, profit, prof, ""]
+        return [r[0], cm(r[1]), cm(r[2]), cm(r[3]), r[4]]
     if kind == "sell":    # [name, now, typical, "+25%", stock, ""]
         return [r[0], cm(r[1]), cm(r[2]), r[3]]
     return [r[0], cm(r[1]), cm(r[3]), cm(r[4])]   # snipe
@@ -179,15 +236,15 @@ def cells(kind, r):
 
 def send_embeds(fresh, local_now, demo=False):
     embeds = []
-    for kind in ("sell", "favor", "mat", "snipe"):
+    for kind in ("sell", "flip", "favor", "mat", "snipe"):
         items = sorted([f for f in fresh if f[0] == kind], key=lambda f: -f[2])[:10]
         if not items:
             continue
         title, color, headers, widths, hint = SECTIONS[kind]
         embeds.append({"title": f"{title} ({len(items)})", "color": color,
                        "description": hint + "\n" + grid(headers, [cells(kind, f[1]) for f in items], widths)})
-    names_ = {"sell": "SELL", "favor": "Favor", "mat": "Mats", "snipe": "Snipes"}
-    summary = " | ".join(f"{names_[k]} {sum(1 for f in fresh if f[0] == k)}" for k in ("sell", "favor", "mat", "snipe") if any(f[0] == k for f in fresh))
+    names_ = {"flip": "Flips", "sell": "SELL", "favor": "Favor", "mat": "Mats", "snipe": "Snipes"}
+    summary = " | ".join(f"{names_[k]} {sum(1 for f in fresh if f[0] == k)}" for k in ("sell", "flip", "favor", "mat", "snipe") if any(f[0] == k for f in fresh))
     embeds[-1]["footer"] = {"text": f"Data: {local_now:%H:%M} (TR time)" + (" | SAMPLE DATA" if demo else "")}
     post({"content": ("**SAMPLE** " if demo else "") + "AH opportunities: " + summary, "embeds": embeds})
 
@@ -212,6 +269,7 @@ def demo():
         ("favor", ["Journeyman Herbs", "1s 38c/F", "10", "10x Bruiseweed", "8s 28c", "6x ~82s 80c"], -138),
         ("mat", ["Silk Cloth", "1s 52c", "1s 90c", "-%20", "3525", "640"], 20),
         ("mat", ["Bronze Bar", "1s 70c", "2s 10c", "-%19", "1869", "110"], 19),
+        ("flip", ["Iron Grenade", "4s 10c", "5s 0c", "90c", "Eng", ""], 9000),
         ("sell", ["Mithril Ore", "1g 85s", "1g 30s", "+42%", "530", ""], 42),
         ("snipe", ["Plans: Mithril Spurs", "5g 99s", "x2", "9g 99s", "~8g", "5"], 80000),
     ]

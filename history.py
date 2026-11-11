@@ -36,6 +36,15 @@ WATCH = {
     4382: ("Bronze Framework", "F"), 2453: ("Bruiseweed", "F"), 765: ("Silverleaf", "F"), 3820: ("Stranglekelp", "F"),
 }
 
+# Alchemy rotasi (herb ve sise) ve Enchanting rotasi (tozlar)
+for _i, _n in {2447: "Peacebloom", 765: "Silverleaf", 785: "Mageroyal", 2449: "Earthroot", 2450: "Briarthorn",
+               6359: "Firefin Snapper", 3356: "Kingsblood", 3357: "Liferoot", 3371: "Empty Vial", 3372: "Leaded Vial"}.items():
+    WATCH.setdefault(_i, (_n, "A"))
+WATCH.setdefault(3820, ("Stranglekelp", "A"))
+for _i, _n in {10940: "Strange Dust", 11083: "Soul Dust", 11137: "Vision Dust", 10938: "Lesser Magic Essence",
+               11082: "Greater Astral Essence", 247786: "Mote of Magic", 17034: "Maple Seed"}.items():
+    WATCH.setdefault(_i, (_n, "C"))
+
 # Mining / Skinning ciktilari (elde tutulanlar): fiyat firlarsa SAT uyarisi
 HOLD = {
     2770: "Copper Ore", 2771: "Tin Ore", 2772: "Iron Ore", 2775: "Silver Ore", 2776: "Gold Ore", 3858: "Mithril Ore",
@@ -54,7 +63,14 @@ ROUTES = {
     "Tailoring 1->190 (kumas)": {2589: 60, 2592: 459, 4306: 640, 4338: 115},
     "Engineering 1->225 (hammadde)": {2835: 60, 2840: 66, 2589: 50, 2836: 60, 2842: 5, 2841: 110, 2880: 25,
                                       1206: 10, 2838: 30, 2592: 60, 2319: 15, 7912: 120, 3859: 4, 3860: 100, 4338: 20},
+    "Alchemy 1->225 (herb, sise)": {2447: 91, 765: 45, 785: 50, 2449: 54, 2450: 60, 3820: 82, 6359: 40, 3356: 51,
+                                    3357: 36, 3371: 151, 3372: 87},
+    "Enchanting 1->225 (tozlar)": {10940: 275, 11083: 64, 11137: 31, 10938: 4, 247786: 19, 11082: 1, 17034: 32, 1210: 1},
 }
+NEED = {}
+for _m in ROUTES.values():
+    for _i, _q in _m.items():
+        NEED[_i] = NEED.get(_i, 0) + _q
 
 
 def money(c):
@@ -119,7 +135,7 @@ def main():
     week = (now - datetime.timedelta(days=7)).strftime("%Y-%m-%dT%H:%M:%SZ")
     day = (now - datetime.timedelta(days=1)).strftime("%Y-%m-%dT%H:%M:%SZ")
     sig = {}
-    for grp, title in (("T", "TAILORING"), ("E", "ENGINEERING"), ("F", "FAVOR"), ("H", "ELINDEKILER (mining/skinning)")):
+    for grp, title in (("T", "TAILORING"), ("E", "ENGINEERING"), ("F", "FAVOR"), ("A", "ALCHEMY"), ("C", "ENCHANTING"), ("H", "ELINDEKILER (mining/skinning)")):
         out.append(f"== {title} ==")
         out.append(f"{'item':<34}{'simdi':>10}{'24s ort':>10}{'7g medyan':>11}{'7g min':>10}{'stok':>7}  sinyal")
         for iid, (name, g) in WATCH.items():
@@ -156,7 +172,7 @@ def main():
     out.append("Not: AL = fiyat son 7 gunun en ucuz %20'lik dilimi; en az 12 olcum (12 saat) sonra anlamli.")
     try:
         import alerts
-        alerts.run(snap, {k: v for k, v in series.items()}, WATCH, set(HOLD))
+        alerts.run(snap, {k: v for k, v in series.items()}, WATCH, set(HOLD), NEED)
     except Exception as e:  # noqa: BLE001
         print("alerts hatasi:", e)
     with open("data/report.txt", "w", encoding="utf-8") as f:

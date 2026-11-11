@@ -33,7 +33,7 @@ jobs:
       - name: Restore history and item names
         run: |
           git fetch --depth=1 origin snapshot && for f in history.csv alert_state.json last_hash.txt; do git show FETCH_HEAD:data/$f > data/$f 2>/dev/null || true; done || true
-          git fetch --depth=1 origin probe && git show FETCH_HEAD:data/names.json > data/names.json 2>/dev/null || true
+          git fetch --depth=1 origin probe && git show FETCH_HEAD:data/names.json > data/names.json 2>/dev/null && git show FETCH_HEAD:data/recipes_static-forever-eu.json > data/recipes.json 2>/dev/null || true
       - name: History, report and Discord alerts
         env:
           HOUSES: "123"
@@ -47,7 +47,7 @@ jobs:
           python -c "import alerts; alerts.demo()"
       - name: Publish to snapshot branch
         run: |
-          rm -f data/names.json
+          rm -f data/names.json data/recipes.json
           git config user.name "ah-bot"
           git config user.email "ah-bot@users.noreply.github.com"
           git checkout --orphan snapshot
