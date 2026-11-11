@@ -1,24 +1,41 @@
 name: Snapshot AH
 on:
   schedule:
-    - cron: "7,22,37,52 * * * *"
+    - cron: "37 * * * *"
   workflow_dispatch:
     inputs:
       test_discord:
         description: "Discord'a test mesaji gonder"
         type: boolean
         default: false
+      loop:
+        description: "Kendini 15 dk sonra tekrar tetikle (zincir)"
+        type: boolean
+        default: false
+      wait:
+        description: "Baslamadan once beklenecek saniye"
+        type: string
+        default: "0"
 permissions:
   contents: write
+  actions: write
 concurrency:
-  group: snapshot
+  group: snapshot-${{ inputs.loop && 'loop' || github.run_id }}
   cancel-in-progress: false
 jobs:
   snapshot:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+      - name: Wait before starting (chain mode)
+        if: ${{ inputs.wait != '' && inputs.wait != '0' }}
+        run: sleep ${{ inputs.wait }}
+      - name: Queue the next run (chain mode)
+        if: ${{ inputs.loop }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run snapshot.yml --ref main -f loop=true -f wait=780
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -32,7 +49,7 @@ jobs:
         run: python fetch_ah.py
       - name: Restore history and item names
         run: |
-          git fetch --depth=1 origin snapshot && for f in history.csv alert_state.json last_hash.txt; do git show FETCH_HEAD:data/$f > data/$f 2>/dev/null || true; done || true
+          git fetch --depth=1 origin snapshot && for f in history.csv alert_state.json last_hash.txt report.txt; do git show FETCH_HEAD:data/$f > data/$f 2>/dev/null || true; done || true
           git fetch --depth=1 origin probe && git show FETCH_HEAD:data/names.json > data/names.json 2>/dev/null && git show FETCH_HEAD:data/recipes_static-forever-eu.json > data/recipes.json 2>/dev/null || true
       - name: History, report and Discord alerts
         env:
