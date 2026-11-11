@@ -52,6 +52,7 @@ def snapshot_house(base, ns, ruleset, house, token):
     levels = {}  # item_id -> {fiyat: adet}
     vlevels = {}  # "item_id:rand" -> {fiyat: adet}  (random-suffix varyantlari)
     keys_seen = {}
+    samples = []
     for suffix in ("", "/commodities"):
         url = f"{base}/data/wow/ruleset/{ruleset}/auctions/{house}{suffix}?namespace={ns}"
         try:
@@ -72,10 +73,13 @@ def snapshot_house(base, ns, ruleset, house, token):
             lv[p] = lv.get(p, 0) + q
             for kk in a["item"]:
                 keys_seen[kk] = keys_seen.get(kk, 0) + 1
-            rand = a["item"].get("rand")
+            bl = a["item"].get("bonus_lists")
+            rand = a["item"].get("rand") or ("b" + "-".join(str(x) for x in sorted(bl)) if bl else None)
             if rand:
                 vl = vlevels.setdefault(f'{a["item"]["id"]}:{rand}', {})
                 vl[p] = vl.get(p, 0) + q
+                if len(samples) < 60 and (a["item"].get("modifiers") or bl):
+                    samples.append(a["item"])
     items = {}
     for iid, lv in levels.items():
         L = sorted(lv.items())
@@ -84,7 +88,7 @@ def snapshot_house(base, ns, ruleset, house, token):
     for vk, lv in vlevels.items():
         L = sorted(lv.items())
         variants[vk] = {"n": sum(q for _, q in L), "l": [[p, q] for p, q in L[:KEEP]]}
-    return items, variants, keys_seen
+    return items, variants, keys_seen, samples
 
 
 def main():
@@ -99,11 +103,11 @@ def main():
     os.makedirs("data", exist_ok=True)
     now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     for h in houses:
-        items, variants, keys_seen = snapshot_house(base, ns, ruleset, h, token)
+        items, variants, keys_seen, samples = snapshot_house(base, ns, ruleset, h, token)
         if not items:
             print(f"house {h}: veri yok, dosya yazilmadi", file=sys.stderr)
             continue
-        out = {"fetched_at": now, "region": region, "ruleset": int(ruleset), "house": h, "items": items, "variants": variants, "item_keys": keys_seen}
+        out = {"fetched_at": now, "region": region, "ruleset": int(ruleset), "house": h, "items": items, "variants": variants, "item_keys": keys_seen, "item_samples": samples}
         with open(f"data/house_{h}.json", "w", encoding="utf-8") as f:
             json.dump(out, f, separators=(",", ":"))
         print(f"house {h}: {len(items)} item yazildi ({now})")

@@ -13,7 +13,7 @@ jobs:
         run: |
           mkdir -p data
           curl -sS -m 60 "https://wago.tools/api/builds" -o data/builds.json -w "%{http_code}\n" || true
-          for t in JournalEncounterItem JournalEncounter JournalInstance DungeonEncounter ItemSparse; do
+          for t in JournalEncounterItem JournalEncounter JournalInstance ItemBonus ItemBonusList ItemRandomSuffix ItemRandomProperties SpellItemEnchantment ItemNameDescription ItemBonusListGroupEntry; do
             curl -sSL -m 120 "https://wago.tools/db2/$t/csv?build=1.60.1.70888" -o data/$t.csv -w "$t %{http_code} %{size_download}\n" || true
           done
           head -c 1500 data/builds.json; echo; head -3 data/JournalEncounterItem.csv
