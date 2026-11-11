@@ -1,0 +1,4038 @@
+{
+ "HEAD": {
+  "equipped": "Tracker's Headband of the Bandit",
+  "value": 55.3,
+  "options": [
+   {
+    "tag": "NOW",
+    "id": 11124,
+    "name": "Helm of Exile",
+    "req": 38,
+    "ilvl": 55,
+    "bind": "BoP",
+    "gain_pct": 9.2,
+    "value": 140.0,
+    "src": [
+     "Dungeon quest: Jammal'an the Prophet (The Temple of Atal'Hakkar, lvl 53)",
+     "Quest: Jammal'an the Prophet (lvl 0) @ Atal'ai Exile"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+11 Agility, +18 Intellect, +17 Spirit, 266 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 9534,
+    "name": "Engineer's Guild Headpiece",
+    "req": 40,
+    "ilvl": 49,
+    "bind": "BoP",
+    "gain_pct": 3.8,
+    "value": 90.6,
+    "src": [
+     "Dungeon quest: Divino-matic Rod (Zul'Farrak, lvl 47)",
+     "Quest: Divino-matic Rod (lvl 0) @ Chief Engineer Bilgewhizzle"
+    ],
+    "extra": [
+     "Equip: Increases healing done by up to"
+    ],
+    "q": 3,
+    "stats": "+22 Spirit, 117 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 7931,
+    "name": "Mithril Coif",
+    "req": 41,
+    "ilvl": 46,
+    "bind": "BoE",
+    "gain_pct": 3.3,
+    "value": 85.5,
+    "src": [
+     "Craft: Blacksmithing 205"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+12 Stamina, +13 Spirit, 206 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 19039,
+    "name": "Zorbin's Water Resistant Hat",
+    "req": 43,
+    "ilvl": 48,
+    "bind": "BoP",
+    "gain_pct": 2.9,
+    "value": 82.5,
+    "src": [
+     "Quest: Fuel for the Zapping (lvl 0) @ Zorbin Fandazzle"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+9 Stamina, +14 Intellect, +8 Spirit, 104 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 10743,
+    "name": "Drakefire Headguard",
+    "req": 46,
+    "ilvl": 51,
+    "bind": "BoP",
+    "gain_pct": 2.9,
+    "value": 82.4,
+    "src": [
+     "Quest: Set Them Ablaze! (lvl 0) @ Squire Maltrake"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+5 Strength, +9 Intellect, +15 Spirit, 226 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 8348,
+    "name": "Helm of Fire",
+    "req": 45,
+    "ilvl": 50,
+    "bind": "BoE",
+    "gain_pct": 2.4,
+    "value": 77.0,
+    "src": [
+     "Craft: Leatherworking 225"
+    ],
+    "extra": [
+     "Use:"
+    ],
+    "q": 3,
+    "stats": "+17 Agility, +10 Stamina, 118 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 17776,
+    "name": "Sprightring Helm",
+    "req": 41,
+    "ilvl": 49,
+    "bind": "BoP",
+    "gain_pct": 2.0,
+    "value": 73.7,
+    "src": [
+     "Dungeon quest: Twisted Evils (Maraudon, lvl 47)",
+     "Quest: Twisted Evils (lvl 0) @ Willow"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+11 Agility, +16 Stamina, 106 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 252514,
+    "name": "Stormrider's Leather Helm",
+    "req": 25,
+    "ilvl": 30,
+    "bind": "BoP",
+    "gain_pct": 2.0,
+    "value": 73.5,
+    "src": [
+     "Drop: Gelihast (Blackfathom Deeps)",
+     "Drop: Aku'mai (Blackfathom Deeps)",
+     "Drop: Earthcaller Halmgar (Razorfen Kraul)"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+13 Stamina, +10 Spirit, 84 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 252605,
+    "name": "Black Dragonscale Helm",
+    "req": 56,
+    "ilvl": 61,
+    "bind": "BoE",
+    "gain_pct": 11.5,
+    "value": 161.9,
+    "src": [
+     "Craft: Leatherworking 300"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+21 Agility, +38 Intellect, +1% crit, 319 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 22013,
+    "name": "Beastmaster's Cap",
+    "req": 60,
+    "ilvl": 60,
+    "bind": "BoP",
+    "gain_pct": 8.0,
+    "value": 128.8,
+    "src": [
+     "Quest: Saving the Best for Last (lvl 0) @ Deliana",
+     "Set: Beastmaster Armor"
+    ],
+    "extra": [
+     "Equip:"
+    ],
+    "q": 4,
+    "stats": "+22 Agility, +21 Stamina, +12 Intellect, +1% hit, 314 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 279253,
+    "name": "Outlaw's Collar",
+    "req": 60,
+    "ilvl": 65,
+    "bind": "BoE",
+    "gain_pct": 7.9,
+    "value": 128.5,
+    "src": [
+     "Craft: Leatherworking 300"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+21 Agility, +31 Stamina, +1.5% crit, 160 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 13404,
+    "name": "Mask of the Unforgiven",
+    "req": 52,
+    "ilvl": 57,
+    "bind": "BoP",
+    "gain_pct": 7.4,
+    "value": 123.7,
+    "src": [
+     "Drop: The Unforgiven (Stratholme) 20%"
+    ],
+    "extra": [
+     "Equip: Increased Defense +"
+    ],
+    "q": 3,
+    "stats": "+13 Stamina, +2% hit, +1% crit, 132 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 22005,
+    "name": "Darkmantle Cap",
+    "req": 60,
+    "ilvl": 60,
+    "bind": "BoP",
+    "gain_pct": 7.2,
+    "value": 121.7,
+    "src": [
+     "Quest: Saving the Best for Last (lvl 0) @ Deliana",
+     "Set: Darkmantle Armor"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+13 Strength, +26 Agility, +18 Stamina, +1% crit, 150 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 18421,
+    "name": "Backwood Helm",
+    "req": 56,
+    "ilvl": 63,
+    "bind": "BoP",
+    "gain_pct": 6.8,
+    "value": 117.9,
+    "src": [
+     "Dungeon quest: The Treasure of the Shen'dralar (Dire Maul: West, lvl 60)",
+     "Quest: None (lvl 0)"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+19 Agility, +13 Stamina, +10 Intellect, +10 Spirit, +1% crit, 301 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 16677,
+    "name": "Beaststalker's Cap",
+    "req": 57,
+    "ilvl": 62,
+    "bind": "BoP",
+    "gain_pct": 3.2,
+    "value": 85.0,
+    "src": [
+     "Drop: Darkmaster Gandling (Scholomance) 13%",
+     "Set: Beaststalker Armor"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+20 Agility, +20 Stamina, +13 Intellect, +6 Spirit, 297 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 12587,
+    "name": "Eye of Rend",
+    "req": 58,
+    "ilvl": 63,
+    "bind": "BoP",
+    "gain_pct": 3.0,
+    "value": 83.2,
+    "src": [
+     "Drop: Warchief Rend Blackhand (Upper Blackrock Spire) 21%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+15 Strength, +17 Stamina, +0.5% hit, +1.5% crit, 143 armor",
+    "atype": "Leather"
+   }
+  ]
+ },
+ "NECK": {
+  "equipped": "Amberglow Talisman",
+  "value": 60.1,
+  "options": [
+   {
+    "tag": "NOW",
+    "id": 7746,
+    "name": "Explorers' League Commendation",
+    "req": 35,
+    "ilvl": 40,
+    "bind": "BoP",
+    "gain_pct": -0.2,
+    "value": 58.0,
+    "src": [
+     "Quest: Mythology of the Titans (lvl 0) @ Librarian Mae Paledust"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+9 Stamina, +9 Spirit",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 4743,
+    "name": "Pulsating Crystalline Shard",
+    "req": 45,
+    "ilvl": 50,
+    "bind": "BoP",
+    "gain_pct": -0.9,
+    "value": 51.6,
+    "src": [
+     "Quest: Summoning the Princess (lvl 0) @ Theldurin the Lost"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+8 Stamina, +8 Spirit",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 7722,
+    "name": "Triune Amulet",
+    "req": 39,
+    "ilvl": 44,
+    "bind": "BoP",
+    "gain_pct": -1.6,
+    "value": 45.1,
+    "src": [
+     "Drop: High Inquisitor Whitemane (Scarlet Monastery: Cathedral) 37%"
+    ],
+    "extra": [
+     "Equip: Increases damage and healing done by magical spells and effects by up to"
+    ],
+    "q": 3,
+    "stats": "+7 Stamina, +7 Spirit",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 275004,
+    "name": "Chain of the Corruptor",
+    "req": 41,
+    "ilvl": 46,
+    "bind": "BoP",
+    "gain_pct": -2.1,
+    "value": 41.1,
+    "src": [
+     "Drop: Nar'gurk (Krol'dok Stronghold)"
+    ],
+    "extra": [
+     "Equip: Increases damage and healing done by magical spells and effects by up to"
+    ],
+    "q": 3,
+    "stats": "+4 Agility, +12 Stamina",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 274068,
+    "name": "Thermaplugg Medal of Honor",
+    "req": 29,
+    "ilvl": 34,
+    "bind": "BoP",
+    "gain_pct": -2.3,
+    "value": 38.7,
+    "src": [
+     "Drop: Crowd Pummeler 9-60 (Gnomeregan)"
+    ],
+    "extra": [
+     "Equip: +"
+    ],
+    "q": 3,
+    "stats": "+6 Stamina, +6 Spirit",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 9641,
+    "name": "Lifeblood Amulet",
+    "req": 45,
+    "ilvl": 50,
+    "bind": "BoP",
+    "gain_pct": -2.8,
+    "value": 34.1,
+    "src": [
+     "Drop: Antu'sul (Zul'Farrak) 35%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+14 Stamina",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 15690,
+    "name": "Kodobone Necklace",
+    "req": 36,
+    "ilvl": 41,
+    "bind": "BoP",
+    "gain_pct": -2.9,
+    "value": 33.1,
+    "src": [
+     "Quest: Bone Collector (lvl 0) @ Bibbly F'utzbuckle"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+7 Stamina, +4 Spirit",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 274749,
+    "name": "Souvenir Sea Shell",
+    "req": 30,
+    "ilvl": 35,
+    "bind": "BoP",
+    "gain_pct": -3.1,
+    "value": 31.7,
+    "src": [
+     "Rep: Booty Bay Honored"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+13 Stamina",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 12103,
+    "name": "Star of Mystaria",
+    "req": 58,
+    "ilvl": 63,
+    "bind": "BoP",
+    "gain_pct": 0.7,
+    "value": 66.7,
+    "src": [
+     "Drop: Balnazzar (Stratholme) 23%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+7 Stamina, +7 Intellect, +7 Spirit, +1.3% hit",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 19491,
+    "name": "Amulet of the Darkmoon",
+    "req": 60,
+    "ilvl": 65,
+    "bind": "BoP",
+    "gain_pct": -0.1,
+    "value": 59.1,
+    "src": [
+     "Quest: 1200 Tickets - Amulet of the Darkmoon (lvl 60) @ Gelvas Grimegate"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+10 Strength, +19 Agility, +10 Stamina",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 19620,
+    "name": "Maelstrom's Tendril",
+    "req": 60,
+    "ilvl": 68,
+    "bind": "BoP",
+    "gain_pct": -0.5,
+    "value": 55.9,
+    "src": [
+     "Quest: The Maelstrom's Tendril (lvl 0) @ Falthir the Sightless"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+15 Agility, +9 Stamina, +6 Intellect",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 19621,
+    "name": "Maelstrom's Wrath",
+    "req": 60,
+    "ilvl": 65,
+    "bind": "BoP",
+    "gain_pct": -0.5,
+    "value": 55.9,
+    "src": [
+     "Quest: Maelstrom's Wrath (lvl 0) @ Falthir the Sightless",
+     "Set: Predator's Armor"
+    ],
+    "extra": [
+     "Equip:"
+    ],
+    "q": 4,
+    "stats": "+15 Agility, +9 Stamina, +6 Intellect",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 22403,
+    "name": "Nacreous Shell Necklace",
+    "req": 56,
+    "ilvl": 61,
+    "bind": "BoP",
+    "gain_pct": -0.7,
+    "value": 54.0,
+    "src": [
+     "Drop: Cannon Master Willey (Stratholme) 23%"
+    ],
+    "extra": [
+     "Equip: Increases damage and healing done by magical spells and effects by up to"
+    ],
+    "q": 3,
+    "stats": "+7 Stamina, +8 Intellect, +1% hit",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 18317,
+    "name": "Tempest Talisman",
+    "req": 53,
+    "ilvl": 58,
+    "bind": "BoP",
+    "gain_pct": -1.0,
+    "value": 51.2,
+    "src": [
+     "Drop: Hydrospawn (Dire Maul: East) 19%"
+    ],
+    "extra": [
+     "Equip: Increases healing done by up to"
+    ],
+    "q": 3,
+    "stats": "+6 Intellect, +6 Spirit, +1% crit",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 19617,
+    "name": "Zandalarian Shadow Mastery Talisman",
+    "req": 60,
+    "ilvl": 65,
+    "bind": "BoP",
+    "gain_pct": -1.4,
+    "value": 46.8,
+    "src": [
+     "Quest: Zandalarian Shadow Mastery Talisman (lvl 0) @ Falthir the Sightless",
+     "Set: Madcap's Outfit"
+    ],
+    "extra": [
+     "Equip:"
+    ],
+    "q": 4,
+    "stats": "+6 Strength, +15 Agility, +9 Stamina",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 19619,
+    "name": "Maelstrom's Tendril",
+    "req": 60,
+    "ilvl": 60,
+    "bind": "BoP",
+    "gain_pct": -1.5,
+    "value": 46.5,
+    "src": [
+     "Quest: The Maelstrom's Tendril (lvl 0) @ Falthir the Sightless"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+12 Agility, +7 Stamina, +6 Intellect",
+    "atype": ""
+   }
+  ]
+ },
+ "SHOULDER": {
+  "equipped": "Fleshhide Shoulders",
+  "value": 57.0,
+  "options": [
+   {
+    "tag": "NOW",
+    "id": 252566,
+    "name": "Stalker's Mail Shoulders",
+    "req": 42,
+    "ilvl": 47,
+    "bind": "BoP",
+    "gain_pct": 4.2,
+    "value": 96.0,
+    "src": [
+     "Craft: Leatherworking 210"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+11 Agility, +9 Stamina, +7 Intellect, +6 Spirit, 213 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 252535,
+    "name": "Skulker's Leather Shoulder",
+    "req": 42,
+    "ilvl": 47,
+    "bind": "BoP",
+    "gain_pct": 2.2,
+    "value": 77.1,
+    "src": [
+     "Craft: Leatherworking 210"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+9 Strength, +11 Agility, +7 Stamina, +6 Spirit, 104 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 274996,
+    "name": "Resistance Breaker Spaulder",
+    "req": 39,
+    "ilvl": 44,
+    "bind": "BoP",
+    "gain_pct": 1.4,
+    "value": 70.2,
+    "src": [
+     "Drop: Slavecrusher Grox (Krol'dok Stronghold)"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+10 Agility, +15 Stamina, 202 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 17749,
+    "name": "Phytoskin Spaulders",
+    "req": 46,
+    "ilvl": 51,
+    "bind": "BoP",
+    "gain_pct": 1.3,
+    "value": 68.6,
+    "src": [
+     "Drop: Razorlash (Maraudon) 25%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+15 Agility, +9 Stamina, 111 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 7932,
+    "name": "Mithril Plate Shoulders",
+    "req": 42,
+    "ilvl": 47,
+    "bind": "BoE",
+    "gain_pct": 1.2,
+    "value": 68.4,
+    "src": [
+     "Craft: Blacksmithing 210"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+10 Stamina, +10 Spirit, 194 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 252569,
+    "name": "Mender's Mail Shoulders",
+    "req": 42,
+    "ilvl": 47,
+    "bind": "BoP",
+    "gain_pct": 0.8,
+    "value": 63.9,
+    "src": [
+     "Craft: Leatherworking 210"
+    ],
+    "extra": [
+     "Equip: Increases healing done by up to"
+    ],
+    "q": 3,
+    "stats": "+6 Stamina, +9 Intellect, +7 Spirit, 213 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 252567,
+    "name": "Skycaller's Mail Shoulders",
+    "req": 42,
+    "ilvl": 47,
+    "bind": "BoP",
+    "gain_pct": 0.6,
+    "value": 62.3,
+    "src": [
+     "Craft: Leatherworking 210"
+    ],
+    "extra": [
+     "Equip: Increases damage and healing done by magical spells and effects by up to"
+    ],
+    "q": 3,
+    "stats": "+7 Stamina, +9 Intellect, +6 Spirit, 213 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 252538,
+    "name": "Mender's Leather Shoulders",
+    "req": 42,
+    "ilvl": 47,
+    "bind": "BoP",
+    "gain_pct": 0.5,
+    "value": 61.7,
+    "src": [
+     "Craft: Leatherworking 210"
+    ],
+    "extra": [
+     "Equip: Increases healing done by up to"
+    ],
+    "q": 3,
+    "stats": "+6 Stamina, +9 Intellect, +7 Spirit, 104 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 271955,
+    "name": "Theramore Pauldrons",
+    "req": 60,
+    "ilvl": 65,
+    "bind": "BoP",
+    "gain_pct": 7.2,
+    "value": 123.9,
+    "src": [
+     "Rep: Theramore Expeditionary Force Exalted"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+27 Agility, +12 Stamina, +1% crit, 148 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 19835,
+    "name": "Zandalar Madcap's Mantle",
+    "req": 60,
+    "ilvl": 61,
+    "bind": "BoP",
+    "gain_pct": 5.0,
+    "value": 103.2,
+    "src": [
+     "Quest: Paragons of Power: The Madcap's Mantle (lvl 0) @ Falthir the Sightless",
+     "Set: Madcap's Outfit"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+12 Strength, +20 Agility, +12 Stamina, +1% hit, 140 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 20055,
+    "name": "Highlander's Chain Pauldrons",
+    "req": 60,
+    "ilvl": 65,
+    "bind": "BoP",
+    "gain_pct": 3.5,
+    "value": 89.1,
+    "src": [
+     "Set: The Highlander's Determination"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+20 Agility, +18 Stamina, +17 Intellect, 312 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 20158,
+    "name": "Defiler's Chain Pauldrons",
+    "req": 60,
+    "ilvl": 65,
+    "bind": "BoP",
+    "gain_pct": 3.5,
+    "value": 89.1,
+    "src": [
+     "Set: The Defiler's Determination"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+20 Agility, +18 Stamina, +17 Intellect, 312 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 19831,
+    "name": "Zandalar Predator's Mantle",
+    "req": 60,
+    "ilvl": 68,
+    "bind": "BoP",
+    "gain_pct": 3.1,
+    "value": 85.6,
+    "src": [
+     "Quest: Paragons of Power: The Predator's Mantle (lvl 0) @ Falthir the Sightless",
+     "Set: Predator's Armor"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+22 Agility, +15 Stamina, +11 Intellect, 326 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 18686,
+    "name": "Bone Golem Shoulders",
+    "req": 57,
+    "ilvl": 62,
+    "bind": "BoP",
+    "gain_pct": 2.2,
+    "value": 77.2,
+    "src": [
+     "Drop: Rattlegore (Scholomance) 12%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+19 Agility, +9 Stamina, +12 Intellect, 274 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 16708,
+    "name": "Shadowcraft Spaulders",
+    "req": 55,
+    "ilvl": 60,
+    "bind": "BoP",
+    "gain_pct": 2.1,
+    "value": 76.2,
+    "src": [
+     "Drop: Cannon Master Willey (Stratholme) 14%",
+     "Set: Shadowcraft Armor"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+22 Agility, +9 Stamina, +0.2% hit, 127 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 19691,
+    "name": "Bloodsoul Shoulders",
+    "req": 60,
+    "ilvl": 65,
+    "bind": "BoE",
+    "gain_pct": 1.9,
+    "value": 74.2,
+    "src": [
+     "Set: Bloodsoul Embrace",
+     "Craft: Blacksmithing 300"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+24 Agility, +10 Stamina, 286 armor",
+    "atype": "Mail"
+   }
+  ]
+ },
+ "BACK": {
+  "equipped": "Ranger Cloak of the Wolf",
+  "value": 24.3,
+  "options": [
+   {
+    "tag": "NOW",
+    "id": 4113,
+    "name": "Medicine Blanket",
+    "req": 40,
+    "ilvl": 45,
+    "bind": "BoP",
+    "gain_pct": 2.4,
+    "value": 46.5,
+    "src": [
+     "Quest: Stranglethorn Fever (lvl 0) @ Fin Fizracket"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+4 Stamina, +9 Spirit, 30 armor",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 9648,
+    "name": "Chainlink Towel",
+    "req": 43,
+    "ilvl": 48,
+    "bind": "BoP",
+    "gain_pct": 2.4,
+    "value": 46.4,
+    "src": [
+     "Quest: Rescue OOX-22/FE! (lvl 0) @ Homing Robot OOX-22/FE"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+3 Intellect, +10 Spirit, 31 armor",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 6789,
+    "name": "Ceremonial Centaur Blanket",
+    "req": 35,
+    "ilvl": 42,
+    "bind": "BoP",
+    "gain_pct": 1.7,
+    "value": 40.4,
+    "src": [
+     "Quest: Khan Hratha (lvl 0) @ Warug"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+2 Intellect, +9 Spirit, 28 armor",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 8195,
+    "name": "Nightscape Cloak",
+    "req": 41,
+    "ilvl": 46,
+    "bind": "BoE",
+    "gain_pct": 1.4,
+    "value": 37.5,
+    "src": [
+     "Craft: Leatherworking 205",
+     "AH 3g"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+10 Agility, +3 Stamina, 30 armor",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 4114,
+    "name": "Darktide Cape",
+    "req": 37,
+    "ilvl": 42,
+    "bind": "BoP",
+    "gain_pct": 1.2,
+    "value": 35.4,
+    "src": [
+     "Quest: Keep An Eye Out (lvl 0) @ Dizzy One-Eye"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+6 Agility, +7 Stamina, 28 armor",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 11311,
+    "name": "Emberscale Cape",
+    "req": 42,
+    "ilvl": 47,
+    "bind": "BoP",
+    "gain_pct": 1.1,
+    "value": 34.8,
+    "src": [
+     "Drop: Galgann Firehammer (Uldaman) 38%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+14 Stamina, 34 armor",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 274752,
+    "name": "Sandstorm Cover",
+    "req": 40,
+    "ilvl": 45,
+    "bind": "BoP",
+    "gain_pct": 0.9,
+    "value": 32.7,
+    "src": [
+     "Rep: Gadgetzan Friendly"
+    ],
+    "extra": [
+     "Equip: Increases damage and healing done by magical spells and effects by up to"
+    ],
+    "q": 2,
+    "stats": "+8 Spirit, 30 armor",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 6901,
+    "name": "Glowing Thresher Cape",
+    "req": 24,
+    "ilvl": 29,
+    "bind": "BoP",
+    "gain_pct": 0.9,
+    "value": 32.6,
+    "src": [
+     "Drop: Old Serra'kis (Blackfathom Deeps) 39%"
+    ],
+    "extra": [
+     "Equip: Increases healing done by up to"
+    ],
+    "q": 3,
+    "stats": "+8 Spirit, 23 armor",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 21406,
+    "name": "Cloak of Veiled Shadows",
+    "req": 60,
+    "ilvl": 67,
+    "bind": "BoP",
+    "gain_pct": 7.9,
+    "value": 97.0,
+    "src": [
+     "Quest: Cloak of Veiled Shadows (lvl 60) @ Keyl Swiftclaw",
+     "Set: Emblems of Veiled Shadows"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+18 Agility, +11 Stamina, +1% hit, 52 armor",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 21403,
+    "name": "Cloak of the Unseen Path",
+    "req": 60,
+    "ilvl": 67,
+    "bind": "BoP",
+    "gain_pct": 7.6,
+    "value": 94.2,
+    "src": [
+     "Quest: Cloak of the Unseen Path (lvl 60) @ Keyl Swiftclaw",
+     "Set: Trappings of the Unseen Path"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+17 Agility, +13 Stamina, +1% hit, 52 armor",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 21187,
+    "name": "Earthweave Cloak",
+    "req": 60,
+    "ilvl": 62,
+    "bind": "BoP",
+    "gain_pct": 6.7,
+    "value": 86.3,
+    "src": [
+     "Quest: Volunteer's Battlegear (lvl 0) @ Vargus"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+15 Agility, +1% hit, 44 armor",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 21394,
+    "name": "Drape of Unyielding Strength",
+    "req": 60,
+    "ilvl": 67,
+    "bind": "BoP",
+    "gain_pct": 4.9,
+    "value": 69.4,
+    "src": [
+     "Quest: Drape of Unyielding Strength (lvl 60) @ Keyl Swiftclaw",
+     "Set: Battlegear of Unyielding Strength"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+15 Strength, +9 Agility, +9 Stamina, +1% hit, 52 armor",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 18496,
+    "name": "Heliotrope Cloak",
+    "req": 55,
+    "ilvl": 60,
+    "bind": "BoP",
+    "gain_pct": 3.4,
+    "value": 55.5,
+    "src": [
+     "Drop: Guard Mol'dar (Dire Maul: North) 6.4%",
+     "Drop: Guard Slip'kik (Dire Maul: North) 6.7%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+10 Intellect, +1% crit, 43 armor",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 18511,
+    "name": "Shifting Cloak",
+    "req": 57,
+    "ilvl": 62,
+    "bind": "BoE",
+    "gain_pct": 3.1,
+    "value": 52.7,
+    "src": [
+     "Craft: Leatherworking 300"
+    ],
+    "extra": [
+     "Equip: Increases your chance to Dodge an attack by 1.0%."
+    ],
+    "q": 4,
+    "stats": "+17 Agility, +8 Stamina, 48 armor",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 22269,
+    "name": "Shadow Prowler's Cloak",
+    "req": 58,
+    "ilvl": 63,
+    "bind": "BoP",
+    "gain_pct": 2.8,
+    "value": 49.8,
+    "src": [
+     "Drop: General Drakkisath (Upper Blackrock Spire) 17%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+16 Agility, +9 Stamina, 45 armor",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 13340,
+    "name": "Cape of the Black Baron",
+    "req": 58,
+    "ilvl": 63,
+    "bind": "BoP",
+    "gain_pct": 2.3,
+    "value": 45.5,
+    "src": [
+     "Drop: Baron Rivendare (Stratholme) 15%"
+    ],
+    "extra": [
+     "Equip: +"
+    ],
+    "q": 3,
+    "stats": "+15 Agility, 45 armor",
+    "atype": ""
+   }
+  ]
+ },
+ "CHEST": {
+  "equipped": "Tunic of Westfall",
+  "value": 46.6,
+  "options": [
+   {
+    "tag": "NOW",
+    "id": 8349,
+    "name": "Feathered Breastplate",
+    "req": 45,
+    "ilvl": 50,
+    "bind": "BoE",
+    "gain_pct": 7.7,
+    "value": 118.0,
+    "src": [
+     "Craft: Leatherworking 225"
+    ],
+    "extra": [
+     "Equip: Increases damage and healing done by magical spells and effects by up to"
+    ],
+    "q": 3,
+    "stats": "+10 Intellect, +24 Spirit, 146 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 17742,
+    "name": "Fungus Shroud Armor",
+    "req": 46,
+    "ilvl": 51,
+    "bind": "BoP",
+    "gain_pct": 5.9,
+    "value": 101.3,
+    "src": [
+     "Drop: Meshlok the Harvester (Maraudon) 32%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+25 Agility, +10 Stamina, 148 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 9469,
+    "name": "Gahz'rilla Scale Armor",
+    "req": 43,
+    "ilvl": 48,
+    "bind": "BoP",
+    "gain_pct": 5.2,
+    "value": 94.4,
+    "src": [
+     "Drop: Gahz'rilla (Zul'Farrak) 45%"
+    ],
+    "extra": [
+     "Equip: Increases healing done by up to"
+    ],
+    "q": 3,
+    "stats": "+10 Stamina, +16 Spirit, 290 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 10764,
+    "name": "Deathchill Armor",
+    "req": 39,
+    "ilvl": 43,
+    "bind": "BoP",
+    "gain_pct": 4.7,
+    "value": 89.8,
+    "src": [
+     "Drop: Amnennar the Coldbringer (Razorfen Downs) 29%"
+    ],
+    "extra": [
+     "Equip: Increases healing done by up to"
+    ],
+    "q": 3,
+    "stats": "+3 Stamina, +9 Intellect, +15 Spirit, 266 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 19128,
+    "name": "Seared Mail Vest",
+    "req": 45,
+    "ilvl": 50,
+    "bind": "BoP",
+    "gain_pct": 4.2,
+    "value": 85.5,
+    "src": [
+     "Quest: WANTED: Overseer Maltorius (lvl 0) @ Wanted/Missing/Lost & Found"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+11 Agility, +11 Stamina, +11 Intellect, 273 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 9473,
+    "name": "Jinxed Hoodoo Skin",
+    "req": 44,
+    "ilvl": 49,
+    "bind": "BoP",
+    "gain_pct": 4.2,
+    "value": 85.2,
+    "src": [
+     "Drop: Shadowpriest Sezz'ziz (Zul'Farrak) 22%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+10 Strength, +20 Stamina, +8 Spirit, 144 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 19127,
+    "name": "Charred Leather Tunic",
+    "req": 45,
+    "ilvl": 50,
+    "bind": "BoP",
+    "gain_pct": 3.1,
+    "value": 75.4,
+    "src": [
+     "Quest: WANTED: Overseer Maltorius (lvl 0) @ Wanted/Missing/Lost & Found"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+18 Agility, +8 Stamina, 132 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 9663,
+    "name": "Dawnrider's Chestpiece",
+    "req": 40,
+    "ilvl": 45,
+    "bind": "BoP",
+    "gain_pct": 2.8,
+    "value": 72.4,
+    "src": [
+     "Quest: Delivering the Relic (lvl 0) @ Latronicus Moonspear"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+16 Agility, +5 Spirit, 248 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 252483,
+    "name": "Dawn Armor",
+    "req": 56,
+    "ilvl": 61,
+    "bind": "BoE",
+    "gain_pct": 15.9,
+    "value": 193.4,
+    "src": [
+     "Craft: Leatherworking 300"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+37 Agility, +1% hit, +1% crit, 187 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 22009,
+    "name": "Darkmantle Tunic",
+    "req": 60,
+    "ilvl": 60,
+    "bind": "BoP",
+    "gain_pct": 14.2,
+    "value": 177.8,
+    "src": [
+     "Quest: Saving the Best for Last (lvl 0) @ Deliana",
+     "Set: Darkmantle Armor"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+31 Agility, +15 Stamina, +2% hit, 185 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 19685,
+    "name": "Primal Batskin Jerkin",
+    "req": 60,
+    "ilvl": 65,
+    "bind": "BoE",
+    "gain_pct": 10.0,
+    "value": 138.8,
+    "src": [
+     "Set: Primal Batskin",
+     "Craft: Leatherworking 300"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+32 Agility, +6 Stamina, +1% hit, 181 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 22060,
+    "name": "Beastmaster's Tunic",
+    "req": 60,
+    "ilvl": 60,
+    "bind": "BoP",
+    "gain_pct": 9.9,
+    "value": 138.2,
+    "src": [
+     "Quest: Saving the Best for Last (lvl 0) @ Deliana",
+     "Set: Beastmaster Armor"
+    ],
+    "extra": [
+     "Equip:"
+    ],
+    "q": 4,
+    "stats": "+25 Agility, +16 Stamina, +13 Intellect, +1% crit, 387 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 16721,
+    "name": "Shadowcraft Tunic",
+    "req": 58,
+    "ilvl": 63,
+    "bind": "BoP",
+    "gain_pct": 7.6,
+    "value": 116.8,
+    "src": [
+     "Drop: General Drakkisath (Upper Blackrock Spire) 9.2%",
+     "Set: Shadowcraft Armor"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+26 Agility, +13 Stamina, +12 Spirit, +0.8% hit, 176 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 18530,
+    "name": "Ogre Forged Hauberk",
+    "req": 57,
+    "ilvl": 62,
+    "bind": "BoP",
+    "gain_pct": 7.4,
+    "value": 115.0,
+    "src": [
+     "Drop: Mizzle the Crafty (Dire Maul: North) 13%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+8 Strength, +20 Agility, +13 Stamina, +8 Intellect, +1% crit, 365 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 15141,
+    "name": "Onyxia Scale Breastplate",
+    "req": 57,
+    "ilvl": 62,
+    "bind": "BoE",
+    "gain_pct": 7.2,
+    "value": 113.3,
+    "src": [
+     "Craft: Leatherworking 300"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+15 Strength, +15 Agility, +15 Stamina, +14 Intellect, +14 Spirit, +150 Armor, +1% crit, 398 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 19690,
+    "name": "Bloodsoul Breastplate",
+    "req": 60,
+    "ilvl": 65,
+    "bind": "BoE",
+    "gain_pct": 6.8,
+    "value": 109.7,
+    "src": [
+     "Set: Bloodsoul Embrace",
+     "Craft: Blacksmithing 300"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+9 Agility, +13 Stamina, +2% crit, 381 armor",
+    "atype": "Mail"
+   }
+  ]
+ },
+ "WRIST": {
+  "equipped": "Duracin Bracers",
+  "value": 41.0,
+  "options": [
+   {
+    "tag": "NOW",
+    "id": 252570,
+    "name": "Stalker's Mail Bracers",
+    "req": 45,
+    "ilvl": 50,
+    "bind": "BoP",
+    "gain_pct": 4.0,
+    "value": 77.7,
+    "src": [
+     "Craft: Leatherworking 225"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+9 Agility, +7 Stamina, +6 Intellect, +5 Spirit, 131 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 252540,
+    "name": "Skulker's Leather Bracers",
+    "req": 45,
+    "ilvl": 50,
+    "bind": "BoP",
+    "gain_pct": 2.5,
+    "value": 63.7,
+    "src": [
+     "Craft: Leatherworking 225"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+7 Strength, +9 Agility, +6 Stamina, +5 Spirit, 64 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 252573,
+    "name": "Mender's Mail Bracers",
+    "req": 45,
+    "ilvl": 50,
+    "bind": "BoP",
+    "gain_pct": 1.2,
+    "value": 52.1,
+    "src": [
+     "Craft: Leatherworking 225"
+    ],
+    "extra": [
+     "Equip: Increases healing done by up to"
+    ],
+    "q": 3,
+    "stats": "+5 Stamina, +7 Intellect, +6 Spirit, 131 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 252543,
+    "name": "Mender's Leather Bracers",
+    "req": 45,
+    "ilvl": 50,
+    "bind": "BoP",
+    "gain_pct": 1.1,
+    "value": 50.7,
+    "src": [
+     "Craft: Leatherworking 225"
+    ],
+    "extra": [
+     "Equip: Increases healing done by up to"
+    ],
+    "q": 3,
+    "stats": "+5 Stamina, +7 Intellect, +6 Spirit, 64 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 252571,
+    "name": "Skycaller's Mail Bracers",
+    "req": 45,
+    "ilvl": 50,
+    "bind": "BoP",
+    "gain_pct": 1.0,
+    "value": 50.5,
+    "src": [
+     "Craft: Leatherworking 225"
+    ],
+    "extra": [
+     "Equip: Increases damage and healing done by magical spells and effects by up to"
+    ],
+    "q": 3,
+    "stats": "+6 Stamina, +7 Intellect, +5 Spirit, 131 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 252542,
+    "name": "Skycaller's Leather Bracers",
+    "req": 45,
+    "ilvl": 50,
+    "bind": "BoP",
+    "gain_pct": 0.9,
+    "value": 49.1,
+    "src": [
+     "Craft: Leatherworking 225"
+    ],
+    "extra": [
+     "Equip: Increases damage and healing done by magical spells and effects by up to"
+    ],
+    "q": 3,
+    "stats": "+6 Stamina, +7 Intellect, +5 Spirit, 64 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 252539,
+    "name": "Prowler's Leather Bracers",
+    "req": 45,
+    "ilvl": 50,
+    "bind": "BoP",
+    "gain_pct": 0.7,
+    "value": 47.4,
+    "src": [
+     "Craft: Leatherworking 225"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+9 Strength, +7 Agility, +6 Stamina, +5 Intellect, 64 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 274599,
+    "name": "Oathbound Bracers",
+    "req": 34,
+    "ilvl": 39,
+    "bind": "BoP",
+    "gain_pct": 0.6,
+    "value": 46.3,
+    "src": [
+     "Drop: Zul'Alai (The Drowned City)"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+6 Agility, +0.9% hit, 52 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 19687,
+    "name": "Primal Batskin Bracers",
+    "req": 60,
+    "ilvl": 65,
+    "bind": "BoE",
+    "gain_pct": 4.7,
+    "value": 84.3,
+    "src": [
+     "Set: Primal Batskin",
+     "Craft: Leatherworking 300"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+14 Agility, +7 Stamina, +1% hit, 79 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 13211,
+    "name": "Slashclaw Bracers",
+    "req": 55,
+    "ilvl": 60,
+    "bind": "BoP",
+    "gain_pct": 2.7,
+    "value": 65.6,
+    "src": [
+     "Drop: Halycon (Lower Blackrock Spire) 28%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+7 Agility, +7 Stamina, +9 Spirit, +1% hit, 155 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 22011,
+    "name": "Beastmaster's Bindings",
+    "req": 60,
+    "ilvl": 65,
+    "bind": "BoP",
+    "gain_pct": 1.7,
+    "value": 57.1,
+    "src": [
+     "Quest: An Earnest Proposition (lvl 0) @ Deliana",
+     "Set: Beastmaster Armor"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+16 Agility, +7 Stamina, +5 Intellect, 167 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 22668,
+    "name": "Bracers of Subterfuge",
+    "req": 60,
+    "ilvl": 60,
+    "bind": "BoP",
+    "gain_pct": 0.7,
+    "value": 47.2,
+    "src": [
+     "Quest: Epic Armaments of Battle - Friend of the Dawn (lvl 0) @ Quartermaster Miranda Breechlock"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+10 Strength, +15 Agility, +12 Stamina, 81 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 16681,
+    "name": "Beaststalker's Bindings",
+    "req": 52,
+    "ilvl": 57,
+    "bind": "BoE",
+    "gain_pct": 0.6,
+    "value": 46.6,
+    "src": [
+     "Set: Beaststalker Armor"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+15 Agility, +8 Stamina, 148 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 16710,
+    "name": "Shadowcraft Bracers",
+    "req": 52,
+    "ilvl": 57,
+    "bind": "BoE",
+    "gain_pct": 0.6,
+    "value": 46.5,
+    "src": [
+     "Drop: Instructor Malicia (Scholomance) 4.5%",
+     "Set: Shadowcraft Armor"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+15 Agility, +7 Stamina, 71 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 22004,
+    "name": "Darkmantle Bracers",
+    "req": 60,
+    "ilvl": 65,
+    "bind": "BoP",
+    "gain_pct": 0.6,
+    "value": 46.5,
+    "src": [
+     "Quest: An Earnest Proposition (lvl 0) @ Deliana",
+     "Set: Darkmantle Armor"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+7 Strength, +15 Agility, +7 Stamina, 79 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 19836,
+    "name": "Zandalar Madcap's Bracers",
+    "req": 60,
+    "ilvl": 61,
+    "bind": "BoP",
+    "gain_pct": 0.4,
+    "value": 44.4,
+    "src": [
+     "Quest: Paragons of Power: The Madcap's Bracers (lvl 0) @ Falthir the Sightless",
+     "Set: Madcap's Outfit"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+9 Strength, +14 Agility, +14 Stamina, 82 armor",
+    "atype": "Leather"
+   }
+  ]
+ },
+ "HANDS": {
+  "equipped": "Fists of Impending Doom",
+  "value": 16.2,
+  "options": [
+   {
+    "tag": "NOW",
+    "id": 8347,
+    "name": "Dragonscale Gauntlets",
+    "req": 40,
+    "ilvl": 45,
+    "bind": "BoE",
+    "gain_pct": 5.6,
+    "value": 67.8,
+    "src": [
+     "Craft: Leatherworking 225"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+6 Agility, +7 Stamina, +1% crit, 171 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 252526,
+    "name": "Stalker's Leather Gloves",
+    "req": 35,
+    "ilvl": 40,
+    "bind": "BoP",
+    "gain_pct": 5.4,
+    "value": 66.2,
+    "src": [
+     "Craft: Leatherworking 175"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+10 Agility, +9 Stamina, +7 Intellect, 76 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 7925,
+    "name": "Mithril Plate Gloves",
+    "req": 40,
+    "ilvl": 44,
+    "bind": "BoE",
+    "gain_pct": 5.3,
+    "value": 65.1,
+    "src": [
+     "Craft: Blacksmithing 200"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+9 Stamina, +10 Spirit, 153 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 273054,
+    "name": "Cartilage Shapers",
+    "req": 28,
+    "ilvl": 33,
+    "bind": "BoP",
+    "gain_pct": 4.8,
+    "value": 60.1,
+    "src": [
+     "Drop: Lyn the Ignored (City of Dalaran) 35%"
+    ],
+    "extra": [
+     "Equip: Increased Skinning +"
+    ],
+    "q": 3,
+    "stats": "+9 Agility, +8 Spirit, 68 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 9445,
+    "name": "Grubbis Paws",
+    "req": 29,
+    "ilvl": 34,
+    "bind": "BoP",
+    "gain_pct": 4.2,
+    "value": 54.7,
+    "src": [
+     "Drop: Grubbis (Gnomeregan) 8.8%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+6 Strength, +5 Agility, +9 Spirit, 144 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 8204,
+    "name": "Tough Scorpid Gloves",
+    "req": 40,
+    "ilvl": 45,
+    "bind": "BoE",
+    "gain_pct": 3.6,
+    "value": 49.6,
+    "src": [
+     "Craft: Leatherworking 200"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+10 Agility, +9 Intellect, 155 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 252525,
+    "name": "Skulker's Leather Gloves",
+    "req": 35,
+    "ilvl": 40,
+    "bind": "BoP",
+    "gain_pct": 3.6,
+    "value": 49.5,
+    "src": [
+     "Craft: Leatherworking 175"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+9 Strength, +10 Agility, +7 Stamina, 76 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 250566,
+    "name": "Officer's Gauntlet",
+    "req": 35,
+    "ilvl": 40,
+    "bind": "BoP",
+    "gain_pct": 3.4,
+    "value": 47.3,
+    "src": [
+     "Craft: Blacksmithing 175"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+10 Strength, +7 Agility, +9 Stamina, 159 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 19686,
+    "name": "Primal Batskin Gloves",
+    "req": 60,
+    "ilvl": 65,
+    "bind": "BoE",
+    "gain_pct": 10.5,
+    "value": 113.2,
+    "src": [
+     "Set: Primal Batskin",
+     "Craft: Leatherworking 300"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+10 Agility, +9 Stamina, +2% hit, 113 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 18349,
+    "name": "Gauntlets of Accuracy",
+    "req": 56,
+    "ilvl": 61,
+    "bind": "BoP",
+    "gain_pct": 8.0,
+    "value": 90.1,
+    "src": [
+     "Drop: Illyanna Ravenoak (Dire Maul: West) 24%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+15 Agility, +13 Spirit, +1% hit, 225 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 279257,
+    "name": "Mourning Handguards",
+    "req": 60,
+    "ilvl": 65,
+    "bind": "BoE",
+    "gain_pct": 7.7,
+    "value": 87.5,
+    "src": [
+     "Craft: Leatherworking 300"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+21 Agility, +18 Stamina, +14 Intellect, 260 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 18368,
+    "name": "Gordok's Gloves",
+    "req": 56,
+    "ilvl": 60,
+    "bind": "BoP",
+    "gain_pct": 7.4,
+    "value": 84.2,
+    "src": [
+     "Dungeon quest: Unfinished Gordok Business (Dire Maul: North, lvl 60)",
+     "Quest: None (lvl 0)"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+9 Agility, +10 Stamina, +10 Intellect, +1% crit, 106 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 21278,
+    "name": "Stormshroud Gloves",
+    "req": 57,
+    "ilvl": 62,
+    "bind": "BoE",
+    "gain_pct": 7.0,
+    "value": 81.1,
+    "src": [
+     "Set: Stormshroud Armor",
+     "Craft: Leatherworking 290"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+1% hit, +1% crit, 109 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 19692,
+    "name": "Bloodsoul Gauntlets",
+    "req": 60,
+    "ilvl": 65,
+    "bind": "BoE",
+    "gain_pct": 6.2,
+    "value": 73.0,
+    "src": [
+     "Set: Bloodsoul Embrace",
+     "Craft: Blacksmithing 300"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+10 Agility, +17 Stamina, +1% crit, 238 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 22410,
+    "name": "Gauntlets of Deftness",
+    "req": 58,
+    "ilvl": 63,
+    "bind": "BoP",
+    "gain_pct": 6.0,
+    "value": 71.2,
+    "src": [
+     "Drop: Baron Rivendare (Stratholme) 12%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+20 Agility, +10 Stamina, +6 Intellect, +60 Armor, 231 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 22006,
+    "name": "Darkmantle Gloves",
+    "req": 50,
+    "ilvl": 55,
+    "bind": "BoP",
+    "gain_pct": 5.6,
+    "value": 68.0,
+    "src": [
+     "Quest: Just Compensation (lvl 0) @ Deliana",
+     "Set: Darkmantle Armor"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+12 Strength, +22 Agility, +9 Stamina, 108 armor",
+    "atype": "Leather"
+   }
+  ]
+ },
+ "WAIST": {
+  "equipped": "Warden's Waistband",
+  "value": 55.6,
+  "options": [
+   {
+    "tag": "NOW",
+    "id": 252521,
+    "name": "Stalker's Leather Belt",
+    "req": 30,
+    "ilvl": 35,
+    "bind": "BoP",
+    "gain_pct": 1.5,
+    "value": 69.9,
+    "src": [
+     "Craft: Leatherworking 150"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+9 Agility, +6 Stamina, +6 Intellect, +4 Spirit, 63 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 252520,
+    "name": "Skulker's Leather Belt",
+    "req": 30,
+    "ilvl": 35,
+    "bind": "BoP",
+    "gain_pct": 0.4,
+    "value": 59.5,
+    "src": [
+     "Craft: Leatherworking 150"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+6 Strength, +9 Agility, +6 Stamina, +4 Spirit, 63 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 19125,
+    "name": "Seared Mail Girdle",
+    "req": 44,
+    "ilvl": 49,
+    "bind": "BoP",
+    "gain_pct": 0.0,
+    "value": 55.6,
+    "src": [
+     "Quest: Fiery Menace! (lvl 0) @ Hansel Heavyhands"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+12 Agility, +7 Stamina, 151 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 252575,
+    "name": "Charged Scorpid Belt",
+    "req": 46,
+    "ilvl": 51,
+    "bind": "BoE",
+    "gain_pct": -0.2,
+    "value": 54.0,
+    "src": [
+     "Craft: Leatherworking 230"
+    ],
+    "extra": [
+     "Equip: Increases damage and healing done by magical spells and effects by up to"
+    ],
+    "q": 2,
+    "stats": "+10 Intellect, +8 Spirit, 156 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 17778,
+    "name": "Sagebrush Girdle",
+    "req": 41,
+    "ilvl": 49,
+    "bind": "BoP",
+    "gain_pct": -0.5,
+    "value": 51.0,
+    "src": [
+     "Dungeon quest: Vyletongue Corruption (Maraudon, lvl 47)",
+     "Quest: Vyletongue Corruption (lvl 0) @ Vark Battlescar"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+11 Agility, +9 Intellect, 74 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 6788,
+    "name": "Kolkar Hunter's Belt",
+    "req": 35,
+    "ilvl": 42,
+    "bind": "BoP",
+    "gain_pct": -0.9,
+    "value": 46.9,
+    "src": [
+     "Quest: Khan Hratha (lvl 0) @ Warug"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+8 Agility, +9 Stamina, 65 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 252523,
+    "name": "Mender's Leather Belt",
+    "req": 30,
+    "ilvl": 35,
+    "bind": "BoP",
+    "gain_pct": -1.0,
+    "value": 46.4,
+    "src": [
+     "Craft: Leatherworking 150"
+    ],
+    "extra": [
+     "Equip: Increases healing done by up to"
+    ],
+    "q": 3,
+    "stats": "+4 Stamina, +6 Intellect, +6 Spirit, 63 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 7387,
+    "name": "Dusky Belt",
+    "req": 34,
+    "ilvl": 39,
+    "bind": "BoE",
+    "gain_pct": -1.2,
+    "value": 44.4,
+    "src": [
+     "Craft: Leatherworking 170"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+8 Agility, +8 Stamina, 61 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 19832,
+    "name": "Zandalar Predator's Belt",
+    "req": 60,
+    "ilvl": 61,
+    "bind": "BoP",
+    "gain_pct": 7.4,
+    "value": 124.0,
+    "src": [
+     "Quest: Paragons of Power: The Predator's Belt (lvl 0) @ Falthir the Sightless",
+     "Set: Predator's Armor"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+20 Agility, +12 Stamina, +12 Intellect, +9 Spirit, +1% hit, 221 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 22232,
+    "name": "Marksman's Girdle",
+    "req": 56,
+    "ilvl": 61,
+    "bind": "BoP",
+    "gain_pct": 5.3,
+    "value": 104.6,
+    "src": [
+     "Drop: Urok Doomhowl (Lower Blackrock Spire) 17%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+21 Agility, +1% hit, 202 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 18393,
+    "name": "Warpwood Binding",
+    "req": 56,
+    "ilvl": 61,
+    "bind": "BoP",
+    "gain_pct": 3.7,
+    "value": 90.2,
+    "src": [
+     "Drop: Tendris Warpwood (Dire Maul: West) 24%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+13 Agility, +9 Stamina, +6 Intellect, +1% crit, 202 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 20216,
+    "name": "Belt of Preserved Heads",
+    "req": 60,
+    "ilvl": 70,
+    "bind": "BoP",
+    "gain_pct": 3.5,
+    "value": 87.9,
+    "src": [
+     "Quest: A Collection of Heads (lvl 0) @ Exzhal"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+14 Strength, +15 Agility, +11 Stamina, +1% hit, 108 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 19163,
+    "name": "Molten Belt",
+    "req": 60,
+    "ilvl": 70,
+    "bind": "BoE",
+    "gain_pct": 3.4,
+    "value": 87.2,
+    "src": [
+     "Craft: Leatherworking 300"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+28 Agility, +16 Stamina, 118 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 20044,
+    "name": "Highlander's Mail Girdle",
+    "req": 58,
+    "ilvl": 63,
+    "bind": "BoP",
+    "gain_pct": 1.3,
+    "value": 67.6,
+    "src": [
+     "Set: The Highlander's Fortitude"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+10 Stamina, +17 Intellect, +1% crit, 208 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 20195,
+    "name": "Defiler's Mail Girdle",
+    "req": 58,
+    "ilvl": 63,
+    "bind": "BoP",
+    "gain_pct": 1.3,
+    "value": 67.6,
+    "src": [
+     "Set: The Defiler's Fortitude"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+10 Stamina, +17 Intellect, +1% crit, 208 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 20046,
+    "name": "Highlander's Lizardhide Girdle",
+    "req": 58,
+    "ilvl": 63,
+    "bind": "BoP",
+    "gain_pct": 1.3,
+    "value": 67.2,
+    "src": [
+     "Set: The Highlander's Will"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+7 Stamina, +17 Intellect, +60 Armor, +1% crit, 99 armor",
+    "atype": "Leather"
+   }
+  ]
+ },
+ "LEGS": {
+  "equipped": "Oilskin Leggings",
+  "value": 99.8,
+  "options": [
+   {
+    "tag": "NOW",
+    "id": 17754,
+    "name": "Infernal Trickster Leggings",
+    "req": 45,
+    "ilvl": 50,
+    "bind": "BoP",
+    "gain_pct": 2.1,
+    "value": 119.6,
+    "src": [
+     "Drop: Lord Vyletongue (Maraudon) 29%"
+    ],
+    "extra": [
+     "Equip:"
+    ],
+    "q": 3,
+    "stats": "+20 Agility, +8 Intellect, +10 Spirit, 263 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 274602,
+    "name": "Brinebelly Leggings",
+    "req": 35,
+    "ilvl": 40,
+    "bind": "BoP",
+    "gain_pct": 1.0,
+    "value": 109.4,
+    "src": [
+     "Drop: Var'Taka (The Drowned City)"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+15 Agility, +11 Stamina, +9 Spirit, 106 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 9474,
+    "name": "Jinxed Hoodoo Kilt",
+    "req": 44,
+    "ilvl": 49,
+    "bind": "BoP",
+    "gain_pct": -0.2,
+    "value": 97.6,
+    "src": [
+     "Drop: Shadowpriest Sezz'ziz (Zul'Farrak) 21%"
+    ],
+    "extra": [
+     "Equip: Increases healing done by up to"
+    ],
+    "q": 3,
+    "stats": "+10 Intellect, +19 Spirit, 126 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 252517,
+    "name": "Trapper's Leather Legguards",
+    "req": 25,
+    "ilvl": 30,
+    "bind": "BoP",
+    "gain_pct": -1.8,
+    "value": 82.7,
+    "src": [
+     "Craft: Leatherworking 125"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+9 Agility, +7 Stamina, +7 Intellect, +6 Spirit, 90 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 276201,
+    "name": "Misplaced Pantaloons",
+    "req": 40,
+    "ilvl": 45,
+    "bind": "BoP",
+    "gain_pct": -2.0,
+    "value": 81.0,
+    "src": [
+     "Rep: Powderfuse Friendly"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+13 Intellect, +13 Spirit, 217 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 252518,
+    "name": "Stormrider's Leather Kilt",
+    "req": 25,
+    "ilvl": 30,
+    "bind": "BoP",
+    "gain_pct": -2.7,
+    "value": 74.8,
+    "src": [
+     "Craft: Leatherworking 125"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+7 Strength, +6 Stamina, +7 Intellect, +11 Spirit, 90 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 8206,
+    "name": "Tough Scorpid Leggings",
+    "req": 44,
+    "ilvl": 49,
+    "bind": "BoE",
+    "gain_pct": -2.8,
+    "value": 73.8,
+    "src": [
+     "Craft: Leatherworking 220"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+17 Agility, +10 Intellect, 235 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 252516,
+    "name": "Brawler's Leather Legguards",
+    "req": 25,
+    "ilvl": 30,
+    "bind": "BoP",
+    "gain_pct": -3.2,
+    "value": 70.6,
+    "src": [
+     "Craft: Leatherworking 125"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+7 Strength, +9 Agility, +7 Stamina, +6 Spirit, 90 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 22690,
+    "name": "Leggings of the Plague Hunter",
+    "req": 60,
+    "ilvl": 66,
+    "bind": "BoP",
+    "gain_pct": 2.0,
+    "value": 118.5,
+    "src": [
+     "Quest: Superior Armaments of Battle - Friend of the Dawn (lvl 0) @ Quartermaster Miranda Breechlock"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+20 Agility, +16 Stamina, +10 Intellect, +1% crit, 339 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 12903,
+    "name": "Legguards of the Chromatic Defier",
+    "req": 60,
+    "ilvl": 62,
+    "bind": "BoP",
+    "gain_pct": 0.8,
+    "value": 106.8,
+    "src": [
+     "Quest: Legplates of the Chromatic Defier (lvl 0) @ Catalogue of the Wayward"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+9 Strength, +31 Agility, +15 Stamina, +7 Intellect, 349 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 18524,
+    "name": "Leggings of Destruction",
+    "req": 58,
+    "ilvl": 63,
+    "bind": "BoP",
+    "gain_pct": 0.6,
+    "value": 105.5,
+    "src": [
+     "Drop: King Gordok (Dire Maul: North) 24%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+14 Agility, +21 Stamina, +13 Intellect, +1% crit, 324 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 22017,
+    "name": "Beastmaster's Pants",
+    "req": 60,
+    "ilvl": 66,
+    "bind": "BoP",
+    "gain_pct": 0.1,
+    "value": 100.6,
+    "src": [
+     "Quest: Anthion's Parting Words (lvl 0) @ Anthion Harmon",
+     "Set: Beastmaster Armor"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+28 Agility, +14 Stamina, +9 Intellect, 339 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 16678,
+    "name": "Beaststalker's Pants",
+    "req": 56,
+    "ilvl": 61,
+    "bind": "BoP",
+    "gain_pct": -0.2,
+    "value": 98.4,
+    "src": [
+     "Drop: Baron Rivendare (Stratholme) 11%",
+     "Set: Beaststalker Armor"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+6 Strength, +26 Agility, +6 Stamina, +10 Intellect, +12 Spirit, 315 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 16709,
+    "name": "Shadowcraft Pants",
+    "req": 56,
+    "ilvl": 61,
+    "bind": "BoP",
+    "gain_pct": -1.9,
+    "value": 81.8,
+    "src": [
+     "Drop: Baron Rivendare (Stratholme) 11%",
+     "Set: Shadowcraft Armor"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+25 Agility, +14 Stamina, +14 Spirit, 150 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 12963,
+    "name": "Blademaster Leggings",
+    "req": 58,
+    "ilvl": 63,
+    "bind": "BoP",
+    "gain_pct": -2.0,
+    "value": 81.1,
+    "src": [
+     "Drop: The Beast (Upper Blackrock Spire) 19%"
+    ],
+    "extra": [
+     "Equip: Increases your chance to Dodge an attack by 2.0%.",
+     "Equip: +"
+    ],
+    "q": 3,
+    "stats": "+1% hit, +1% crit, 154 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 15057,
+    "name": "Stormshroud Pants",
+    "req": 50,
+    "ilvl": 55,
+    "bind": "BoE",
+    "gain_pct": -2.1,
+    "value": 80.6,
+    "src": [
+     "Set: Stormshroud Armor",
+     "Craft: Leatherworking 250"
+    ],
+    "extra": [
+     "Equip: Increases your chance to Dodge an attack by 1.0%."
+    ],
+    "q": 3,
+    "stats": "+2% crit, 138 armor",
+    "atype": "Leather"
+   }
+  ]
+ },
+ "FEET": {
+  "equipped": "Excelsior Boots",
+  "value": 29.2,
+  "options": [
+   {
+    "tag": "NOW",
+    "id": 252562,
+    "name": "Stalker's Mail Boots",
+    "req": 40,
+    "ilvl": 45,
+    "bind": "BoP",
+    "gain_pct": 6.2,
+    "value": 86.6,
+    "src": [
+     "Craft: Leatherworking 200"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+11 Agility, +7 Stamina, +7 Intellect, +5 Spirit, 188 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 252531,
+    "name": "Skulker's Leather Shoes",
+    "req": 40,
+    "ilvl": 45,
+    "bind": "BoP",
+    "gain_pct": 4.7,
+    "value": 72.6,
+    "src": [
+     "Craft: Leatherworking 200"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+7 Strength, +11 Agility, +7 Stamina, +5 Spirit, 92 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 12470,
+    "name": "Sandstalker Ankleguards",
+    "req": 42,
+    "ilvl": 47,
+    "bind": "BoP",
+    "gain_pct": 3.9,
+    "value": 65.1,
+    "src": [
+     "Drop: Zerillis (Zul'Farrak) 18%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+6 Strength, +17 Agility, +3 Spirit, 95 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 9398,
+    "name": "Worn Running Boots",
+    "req": 37,
+    "ilvl": 42,
+    "bind": "BoP",
+    "gain_pct": 3.8,
+    "value": 64.6,
+    "src": [
+     "Drop: Eric \\ (Uldaman)"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+13 Agility, +10 Stamina, 87 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 7751,
+    "name": "Vorrel's Boots",
+    "req": 30,
+    "ilvl": 35,
+    "bind": "BoP",
+    "gain_pct": 3.1,
+    "value": 57.5,
+    "src": [
+     "Quest: None (lvl 0)"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+7 Agility, +3 Stamina, +7 Spirit, 70 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 252565,
+    "name": "Mender's Mail Boots",
+    "req": 40,
+    "ilvl": 45,
+    "bind": "BoP",
+    "gain_pct": 3.0,
+    "value": 57.2,
+    "src": [
+     "Craft: Leatherworking 200"
+    ],
+    "extra": [
+     "Equip: Increases healing done by up to"
+    ],
+    "q": 3,
+    "stats": "+5 Stamina, +7 Intellect, +7 Spirit, 188 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "NOW",
+    "id": 252533,
+    "name": "Mender's Leather Shoes",
+    "req": 40,
+    "ilvl": 45,
+    "bind": "BoP",
+    "gain_pct": 2.8,
+    "value": 55.3,
+    "src": [
+     "Craft: Leatherworking 200"
+    ],
+    "extra": [
+     "Equip: Increases healing done by up to"
+    ],
+    "q": 3,
+    "stats": "+5 Stamina, +7 Intellect, +7 Spirit, 92 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "NOW",
+    "id": 252563,
+    "name": "Skycaller's Mail Boots",
+    "req": 40,
+    "ilvl": 45,
+    "bind": "BoP",
+    "gain_pct": 2.7,
+    "value": 54.1,
+    "src": [
+     "Craft: Leatherworking 200"
+    ],
+    "extra": [
+     "Equip: Increases damage and healing done by magical spells and effects by up to"
+    ],
+    "q": 3,
+    "stats": "+7 Stamina, +7 Intellect, +5 Spirit, 188 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 13967,
+    "name": "Windreaver Greaves",
+    "req": 56,
+    "ilvl": 61,
+    "bind": "BoP",
+    "gain_pct": 8.5,
+    "value": 107.6,
+    "src": [
+     "Drop: Kirtonos the Herald (Scholomance) 18%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+20 Agility, +4 Intellect, +1% hit, 247 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 14616,
+    "name": "Bloodmail Boots",
+    "req": 56,
+    "ilvl": 61,
+    "bind": "BoP",
+    "gain_pct": 5.7,
+    "value": 81.7,
+    "src": [
+     "Drop: Instructor Malicia (Scholomance) 4.3%",
+     "Drop: Doctor Theolen Krastinov (Scholomance) 4.3%",
+     "Drop: Lorekeeper Polkelt (Scholomance) 4.5%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+9 Strength, +8 Agility, +10 Stamina, +10 Intellect, +1% hit, 247 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 16711,
+    "name": "Shadowcraft Boots",
+    "req": 54,
+    "ilvl": 59,
+    "bind": "BoP",
+    "gain_pct": 5.2,
+    "value": 77.2,
+    "src": [
+     "Drop: Rattlegore (Scholomance) 19%",
+     "Set: Shadowcraft Armor"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+21 Agility, +9 Stamina, +0.3% hit, 115 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 22003,
+    "name": "Darkmantle Boots",
+    "req": 60,
+    "ilvl": 60,
+    "bind": "BoP",
+    "gain_pct": 4.9,
+    "value": 74.2,
+    "src": [
+     "Quest: Anthion's Parting Words (lvl 0) @ Anthion Harmon",
+     "Set: Darkmantle Armor"
+    ],
+    "extra": [
+     "Equip:"
+    ],
+    "q": 4,
+    "stats": "+24 Agility, +10 Stamina, 127 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 22061,
+    "name": "Beastmaster's Boots",
+    "req": 60,
+    "ilvl": 60,
+    "bind": "BoP",
+    "gain_pct": 4.9,
+    "value": 74.1,
+    "src": [
+     "Quest: Anthion's Parting Words (lvl 0) @ Anthion Harmon",
+     "Set: Beastmaster Armor"
+    ],
+    "extra": [
+     "Equip:"
+    ],
+    "q": 4,
+    "stats": "+24 Agility, +9 Stamina, 266 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 13402,
+    "name": "Timmy's Galoshes",
+    "req": 55,
+    "ilvl": 60,
+    "bind": "BoP",
+    "gain_pct": 4.6,
+    "value": 71.4,
+    "src": [
+     "Drop: Timmy the Cruel (Stratholme) 22%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+18 Agility, +11 Stamina, +10 Intellect, 244 armor",
+    "atype": "Mail"
+   },
+   {
+    "tag": "LVL",
+    "id": 18506,
+    "name": "Mongoose Boots",
+    "req": 57,
+    "ilvl": 62,
+    "bind": "BoE",
+    "gain_pct": 4.5,
+    "value": 71.1,
+    "src": [
+     "Craft: Leatherworking 290"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+23 Agility, +9 Stamina, 120 armor",
+    "atype": "Leather"
+   },
+   {
+    "tag": "LVL",
+    "id": 16675,
+    "name": "Beaststalker's Boots",
+    "req": 54,
+    "ilvl": 59,
+    "bind": "BoP",
+    "gain_pct": 4.4,
+    "value": 69.6,
+    "src": [
+     "Drop: Nerub'enkan (Stratholme) 18%",
+     "Set: Beaststalker Armor"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+21 Agility, +9 Stamina, +3 Intellect, 240 armor",
+    "atype": "Mail"
+   }
+  ]
+ },
+ "FINGER": {
+  "equipped": "Archaedic Stone of Power",
+  "value": 40.7,
+  "options": [
+   {
+    "tag": "NOW",
+    "id": 9533,
+    "name": "Masons Fraternity Ring",
+    "req": 40,
+    "ilvl": 49,
+    "bind": "BoP",
+    "gain_pct": 1.4,
+    "value": 53.6,
+    "src": [
+     "Dungeon quest: Divino-matic Rod (Zul'Farrak, lvl 47)",
+     "Quest: Divino-matic Rod (lvl 0) @ Chief Engineer Bilgewhizzle"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+14 Agility, +5 Stamina",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 276202,
+    "name": "Disengagement Ring",
+    "req": 40,
+    "ilvl": 45,
+    "bind": "BoP",
+    "gain_pct": 0.3,
+    "value": 43.7,
+    "src": [
+     "Rep: Powderfuse Friendly"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+8 Agility, +5 Spirit",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 4550,
+    "name": "Coldwater Ring",
+    "req": 41,
+    "ilvl": 46,
+    "bind": "BoP",
+    "gain_pct": 0.1,
+    "value": 41.8,
+    "src": [
+     "Quest: Death From Below (lvl 0) @ Shakes O'Breen"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+3 Intellect, +9 Spirit",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 9655,
+    "name": "Seedtime Hoop",
+    "req": 45,
+    "ilvl": 50,
+    "bind": "BoP",
+    "gain_pct": 0.0,
+    "value": 40.7,
+    "src": [
+     "Quest: The Morrow Stone (lvl 0) @ Equinex Monolith"
+    ],
+    "extra": [],
+    "q": 2,
+    "stats": "+4 Strength, +10 Spirit",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 2933,
+    "name": "Seal of Wrynn",
+    "req": 26,
+    "ilvl": 31,
+    "bind": "BoP",
+    "gain_pct": -0.2,
+    "value": 38.6,
+    "src": [
+     "Quest: An Audience with the King (lvl 0) @ Baros Alexston"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+3 Strength, +3 Agility, +4 Stamina, +4 Intellect, +3 Spirit",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 9447,
+    "name": "Electrocutioner Lagnut",
+    "req": 29,
+    "ilvl": 34,
+    "bind": "BoP",
+    "gain_pct": -0.3,
+    "value": 37.8,
+    "src": [
+     "Drop: Electrocutioner 6000 (Gnomeregan) 31%"
+    ],
+    "extra": [
+     "Equip: Increases healing done by up to"
+    ],
+    "q": 3,
+    "stats": "+4 Stamina, +7 Spirit",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 6693,
+    "name": "Agamaggan's Clutch",
+    "req": 30,
+    "ilvl": 35,
+    "bind": "BoP",
+    "gain_pct": -0.5,
+    "value": 36.3,
+    "src": [
+     "Drop: Charlga Razorflank (Razorfen Kraul) 36%"
+    ],
+    "extra": [
+     "Equip:"
+    ],
+    "q": 3,
+    "stats": "+5 Stamina, +6 Spirit",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 273031,
+    "name": "Runemender's Seal",
+    "req": 27,
+    "ilvl": 32,
+    "bind": "BoP",
+    "gain_pct": -0.6,
+    "value": 35.4,
+    "src": [
+     "Drop: Arcane Anomaly (City of Dalaran) 35%"
+    ],
+    "extra": [
+     "Equip: Increases healing done by up to"
+    ],
+    "q": 3,
+    "stats": "+6 Intellect, +6 Spirit",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 21203,
+    "name": "Signet Ring of the Bronze Dragonflight",
+    "req": 60,
+    "ilvl": 70,
+    "bind": "BoP",
+    "gain_pct": 7.1,
+    "value": 106.1,
+    "src": [
+     "Quest: The Path of the Conqueror (lvl 60) @ Anachronos"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+21 Agility, +11 Stamina, +1% hit",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 21202,
+    "name": "Signet Ring of the Bronze Dragonflight",
+    "req": 60,
+    "ilvl": 65,
+    "bind": "BoP",
+    "gain_pct": 6.4,
+    "value": 99.7,
+    "src": [
+     "Quest: The Path of the Conqueror (lvl 60) @ Anachronos"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+19 Agility, +9 Stamina, +1% hit",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 21201,
+    "name": "Signet Ring of the Bronze Dragonflight",
+    "req": 60,
+    "ilvl": 60,
+    "bind": "BoP",
+    "gain_pct": 6.0,
+    "value": 96.6,
+    "src": [
+     "Quest: The Path of the Conqueror (lvl 60) @ Anachronos"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+18 Agility, +8 Stamina, +1% hit",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 21417,
+    "name": "Ring of Unspoken Names",
+    "req": 60,
+    "ilvl": 65,
+    "bind": "BoP",
+    "gain_pct": 4.6,
+    "value": 82.8,
+    "src": [
+     "Quest: Ring of Unspoken Names (lvl 60) @ Windcaller Yessendra",
+     "Set: Implements of Unspoken Names"
+    ],
+    "extra": [
+     "Equip: Increases damage and healing done by magical spells and effects by up to"
+    ],
+    "q": 4,
+    "stats": "+12 Stamina, +1% hit, +1% crit",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 21182,
+    "name": "Band of Earthen Might",
+    "req": 60,
+    "ilvl": 66,
+    "bind": "BoP",
+    "gain_pct": 4.4,
+    "value": 81.1,
+    "src": [
+     "Quest: Veteran's Battlegear (lvl 0) @ Vargus"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+6 Strength, +1% hit, +1% crit",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 21402,
+    "name": "Signet of the Unseen Path",
+    "req": 60,
+    "ilvl": 65,
+    "bind": "BoP",
+    "gain_pct": 3.3,
+    "value": 71.4,
+    "src": [
+     "Quest: Signet of the Unseen Path (lvl 60) @ Windcaller Yessendra",
+     "Set: Trappings of the Unseen Path"
+    ],
+    "extra": [],
+    "q": 4,
+    "stats": "+19 Agility, +11 Stamina, +8 Intellect",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 18500,
+    "name": "Tarnished Elven Ring",
+    "req": 56,
+    "ilvl": 61,
+    "bind": "BoP",
+    "gain_pct": 3.3,
+    "value": 71.2,
+    "src": [
+     "Drop: Mizzle the Crafty (Dire Maul: North) 23%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+10 Agility, +1% hit",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 18314,
+    "name": "Ring of Demonic Guile",
+    "req": 54,
+    "ilvl": 59,
+    "bind": "BoP",
+    "gain_pct": 1.7,
+    "value": 56.0,
+    "src": [
+     "Drop: Alzzin the Wildshaper (Dire Maul: East) 19%"
+    ],
+    "extra": [],
+    "q": 3,
+    "stats": "+10 Intellect, +1% hit",
+    "atype": ""
+   }
+  ]
+ },
+ "TRINKET": {
+  "equipped": "Satchel of Potions",
+  "value": 0.0,
+  "options": [
+   {
+    "tag": "NOW",
+    "id": 18951,
+    "name": "Evonice's Landin' Pilla",
+    "req": 45,
+    "ilvl": 50,
+    "bind": "BoP",
+    "gain_pct": 4.3,
+    "value": 40.1,
+    "src": [
+     "Quest: None (lvl 0)"
+    ],
+    "extra": [
+     "Equip:"
+    ],
+    "q": 2,
+    "stats": "+10 Spirit",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 744,
+    "name": "Thunderbrew's Boot Flask",
+    "req": 39,
+    "ilvl": 44,
+    "bind": "BoP",
+    "gain_pct": 3.5,
+    "value": 32.1,
+    "src": [
+     "Quest: Sweet Amber (lvl 0) @ Grimbooze Thunderbrew"
+    ],
+    "extra": [
+     "Use:"
+    ],
+    "q": 2,
+    "stats": "+8 Spirit",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 274152,
+    "name": "Roogug's Severed Head",
+    "req": 25,
+    "ilvl": 30,
+    "bind": "BoP",
+    "gain_pct": 2.6,
+    "value": 24.1,
+    "src": [
+     "Drop: Roogug (Razorfen Kraul)"
+    ],
+    "extra": [
+     "Use:"
+    ],
+    "q": 3,
+    "stats": "+6 Spirit",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 271904,
+    "name": "Volunteer's Lucky Seal",
+    "req": 33,
+    "ilvl": 38,
+    "bind": "BoP",
+    "gain_pct": 1.8,
+    "value": 17.1,
+    "src": [
+     "Rep: Theramore Expeditionary Force Friendly"
+    ],
+    "extra": [
+     "Equip:"
+    ],
+    "q": 3,
+    "stats": "+7 Stamina",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 13503,
+    "name": "Alchemist's Stone",
+    "req": 45,
+    "ilvl": 50,
+    "bind": "BoP",
+    "gain_pct": 1.7,
+    "value": 16.0,
+    "src": [
+     "Craft: Alchemy 275"
+    ],
+    "extra": [
+     "Equip:"
+    ],
+    "q": 2,
+    "stats": "+4 Spirit",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 273298,
+    "name": "Lookie's Spyglass",
+    "req": 18,
+    "ilvl": 23,
+    "bind": "BoP",
+    "gain_pct": 0.4,
+    "value": 4.0,
+    "src": [
+     "Drop: Cookie (The Deadmines)"
+    ],
+    "extra": [
+     "Use:"
+    ],
+    "q": 3,
+    "stats": "+1 Spirit",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 2820,
+    "name": "Nifty Stopwatch",
+    "req": 45,
+    "ilvl": 50,
+    "bind": "BoP",
+    "gain_pct": 0.0,
+    "value": 0.0,
+    "src": [
+     "Quest: This Is Going to Be Hard (lvl 0) @ Lotwil Veriatus"
+    ],
+    "extra": [
+     "Use:"
+    ],
+    "q": 2,
+    "stats": "",
+    "atype": ""
+   },
+   {
+    "tag": "NOW",
+    "id": 3456,
+    "name": "Dog Whistle",
+    "req": 25,
+    "ilvl": 30,
+    "bind": "BoP",
+    "gain_pct": 0.0,
+    "value": 0.0,
+    "src": [
+     "Drop: Houndmaster Loksey (Scarlet Monastery: Library) 25%"
+    ],
+    "extra": [
+     "Use:"
+    ],
+    "q": 3,
+    "stats": "",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 13213,
+    "name": "Smolderweb's Eye",
+    "req": 55,
+    "ilvl": 60,
+    "bind": "BoP",
+    "gain_pct": 4.4,
+    "value": 40.8,
+    "src": [
+     "Drop: Mother Smolderweb (Lower Blackrock Spire) 12%"
+    ],
+    "extra": [
+     "Use:"
+    ],
+    "q": 3,
+    "stats": "+1% hit",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 18465,
+    "name": "Royal Seal of Eldre'Thalas",
+    "req": 60,
+    "ilvl": 62,
+    "bind": "BoP",
+    "gain_pct": 4.4,
+    "value": 40.8,
+    "src": [
+     "Quest: None (lvl 0)"
+    ],
+    "extra": [
+     "Equip: +"
+    ],
+    "q": 3,
+    "stats": "+1% hit",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 19992,
+    "name": "Devilsaur Tooth",
+    "req": 50,
+    "ilvl": 52,
+    "bind": "BoP",
+    "gain_pct": 2.3,
+    "value": 21.2,
+    "src": [
+     "Dungeon quest: The Green Drake (The Temple of Atal'Hakkar, lvl 52)",
+     "Quest: The Green Drake (lvl 0) @ Ogtinc"
+    ],
+    "extra": [
+     "Use:"
+    ],
+    "q": 3,
+    "stats": "+7 Agility",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 13382,
+    "name": "Cannonball Runner",
+    "req": 56,
+    "ilvl": 61,
+    "bind": "BoP",
+    "gain_pct": 2.2,
+    "value": 20.4,
+    "src": [
+     "Drop: Cannon Master Willey (Stratholme) 18%"
+    ],
+    "extra": [
+     "Use:"
+    ],
+    "q": 3,
+    "stats": "+0.5% hit",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 271903,
+    "name": "Enriched Seal",
+    "req": 48,
+    "ilvl": 53,
+    "bind": "BoP",
+    "gain_pct": 0.1,
+    "value": 1.4,
+    "src": [
+     "Rep: Theramore Expeditionary Force Friendly"
+    ],
+    "extra": [
+     "Equip:"
+    ],
+    "q": 3,
+    "stats": "+10 Stamina",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 10455,
+    "name": "Chained Essence of Eranikus",
+    "req": 48,
+    "ilvl": 60,
+    "bind": "BoP",
+    "gain_pct": 0.0,
+    "value": 0.0,
+    "src": [
+     "Dungeon quest: The Essence of Eranikus (The Temple of Atal'Hakkar, lvl 55)",
+     "Quest: None (lvl 0)"
+    ],
+    "extra": [
+     "Use:"
+    ],
+    "q": 2,
+    "stats": "",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 10659,
+    "name": "Shard of the Splithooves",
+    "req": 52,
+    "ilvl": 57,
+    "bind": "BoP",
+    "gain_pct": 0.0,
+    "value": 0.0,
+    "src": [
+     "Quest: Heroes of Old (lvl 0) @ Corporal Thund Splithoof"
+    ],
+    "extra": [
+     "Equip: +"
+    ],
+    "q": 2,
+    "stats": "",
+    "atype": ""
+   },
+   {
+    "tag": "LVL",
+    "id": 10779,
+    "name": "Demon's Blood",
+    "req": 60,
+    "ilvl": 60,
+    "bind": "BoP",
+    "gain_pct": 0.0,
+    "value": 0.0,
+    "src": [
+     "Quest: You Are Rakh'likh, Demon (lvl 0) @ Fallen Hero of the Horde"
+    ],
+    "extra": [
+     "Equip: Increased Defense +"
+    ],
+    "q": 2,
+    "stats": "",
+    "atype": ""
+   }
+  ]
+ },
+ "weapons": {
+  "NOW": [
+   {
+    "value": 171.8,
+    "mh": {
+     "id": 10750,
+     "name": "Lifeforce Dirk",
+     "q": 3,
+     "req": 40,
+     "dps": 35.94,
+     "spd": 1.6,
+     "bind": "BoP",
+     "src": [
+      "Dungeon quest: The God Hakkar (The Temple of Atal'Hakkar, lvl 53)",
+      "Quest: The God Hakkar (lvl 0) @ Yeh'kinya"
+     ],
+     "stats": "+11 Stamina, 35.9 dps / 1.6s"
+    },
+    "oh": {
+     "id": 6829,
+     "name": "Sword of Serenity",
+     "q": 3,
+     "req": 34,
+     "dps": 30.0,
+     "spd": 2.2,
+     "bind": "BoP",
+     "src": [
+      "Dungeon quest: In the Name of the Light (Scarlet Monastery: Armory, lvl 40)",
+      "Dungeon quest: In the Name of the Light (Scarlet Monastery: Cathedral, lvl 40)",
+      "Quest: In the Name of the Light (lvl 0) @ Raleigh the Devout"
+     ],
+     "stats": "+9 Stamina, +4 Spirit, 30.0 dps / 2.2s"
+    }
+   },
+   {
+    "value": 168.9,
+    "mh": {
+     "id": 10750,
+     "name": "Lifeforce Dirk",
+     "q": 3,
+     "req": 40,
+     "dps": 35.94,
+     "spd": 1.6,
+     "bind": "BoP",
+     "src": [
+      "Dungeon quest: The God Hakkar (The Temple of Atal'Hakkar, lvl 53)",
+      "Quest: The God Hakkar (lvl 0) @ Yeh'kinya"
+     ],
+     "stats": "+11 Stamina, 35.9 dps / 1.6s"
+    },
+    "oh": {
+     "id": 9401,
+     "name": "Nordic Longshank",
+     "q": 3,
+     "req": 38,
+     "dps": 29.32,
+     "spd": 2.2,
+     "bind": "BoP",
+     "src": [
+      "Drop: Baelog (Uldaman) 9.3%"
+     ],
+     "stats": "+8 Agility, +5 Stamina, 29.3 dps / 2.2s"
+    }
+   },
+   {
+    "value": 167.6,
+    "mh": {
+     "id": 6829,
+     "name": "Sword of Serenity",
+     "q": 3,
+     "req": 34,
+     "dps": 30.0,
+     "spd": 2.2,
+     "bind": "BoP",
+     "src": [
+      "Dungeon quest: In the Name of the Light (Scarlet Monastery: Armory, lvl 40)",
+      "Dungeon quest: In the Name of the Light (Scarlet Monastery: Cathedral, lvl 40)",
+      "Quest: In the Name of the Light (lvl 0) @ Raleigh the Devout"
+     ],
+     "stats": "+9 Stamina, +4 Spirit, 30.0 dps / 2.2s"
+    },
+    "oh": {
+     "id": 9401,
+     "name": "Nordic Longshank",
+     "q": 3,
+     "req": 38,
+     "dps": 29.32,
+     "spd": 2.2,
+     "bind": "BoP",
+     "src": [
+      "Drop: Baelog (Uldaman) 9.3%"
+     ],
+     "stats": "+8 Agility, +5 Stamina, 29.3 dps / 2.2s"
+    }
+   },
+   {
+    "value": 166.9,
+    "mh": {
+     "id": 9401,
+     "name": "Nordic Longshank",
+     "q": 3,
+     "req": 38,
+     "dps": 29.32,
+     "spd": 2.2,
+     "bind": "BoP",
+     "src": [
+      "Drop: Baelog (Uldaman) 9.3%"
+     ],
+     "stats": "+8 Agility, +5 Stamina, 29.3 dps / 2.2s"
+    },
+    "oh": {
+     "id": 6829,
+     "name": "Sword of Serenity",
+     "q": 3,
+     "req": 34,
+     "dps": 30.0,
+     "spd": 2.2,
+     "bind": "BoP",
+     "src": [
+      "Dungeon quest: In the Name of the Light (Scarlet Monastery: Armory, lvl 40)",
+      "Dungeon quest: In the Name of the Light (Scarlet Monastery: Cathedral, lvl 40)",
+      "Quest: In the Name of the Light (lvl 0) @ Raleigh the Devout"
+     ],
+     "stats": "+9 Stamina, +4 Spirit, 30.0 dps / 2.2s"
+    }
+   },
+   {
+    "value": 165.5,
+    "mh": {
+     "id": 6829,
+     "name": "Sword of Serenity",
+     "q": 3,
+     "req": 34,
+     "dps": 30.0,
+     "spd": 2.2,
+     "bind": "BoP",
+     "src": [
+      "Dungeon quest: In the Name of the Light (Scarlet Monastery: Armory, lvl 40)",
+      "Dungeon quest: In the Name of the Light (Scarlet Monastery: Cathedral, lvl 40)",
+      "Quest: In the Name of the Light (lvl 0) @ Raleigh the Devout"
+     ],
+     "stats": "+9 Stamina, +4 Spirit, 30.0 dps / 2.2s"
+    },
+    "oh": {
+     "id": 10750,
+     "name": "Lifeforce Dirk",
+     "q": 3,
+     "req": 40,
+     "dps": 35.94,
+     "spd": 1.6,
+     "bind": "BoP",
+     "src": [
+      "Dungeon quest: The God Hakkar (The Temple of Atal'Hakkar, lvl 53)",
+      "Quest: The God Hakkar (lvl 0) @ Yeh'kinya"
+     ],
+     "stats": "+11 Stamina, 35.9 dps / 1.6s"
+    }
+   }
+  ],
+  "LVL": [
+   {
+    "value": 317.8,
+    "mh": {
+     "id": 21404,
+     "name": "Dagger of Veiled Shadows",
+     "q": 4,
+     "req": 60,
+     "dps": 51.67,
+     "spd": 1.8,
+     "bind": "BoP",
+     "src": [
+      "Quest: Dagger of Veiled Shadows (lvl 60) @ Warden Haro",
+      "Set: Emblems of Veiled Shadows"
+     ],
+     "stats": "+7 Strength, +15 Agility, +1% hit, 51.7 dps / 1.8s"
+    },
+    "oh": {
+     "id": 279261,
+     "name": "Greenhammer",
+     "q": 4,
+     "req": 60,
+     "dps": 47.39,
+     "spd": 2.3,
+     "bind": "BoE",
+     "src": [
+      "Craft: Blacksmithing 300"
+     ],
+     "stats": "+8 Agility, +12 Stamina, +1% hit, 47.4 dps / 2.3s"
+    }
+   },
+   {
+    "value": 313.3,
+    "mh": {
+     "id": 279261,
+     "name": "Greenhammer",
+     "q": 4,
+     "req": 60,
+     "dps": 47.39,
+     "spd": 2.3,
+     "bind": "BoE",
+     "src": [
+      "Craft: Blacksmithing 300"
+     ],
+     "stats": "+8 Agility, +12 Stamina, +1% hit, 47.4 dps / 2.3s"
+    },
+    "oh": {
+     "id": 21404,
+     "name": "Dagger of Veiled Shadows",
+     "q": 4,
+     "req": 60,
+     "dps": 51.67,
+     "spd": 1.8,
+     "bind": "BoP",
+     "src": [
+      "Quest: Dagger of Veiled Shadows (lvl 60) @ Warden Haro",
+      "Set: Emblems of Veiled Shadows"
+     ],
+     "stats": "+7 Strength, +15 Agility, +1% hit, 51.7 dps / 1.8s"
+    }
+   },
+   {
+    "value": 310.6,
+    "mh": {
+     "id": 21401,
+     "name": "Scythe of the Unseen Path",
+     "q": 4,
+     "req": 60,
+     "dps": 51.46,
+     "spd": 2.4,
+     "bind": "BoP",
+     "src": [
+      "Quest: Scythe of the Unseen Path (lvl 60) @ Warden Haro",
+      "Set: Trappings of the Unseen Path"
+     ],
+     "stats": "+16 Agility, +9 Stamina, 51.5 dps / 2.4s"
+    },
+    "oh": {
+     "id": 279261,
+     "name": "Greenhammer",
+     "q": 4,
+     "req": 60,
+     "dps": 47.39,
+     "spd": 2.3,
+     "bind": "BoE",
+     "src": [
+      "Craft: Blacksmithing 300"
+     ],
+     "stats": "+8 Agility, +12 Stamina, +1% hit, 47.4 dps / 2.3s"
+    }
+   },
+   {
+    "value": 307.9,
+    "mh": {
+     "id": 21404,
+     "name": "Dagger of Veiled Shadows",
+     "q": 4,
+     "req": 60,
+     "dps": 51.67,
+     "spd": 1.8,
+     "bind": "BoP",
+     "src": [
+      "Quest: Dagger of Veiled Shadows (lvl 60) @ Warden Haro",
+      "Set: Emblems of Veiled Shadows"
+     ],
+     "stats": "+7 Strength, +15 Agility, +1% hit, 51.7 dps / 1.8s"
+    },
+    "oh": {
+     "id": 21401,
+     "name": "Scythe of the Unseen Path",
+     "q": 4,
+     "req": 60,
+     "dps": 51.46,
+     "spd": 2.4,
+     "bind": "BoP",
+     "src": [
+      "Quest: Scythe of the Unseen Path (lvl 60) @ Warden Haro",
+      "Set: Trappings of the Unseen Path"
+     ],
+     "stats": "+16 Agility, +9 Stamina, 51.5 dps / 2.4s"
+    }
+   },
+   {
+    "value": 307.6,
+    "mh": {
+     "id": 21401,
+     "name": "Scythe of the Unseen Path",
+     "q": 4,
+     "req": 60,
+     "dps": 51.46,
+     "spd": 2.4,
+     "bind": "BoP",
+     "src": [
+      "Quest: Scythe of the Unseen Path (lvl 60) @ Warden Haro",
+      "Set: Trappings of the Unseen Path"
+     ],
+     "stats": "+16 Agility, +9 Stamina, 51.5 dps / 2.4s"
+    },
+    "oh": {
+     "id": 21404,
+     "name": "Dagger of Veiled Shadows",
+     "q": 4,
+     "req": 60,
+     "dps": 51.67,
+     "spd": 1.8,
+     "bind": "BoP",
+     "src": [
+      "Quest: Dagger of Veiled Shadows (lvl 60) @ Warden Haro",
+      "Set: Emblems of Veiled Shadows"
+     ],
+     "stats": "+7 Strength, +15 Agility, +1% hit, 51.7 dps / 1.8s"
+    }
+   }
+  ]
+ },
+ "ranged": [
+  {
+   "id": 279273,
+   "name": "Hyper Deluxe Sniper Rifle Mk XVII",
+   "q": 4,
+   "req": 60,
+   "dps": 36.8,
+   "spd": 2.5,
+   "bind": "BoE",
+   "src": [
+    "Craft: Engineering 300"
+   ],
+   "stats": "+8 Stamina, +6 Spirit, 36.8 dps / 2.5s"
+  },
+  {
+   "id": 18282,
+   "name": "Core Marksman Rifle",
+   "q": 4,
+   "req": 60,
+   "dps": 36.8,
+   "spd": 2.5,
+   "bind": "BoE",
+   "src": [
+    "Craft: Engineering 300"
+   ],
+   "stats": "+1% hit, 36.8 dps / 2.5s"
+  },
+  {
+   "id": 272594,
+   "name": "Premier High Warlord's Recurve",
+   "q": 4,
+   "req": 60,
+   "dps": 36.94,
+   "spd": 1.8,
+   "bind": "BoP",
+   "src": [
+    "Set: High Warlord's Weapons"
+   ],
+   "stats": "+6 Stamina, 36.9 dps / 1.8s"
+  },
+  {
+   "id": 272841,
+   "name": "Premier Grand Marshal's Bullseye",
+   "q": 4,
+   "req": 60,
+   "dps": 36.94,
+   "spd": 1.8,
+   "bind": "BoP",
+   "src": [
+    "Set: Grand Marshal's Weapons"
+   ],
+   "stats": "+6 Stamina, 36.9 dps / 1.8s"
+  },
+  {
+   "id": 272595,
+   "name": "Premier High Warlord's Crossbow",
+   "q": 4,
+   "req": 60,
+   "dps": 36.9,
+   "spd": 2.9,
+   "bind": "BoP",
+   "src": [
+    "Set: High Warlord's Weapons"
+   ],
+   "stats": "+6 Stamina, 36.9 dps / 2.9s"
+  },
+  {
+   "id": 272599,
+   "name": "Premier High Warlord's Street Sweeper",
+   "q": 4,
+   "req": 60,
+   "dps": 36.9,
+   "spd": 2.9,
+   "bind": "BoP",
+   "src": [
+    "Set: High Warlord's Weapons"
+   ],
+   "stats": "+6 Stamina, 36.9 dps / 2.9s"
+  }
+ ],
+ "equipped": [
+  {
+   "slot": "HEAD",
+   "name": "Tracker's Headband of the Bandit",
+   "ilvl": 45,
+   "q": "UNCOMMON",
+   "id": 9921,
+   "enchant": null
+  },
+  {
+   "slot": "NECK",
+   "name": "Amberglow Talisman",
+   "ilvl": 44,
+   "q": "RARE",
+   "id": 10824,
+   "enchant": null
+  },
+  {
+   "slot": "SHOULDER",
+   "name": "Fleshhide Shoulders",
+   "ilvl": 42,
+   "q": "RARE",
+   "id": 10774,
+   "enchant": null
+  },
+  {
+   "slot": "CHEST",
+   "name": "Tunic of Westfall",
+   "ilvl": 24,
+   "q": "RARE",
+   "id": 2041,
+   "enchant": null
+  },
+  {
+   "slot": "WAIST",
+   "name": "Warden's Waistband",
+   "ilvl": 40,
+   "q": "UNCOMMON",
+   "id": 14598,
+   "enchant": null
+  },
+  {
+   "slot": "LEGS",
+   "name": "Oilskin Leggings",
+   "ilvl": 47,
+   "q": "RARE",
+   "id": 9414,
+   "enchant": null
+  },
+  {
+   "slot": "FEET",
+   "name": "Excelsior Boots",
+   "ilvl": 41,
+   "q": "UNCOMMON",
+   "id": 4109,
+   "enchant": null
+  },
+  {
+   "slot": "WRIST",
+   "name": "Duracin Bracers",
+   "ilvl": 38,
+   "q": "UNCOMMON",
+   "id": 10358,
+   "enchant": null
+  },
+  {
+   "slot": "HANDS",
+   "name": "Fists of Impending Doom",
+   "ilvl": 42,
+   "q": "UNCOMMON",
+   "id": 270075,
+   "enchant": null
+  },
+  {
+   "slot": "FINGER_1",
+   "name": "Archaedic Stone of Power",
+   "ilvl": 47,
+   "q": "RARE",
+   "id": 11118,
+   "enchant": null
+  },
+  {
+   "slot": "FINGER_2",
+   "name": "Field Researcher's Loop",
+   "ilvl": 35,
+   "q": "RARE",
+   "id": 281634,
+   "enchant": null
+  },
+  {
+   "slot": "TRINKET_1",
+   "name": "Satchel of Potions",
+   "ilvl": 33,
+   "q": "UNCOMMON",
+   "id": 280766,
+   "enchant": null
+  },
+  {
+   "slot": "BACK",
+   "name": "Ranger Cloak of the Wolf",
+   "ilvl": 40,
+   "q": "UNCOMMON",
+   "id": 7483,
+   "enchant": null
+  },
+  {
+   "slot": "MAIN_HAND",
+   "name": "Guardian Staff",
+   "ilvl": 42,
+   "q": "UNCOMMON",
+   "id": 270078,
+   "enchant": null
+  },
+  {
+   "slot": "RANGED",
+   "name": "Truthseeker's Bow",
+   "ilvl": 45,
+   "q": "RARE",
+   "id": 277254,
+   "enchant": "Scope (+2 Damage)"
+  },
+  {
+   "slot": "AMMO",
+   "name": "Jagged Arrow",
+   "ilvl": 45,
+   "q": "COMMON",
+   "id": 11285,
+   "enchant": null
+  }
+ ],
+ "meta": {
+  "level": 46,
+  "plan_max": 60,
+  "tooltips": 5125,
+  "candidates": 2366,
+  "skipped_random": 36
+ }
+}

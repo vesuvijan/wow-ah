@@ -23,7 +23,19 @@ ARMOR = {"1": "Cloth", "2": "Leather", "3": "Mail", "4": "Plate", "6": "Shield"}
 STATMAP = {"Agility": "agi", "Strength": "str", "Stamina": "sta", "Intellect": "int", "Spirit": "spi"}
 
 
+DPSMODE = os.environ.get("DPS") == "1"
+SUFFIX = "_dps" if DPSMODE else ""
+
+
 def weights(level):
+    w = _weights(level)
+    if DPSMODE:   # sadece hasar: caster/mana statlarini sifirla
+        for k in ("spi", "int", "mp5", "sta", "hp", "hp5", "sp", "nature", "armor"):
+            w[k] = 0
+    return w
+
+
+def _weights(level):
     k = W["curve"]
     lo = max([x for x in k if x[0] <= level], key=lambda x: x[0], default=k[0])
     hi = min([x for x in k if x[0] >= level], key=lambda x: x[0], default=k[-1])
@@ -170,6 +182,18 @@ def value(r, w, hand="MH"):
     return v
 
 
+def stat_str(c):
+    parts = [f"+{v} {k[:3] if k != 'Stamina' else 'Sta'}" for k, v in c["stats"].items()]
+    parts = [f"+{v} {k}" for k, v in c["stats"].items()]
+    for k, v in c["eff"].items():
+        parts.append({"crit": f"+{v:g}% crit", "hit": f"+{v:g}% hit", "ap": f"+{v} AP", "rap": f"+{v} ranged AP", "mp5": f"+{v} mp5"}.get(k, k))
+    if c.get("armor"):
+        parts.append(f"{c['armor']} armor")
+    if c.get("dps"):
+        parts.append(f"{c['dps']:.1f} dps / {c['spd']:.1f}s")
+    return ", ".join(parts)
+
+
 def money(c):
     c = int(round(c)); g, rem = divmod(c, 10000); s, cu = divmod(rem, 100)
     return "".join([f"{g}g" if g else "", f"{s}s" if s else "", f"{cu}c" if cu or not (g or s) else ""])
@@ -256,8 +280,8 @@ def main():
         cur = eq_val.get(esl, 0)
         it = equipped.get(esl, {})
         pool = [c for c in cands if c["slot"] == cs and c["id"] not in eq_ids]
-        now = sorted([c for c in pool if c["req"] <= LEVEL and reachable(c, LEVEL)], key=lambda c: -value(c, w_now))[:6]
-        later = sorted([c for c in pool if LEVEL < c["req"] <= PLAN_MAX], key=lambda c: -value(c, w_late))[:4]
+        now = sorted([c for c in pool if c["req"] <= LEVEL and reachable(c, LEVEL)], key=lambda c: -value(c, w_now))[:8]
+        later = sorted([c for c in pool if LEVEL < c["req"] <= PLAN_MAX], key=lambda c: -value(c, w_late))[:8]
         lines.append(f"== {cs}: now {it.get('name','-')} (ilvl {it.get('ilvl','-')}) value {cur:.0f}{' ['+eq_note.get(esl,'')+']' if eq_note.get(esl) else ''}")
         rows = []
         for tag, grp, w in (("NOW", now, w_now), ("LVL" , later, w_late)):
@@ -265,7 +289,7 @@ def main():
                 v = value(c, w)
                 gain = 100 * (v - cur) / total
                 rows.append({"tag": tag, "id": c["id"], "name": c["name"], "req": c["req"], "ilvl": c["ilvl"], "bind": c["bind"], "gain_pct": round(gain, 1),
-                             "value": round(v, 1), "src": src_text(c["id"], ah), "extra": c["unscored_effects"][:2]})
+                             "value": round(v, 1), "src": src_text(c["id"], ah), "extra": c["unscored_effects"][:2], "q": c["q"], "stats": stat_str(c), "atype": c.get("armor_type", "")})
                 lines.append(f"  {tag} {c['name'][:30]:<30} req{c['req']:>3} ilvl{c['ilvl']:>3} {c['bind']:<3} {gain:+5.1f}%  {' | '.join(rows[-1]['src'])}" + (f"  [+effect not scored: {'; '.join(c['unscored_effects'][:1])[:70]}]" if c["unscored_effects"] else ""))
         plan[cs] = {"equipped": it.get("name"), "value": round(cur, 1), "options": rows}
         lines.append("")
@@ -283,12 +307,14 @@ def main():
                     continue
                 pairs.append((value(a, w_now, "MH") + value(b, w_now, "OH"), a, b))
         return sorted(pairs, key=lambda x: -x[0])[:6]
+    def wi(c):
+        return {"id": c["id"], "name": c["name"], "q": c["q"], "req": c["req"], "dps": c["dps"], "spd": c["spd"], "bind": c["bind"], "src": src_text(c["id"], ah), "stats": stat_str(c)}
     wq = {}
     for tag, lvl in (("NOW", LEVEL), ("LVL", PLAN_MAX)):
-        for v, a, b in best_pairs(lvl):
+        for v, a, b in best_pairs(lvl)[:5]:
             lines.append(f"  {tag} MH {a['name'][:24]} ({a['dps']:.1f} dps, {a['spd']:.1f}s, req{a['req']}: {src_text(a['id'], ah)[0]})")
             lines.append(f"      OH {b['name'][:24]} ({b['dps']:.1f} dps, {b['spd']:.1f}s, req{b['req']}: {src_text(b['id'], ah)[0]})  value {v:.0f}")
-            wq.setdefault(tag, []).append({"mh": a["id"], "oh": b["id"], "value": round(v, 1)})
+            wq.setdefault(tag, []).append({"value": round(v, 1), "mh": wi(a), "oh": wi(b)})
     two = sorted([c for c in cands if c["slot"] == "2H"], key=lambda c: -value(c, w_now, "MH"))[:3]
     lines.append("  2H reference (you chose dual wield): " + "; ".join(f"{c['name']} ({c['dps']:.1f} dps, req{c['req']})" for c in two))
     rg = sorted([c for c in cands if c["slot"] == "RANGED" and c["req"] <= PLAN_MAX], key=lambda c: -value(c, w_now))[:6]
@@ -297,10 +323,13 @@ def main():
     for c in rg:
         lines.append(f"  {c['name'][:28]:<28} req{c['req']:>3} {c['dps']:.1f} dps {c['bind']} | {' | '.join(src_text(c['id'], ah))}")
     plan["weapons"] = wq
+    plan["ranged"] = [{"id": c["id"], "name": c["name"], "q": c["q"], "req": c["req"], "dps": c["dps"], "spd": c["spd"], "bind": c["bind"], "src": src_text(c["id"], ah), "stats": stat_str(c)} for c in rg]
+    plan["equipped"] = [{"slot": k, "name": v["name"], "ilvl": v["ilvl"], "q": v["quality"], "id": v["id"], "enchant": v.get("enchant")} for k, v in equipped.items()]
+    plan["meta"] = {"level": LEVEL, "plan_max": PLAN_MAX, "tooltips": len(items), "candidates": len(cands), "skipped_random": len(skipped_random)}
     lines.append("")
     lines.append(f"Skipped (random suffix, stats unknown until you see the item): {len(skipped_random)} items")
-    open("data/gear_plan.txt", "w", encoding="utf-8").write("\n".join(lines) + "\n")
-    json.dump(plan, open("data/gear_plan.json", "w"), indent=1)
+    open(f"data/gear_plan{SUFFIX}.txt", "w", encoding="utf-8").write("\n".join(lines) + "\n")
+    json.dump(plan, open(f"data/gear_plan{SUFFIX}.json", "w"), indent=1)
     print("\n".join(lines))
 
 
