@@ -10,6 +10,18 @@ on:
         description: "Bitis item ID"
         required: true
         default: "25000"
+      ids_file:
+        description: "Opsiyonel: ID listesi JSON dosyasi (repo icinde)"
+        required: false
+        default: ""
+      ns:
+        description: "Namespace"
+        required: false
+        default: "static-forever-eu"
+      tag:
+        description: "Cikti dosya etiketi"
+        required: false
+        default: ""
 permissions:
   contents: write
 jobs:
@@ -28,6 +40,9 @@ jobs:
           REGION: eu
           START: ${{ inputs.start }}
           END: ${{ inputs.end }}
+          IDS_FILE: ${{ inputs.ids_file }}
+          NS: ${{ inputs.ns }}
+          TAG: ${{ inputs.tag }}
         run: python items_crawl.py
       - name: Publish to items branch (keeps previous chunks)
         run: |

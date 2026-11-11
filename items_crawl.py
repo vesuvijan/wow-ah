@@ -14,6 +14,8 @@ import fetch_ah as F
 REGION = os.environ.get("REGION", "eu")
 NS = os.environ.get("NS", f"static-forever-{REGION}")
 START, END = int(os.environ.get("START", "1")), int(os.environ.get("END", "25000"))
+IDS_FILE = os.environ.get("IDS_FILE", "")
+TAG = os.environ.get("TAG", "")
 RATE = float(os.environ.get("RATE", "9"))
 DEADLINE = time.time() + float(os.environ.get("MAX_MIN", "330")) * 60
 lock = threading.Lock()
@@ -77,7 +79,8 @@ def main():
     os.makedirs("data", exist_ok=True)
     items, stat = {}, {"ok": 0, "404": 0, "other": 0, "skip": 0}
     with ThreadPoolExecutor(max_workers=8) as ex:
-        for k, (i, r) in enumerate(ex.map(fetch, ((i, token) for i in range(START, END + 1)))):
+        id_list = json.load(open(IDS_FILE)) if IDS_FILE else range(START, END + 1)
+        for k, (i, r) in enumerate(ex.map(fetch, ((i, token) for i in id_list))):
             if isinstance(r, dict):
                 items[str(i)] = r
                 stat["ok"] += 1
@@ -92,7 +95,7 @@ def main():
             if k and k % 3000 == 0:  # token yenile (24 saat gecerli ama guvenli olsun)
                 pass
     out = {"ns": NS, "start": START, "end": END, "fetched": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "stat": stat, "items": items}
-    with open(f"data/items_{START}_{END}.json", "w", encoding="utf-8") as f:
+    with open(f"data/items_{TAG or str(START) + '_' + str(END)}.json", "w", encoding="utf-8") as f:
         json.dump(out, f, separators=(",", ":"))
     print("bitti", stat)
 
