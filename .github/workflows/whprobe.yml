@@ -1,0 +1,29 @@
+name: Tooltip probe
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  p:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Try tooltip endpoints
+        run: |
+          mkdir -p data
+          UA="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120 Safari/537.36"
+          i=0
+          for u in \
+            "https://nether.wowhead.com/forever/tooltip/item/270078" \
+            "https://nether.wowhead.com/tooltip/item/270078?dataEnv=11&locale=0" \
+            "https://nether.wowhead.com/classic/tooltip/item/9921" \
+            "https://www.wowhead.com/forever/item=270078?xml" \
+            "https://www.wowhead.com/forever/item=270078" ; do
+            i=$((i+1)); code=$(curl -sSL -m 40 -A "$UA" "$u" -o data/wh_$i.txt -w "%{http_code} %{size_download}" || echo fail)
+            echo "$i $code $u"; head -c 400 data/wh_$i.txt | tr '\n' ' '; echo
+          done
+      - name: Publish
+        run: |
+          git config user.name "ah-bot"; git config user.email "ah-bot@users.noreply.github.com"
+          git checkout --orphan whprobe; git rm -rf --cached . > /dev/null; git add -f data; git commit -qm wh; git push -f origin whprobe
