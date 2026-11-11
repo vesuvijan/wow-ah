@@ -44,7 +44,7 @@ jobs:
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
-          python -c "import alerts; alerts.send('Test - AH uyari botu calisiyor')"
+          python -c "import alerts; alerts.demo()"
       - name: Publish to snapshot branch
         run: |
           rm -f data/names.json
