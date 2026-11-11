@@ -1,0 +1,38 @@
+name: Armory (character)
+on:
+  workflow_dispatch:
+    inputs:
+      realm:
+        description: "Realm adi ya da slug"
+        required: true
+      character:
+        description: "Karakter adi"
+        required: true
+permissions:
+  contents: write
+jobs:
+  armory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch character
+        env:
+          BLIZZARD_CLIENT_ID: ${{ secrets.BLIZZARD_CLIENT_ID }}
+          BLIZZARD_CLIENT_SECRET: ${{ secrets.BLIZZARD_CLIENT_SECRET }}
+          REGION: eu
+          REALM: ${{ inputs.realm }}
+          CHAR: ${{ inputs.character }}
+        run: python char_probe.py
+      - name: Publish to char branch
+        run: |
+          git config user.name "ah-bot"
+          git config user.email "ah-bot@users.noreply.github.com"
+          git checkout --orphan char
+          git rm -rf --cached . > /dev/null
+          git add -f data
+          git commit -m "char $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -f origin char
