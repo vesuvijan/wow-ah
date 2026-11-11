@@ -3,6 +3,11 @@ on:
   schedule:
     - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
+    inputs:
+      test_discord:
+        description: "Discord'a test mesaji gonder"
+        type: boolean
+        default: false
 permissions:
   contents: write
 concurrency:
@@ -34,6 +39,12 @@ jobs:
           HOUSES: "123"
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: python history.py
+      - name: Discord test message
+        if: ${{ inputs.test_discord }}
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          python -c "import alerts; alerts.send('Test - AH uyari botu calisiyor')"
       - name: Publish to snapshot branch
         run: |
           rm -f data/names.json
