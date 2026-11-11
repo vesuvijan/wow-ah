@@ -330,7 +330,7 @@ def todo_lines(fresh):
             elif kind == "snipe":
                 lines.append(f"SNIPE {r[0]} at {cm(r[1])} (resell {cm(r[3])})")
             elif kind == "flip":
-                lines.append(f"CRAFT {r[0]} ({r[4]}) -> sell to NPC for +{cm(r[3])} profit each. Mats: {r[5]}")
+                lines.append(f"CRAFT {r[0]} ({r[4]}): buy {r[5]} on the AH (about {cm(r[1])} total), craft it, sell it to any vendor for {cm(r[2])} = {cm(r[3])} profit per craft")
             elif kind == "favor":
                 if len(r) > 6:
                     d = r[6]
