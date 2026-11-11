@@ -120,14 +120,14 @@ def fmt_row(kind, r):
     if kind == "favor":   # [crate, per_favor, F, bundle, crate_price, "3x ~44s 30c"]
         return f"{short(r[0])[:14]:<15}{cm(r[1]) + '/F':>9} {cm(r[5])}"
     if kind == "mat":     # [name, simdi, medyan, "-%20", stok, ihtiyac]
-        return f"{r[0][:17]:<17}{cm(r[1]):>8}{r[3].replace('%', ''):>6}{r[5]:>5}"
+        return f"{r[0][:17]:<17}{cm(r[1]):>8}{r[3].replace('%', ''):>6}{r[5]:>6}"
     return f"{r[0][:16]:<17}{cm(r[1]) + '>' + cm(r[3]):>13} {cm(r[4])}"   # snipe
 
 
 SECTIONS = {
     "favor": ("Favor - ucuz crate", 0x2ECC71, f"{'Crate':<15}{'Net/Fav':>9} 60F icin",
               "Doldur, Marcy Baker'a teslim et."),
-    "mat": ("Malzeme dustu - toplu al", 0x3498DB, f"{'Item':<17}{'Simdi':>8}{'Fark':>6}{'Lazim':>5}",
+    "mat": ("Malzeme dustu - toplu al", 0x3498DB, f"{'Item':<17}{'Simdi':>8}{'Fark':>6}{'Lazim':>6}",
             "7 gunun en ucuz dilimi. 'Lazim' = rota ihtiyaci."),
     "snipe": ("Snipe - al ve yeniden sat", 0xE67E22, f"{'Item':<17}{'Ilan>Sonraki':>13} Kar",
               "Oyunda fiyati dogrula."),
