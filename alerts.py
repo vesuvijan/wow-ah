@@ -108,37 +108,45 @@ def run(snap, series, watch, cfg_path="alerts.json"):
     return fresh
 
 
-def table(headers, rows):
-    cols = list(zip(*([headers] + rows)))
-    widths = [max(len(c) for c in col) for col in cols]
-    line = lambda r: "  ".join(str(c).ljust(w) for c, w in zip(r, widths)).rstrip()
-    return "```\n" + "\n".join([line(headers), "-" * min(sum(widths) + 2 * len(widths), 70)] + [line(r) for r in rows]) + "\n```"
+def cm(x):
+    return str(x).replace(" ", "")
+
+
+def short(n):
+    return n.replace("Journeyman", "Jrny").replace("Apprentice", "Appr").replace("Expert", "Exp")
+
+
+def fmt_row(kind, r):
+    if kind == "favor":   # [crate, per_favor, F, bundle, crate_price, "3x ~44s 30c"]
+        return f"{short(r[0])[:14]:<15}{cm(r[1]) + '/F':>9} {cm(r[5])}"
+    if kind == "mat":     # [name, simdi, medyan, "-%20", stok, ihtiyac]
+        return f"{r[0][:17]:<17}{cm(r[1]):>8}{r[3].replace('%', ''):>6}{r[5]:>5}"
+    return f"{r[0][:16]:<17}{cm(r[1]) + '>' + cm(r[3]):>13} {cm(r[4])}"   # snipe
 
 
 SECTIONS = {
-    "favor": ("Favor - ucuz crate", 0x2ECC71, ["Crate", "/Favor", "F", "Bundle", "Crate", "60F icin"],
-              "Bundle'i doldur, Marcy Baker'a teslim et. /Favor = odul dusulmus net maliyet."),
-    "mat": ("Malzeme dustu - toplu al", 0x3498DB, ["Item", "Simdi", "7g med", "Fark", "Stok", "Rota ihtiy."],
-            "Fiyat son 7 gunun en ucuz dilimi. Rota ihtiyacina kadar al."),
-    "snipe": ("Snipe - hemen al, yeniden sat", 0xE67E22, ["Item", "Ilan", "Adet", "Sonraki", "Kazanc", "Stok"],
-              "En ucuz ilan bir sonrakinin <%60'i. Fiyati oyunda dogrula."),
+    "favor": ("Favor - ucuz crate", 0x2ECC71, f"{'Crate':<15}{'Net/Fav':>9} 60F icin",
+              "Doldur, Marcy Baker'a teslim et."),
+    "mat": ("Malzeme dustu - toplu al", 0x3498DB, f"{'Item':<17}{'Simdi':>8}{'Fark':>6}{'Lazim':>5}",
+            "7 gunun en ucuz dilimi. 'Lazim' = rota ihtiyaci."),
+    "snipe": ("Snipe - al ve yeniden sat", 0xE67E22, f"{'Item':<17}{'Ilan>Sonraki':>13} Kar",
+              "Oyunda fiyati dogrula."),
 }
 
 
 def send_embeds(fresh, local_now, demo=False):
     embeds = []
     for kind in ("favor", "mat", "snipe"):
-        items = sorted([f for f in fresh if f[0] == kind], key=lambda f: -f[2])
+        items = sorted([f for f in fresh if f[0] == kind], key=lambda f: -f[2])[:10]
         if not items:
             continue
-        title, color, headers, hint = SECTIONS[kind]
-        items = items[:10]
+        title, color, header, hint = SECTIONS[kind]
+        body = "\n".join([header] + [fmt_row(kind, f[1]) for f in items])
         embeds.append({"title": f"{title} ({len(items)})", "color": color,
-                       "description": hint + "\n" + table(headers, [f[1] for f in items])})
+                       "description": hint + "\n```\n" + body + "\n```"})
     summary = " | ".join(f"{SECTIONS[k][0].split(' - ')[0]} {sum(1 for f in fresh if f[0] == k)}" for k in ("favor", "mat", "snipe") if any(f[0] == k for f in fresh))
     embeds[-1]["footer"] = {"text": f"Veri: {local_now:%H:%M} (TR)" + (" | ORNEK VERI" if demo else "")}
-    payload = {"content": ("**ORNEK** " if demo else "") + "AH firsatlari: " + summary, "embeds": embeds}
-    post(payload)
+    post({"content": ("**ORNEK** " if demo else "") + "AH firsatlari: " + summary, "embeds": embeds})
 
 
 def post(payload):
