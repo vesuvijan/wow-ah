@@ -1,0 +1,36 @@
+name: Armory web (live page)
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "Karakter sayfasi URL"
+        required: true
+        default: "https://armorywowforever.com/c/forever/eu/pvp_rp/Docker-Tuckalot"
+permissions:
+  contents: write
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install playwright
+        run: |
+          pip install playwright
+          playwright install --with-deps chromium
+      - name: Load page
+        env:
+          URL: ${{ inputs.url }}
+        run: python armory_web.py
+      - name: Publish to web branch
+        run: |
+          git config user.name "ah-bot"
+          git config user.email "ah-bot@users.noreply.github.com"
+          git checkout --orphan web
+          git rm -rf --cached . > /dev/null
+          git add -f data
+          git commit -m "web $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -f origin web
