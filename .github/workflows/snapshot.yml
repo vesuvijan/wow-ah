@@ -49,7 +49,7 @@ jobs:
         run: python fetch_ah.py
       - name: Restore history and item names
         run: |
-          git fetch --depth=1 origin snapshot && for f in history.csv alert_state.json last_hash.txt report.txt; do git show FETCH_HEAD:data/$f > data/$f 2>/dev/null || true; done || true
+          git fetch --depth=1 origin snapshot && for f in history.csv alert_state.json last_hash.txt report.txt minhist.json; do git show FETCH_HEAD:data/$f > data/$f 2>/dev/null || true; done || true
           git fetch --depth=1 origin probe && git show FETCH_HEAD:data/names.json > data/names.json 2>/dev/null && git show FETCH_HEAD:data/recipes_static-forever-eu.json > data/recipes.json 2>/dev/null || true
       - name: History, report and Discord alerts
         env:

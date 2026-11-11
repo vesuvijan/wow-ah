@@ -219,7 +219,8 @@ def evaluate(book):
         if best[2] in SUPHELI_ITEMS:
             notes.append("material ID suphe")
         rows.append({"crate": name, "bundle": best[0], "mats": best[1], "crate_price": crate_price,
-                     "favor": favor, "total": total, "per_favor": total / favor, "notes": notes})
+                     "favor": favor, "total": total, "per_favor": total / favor, "notes": notes,
+                     "mat": best[2], "qty": int(best[0].split("x ")[0]), "reward": reward, "crate_id": crate_id})
     rows.sort(key=lambda r: r["per_favor"])
     return rows, missing
 

@@ -3,6 +3,7 @@
 Ortam: DISCORD_WEBHOOK_URL (yoksa sadece ekrana yazar). Ayarlar: alerts.json. Durum: data/alert_state.json"""
 import datetime
 import json
+import re
 import os
 import statistics
 import urllib.request
@@ -100,25 +101,62 @@ def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
             tgt = cfg.get("favor_target", 60)
             for r in [r for r in rows if r["per_favor"] <= cfg["favor_per_favor_max"]][:4]:
                 n = -(-tgt // r["favor"])
-                row = [r["crate"][:22], money(r["per_favor"]), str(r["favor"]), r["bundle"][:24], money(r["crate_price"]), f"{n}x ~{money(r['per_favor'] * n * r['favor'])}"]
+                row = [r["crate"][:22], money(r["per_favor"]), str(r["favor"]), r["bundle"][:24], money(r["crate_price"]), f"{n}x ~{money(r['per_favor'] * n * r['favor'])}", dict(r, n=n)]
                 found.append(("favor", f"favor{r['crate']}", r["per_favor"], row, -r["per_favor"]))
         except Exception as e:  # noqa: BLE001
             print("favor hesabi hatasi:", e)
 
-    # 3) snipe: en ucuz ilan bir sonraki fiyatin <%60'i
+    # 3a) gunluk en dusuk fiyat gecmisi (tum item/varyant) -> snipe icin "kendi tarihine gore ucuz mu" kontrolu
+    day_key = ts[:10]
+    try:
+        mh = json.load(open("data/minhist.json", encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        mh = {}
+    allk = dict(snap["items"]); allk.update(snap.get("variants", {}))
+    for k, v in allk.items():
+        if not v["l"]:
+            continue
+        e = mh.setdefault(k, {})
+        e[day_key] = min(e.get(day_key, 1e18), v["l"][0][0])
+    for k in list(mh):
+        days = sorted(mh[k])[-14:]
+        mh[k] = {d: mh[k][d] for d in days}
+        if k not in allk and len(days) and days[-1] < (now - datetime.timedelta(days=14)).strftime("%Y-%m-%d"):
+            del mh[k]
+    json.dump(mh, open("data/minhist.json", "w"), separators=(",", ":"))
+
+    # 3) snipe: AYNI varyantin en ucuz ilani, ayni varyantin sonraki >=2 birim ilaninin medyaninin <%60'i
     snipes = []
-    for k, v in snap["items"].items():
+    variants = snap.get("variants", {})
+    has_var = {k.split(":")[0] for k in variants}
+    pool = [(k, v) for k, v in snap["items"].items() if k not in has_var] + list(variants.items())
+    for k, v in pool:
         L = v["l"]
         if len(L) < 2:
             continue
         p0, q0 = L[0]
-        nxt = next((p for p, q in L if p > p0), None)
-        if nxt and p0 < 0.6 * nxt and q0 <= cfg["snipe_max_listing_qty"] and (nxt - p0) * q0 >= cfg["snipe_min_gain"]:
-            snipes.append(((nxt - p0) * q0, int(k), p0, q0, nxt, v["n"]))
-    for gain, iid, p0, q0, nxt, n in sorted(snipes, reverse=True)[:6]:
+        above = []
+        for p, q in L[1:]:
+            above += [p] * int(q)
+            if len(above) >= 3:
+                break
+        if len(above) < 2:
+            continue
+        ref = statistics.median(above[:3])
+        past = [x for d, x in sorted(mh.get(k, {}).items()) if d < day_key]
+        if len(past) < 3:
+            continue            # kendi fiyat gecmisini bilmeden snipe deme
+        if p0 > 0.6 * statistics.median(past):
+            continue            # gecmiste de bu kadar ucuzdu -> firsat degil
+        if p0 < 0.6 * ref and q0 <= cfg["snipe_max_listing_qty"] and (ref - p0) * q0 >= cfg["snipe_min_gain"]:
+            snipes.append(((ref - p0) * q0, k, p0, q0, ref, v["n"]))
+    for gain, k, p0, q0, nxt, n in sorted(snipes, reverse=True)[:6]:
+        iid = int(k.split(":")[0])
         nm = names.get(iid) or f"item {iid}"
+        if ":" in k:
+            nm += " #" + k.split(":")[1]
         row = [nm[:26], money(p0), f"x{q0}", money(nxt), "~" + money(gain), str(n)]
-        found.append(("snipe", f"snipe{iid}", p0, row, gain))
+        found.append(("snipe", f"snipe{k}", p0, row, gain))
 
     # tekrar bildirimi bastir
     fresh = []
@@ -187,7 +225,12 @@ def vendor_flips(snap, cfg):
 
 
 def cm(x):
-    return str(x).replace(" ", "")
+    """'4g 0s 5c' -> '4g5c'; sifir birimleri atar: '89g 0s 0c' -> '89g'."""
+    parts = re.findall(r"(\d+)([gsc])", str(x))
+    if not parts:
+        return str(x).replace(" ", "")
+    keep = [f"{n}{u}" for n, u in parts if int(n) != 0]
+    return ("-" if str(x).strip().startswith("-") else "") + ("".join(keep) if keep else "0c")
 
 
 def short(n):
@@ -215,9 +258,30 @@ SECTIONS = {
              "Price is well above its usual level. Good time to sell stock."),
     "flip": ("Vendor flip - craft, sell to NPC", 0x9B59B6, ["Recipe", "Cost", "NPC", "Profit", "Prof"], (13, 7, 7, 7, 4),
              "Craft from AH mats and sell to a vendor. Profit after cost."),
-    "snipe": ("Snipe - buy and relist", 0xE67E22, ["Item", "Ask", "Next", "Gain"], (13, 6, 6, 5),
-              "Cheapest listing is <60% of the next one. Verify in game."),
+    "snipe": ("Snipe - buy and relist", 0xE67E22, ["Item", "Ask", "Resell", "Gain"], (14, 7, 7, 7),
+              "Same variant, <60% of its own 3-day+ price history and of the next 3 listings. Verify in game."),
 }
+
+
+def crate_full(name):
+    m = re.match(r"(\w+) (\w+) \((\w+)\)", name)
+    return "Waylaid Crate: " + (f"{m.group(3)} {m.group(1)} {m.group(2)}" if m else name)
+
+
+def favor_card(r):
+    d = r[6]
+    n, q = d["n"], d["qty"]
+    unit = d["mats"] / q
+    lines = [f"{crate_full(d['crate'])} (+{d['favor']} Favor)",
+             f"1 Buy crate  {cm(money(d['crate_price']))} each, x{n}",
+             f"2 Buy mats   {d['mat']} x{q}/crate",
+             f"             ~{cm(money(unit))} each = {cm(money(d['mats']))}/crate",
+             f"3 Fill it, hand in to Marcy Baker",
+             f"             reward {cm(money(d['reward']))} + {d['favor']} Favor",
+             f"Net/crate {cm(money(d['total']))} = {cm(money(d['per_favor']))}/Favor",
+             f"60 Favor = {n} crates: buy {n * q}x {d['mat']}",
+             f"           total net ~{cm(money(d['total'] * n))}"]
+    return "\n".join(lines)
 
 
 def cells(kind, r):
@@ -245,8 +309,12 @@ def todo_lines(fresh):
             elif kind == "flip":
                 lines.append(f"CRAFT {r[0]} -> sell to NPC (+{cm(r[3])} each)")
             elif kind == "favor":
-                n = r[5].split("x")[0]
-                lines.append(f"FAVOR buy {n}x {short(r[0])} crate + {r[3]} per crate")
+                if len(r) > 6:
+                    d = r[6]
+                    lines.append(f"FAVOR buy {d['n']}x {crate_full(d['crate'])} (~{cm(money(d['crate_price']))} ea) + {d['n'] * d['qty']}x {d['mat']} (~{cm(money(d['mats'] / d['qty']))} ea) = +60 Favor, net ~{cm(money(d['total'] * d['n']))}")
+                else:
+                    n = r[5].split("x")[0]
+                    lines.append(f"FAVOR buy {n}x {short(r[0])} crate + {r[3]} per crate")
             else:
                 lines.append(f"BUY {r[0]} at {cm(r[1])} (need {r[5]})")
     return lines[:6]
@@ -259,6 +327,10 @@ def send_embeds(fresh, local_now, demo=False, status=None):
         if not items:
             continue
         title, color, headers, widths, hint = SECTIONS[kind]
+        if kind == "favor" and all(len(f[1]) > 6 for f in items):
+            body_ = "```\n" + "\n\n".join(favor_card(f[1]) for f in items[:3]) + "\n```"
+            embeds.append({"title": f"{title} ({len(items)})", "color": color, "description": hint + "\n" + body_})
+            continue
         embeds.append({"title": f"{title} ({len(items)})", "color": color,
                        "description": hint + "\n" + grid(headers, [cells(kind, f[1]) for f in items], widths)})
     names_ = {"flip": "Flips", "sell": "SELL", "favor": "Favor", "mat": "Mats", "snipe": "Snipes"}
