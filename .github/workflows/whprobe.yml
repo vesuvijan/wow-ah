@@ -15,13 +15,13 @@ jobs:
           UA="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120 Safari/537.36"
           i=0
           for u in \
-            "https://nether.wowhead.com/forever/tooltip/item/270078" \
-            "https://nether.wowhead.com/tooltip/item/270078?dataEnv=11&locale=0" \
-            "https://nether.wowhead.com/classic/tooltip/item/9921" \
-            "https://www.wowhead.com/forever/item=270078?xml" \
-            "https://www.wowhead.com/forever/item=270078" ; do
+            "https://nether.wowhead.com/forever/tooltip/item/9921" \
+            "https://nether.wowhead.com/forever/tooltip/item/9921?bonus=12688" \
+            "https://nether.wowhead.com/forever/tooltip/item/9921?bonus=12689" \
+            "https://nether.wowhead.com/forever/tooltip/item/9921?rand=-12" \
+            "https://nether.wowhead.com/forever/tooltip/item/9921?rand=-12&ilvl=45" ; do
             i=$((i+1)); code=$(curl -sSL -m 40 -A "$UA" "$u" -o data/wh_$i.txt -w "%{http_code} %{size_download}" || echo fail)
-            echo "$i $code $u"; head -c 400 data/wh_$i.txt | tr '\n' ' '; echo
+            echo "$i $code $u"; python3 -c "import json,re,sys;d=json.load(open('data/wh_$i.txt'));t=d['tooltip'];print(d['name'],re.findall(r'<!--stat\\d+-->[^<]+',t),'Random' in t)" || true
           done
       - name: Publish
         run: |
