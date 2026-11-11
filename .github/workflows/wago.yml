@@ -1,0 +1,23 @@
+name: Wago probe
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  w:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Probe wago.tools
+        run: |
+          mkdir -p data
+          curl -sS -m 60 "https://wago.tools/api/builds" -o data/builds.json -w "%{http_code}\n" || true
+          for t in JournalEncounterItem JournalEncounter JournalInstance; do
+            curl -sSL -m 120 "https://wago.tools/db2/$t/csv" -o data/$t.csv -w "$t %{http_code} %{size_download}\n" || true
+          done
+          head -c 1500 data/builds.json; echo; head -3 data/JournalEncounterItem.csv
+      - name: Publish
+        run: |
+          git config user.name "ah-bot"; git config user.email "ah-bot@users.noreply.github.com"
+          git checkout --orphan wago; git rm -rf --cached . > /dev/null; git add -f data; git commit -qm wago; git push -f origin wago
