@@ -172,7 +172,7 @@
     "req": 60,
     "ilvl": 60,
     "bind": "BoP",
-    "gain_pct": 8.0,
+    "gain_pct": 7.9,
     "value": 128.8,
     "src": [
      "Quest: Saving the Best for Last (lvl 0) @ Deliana",
@@ -684,7 +684,7 @@
     "req": 42,
     "ilvl": 47,
     "bind": "BoP",
-    "gain_pct": 0.8,
+    "gain_pct": 0.7,
     "value": 63.9,
     "src": [
      "Craft: Leatherworking 210"
@@ -1811,7 +1811,7 @@
     "req": 28,
     "ilvl": 33,
     "bind": "BoP",
-    "gain_pct": 4.8,
+    "gain_pct": 4.7,
     "value": 60.1,
     "src": [
      "Drop: Lyn the Ignored (City of Dalaran) 35%"
@@ -1986,7 +1986,7 @@
     "req": 60,
     "ilvl": 65,
     "bind": "BoE",
-    "gain_pct": 6.2,
+    "gain_pct": 6.1,
     "value": 73.0,
     "src": [
      "Set: Bloodsoul Embrace",
@@ -2905,7 +2905,7 @@
  },
  "FINGER": {
   "equipped": "Archaedic Stone of Power",
-  "value": 40.7,
+  "value": 41.8,
   "options": [
    {
     "tag": "NOW",
@@ -2914,7 +2914,7 @@
     "req": 40,
     "ilvl": 49,
     "bind": "BoP",
-    "gain_pct": 1.4,
+    "gain_pct": 1.3,
     "value": 53.6,
     "src": [
      "Dungeon quest: Divino-matic Rod (Zul'Farrak, lvl 47)",
@@ -2932,7 +2932,7 @@
     "req": 40,
     "ilvl": 45,
     "bind": "BoP",
-    "gain_pct": 0.3,
+    "gain_pct": 0.2,
     "value": 43.7,
     "src": [
      "Rep: Powderfuse Friendly"
@@ -2949,7 +2949,7 @@
     "req": 41,
     "ilvl": 46,
     "bind": "BoP",
-    "gain_pct": 0.1,
+    "gain_pct": 0.0,
     "value": 41.8,
     "src": [
      "Quest: Death From Below (lvl 0) @ Shakes O'Breen"
@@ -2966,7 +2966,7 @@
     "req": 45,
     "ilvl": 50,
     "bind": "BoP",
-    "gain_pct": 0.0,
+    "gain_pct": -0.1,
     "value": 40.7,
     "src": [
      "Quest: The Morrow Stone (lvl 0) @ Equinex Monolith"
@@ -2983,7 +2983,7 @@
     "req": 26,
     "ilvl": 31,
     "bind": "BoP",
-    "gain_pct": -0.2,
+    "gain_pct": -0.3,
     "value": 38.6,
     "src": [
      "Quest: An Audience with the King (lvl 0) @ Baros Alexston"
@@ -3000,7 +3000,7 @@
     "req": 29,
     "ilvl": 34,
     "bind": "BoP",
-    "gain_pct": -0.3,
+    "gain_pct": -0.4,
     "value": 37.8,
     "src": [
      "Drop: Electrocutioner 6000 (Gnomeregan) 31%"
@@ -3019,7 +3019,7 @@
     "req": 30,
     "ilvl": 35,
     "bind": "BoP",
-    "gain_pct": -0.5,
+    "gain_pct": -0.6,
     "value": 36.3,
     "src": [
      "Drop: Charlga Razorflank (Razorfen Kraul) 36%"
@@ -3038,7 +3038,7 @@
     "req": 27,
     "ilvl": 32,
     "bind": "BoP",
-    "gain_pct": -0.6,
+    "gain_pct": -0.7,
     "value": 35.4,
     "src": [
      "Drop: Arcane Anomaly (City of Dalaran) 35%"
@@ -3057,7 +3057,7 @@
     "req": 60,
     "ilvl": 70,
     "bind": "BoP",
-    "gain_pct": 7.1,
+    "gain_pct": 7.0,
     "value": 106.1,
     "src": [
      "Quest: The Path of the Conqueror (lvl 60) @ Anachronos"
@@ -3074,7 +3074,7 @@
     "req": 60,
     "ilvl": 65,
     "bind": "BoP",
-    "gain_pct": 6.4,
+    "gain_pct": 6.3,
     "value": 99.7,
     "src": [
      "Quest: The Path of the Conqueror (lvl 60) @ Anachronos"
@@ -3091,7 +3091,7 @@
     "req": 60,
     "ilvl": 60,
     "bind": "BoP",
-    "gain_pct": 6.0,
+    "gain_pct": 5.9,
     "value": 96.6,
     "src": [
      "Quest: The Path of the Conqueror (lvl 60) @ Anachronos"
@@ -3108,7 +3108,7 @@
     "req": 60,
     "ilvl": 65,
     "bind": "BoP",
-    "gain_pct": 4.6,
+    "gain_pct": 4.4,
     "value": 82.8,
     "src": [
      "Quest: Ring of Unspoken Names (lvl 60) @ Windcaller Yessendra",
@@ -3128,7 +3128,7 @@
     "req": 60,
     "ilvl": 66,
     "bind": "BoP",
-    "gain_pct": 4.4,
+    "gain_pct": 4.3,
     "value": 81.1,
     "src": [
      "Quest: Veteran's Battlegear (lvl 0) @ Vargus"
@@ -3145,7 +3145,7 @@
     "req": 60,
     "ilvl": 65,
     "bind": "BoP",
-    "gain_pct": 3.3,
+    "gain_pct": 3.2,
     "value": 71.4,
     "src": [
      "Quest: Signet of the Unseen Path (lvl 60) @ Windcaller Yessendra",
@@ -3163,7 +3163,7 @@
     "req": 56,
     "ilvl": 61,
     "bind": "BoP",
-    "gain_pct": 3.3,
+    "gain_pct": 3.2,
     "value": 71.2,
     "src": [
      "Drop: Mizzle the Crafty (Dire Maul: North) 23%"
@@ -3180,7 +3180,7 @@
     "req": 54,
     "ilvl": 59,
     "bind": "BoP",
-    "gain_pct": 1.7,
+    "gain_pct": 1.5,
     "value": 56.0,
     "src": [
      "Drop: Alzzin the Wildshaper (Dire Maul: East) 19%"
@@ -3520,7 +3520,9 @@
       "Dungeon quest: The God Hakkar (The Temple of Atal'Hakkar, lvl 53)",
       "Quest: The God Hakkar (lvl 0) @ Yeh'kinya"
      ],
-     "stats": "+11 Stamina, 35.9 dps / 1.6s"
+     "stats": "+11 Stamina, 35.9 dps / 1.6s",
+     "val_oh": 64.6,
+     "val_mh": 102.3
     },
     "oh": {
      "id": 6829,
@@ -3535,7 +3537,9 @@
       "Dungeon quest: In the Name of the Light (Scarlet Monastery: Cathedral, lvl 40)",
       "Quest: In the Name of the Light (lvl 0) @ Raleigh the Devout"
      ],
-     "stats": "+9 Stamina, +4 Spirit, 30.0 dps / 2.2s"
+     "stats": "+9 Stamina, +4 Spirit, 30.0 dps / 2.2s",
+     "val_oh": 69.5,
+     "val_mh": 101.0
     }
    },
    {
@@ -3552,7 +3556,9 @@
       "Dungeon quest: The God Hakkar (The Temple of Atal'Hakkar, lvl 53)",
       "Quest: The God Hakkar (lvl 0) @ Yeh'kinya"
      ],
-     "stats": "+11 Stamina, 35.9 dps / 1.6s"
+     "stats": "+11 Stamina, 35.9 dps / 1.6s",
+     "val_oh": 64.6,
+     "val_mh": 102.3
     },
     "oh": {
      "id": 9401,
@@ -3565,7 +3571,9 @@
      "src": [
       "Drop: Baelog (Uldaman) 9.3%"
      ],
-     "stats": "+8 Agility, +5 Stamina, 29.3 dps / 2.2s"
+     "stats": "+8 Agility, +5 Stamina, 29.3 dps / 2.2s",
+     "val_oh": 66.6,
+     "val_mh": 97.4
     }
    },
    {
@@ -3583,7 +3591,9 @@
       "Dungeon quest: In the Name of the Light (Scarlet Monastery: Cathedral, lvl 40)",
       "Quest: In the Name of the Light (lvl 0) @ Raleigh the Devout"
      ],
-     "stats": "+9 Stamina, +4 Spirit, 30.0 dps / 2.2s"
+     "stats": "+9 Stamina, +4 Spirit, 30.0 dps / 2.2s",
+     "val_oh": 69.5,
+     "val_mh": 101.0
     },
     "oh": {
      "id": 9401,
@@ -3596,7 +3606,9 @@
      "src": [
       "Drop: Baelog (Uldaman) 9.3%"
      ],
-     "stats": "+8 Agility, +5 Stamina, 29.3 dps / 2.2s"
+     "stats": "+8 Agility, +5 Stamina, 29.3 dps / 2.2s",
+     "val_oh": 66.6,
+     "val_mh": 97.4
     }
    },
    {
@@ -3612,7 +3624,9 @@
      "src": [
       "Drop: Baelog (Uldaman) 9.3%"
      ],
-     "stats": "+8 Agility, +5 Stamina, 29.3 dps / 2.2s"
+     "stats": "+8 Agility, +5 Stamina, 29.3 dps / 2.2s",
+     "val_oh": 66.6,
+     "val_mh": 97.4
     },
     "oh": {
      "id": 6829,
@@ -3627,7 +3641,9 @@
       "Dungeon quest: In the Name of the Light (Scarlet Monastery: Cathedral, lvl 40)",
       "Quest: In the Name of the Light (lvl 0) @ Raleigh the Devout"
      ],
-     "stats": "+9 Stamina, +4 Spirit, 30.0 dps / 2.2s"
+     "stats": "+9 Stamina, +4 Spirit, 30.0 dps / 2.2s",
+     "val_oh": 69.5,
+     "val_mh": 101.0
     }
    },
    {
@@ -3645,7 +3661,9 @@
       "Dungeon quest: In the Name of the Light (Scarlet Monastery: Cathedral, lvl 40)",
       "Quest: In the Name of the Light (lvl 0) @ Raleigh the Devout"
      ],
-     "stats": "+9 Stamina, +4 Spirit, 30.0 dps / 2.2s"
+     "stats": "+9 Stamina, +4 Spirit, 30.0 dps / 2.2s",
+     "val_oh": 69.5,
+     "val_mh": 101.0
     },
     "oh": {
      "id": 10750,
@@ -3659,7 +3677,9 @@
       "Dungeon quest: The God Hakkar (The Temple of Atal'Hakkar, lvl 53)",
       "Quest: The God Hakkar (lvl 0) @ Yeh'kinya"
      ],
-     "stats": "+11 Stamina, 35.9 dps / 1.6s"
+     "stats": "+11 Stamina, 35.9 dps / 1.6s",
+     "val_oh": 64.6,
+     "val_mh": 102.3
     }
    }
   ],
@@ -3678,7 +3698,9 @@
       "Quest: Dagger of Veiled Shadows (lvl 60) @ Warden Haro",
       "Set: Emblems of Veiled Shadows"
      ],
-     "stats": "+7 Strength, +15 Agility, +1% hit, 51.7 dps / 1.8s"
+     "stats": "+7 Strength, +15 Agility, +1% hit, 51.7 dps / 1.8s",
+     "val_oh": 130.3,
+     "val_mh": 184.5
     },
     "oh": {
      "id": 279261,
@@ -3691,7 +3713,9 @@
      "src": [
       "Craft: Blacksmithing 300"
      ],
-     "stats": "+8 Agility, +12 Stamina, +1% hit, 47.4 dps / 2.3s"
+     "stats": "+8 Agility, +12 Stamina, +1% hit, 47.4 dps / 2.3s",
+     "val_oh": 133.3,
+     "val_mh": 183.0
     }
    },
    {
@@ -3707,7 +3731,9 @@
      "src": [
       "Craft: Blacksmithing 300"
      ],
-     "stats": "+8 Agility, +12 Stamina, +1% hit, 47.4 dps / 2.3s"
+     "stats": "+8 Agility, +12 Stamina, +1% hit, 47.4 dps / 2.3s",
+     "val_oh": 133.3,
+     "val_mh": 183.0
     },
     "oh": {
      "id": 21404,
@@ -3721,7 +3747,9 @@
       "Quest: Dagger of Veiled Shadows (lvl 60) @ Warden Haro",
       "Set: Emblems of Veiled Shadows"
      ],
-     "stats": "+7 Strength, +15 Agility, +1% hit, 51.7 dps / 1.8s"
+     "stats": "+7 Strength, +15 Agility, +1% hit, 51.7 dps / 1.8s",
+     "val_oh": 130.3,
+     "val_mh": 184.5
     }
    },
    {
@@ -3738,7 +3766,9 @@
       "Quest: Scythe of the Unseen Path (lvl 60) @ Warden Haro",
       "Set: Trappings of the Unseen Path"
      ],
-     "stats": "+16 Agility, +9 Stamina, 51.5 dps / 2.4s"
+     "stats": "+16 Agility, +9 Stamina, 51.5 dps / 2.4s",
+     "val_oh": 123.3,
+     "val_mh": 177.4
     },
     "oh": {
      "id": 279261,
@@ -3751,7 +3781,9 @@
      "src": [
       "Craft: Blacksmithing 300"
      ],
-     "stats": "+8 Agility, +12 Stamina, +1% hit, 47.4 dps / 2.3s"
+     "stats": "+8 Agility, +12 Stamina, +1% hit, 47.4 dps / 2.3s",
+     "val_oh": 133.3,
+     "val_mh": 183.0
     }
    },
    {
@@ -3768,7 +3800,9 @@
       "Quest: Dagger of Veiled Shadows (lvl 60) @ Warden Haro",
       "Set: Emblems of Veiled Shadows"
      ],
-     "stats": "+7 Strength, +15 Agility, +1% hit, 51.7 dps / 1.8s"
+     "stats": "+7 Strength, +15 Agility, +1% hit, 51.7 dps / 1.8s",
+     "val_oh": 130.3,
+     "val_mh": 184.5
     },
     "oh": {
      "id": 21401,
@@ -3782,7 +3816,9 @@
       "Quest: Scythe of the Unseen Path (lvl 60) @ Warden Haro",
       "Set: Trappings of the Unseen Path"
      ],
-     "stats": "+16 Agility, +9 Stamina, 51.5 dps / 2.4s"
+     "stats": "+16 Agility, +9 Stamina, 51.5 dps / 2.4s",
+     "val_oh": 123.3,
+     "val_mh": 177.4
     }
    },
    {
@@ -3799,7 +3835,9 @@
       "Quest: Scythe of the Unseen Path (lvl 60) @ Warden Haro",
       "Set: Trappings of the Unseen Path"
      ],
-     "stats": "+16 Agility, +9 Stamina, 51.5 dps / 2.4s"
+     "stats": "+16 Agility, +9 Stamina, 51.5 dps / 2.4s",
+     "val_oh": 123.3,
+     "val_mh": 177.4
     },
     "oh": {
      "id": 21404,
@@ -3813,7 +3851,9 @@
       "Quest: Dagger of Veiled Shadows (lvl 60) @ Warden Haro",
       "Set: Emblems of Veiled Shadows"
      ],
-     "stats": "+7 Strength, +15 Agility, +1% hit, 51.7 dps / 1.8s"
+     "stats": "+7 Strength, +15 Agility, +1% hit, 51.7 dps / 1.8s",
+     "val_oh": 130.3,
+     "val_mh": 184.5
     }
    }
   ]
@@ -4028,6 +4068,24 @@
    "enchant": null
   }
  ],
+ "eqval": {
+  "HEAD": 55.3,
+  "NECK": 60.15,
+  "SHOULDER": 56.98,
+  "CHEST": 46.58,
+  "WAIST": 55.59,
+  "LEGS": 99.84,
+  "FEET": 29.22,
+  "WRIST": 40.98,
+  "HANDS": 16.15,
+  "FINGER_1": 41.75,
+  "FINGER_2": 37.78,
+  "TRINKET_1": 0.0,
+  "BACK": 24.27,
+  "RANGED": 360.53,
+  "AMMO": 0.0
+ },
+ "total": 925.13,
  "meta": {
   "level": 46,
   "plan_max": 60,

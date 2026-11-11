@@ -101,7 +101,7 @@ def main():
     # veri degismediyse (API saatlik yenileniyorsa) tekrar kaydetme/uyarma
     h = hashlib.sha1(json.dumps(snap["items"], sort_keys=True).encode()).hexdigest()
     try:
-        if open("data/last_hash.txt").read().strip() == h and os.path.exists(hist_path):
+        if open("data/last_hash.txt").read().strip() == h and os.path.exists(hist_path) and not os.environ.get("FORCE"):
             print("veri degismedi, atlandi")
             return
     except OSError:

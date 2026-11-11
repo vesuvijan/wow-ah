@@ -158,6 +158,13 @@ def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
         row = [nm, money(p0), f"x{q0}", money(nxt), "~" + money(gain), str(n)]
         found.append(("snipe", f"snipe{k}", p0, row, gain))
 
+    # 4) AH'de Docker Tuckalot icin gear upgrade / tarif / yeni item
+    try:
+        import ah_gear
+        found += ah_gear.scan(snap, cfg)
+    except Exception as e:  # noqa: BLE001
+        print("ah_gear hatasi:", e)
+
     # tekrar bildirimi bastir
     fresh = []
     for kind, key, price, row, score in found:
@@ -250,6 +257,12 @@ def grid(headers, rows, widths):
 
 
 SECTIONS = {
+    "gear": ("Gear upgrade on the AH for Docker Tuckalot", 0x1ABC9C, ["#", "Price", "Gain", "Slot"], (2, 9, 7, 14),
+             "Better than what you wear now, wearable at your level. Check the stats in game before buying."),
+    "recipe": ("Recipe for one of your upgrades", 0xF1C40F, ["#", "Price", "Qty"], (2, 9, 4),
+               "The pattern/plan teaches a craft that is an upgrade for you."),
+    "new": ("New on the AH (first time seen)", 0xE91E63, ["#", "Price", "Type", "Slot"], (2, 9, 10, 14),
+            "Never listed before. Good items first."),
     "favor": ("Merchant's Favor - cheap crates", 0x2ECC71, ["Crate", "Net/Fav", "For 60F"], (13, 7, 9),
               "Fill the crate, hand it in to Marcy Baker. Net = after turn-in reward."),
     "mat": ("Raw mats - bulk buy", 0x3498DB, ["Item", "Now", "Off", "Need"], (13, 7, 5, 5),
@@ -285,6 +298,10 @@ def favor_card(r):
 
 
 def cells(kind, r):
+    if kind in ("gear", "new"):      # [label, price, gain/type, slot, bind, stats, req]
+        return [r[0], cm(r[1]), r[2], r[3]]
+    if kind == "recipe":             # [name, price, qty, makes, "", ""]
+        return [r[0], cm(r[1]), r[2]]
     if kind == "favor":   # [crate, per_favor, F, bundle, crate_price, "3x ~44s 30c"]
         return [short(r[0]), cm(r[1]), cm(r[5])]
     if kind == "mat":     # [name, now, median, "-%20", stock, need]
@@ -299,11 +316,17 @@ def cells(kind, r):
 def todo_lines(fresh):
     """Cok kisa 'simdi ne yap' listesi."""
     lines = []
-    for kind in ("sell", "snipe", "flip", "favor", "mat"):
+    for kind in ("sell", "gear", "recipe", "new", "snipe", "flip", "favor", "mat"):
         items = sorted([f for f in fresh if f[0] == kind], key=lambda f: -f[2])[:1 if kind == "favor" else 2]
         for _, r, _s in items:
             if kind == "sell":
                 lines.append(f"SELL {r[0]} now ({cm(r[1])}, {r[3]} above normal)")
+            elif kind == "gear":
+                lines.append(f"BUY GEAR {r[0]} at {cm(r[1])}: {r[2]} better, {r[3]} ({r[5]})")
+            elif kind == "recipe":
+                lines.append(f"BUY RECIPE {r[0]} at {cm(r[1])}. {r[3]}")
+            elif kind == "new":
+                lines.append(f"NEW ITEM {r[0]} at {cm(r[1])} ({r[3]}): {r[5]}")
             elif kind == "snipe":
                 lines.append(f"SNIPE {r[0]} at {cm(r[1])} (resell {cm(r[3])})")
             elif kind == "flip":
@@ -322,7 +345,7 @@ def todo_lines(fresh):
 
 def send_embeds(fresh, local_now, demo=False, status=None):
     embeds = []
-    for kind in ("sell", "flip", "favor", "mat", "snipe"):
+    for kind in ("sell", "gear", "recipe", "new", "flip", "favor", "mat", "snipe"):
         items = sorted([f for f in fresh if f[0] == kind], key=lambda f: -f[2])[:10]
         if not items:
             continue
@@ -334,11 +357,19 @@ def send_embeds(fresh, local_now, demo=False, status=None):
         rows_ = [[str(i + 1)] + cells(kind, f[1])[1:] for i, f in enumerate(items)]
         if kind == "flip":
             headers, widths, rows_ = ["#", "Cost", "NPC", "Profit"], (2, 8, 8, 8), [r_[:4] for r_ in rows_]
-        listing = "\n".join(f"{i + 1}. **{f[1][0]}**" + (f" ({f[1][4]})\n    Mats: {f[1][5]}" if kind == "flip" else "") for i, f in enumerate(items))
+        def _det(kind_, r_):
+            if kind_ == "flip":
+                return f" ({r_[4]})\n    Mats: {r_[5]}"
+            if kind_ in ("gear", "new"):
+                return f" ({r_[4]}, {r_[6]})\n    {r_[5]}" if r_[5] else ""
+            if kind_ == "recipe":
+                return f"\n    {r_[3]}"
+            return ""
+        listing = "\n".join(f"{i + 1}. **{f[1][0]}**" + _det(kind, f[1]) for i, f in enumerate(items))
         embeds.append({"title": f"{title} ({len(items)})", "color": color,
                        "description": hint + "\n" + listing + "\n" + grid(["#"] + list(headers[1:]), rows_, (2,) + tuple(widths[1:]))})
-    names_ = {"flip": "Flips", "sell": "SELL", "favor": "Favor", "mat": "Mats", "snipe": "Snipes"}
-    summary = " | ".join(f"{names_[k]} {sum(1 for f in fresh if f[0] == k)}" for k in ("sell", "flip", "favor", "mat", "snipe") if any(f[0] == k for f in fresh))
+    names_ = {"flip": "Flips", "sell": "SELL", "favor": "Favor", "mat": "Mats", "snipe": "Snipes", "gear": "Gear", "recipe": "Recipes", "new": "New"}
+    summary = " | ".join(f"{names_[k]} {sum(1 for f in fresh if f[0] == k)}" for k in names_ if any(f[0] == k for f in fresh))
     if status:
         embeds.append({"title": "Status", "color": 0x95A5A6, "description": "```\n" + "\n".join(status) + "\n```"})
     embeds[-1]["footer"] = {"text": f"Data: {local_now:%H:%M} (TR time)" + (" | SAMPLE DATA" if demo else "")}

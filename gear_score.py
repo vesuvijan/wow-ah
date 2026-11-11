@@ -264,6 +264,7 @@ def main():
             continue
         if r["random"] or sl == "BACK" and not r["stats"]:
             near = sorted(value(c, w_now) for c in cands if c["slot"] == (base_slot or sl) and abs((c["ilvl"] or 0) - (r["ilvl"] or 0)) <= 5)
+            near = [v for v in near if v > 0]
             eq_val[sl] = near[len(near) // 2] if near else 0
             eq_note[sl] = "random-suffix, estimated"
         else:
