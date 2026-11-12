@@ -28,7 +28,11 @@ def load_names():
         return {}
 
 
-QUIET = {"new", "recipe"}          # ilk kez gorulen itemlar: anlik mesaj yok, sadece ozet icin kaydedilir
+QUIET = {"new", "recipe"}
+try:   # elindeki adetler: holdings.json  {"Tigerseye": 12, ...}
+    HOLDINGS = {k.lower(): v for k, v in json.load(open("holdings.json", encoding="utf-8")).items()}
+except Exception:  # noqa: BLE001
+    HOLDINGS = {}          # ilk kez gorulen itemlar: anlik mesaj yok, sadece ozet icin kaydedilir
 LOG = "data/alert_log.jsonl"
 
 
@@ -97,10 +101,27 @@ def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
             med8 = statistics.median([x[1] for x in s[-8:-1]])
             if cur >= med8 * cfg.get("sell_jump", 1.3):
                 spike = med8
+        nm = watch[iid][0]
+        have = HOLDINGS.get(nm.lower())
+        have_txt = f"you hold {have}: about {cm(money(cur * have))} at this price" if have else ""
         if spike:
             up = round(100 * cur / spike - 100)
-            nm = watch[iid][0]
-            found.append(("sell", f"sell{iid}", cur, [nm, money(cur), money(spike), f"+{up}%", str(s[-1][3]), ""], up))
+            found.append(("sell", f"sell{iid}", cur, [nm, money(cur), money(spike), f"+{up}%", str(s[-1][3]), have_txt], up))
+        else:
+            # dusus: kendi gecmisine gore ucuzladiysa -> stoguna ekle
+            dip = None
+            if len(w7) >= cfg["min_samples"]:
+                med = statistics.median(w7)
+                rank = sum(1 for v in w7 if v < cur) / len(w7)
+                if cur <= med * cfg.get("dip_vs_median", 0.85) and rank <= 0.1:
+                    dip = med
+            if dip is None and len(s) >= 8:
+                med8 = statistics.median([x[1] for x in s[-8:-1]])
+                if cur <= med8 * cfg.get("dip_jump", 0.75):
+                    dip = med8
+            if dip:
+                dn = round(100 - 100 * cur / dip)
+                found.append(("dip", f"dip{iid}", cur, [nm, money(cur), money(dip), f"-{dn}%", str(s[-1][3]), have_txt], dn))
 
     # 1c) vendor flip: craft -> NPC'ye sat
     try:
@@ -412,6 +433,8 @@ SECTIONS = {
              "Buy the writ and the item it asks for on the AH (no crafting), accept the order and hand the item in = reputation + a coin pouch of silver. Each order once per day. Cost = all-in silver per reputation point."),
     "gamble": ("Writ gamble - open and resell (TEST SIZE)", 0xFF5722, ["#", "Cost", "Resale", "Try"], (2, 9, 12, 8),
                "Unproven: we see asking prices, not sales. Buy only the test amount, open them, list the orders, see if they sell."),
+    "dip": ("Price dip - cheap to add to your stock", 0x1E88E5, ["Item", "Now", "Typical", "Down"], (13, 7, 7, 5),
+            "Price is well below its usual level. Good time to buy more of something you hold."),
     "snipe": ("Snipe - buy and relist", 0xE67E22, ["Item", "Ask", "Resell", "Gain"], (14, 7, 7, 7),
               "Same variant, <60% of its own 3-day+ price history and of the next 3 listings. Verify in game."),
 }
@@ -453,7 +476,7 @@ def cells(kind, r):
         return [r[0], cm(r[1]), r[3].replace("-%", "-") + "%", r[5]]
     if kind == "flip":    # [recipe, cost, vendor, profit, prof, ""]
         return [r[0], cm(r[1]), cm(r[2]), cm(r[3]), r[4]]
-    if kind == "sell":    # [name, now, typical, "+25%", stock, ""]
+    if kind in ("sell", "dip"):    # [name, now, typical, "+25%", stock, holdings text]
         return [r[0], cm(r[1]), cm(r[2]), r[3]]
     return [r[0], cm(r[1]), cm(r[3]), cm(r[4])]   # snipe
 
@@ -461,11 +484,13 @@ def cells(kind, r):
 def todo_lines(fresh):
     """Cok kisa 'simdi ne yap' listesi."""
     lines = []
-    for kind in ("sell", "gear", "recipe", "snipe", "flip", "favor", "writ", "gamble", "mat"):
+    for kind in ("sell", "dip", "gear", "recipe", "snipe", "flip", "favor", "writ", "gamble", "mat"):
         items = sorted([f for f in fresh if f[0] == kind], key=lambda f: -f[2])[:1 if kind == "favor" else 2]
         for _, r, _s in items:
             if kind == "sell":
-                lines.append(f"SELL {r[0]} now ({cm(r[1])}, {r[3]} above normal)")
+                lines.append(f"SELL {r[0]} now ({cm(r[1])}, {r[3]} above normal)" + (f". {r[5]}" if len(r) > 5 and r[5] else ""))
+            elif kind == "dip":
+                lines.append(f"BUY MORE {r[0]} at {cm(r[1])} ({r[3]} below normal, {r[4]} listed)" + (f". {r[5]}" if len(r) > 5 and r[5] else ""))
             elif kind == "gear":
                 gain = f"{r[2]} better than what you wear" if str(r[2]).startswith("+") else str(r[2])
                 lines.append(f"BUY GEAR {r[0]} at {cm(r[1])} ({r[3]}): {gain}. Stats: {r[5]}")
@@ -497,7 +522,7 @@ def todo_lines(fresh):
 
 def send_embeds(fresh, local_now, demo=False, status=None):
     embeds = []
-    for kind in ("sell", "gear", "recipe", "new", "flip", "favor", "writ", "gamble", "mat", "snipe"):
+    for kind in ("sell", "dip", "gear", "recipe", "new", "flip", "favor", "writ", "gamble", "mat", "snipe"):
         items = sorted([f for f in fresh if f[0] == kind], key=lambda f: -f[2])[:10]
         if not items:
             continue
@@ -520,7 +545,7 @@ def send_embeds(fresh, local_now, demo=False, status=None):
         listing = "\n".join(f"{i + 1}. **{f[1][0]}**" + _det(kind, f[1]) for i, f in enumerate(items))
         embeds.append({"title": f"{title} ({len(items)})", "color": color,
                        "description": hint + "\n" + listing + "\n" + grid(["#"] + list(headers[1:]), rows_, (2,) + tuple(widths[1:]))})
-    names_ = {"flip": "Flips", "sell": "SELL", "favor": "Favor", "mat": "Mats", "snipe": "Snipes", "gear": "Gear", "recipe": "Recipes", "new": "New", "writ": "Rep", "gamble": "Writ gamble"}
+    names_ = {"flip": "Flips", "sell": "SELL", "favor": "Favor", "mat": "Mats", "snipe": "Snipes", "gear": "Gear", "recipe": "Recipes", "new": "New", "writ": "Rep", "gamble": "Writ gamble", "dip": "Dips"}
     summary = " | ".join(f"{names_[k]} {sum(1 for f in fresh if f[0] == k)}" for k in names_ if any(f[0] == k for f in fresh))
     if status:
         embeds.append({"title": "Status", "color": 0x95A5A6, "description": "```\n" + "\n".join(status) + "\n```"})

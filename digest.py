@@ -21,7 +21,7 @@ by = defaultdict(list)
 for r in rows:
     by[r["kind"]].append(r)
 print(f"Son {hours:g} saat ({tr(since)} - {tr(max(r['ts'] for r in rows))} TR): {sum(len(v) for k, v in by.items() if k != 'status')} uyari")
-for kind in ("gear", "recipe", "writ", "gamble", "snipe", "flip", "favor", "sell", "mat", "new"):
+for kind in ("gear", "recipe", "writ", "gamble", "snipe", "flip", "favor", "sell", "dip", "mat", "new"):
     v = by.get(kind)
     if not v:
         continue
