@@ -9,7 +9,8 @@ from urllib.parse import urlparse
 
 from playwright.sync_api import sync_playwright
 
-ALLOWED = ("wowhead.com", "wow.gg", "timesaver.gg")
+ALLOWED = ("wowhead.com", "wow.gg", "timesaver.gg", "ahledger.com", "wowbackend-production.up.railway.app")
+RAW = ("/api/", ".json", ".csv")
 urls = [u for u in re.split(r"\s+", os.environ.get("URLS", "").strip()) if u]
 os.makedirs("data", exist_ok=True)
 index = []
@@ -20,6 +21,15 @@ with sync_playwright() as p:
         host = (urlparse(u).hostname or "").lower()
         if not any(host == d or host.endswith("." + d) for d in ALLOWED) or urlparse(u).scheme != "https":
             index.append({"url": u, "error": "host izinli degil"}); continue
+        if any(k in u for k in RAW):   # API/veri: tarayicisiz ham indir
+            try:
+                r = ctx.request.get(u, timeout=60000)
+                body = r.text()
+                open(f"data/page_{i}.txt", "w", encoding="utf-8").write(body)
+                index.append({"url": u, "status": r.status, "raw": True, "chars": len(body)})
+            except Exception as e:  # noqa: BLE001
+                index.append({"url": u, "error": str(e)[:200]})
+            continue
         pg = ctx.new_page()
         net = []
         def on_resp(resp, net=net):
