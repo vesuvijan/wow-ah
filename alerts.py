@@ -72,7 +72,10 @@ def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
             hit = rank <= cfg["mat_max_rank"] and cur <= med * cfg["mat_drop_vs_median"]
         if hit:
             disc = round(100 - 100 * cur / med) if med else 0
-            row = [name, money(cur), money(med), f"-%{disc}", str(s[-1][3]), str(need) if need else "-"]
+            lst = sorted(snap["items"].get(str(iid), {}).get("l", []))
+            cap = cur * 1.1
+            avail = sum(q for p, q in lst if p <= cap)
+            row = [name, money(cur), money(med), f"-%{disc}", str(s[-1][3]), str(need) if need else "-", avail, money(cap)]
             found.append(("mat", f"mat{iid}", cur, row, disc))
 
     # 1b) fiyat firlamasi: elde tutulan item'lar -> SAT
@@ -106,15 +109,37 @@ def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
     except Exception as e:  # noqa: BLE001
         print("flip hatasi:", e)
 
-    # 2) Favor crate
+    # 2) Favor crate: gercek stok derinligine gore (crate ve mat adedi), marjinal Favor basina fiyat limitin altinda kaldigi surece
     if W is not None:
-        book = {int(k): [(p, q) for p, q in v["l"]] for k, v in snap["items"].items()}
+        book = {int(k): sorted((p, q) for p, q in v["l"]) for k, v in snap["items"].items()}
         try:
-            rows, _ = W.evaluate(book)
             tgt = cfg.get("favor_target", 60)
-            for r in [r for r in rows if r["per_favor"] <= cfg["favor_per_favor_max"]][:4]:
-                n = -(-tgt // r["favor"])
-                row = [r["crate"][:22], money(r["per_favor"]), str(r["favor"]), r["bundle"][:24], money(r["crate_price"]), f"{n}x ~{money(r['per_favor'] * n * r['favor'])}", dict(r, n=n)]
+            lim = cfg["favor_per_favor_max"]
+            plans = []
+            for cname, (crate_id, _ok, favor, reward, _rok, bundles) in W.CRATES.items():
+                nmax = -(-tgt // favor)
+                best = None
+                for mat, qty in bundles:
+                    prev, last = 0.0, None
+                    for n_ in range(1, nmax + 1):
+                        cc = W.cost_to_buy(book, crate_id, n_)
+                        mc = W.cost_to_buy(book, W.ITEMS[mat], n_ * qty)
+                        if cc is None or mc is None:
+                            break
+                        tot = cc + mc - reward * n_
+                        if (tot - prev) / favor > lim:
+                            break
+                        prev, last = tot, (n_, cc, mc, tot)
+                    if last and (best is None or last[3] / (last[0] * favor) < best[3] / (best[0] * favor)):
+                        best = last + (mat, qty)
+                if best:
+                    n_, cc, mc, tot, mat, qty = best
+                    plans.append(dict(crate=cname, bundle=f"{qty}x {mat}", mats=mc / n_, crate_price=cc / n_, favor=favor, total=tot / n_,
+                                      per_favor=tot / (n_ * favor), mat=mat, qty=qty, reward=reward, n=n_, want=nmax))
+            plans.sort(key=lambda r: r["per_favor"])
+            for r in plans[:4]:
+                n = r["n"]
+                row = [r["crate"][:22], money(r["per_favor"]), str(r["favor"]), r["bundle"][:24], money(r["crate_price"]), f"{n}x ~{money(r['per_favor'] * n * r['favor'])}", r]
                 found.append(("favor", f"favor{r['crate']}", r["per_favor"], row, -r["per_favor"]))
         except Exception as e:  # noqa: BLE001
             print("favor hesabi hatasi:", e)
@@ -183,7 +208,7 @@ def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
             continue
         qty = sum(q for _, q in cheap)
         top = max(p for p, _ in cheap)
-        row = [wname, cm(money(cheap[0][0])), f"{rep} rep", f"{cheap[0][0] / rep:.0f}c/rep", f"x{qty} up to {cm(money(top))}", ""]
+        row = [wname, cm(money(cheap[0][0])), f"{rep} rep", f"{cm(money(cheap[0][0] / rep))} per rep", f"x{qty} up to {cm(money(top))}", ""]
         found.append(("writ", f"writ{wid}", cheap[0][0], row, -cheap[0][0] / rep))
 
     # 3c) Writ kumari: Sealed Writ ac -> rastgele siparis cikar -> acilmis writ'i sat. Acilmis writ ilanlarinin tier'e gore medyan ask'i
@@ -249,7 +274,7 @@ def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
             rep_, w_, ic_ = REPT[mt.group(1)], v_["l"][0][0], min(opts)
             per = (w_ + ic_) / rep_
             if per <= lim_e:
-                row = [f"Craftsman's Writ: {item_}", cm(money(w_)), f"{rep_} rep ({mt.group(1)})", f"{per:.0f}c/rep", f"{item_} ~{cm(money(ic_))}", ""]
+                row = [f"Craftsman's Writ: {item_} ({mt.group(1)})", cm(money(w_)), f"{rep_} rep", f"{cm(money(per))} per rep", f"{item_} ~{cm(money(ic_))}", ""]
                 found.append(("writ", f"writbuy{k_}", w_, row, -per))
     except Exception as e:  # noqa: BLE001
         print("writ_ah hatasi:", e)
@@ -383,8 +408,8 @@ SECTIONS = {
              "Price is well above its usual level. Good time to sell stock."),
     "flip": ("Vendor flip - craft, sell to NPC", 0x9B59B6, ["Recipe", "Cost", "NPC", "Profit", "Prof"], (13, 7, 7, 7, 4),
              "Craft from AH mats and sell to a vendor. Profit after cost."),
-    "writ": ("Cheap reputation - Sealed Writs", 0x00BCD4, ["#", "Price", "Reputation", "Cost"], (2, 9, 10, 9),
-             "Open the writ, hand in the item it asks for (buy it on the AH or craft it) = reputation + a coin pouch of silver. Each order once per day."),
+    "writ": ("Cheap reputation - Writs", 0x00BCD4, ["#", "Price", "Reputation", "Cost"], (2, 9, 10, 12),
+             "Buy the writ and the item it asks for on the AH (no crafting), accept the order and hand the item in = reputation + a coin pouch of silver. Each order once per day. Cost = all-in silver per reputation point."),
     "gamble": ("Writ gamble - open and resell (TEST SIZE)", 0xFF5722, ["#", "Cost", "Resale", "Try"], (2, 9, 12, 8),
                "Unproven: we see asking prices, not sales. Buy only the test amount, open them, list the orders, see if they sell."),
     "snipe": ("Snipe - buy and relist", 0xE67E22, ["Item", "Ask", "Resell", "Gain"], (14, 7, 7, 7),
@@ -408,7 +433,7 @@ def favor_card(r):
              f"3 Fill it, hand in to Marcy Baker",
              f"             reward {cm(money(d['reward']))} + {d['favor']} Favor",
              f"Net/crate {cm(money(d['total']))} = {cm(money(d['per_favor']))}/Favor",
-             f"60 Favor = {n} crates: buy {n * q}x {d['mat']}",
+             f"{n} crate{'s' if n > 1 else ''} = +{n * d['favor']} Favor: buy {n * q}x {d['mat']}" + (f" (only {n} of the {d['want']} crates for 60 Favor can be filled at this price)" if n < d.get('want', n) else ""),
              f"           total net ~{cm(money(d['total'] * n))}"]
     return "\n".join(lines)
 
@@ -461,12 +486,12 @@ def todo_lines(fresh):
             elif kind == "favor":
                 if len(r) > 6:
                     d = r[6]
-                    lines.append(f"FAVOR buy {d['n']}x {crate_full(d['crate'])} (~{cm(money(d['crate_price']))} ea) + {d['n'] * d['qty']}x {d['mat']} (~{cm(money(d['mats'] / d['qty']))} ea) = +60 Favor, net ~{cm(money(d['total'] * d['n']))} = {cm(money(d['per_favor']))} per Favor")
+                    lines.append(f"FAVOR buy {d['n']}x {crate_full(d['crate'])} (~{cm(money(d['crate_price']))} ea) + {d['n'] * d['qty']}x {d['mat']} (~{cm(money(d['mats'] / d['qty']))} ea) = +{d['n'] * d['favor']} Favor{' (all the stock available at this price)' if d['n'] < d.get('want', d['n']) else ''}, net ~{cm(money(d['total'] * d['n']))} = {cm(money(d['per_favor']))} per Favor")
                 else:
                     n = r[5].split("x")[0]
                     lines.append(f"FAVOR buy {n}x {short(r[0])} crate + {r[3]} per crate")
             else:
-                lines.append(f"BUY {r[0]} at {cm(r[1])} (need {r[5]})")
+                lines.append(f"BUY {r[0]} at {cm(r[1])}: {r[6]} units listed up to {cm(r[7])}, route needs {r[5]}" if len(r) > 7 else f"BUY {r[0]} at {cm(r[1])} (need {r[5]})")
     return lines[:6]
 
 
