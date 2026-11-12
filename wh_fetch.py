@@ -21,10 +21,19 @@ with sync_playwright() as p:
         host = (urlparse(u).hostname or "").lower()
         if not any(host == d or host.endswith("." + d) for d in ALLOWED) or urlparse(u).scheme != "https":
             index.append({"url": u, "error": "host izinli degil"}); continue
-        if any(k in u for k in RAW):   # API/veri: tarayicisiz ham indir
+        if any(k in u for k in RAW):   # API/veri: wow.gg sayfasindan fetch (origin kontrolu icin)
             try:
-                r = ctx.request.get(u, timeout=60000)
-                body = r.text()
+                if "railway.app" in u:
+                    if not getattr(ctx, "_wg", None):
+                        ctx._wg = ctx.new_page()
+                        ctx._wg.goto("https://wow.gg/auction-house/forever", wait_until="domcontentloaded", timeout=60000)
+                        ctx._wg.wait_for_timeout(4000)
+                    res = ctx._wg.evaluate("async (u) => { const r = await fetch(u); return [r.status, await r.text()]; }", u)
+                    class _R: pass
+                    r = _R(); r.status = res[0]; body = res[1]
+                else:
+                    r = ctx.request.get(u, timeout=60000)
+                    body = r.text()
                 open(f"data/page_{i}.txt", "w", encoding="utf-8").write(body)
                 index.append({"url": u, "status": r.status, "raw": True, "chars": len(body)})
             except Exception as e:  # noqa: BLE001
