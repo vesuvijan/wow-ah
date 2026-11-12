@@ -34,6 +34,8 @@ WANT = {}
 for p_ in (PLAN, PLAN_L):
     for sl, v in p_.items():
         if isinstance(v, dict) and "options" in v:
+            if not EQ.get(sl):       # giydigi item degeri bilinmiyor/0 -> kazanc yuzdesi sahte, tarif eslemesine alma
+                continue
             for o in v["options"]:
                 if o["gain_pct"] >= 2.0:
                     WANT[o["name"].lower()] = (o["name"], o["gain_pct"])

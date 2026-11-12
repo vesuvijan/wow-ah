@@ -21,7 +21,7 @@ by = defaultdict(list)
 for r in rows:
     by[r["kind"]].append(r)
 print(f"Son {hours:g} saat ({tr(since)} - {tr(max(r['ts'] for r in rows))} TR): {sum(len(v) for k, v in by.items() if k != 'status')} uyari")
-for kind in ("gear", "recipe", "writ", "snipe", "flip", "favor", "sell", "mat", "new"):
+for kind in ("gear", "recipe", "writ", "gamble", "snipe", "flip", "favor", "sell", "mat", "new"):
     v = by.get(kind)
     if not v:
         continue
@@ -33,6 +33,10 @@ for kind in ("gear", "recipe", "writ", "snipe", "flip", "favor", "sell", "mat", 
     print(f"\n[{kind.upper()}] {len(v)} uyari, {len(best)} farkli")
     for r in sorted(best.values(), key=lambda x: -x["score"])[:8]:
         print(f"  {tr(r['ts'])}  " + " | ".join(str(x) for x in r["row"][:6] if x not in ("", None)))
+wm = by.get("writmkt")
+if wm:
+    print(f"\n[WRIT PAZARI son: {tr(wm[-1]['ts'])}]")
+    print("\n".join("  " + l for l in wm[-1]["row"]))
 st = by.get("status")
 if st:
     print(f"\n[SON DURUM {tr(st[-1]['ts'])}]")

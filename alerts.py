@@ -183,8 +183,51 @@ def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
             continue
         qty = sum(q for _, q in cheap)
         top = max(p for p, _ in cheap)
-        row = [wname, money(cheap[0][0]), f"{rep} rep", f"{cheap[0][0] / rep:.0f}c/rep", f"x{qty} up to {money(top)}", ""]
+        row = [wname, cm(money(cheap[0][0])), f"{rep} rep", f"{cheap[0][0] / rep:.0f}c/rep", f"x{qty} up to {cm(money(top))}", ""]
         found.append(("writ", f"writ{wid}", cheap[0][0], row, -cheap[0][0] / rep))
+
+    # 3c) Writ kumari: Sealed Writ ac -> rastgele siparis cikar -> acilmis writ'i sat. Acilmis writ ilanlarinin tier'e gore medyan ask'i
+    try:
+        tc = json.load(open("data/tipcache.json", encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        tc = {}
+    opened = {"Journeyman": [], "Expert": [], "Artisan": []}
+    prev = {}
+    try:
+        prev = json.load(open("data/writ_prev.json", encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        pass
+    cur = {}
+    for k, v in snap["items"].items():
+        nm = names.get(int(k)) if str(k).isdigit() else None
+        if not nm or not nm.startswith("Craftsman's Writ:") or not v["l"]:
+            continue
+        m = re.search(r"\b(Journeyman|Expert|Artisan)\b", re.sub(r"<[^>]+>", " ", (tc.get(str(k)) or {}).get("tooltip", "")))
+        if not m:
+            continue
+        opened[m.group(1)].append(v["l"][0][0])
+        cur[k] = [m.group(1), sum(q for _, q in v["l"])]
+    gone = {t: 0 for t in opened}
+    for k, (t, q) in prev.items():
+        gone[t] += max(0, q - cur.get(k, [t, 0])[1])      # kaybolan ilan adedi (satis veya sure bitimi)
+    json.dump(cur, open("data/writ_prev.json", "w"))
+    mk = {}
+    for t, lows in opened.items():
+        if lows:
+            mk[t] = (statistics.median(lows), len(lows), sum(q for _, q in [x for x in cur.values() if x[0] == t]))
+    log_alert(ts, "writmkt", [f"{t}: median ask {cm(money(m_[0]))}, {m_[1]} order types, {m_[2]} listed, {gone[t]} listings gone since last snapshot" for t, m_ in mk.items()])
+    gmin = cfg.get("writ_gamble_ratio", 3.0)
+    for wid, (wname, rep) in WRITS.items():
+        t = wname.split("'")[0].replace("Sealed ", "")
+        v = snap["items"].get(wid)
+        if t not in mk or not v or not v["l"]:
+            continue
+        sell = mk[t][0] * 0.95
+        n_ok = sum(q for p, q in v["l"] if sell / p >= gmin)
+        if n_ok:
+            p0 = v["l"][0][0]
+            row = [wname, cm(money(p0)), f"~{cm(money(sell))} each", f"x{min(n_ok, 5)} test", f"{mk[t][1]} order types, median ask {cm(money(mk[t][0]))}", ""]
+            found.append(("gamble", f"gamble{wid}", p0, row, sell / p0))
 
     # 4) AH'de Docker Tuckalot icin gear upgrade / tarif / yeni item
     try:
@@ -310,6 +353,8 @@ SECTIONS = {
              "Craft from AH mats and sell to a vendor. Profit after cost."),
     "writ": ("Cheap reputation - Sealed Writs", 0x00BCD4, ["#", "Price", "Reputation", "Cost"], (2, 9, 10, 9),
              "Open the writ, hand in the item it asks for (buy it on the AH or craft it) = reputation + a coin pouch of silver. Each order once per day."),
+    "gamble": ("Writ gamble - open and resell (TEST SIZE)", 0xFF5722, ["#", "Cost", "Resale", "Try"], (2, 9, 12, 8),
+               "Unproven: we see asking prices, not sales. Buy only the test amount, open them, list the orders, see if they sell."),
     "snipe": ("Snipe - buy and relist", 0xE67E22, ["Item", "Ask", "Resell", "Gain"], (14, 7, 7, 7),
               "Same variant, <60% of its own 3-day+ price history and of the next 3 listings. Verify in game."),
 }
@@ -339,6 +384,8 @@ def favor_card(r):
 def cells(kind, r):
     if kind in ("gear", "new"):      # [label, price, gain/type, slot, bind, stats, req]
         return [r[0], cm(r[1]), r[2], r[3]]
+    if kind == "gamble":             # [sealed name, cost, ~resale, "xN test", info, ""]
+        return [r[0], r[1], r[2], r[3]]
     if kind == "writ":               # [name, price, rep, cost/rep, "xN up to P", ""]
         return [r[0], r[1], r[2], r[3]]
     if kind == "recipe":             # [name, price, qty, makes, "", ""]
@@ -357,7 +404,7 @@ def cells(kind, r):
 def todo_lines(fresh):
     """Cok kisa 'simdi ne yap' listesi."""
     lines = []
-    for kind in ("sell", "gear", "recipe", "snipe", "flip", "favor", "writ", "mat"):
+    for kind in ("sell", "gear", "recipe", "snipe", "flip", "favor", "writ", "gamble", "mat"):
         items = sorted([f for f in fresh if f[0] == kind], key=lambda f: -f[2])[:1 if kind == "favor" else 2]
         for _, r, _s in items:
             if kind == "sell":
@@ -371,6 +418,8 @@ def todo_lines(fresh):
                 lines.append(f"NEW ITEM {r[0]} at {cm(r[1])} ({r[3]}): {r[5]}")
             elif kind == "writ":
                 lines.append(f"BUY REP {r[0]}: {r[4]} listed at {cm(r[1])} each (that is {r[3]}, {r[2]} each). Open it, buy/craft the item it asks for, hand in for reputation and a coin pouch. Once per order per day")
+            elif kind == "gamble":
+                lines.append(f"TEST {r[0]}: buy {r[3].split()[0][1:]} at {cm(r[1])} each, open them (right-click), list the resulting Craftsman's Writ orders on the AH at about {r[2].split()[0][1:]} each ({r[4]}). Small test only: we see asking prices, not real sales yet")
             elif kind == "snipe":
                 lines.append(f"SNIPE {r[0]} at {cm(r[1])} (resell {cm(r[3])})")
             elif kind == "flip":
@@ -389,7 +438,7 @@ def todo_lines(fresh):
 
 def send_embeds(fresh, local_now, demo=False, status=None):
     embeds = []
-    for kind in ("sell", "gear", "recipe", "new", "flip", "favor", "writ", "mat", "snipe"):
+    for kind in ("sell", "gear", "recipe", "new", "flip", "favor", "writ", "gamble", "mat", "snipe"):
         items = sorted([f for f in fresh if f[0] == kind], key=lambda f: -f[2])[:10]
         if not items:
             continue
@@ -412,7 +461,7 @@ def send_embeds(fresh, local_now, demo=False, status=None):
         listing = "\n".join(f"{i + 1}. **{f[1][0]}**" + _det(kind, f[1]) for i, f in enumerate(items))
         embeds.append({"title": f"{title} ({len(items)})", "color": color,
                        "description": hint + "\n" + listing + "\n" + grid(["#"] + list(headers[1:]), rows_, (2,) + tuple(widths[1:]))})
-    names_ = {"flip": "Flips", "sell": "SELL", "favor": "Favor", "mat": "Mats", "snipe": "Snipes", "gear": "Gear", "recipe": "Recipes", "new": "New", "writ": "Rep"}
+    names_ = {"flip": "Flips", "sell": "SELL", "favor": "Favor", "mat": "Mats", "snipe": "Snipes", "gear": "Gear", "recipe": "Recipes", "new": "New", "writ": "Rep", "gamble": "Writ gamble"}
     summary = " | ".join(f"{names_[k]} {sum(1 for f in fresh if f[0] == k)}" for k in names_ if any(f[0] == k for f in fresh))
     if status:
         embeds.append({"title": "Status", "color": 0x95A5A6, "description": "```\n" + "\n".join(status) + "\n```"})
