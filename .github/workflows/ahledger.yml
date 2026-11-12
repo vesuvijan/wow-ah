@@ -1,0 +1,39 @@
+name: AHledger pull
+on:
+  workflow_dispatch:
+    inputs:
+      market:
+        description: "pazar"
+        default: "forever.rppvp.alliance.eu"
+      probe:
+        description: "detay endpoint denemesi icin itemId (bos olabilir)"
+        default: ""
+permissions:
+  contents: write
+jobs:
+  f:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install playwright
+        run: |
+          pip install playwright
+          playwright install --with-deps chromium
+      - name: Pull
+        env:
+          MARKET: ${{ inputs.market }}
+          PROBE: ${{ inputs.probe }}
+        run: python ahledger_pull.py
+      - name: Publish
+        run: |
+          git config user.name "ah-bot"
+          git config user.email "ah-bot@users.noreply.github.com"
+          git checkout --orphan ahledger
+          git rm -rf --cached . > /dev/null
+          git add -f data
+          git commit -qm "ahledger $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -f origin ahledger
