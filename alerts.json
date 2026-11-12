@@ -32,6 +32,6 @@
   "gear_max_price": 10000,
   "gear_big_gain": 10.0,
   "gear_big_price": 50000,
-  "writ_max_copper_per_rep": 20,
-  "writ_eng_max_copper_per_rep": 60
+  "writ_max_copper_per_rep": 0,
+  "writ_ah_max_copper_per_rep": 150
 }
