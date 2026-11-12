@@ -229,6 +229,47 @@ def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
             row = [wname, cm(money(p0)), f"~{cm(money(sell))} each", f"x{min(n_ok, 5)} test", f"{mk[t][1]} order types, median ask {cm(money(mk[t][0]))}", ""]
             found.append(("gamble", f"gamble{wid}", p0, row, sell / p0))
 
+    # 3d) Engineering writ (acilmis): writ + item maliyeti (craft veya AH, hangisi ucuzsa) / rep. Sadece main'in mesleği icin.
+    try:
+        rec = json.load(open("data/recipes.json", encoding="utf-8"))["professions"]
+        eng = {}
+        for pr_ in rec.values():
+            if pr_["name"] == "Engineering":
+                for rc_ in pr_["recipes"].values():
+                    if rc_.get("crafted"):
+                        eng[rc_["crafted"][1].lower()] = rc_
+        bk = {int(k_): [(p_, q_) for p_, q_ in v_["l"]] for k_, v_ in snap["items"].items()}
+        REPT = {"Journeyman": 75, "Expert": 125, "Artisan": 200}
+        lim_e = cfg.get("writ_eng_max_copper_per_rep", 60)
+        for k_, v_ in snap["items"].items():
+            nm_ = names.get(int(k_)) if str(k_).isdigit() else None
+            if not nm_ or not nm_.startswith("Craftsman's Writ:") or not v_["l"]:
+                continue
+            item_ = nm_.split(": ", 1)[1]
+            rc_ = eng.get(item_.lower())
+            if not rc_:
+                continue
+            mt = re.search(r"\b(Journeyman|Expert|Artisan)\b", re.sub(r"<[^>]+>", " ", (tc.get(str(k_)) or {}).get("tooltip", "")))
+            if not mt:
+                continue
+            rep_ = REPT[mt.group(1)]
+            w_ = v_["l"][0][0]
+            cc = [W.cost_to_buy(bk, int(a_), q_) if W else None for a_, _n, q_ in rc_["reagents"]]
+            craft = sum(cc) if None not in cc else None
+            ob_ = sorted(bk.get(rc_["crafted"][0], []))
+            buy = ob_[0][0] if ob_ else None
+            opts = [x_ for x_ in (craft, buy) if x_ is not None]
+            if not opts:
+                continue
+            ic_ = min(opts)
+            per = (w_ + ic_) / rep_
+            if per <= lim_e:
+                how = f"craft it (~{cm(money(craft))} in AH mats)" if craft is not None and craft == ic_ else f"buy it on the AH (~{cm(money(buy))})"
+                row = [f"Craftsman's Writ: {item_}", cm(money(w_)), f"{rep_} rep", f"{per:.0f}c/rep", f"{mt.group(1)}; then {how}", ""]
+                found.append(("writ", f"writeng{k_}", w_, row, -per))
+    except Exception as e:  # noqa: BLE001
+        print("writ_eng hatasi:", e)
+
     # 4) AH'de Docker Tuckalot icin gear upgrade / tarif / yeni item
     try:
         import ah_gear
@@ -423,6 +464,8 @@ def todo_lines(fresh):
                 lines.append(f"BUY RECIPE {r[0]} at {cm(r[1])}. {r[3]}")
             elif kind == "new":
                 lines.append(f"NEW ITEM {r[0]} at {cm(r[1])} ({r[3]}): {r[5]}")
+            elif kind == "writ" and r[0].startswith("Craftsman"):
+                lines.append(f"BUY REP {r[0]} at {cm(r[1])}: {r[2]} for {r[3]} all-in. Buy the writ, accept the order, {r[4].split('; then ', 1)[1]}, hand it in to the order giver. Once per order per day")
             elif kind == "writ":
                 lines.append(f"BUY REP {r[0]}: {r[4]} listed at {cm(r[1])} each (that is {r[3]}, {r[2]} each). Open it, buy/craft the item it asks for, hand in for reputation and a coin pouch. Once per order per day")
             elif kind == "gamble":
