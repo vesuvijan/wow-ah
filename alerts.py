@@ -592,9 +592,12 @@ def status(snap, series, watch, hold, need_map, route_lines, cfg_path="alerts.js
 
 
 def notify(fresh, status_lines, snap):
+    """Discord'a SADECE yeni bir firsat varsa mesaj atar. Durum satirlari mesaja eklenmez; sadece kayda (digest.py) yazilir."""
     log_alert(snap["fetched_at"], "status", list(status_lines or []))
+    if not fresh:
+        return
     local = datetime.datetime.strptime(snap["fetched_at"], "%Y-%m-%dT%H:%M:%SZ") + datetime.timedelta(hours=3)
-    send_embeds(fresh, local, status=status_lines)
+    send_embeds(fresh, local, status=None)
 
 
 def digest(snap, route_lines, force=False):
