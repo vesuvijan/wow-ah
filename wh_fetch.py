@@ -46,7 +46,9 @@ with sync_playwright() as p:
                 ct = resp.headers.get("content-type", "")
                 if resp.request.resource_type in ("xhr", "fetch") or "json" in ct or "csv" in ct:
                     body = resp.text()
-                    net.append({"url": resp.url, "status": resp.status, "ct": ct, "len": len(body), "head": body[:3000]})
+                    full = "railway.app" in resp.url
+                    net.append({"url": resp.url, "status": resp.status, "ct": ct, "len": len(body), "head": body if full else body[:3000],
+                                "req_headers": resp.request.all_headers() if full else None})
             except Exception:  # noqa: BLE001
                 pass
         pg.on("response", on_resp)
