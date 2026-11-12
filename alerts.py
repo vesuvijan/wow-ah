@@ -171,6 +171,21 @@ def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
         row = [nm, money(p0), f"x{q0}", money(nxt), "~" + money(gain), str(n)]
         found.append(("snipe", f"snipe{k}", p0, row, gain))
 
+    # 3b) Sealed Writ: reputation (Azeroth Commerce Authority) icin ucuz alim. Rep/writ: Journeyman 75, Expert 125, Artisan 200
+    WRITS = {"262888": ("Sealed Journeyman's Writ", 75), "262889": ("Sealed Expert's Writ", 125), "262890": ("Sealed Artisan's Writ", 200)}
+    lim = cfg.get("writ_max_copper_per_rep", 20)
+    for wid, (wname, rep) in WRITS.items():
+        v = snap["items"].get(wid)
+        if not v or not v["l"]:
+            continue
+        cheap = [(p, q) for p, q in v["l"] if p / rep <= lim]
+        if not cheap:
+            continue
+        qty = sum(q for _, q in cheap)
+        top = max(p for p, _ in cheap)
+        row = [wname, money(cheap[0][0]), f"{rep} rep", f"{cheap[0][0] / rep:.0f}c/rep", f"x{qty} up to {money(top)}", ""]
+        found.append(("writ", f"writ{wid}", cheap[0][0], row, -cheap[0][0] / rep))
+
     # 4) AH'de Docker Tuckalot icin gear upgrade / tarif / yeni item
     try:
         import ah_gear
@@ -293,6 +308,8 @@ SECTIONS = {
              "Price is well above its usual level. Good time to sell stock."),
     "flip": ("Vendor flip - craft, sell to NPC", 0x9B59B6, ["Recipe", "Cost", "NPC", "Profit", "Prof"], (13, 7, 7, 7, 4),
              "Craft from AH mats and sell to a vendor. Profit after cost."),
+    "writ": ("Cheap reputation - Sealed Writs", 0x00BCD4, ["#", "Price", "Reputation", "Cost"], (2, 9, 10, 9),
+             "Open the writ, hand in the item it asks for (buy it on the AH or craft it) = reputation + a coin pouch of silver. Each order once per day."),
     "snipe": ("Snipe - buy and relist", 0xE67E22, ["Item", "Ask", "Resell", "Gain"], (14, 7, 7, 7),
               "Same variant, <60% of its own 3-day+ price history and of the next 3 listings. Verify in game."),
 }
@@ -322,6 +339,8 @@ def favor_card(r):
 def cells(kind, r):
     if kind in ("gear", "new"):      # [label, price, gain/type, slot, bind, stats, req]
         return [r[0], cm(r[1]), r[2], r[3]]
+    if kind == "writ":               # [name, price, rep, cost/rep, "xN up to P", ""]
+        return [r[0], r[1], r[2], r[3]]
     if kind == "recipe":             # [name, price, qty, makes, "", ""]
         return [r[0], cm(r[1]), r[2]]
     if kind == "favor":   # [crate, per_favor, F, bundle, crate_price, "3x ~44s 30c"]
@@ -338,7 +357,7 @@ def cells(kind, r):
 def todo_lines(fresh):
     """Cok kisa 'simdi ne yap' listesi."""
     lines = []
-    for kind in ("sell", "gear", "recipe", "snipe", "flip", "favor", "mat"):
+    for kind in ("sell", "gear", "recipe", "snipe", "flip", "favor", "writ", "mat"):
         items = sorted([f for f in fresh if f[0] == kind], key=lambda f: -f[2])[:1 if kind == "favor" else 2]
         for _, r, _s in items:
             if kind == "sell":
@@ -350,6 +369,8 @@ def todo_lines(fresh):
                 lines.append(f"BUY RECIPE {r[0]} at {cm(r[1])}. {r[3]}")
             elif kind == "new":
                 lines.append(f"NEW ITEM {r[0]} at {cm(r[1])} ({r[3]}): {r[5]}")
+            elif kind == "writ":
+                lines.append(f"BUY REP {r[0]}: {r[4]} listed at {cm(r[1])} each (that is {r[3]}, {r[2]} each). Open it, buy/craft the item it asks for, hand in for reputation and a coin pouch. Once per order per day")
             elif kind == "snipe":
                 lines.append(f"SNIPE {r[0]} at {cm(r[1])} (resell {cm(r[3])})")
             elif kind == "flip":
@@ -368,7 +389,7 @@ def todo_lines(fresh):
 
 def send_embeds(fresh, local_now, demo=False, status=None):
     embeds = []
-    for kind in ("sell", "gear", "recipe", "new", "flip", "favor", "mat", "snipe"):
+    for kind in ("sell", "gear", "recipe", "new", "flip", "favor", "writ", "mat", "snipe"):
         items = sorted([f for f in fresh if f[0] == kind], key=lambda f: -f[2])[:10]
         if not items:
             continue
@@ -391,7 +412,7 @@ def send_embeds(fresh, local_now, demo=False, status=None):
         listing = "\n".join(f"{i + 1}. **{f[1][0]}**" + _det(kind, f[1]) for i, f in enumerate(items))
         embeds.append({"title": f"{title} ({len(items)})", "color": color,
                        "description": hint + "\n" + listing + "\n" + grid(["#"] + list(headers[1:]), rows_, (2,) + tuple(widths[1:]))})
-    names_ = {"flip": "Flips", "sell": "SELL", "favor": "Favor", "mat": "Mats", "snipe": "Snipes", "gear": "Gear", "recipe": "Recipes", "new": "New"}
+    names_ = {"flip": "Flips", "sell": "SELL", "favor": "Favor", "mat": "Mats", "snipe": "Snipes", "gear": "Gear", "recipe": "Recipes", "new": "New", "writ": "Rep"}
     summary = " | ".join(f"{names_[k]} {sum(1 for f in fresh if f[0] == k)}" for k in names_ if any(f[0] == k for f in fresh))
     if status:
         embeds.append({"title": "Status", "color": 0x95A5A6, "description": "```\n" + "\n".join(status) + "\n```"})
