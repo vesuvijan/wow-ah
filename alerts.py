@@ -495,6 +495,17 @@ def status(snap, series, watch, hold, need_map, route_lines, cfg_path="alerts.js
         except Exception:  # noqa: BLE001
             pass
     lines += route_lines
+    try:   # etkinlik takvimi (kaynak: mein-mmo, gfinity; tarihler degisebilir)
+        today = (datetime.datetime.strptime(snap["fetched_at"], "%Y-%m-%dT%H:%M:%SZ") + datetime.timedelta(hours=3)).date()
+        D = datetime.date
+        dmf = [(D(2026, 11, 9), D(2026, 11, 16)), (D(2026, 12, 7), D(2026, 12, 14)), (D(2027, 1, 4), D(2027, 1, 11))]
+        cur_ = next(((s_, e_) for s_, e_ in dmf if s_ <= today <= e_), None)
+        nxt = next((s_ for s_, e_ in dmf if s_ > today), None)
+        ev = (f"Darkmoon Faire is on, ends in {(cur_[1] - today).days} days" if cur_ else "Darkmoon Faire is not on") + (f"; next starts in {(nxt - today).days} days" if nxt else "")
+        raid = (D(2026, 12, 9) - today).days
+        lines.append(f"Events: {ev}. Raids (Barrow Deeps, Hyjal Summit, Onyxia) unlock in {raid} days" if raid > 0 else f"Events: {ev}")
+    except Exception:  # noqa: BLE001
+        pass
     # alim bandina en yakin rota malzemeleri
     ranked = []
     nsamp = 0
