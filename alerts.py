@@ -28,7 +28,7 @@ def load_names():
         return {}
 
 
-QUIET = {"new"}          # ilk kez gorulen itemlar: anlik mesaj yok, sadece ozet icin kaydedilir
+QUIET = {"new", "recipe"}          # ilk kez gorulen itemlar: anlik mesaj yok, sadece ozet icin kaydedilir
 LOG = "data/alert_log.jsonl"
 
 
@@ -269,6 +269,9 @@ _PROF = {"Alchemy": "Alc", "Enchanting": "Ench", "Engineering": "Eng", "Tailorin
          "Blacksmithing": "BS", "Cooking": "Cook", "Mining": "Min", "First Aid": "FA"}
 
 
+VENDOR_REAGENTS = {2320, 2321, 4291, 8343, 14341, 3371, 3372, 2325, 2604, 2605, 4340, 4341, 4342, 6260, 6261, 2880, 3466, 4289}  # iplik, boya, sise, flux, tuz
+
+
 def vendor_flips(snap, cfg):
     """Craft maliyeti (AH reagent fiyati; AH'de yoksa vendor alis fiyati) < NPC satis fiyati ise listele."""
     try:
@@ -296,6 +299,10 @@ def vendor_flips(snap, cfg):
             for rid_, _nm, q in rc["reagents"]:
                 c = W.cost_to_buy(book, int(rid_), q) if W else None
                 if c is None:
+                    # AH'de yok / yeterli adet yok. Sadece bilinen vendor reagent'lari (iplik, boya, sise, flux...) static fiyatla hesaplanir.
+                    if int(rid_) not in VENDOR_REAGENTS:
+                        ok = False
+                        break
                     pp = (names.get(str(rid_)) or {}).get("pp")
                     if not pp:
                         ok = False
@@ -483,7 +490,8 @@ def status(snap, series, watch, hold, need_map, route_lines, cfg_path="alerts.js
         try:
             rows, _ = W.evaluate(book)
             r = rows[0]
-            lines.append(f"Favor best: {crate_full(r['crate'])} {cm(money(r['per_favor']))}/F (buy <= {cm(money(cfg['favor_per_favor_max']))})")
+            lines.append(f"Favor best: {crate_full(r['crate'])} = {cm(money(r['per_favor']))} per Favor (your buy limit {cm(money(cfg['favor_per_favor_max']))}). "
+                         f"How: buy the crate ({cm(money(r['crate_price']))}), buy {r['qty']}x {r['mat']} to fill it (~{cm(money(r['mats']))}), hand it in to Marcy Baker = +{r['favor']} Favor")
         except Exception:  # noqa: BLE001
             pass
     lines += route_lines
