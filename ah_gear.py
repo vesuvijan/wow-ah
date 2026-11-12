@@ -75,6 +75,34 @@ def fetch_tip(key, rate=6.0):
     return key, None
 
 
+def equipped_baseline(cache, W, deadline):
+    """Giydigi her itemin degerini canli tooltip'ten hesapla (Forever'a ozel idler OFA verisinde yok).
+    Donus: (slot->deger, bilinmeyen slotlar). Bilinmeyen slot icin uyari uretilmez."""
+    eq = dict(EQ)
+    unknown = set()
+    for it in PLAN.get("equipped", []):
+        sl, iid = it["slot"], str(it["id"])
+        if sl in ("MAIN_HAND", "OFF_HAND", "AMMO"):
+            continue
+        t = cache.get(iid)
+        if t is None and time.time() < deadline:
+            _, t = fetch_tip(iid)
+            if t is not None:
+                cache[iid] = t
+        try:
+            if not t or t.get("none"):
+                raise ValueError("no tooltip")
+            r = G.parse(iid, t)
+            r["req"] = G.fix_req(r)
+            v = G.value(r, W)
+            if v <= 0 and sl not in ("TRINKET_1", "TRINKET_2", "NECK"):
+                raise ValueError("zero value")
+            eq[sl] = v
+        except Exception:  # noqa: BLE001
+            unknown.add(sl)
+    return eq, unknown
+
+
 def money(c):
     c = int(round(c)); g, rem = divmod(c, 10000); s, cu = divmod(rem, 100)
     return "".join([f"{g}g" if g else "", f"{s}s" if s else "", f"{cu}c" if cu or not (g or s) else ""])
@@ -105,6 +133,7 @@ def scan(snap, cfg, budget_s=150):
                     continue
                 cache[k] = t
                 got += 1
+    eq_live, eq_unknown = equipped_baseline(cache, W, time.time() + 30)
     json.dump(cache, open(CACHE, "w"), separators=(",", ":"))
     # 2) puanla
     out, new_rows = [], []
@@ -119,7 +148,11 @@ def scan(snap, cfg, budget_s=150):
             if not first_run:
                 pending.add(iid_)
     want_min = cfg.get("gear_min_gain", 3.0)
-    max_price = cfg.get("gear_max_price", 1000000)
+    max_price = cfg.get("gear_max_price", 10000)          # normalde en fazla 1g (ucuz, bariz upgrade)
+    big_gain = cfg.get("gear_big_gain", 10.0)              # buyuk upgrade ise
+    big_price = cfg.get("gear_big_price", 50000)           # 5g'ye kadar
+    def ok_price(p, g):
+        return p <= max_price or (g >= big_gain and p <= big_price)
     rec_max = cfg.get("recipe_max_price", 2000000)
     best_oh = PLAN["weapons"]["NOW"][0]["oh"].get("val_oh", 0) if PLAN.get("weapons", {}).get("NOW") else 0
     for k, v in keys.items():
@@ -149,18 +182,21 @@ def scan(snap, cfg, budget_s=150):
             continue
         sl = r["slot"]
         if sl in SLOT_EQ:
-            eqs = [EQ.get(s, 0) for s in SLOT_EQ[sl]]
+            if any(x in eq_unknown for x in SLOT_EQ[sl]):
+                continue          # giydigi itemin degeri bilinmiyor -> sahte upgrade uretme
+            eqs = [eq_live.get(s, 0) for s in SLOT_EQ[sl]]
             cur = min(eqs) if eqs else 0
             val = G.value(r, W)
             gain = 100 * (val - cur) / TOTAL
-            if gain >= want_min and p0 <= max_price:
+            if gain >= want_min and ok_price(p0, gain):
                 out.append(("gear", f"gear{k}", p0, [label, money(p0), f"+{gain:.1f}%", SLOT_NAME.get(sl, sl), r["bind"] or "-", G_stats(r), f"req {r['req']}"], gain))
                 if is_new and not first_run:
                     new_rows.append(("new", f"new{k}", p0, [label, money(p0), "upgrade", SLOT_NAME.get(sl, sl), "", G_stats(r), ""], gain + 100))
         elif sl in ("1H", "MH", "OH") and r.get("cls") == 2 and r["dps"]:
             ov = G.value(r, W, "OH")
-            if best_oh and ov >= 0.9 * best_oh and p0 <= max_price:
-                out.append(("gear", f"gear{k}", p0, [label, money(p0), f"{r['dps']:.1f} dps", SLOT_NAME.get(sl, sl), r["bind"] or "-", G_stats(r), f"req {r['req']}"], ov / 10))
+            og = 100 * ov / TOTAL        # off-hand slotu bos -> tum degeri kazanc
+            if best_oh and ov >= 0.9 * best_oh and ok_price(p0, og):
+                out.append(("gear", f"gear{k}", p0, [label, money(p0), f"off-hand option, {r['dps']:.1f} dps", SLOT_NAME.get(sl, sl), r["bind"] or "-", G_stats(r), f"req {r['req']}"], og))
         if is_new and not first_run and (r["q"] or 0) >= cfg.get("new_item_min_quality", 3):
             new_rows.append(("new", f"new{k}", p0, [label, money(p0), "new on AH", SLOT_NAME.get(sl, sl or "item"), "", G_stats(r), ""], 50 + (r["q"] or 0)))
     known["_pending"] = sorted(pending)

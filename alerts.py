@@ -28,6 +28,19 @@ def load_names():
         return {}
 
 
+QUIET = {"new"}          # ilk kez gorulen itemlar: anlik mesaj yok, sadece ozet icin kaydedilir
+LOG = "data/alert_log.jsonl"
+
+
+def log_alert(ts, kind, row, score=0, **extra):
+    """Her uyariyi/durumu kaydet; digest.py 'son N saatin ozeti' icin okur. 7 gun tutulur."""
+    try:
+        with open(LOG, "a", encoding="utf-8") as f:
+            f.write(json.dumps({"ts": ts, "kind": kind, "row": row, "score": score, **extra}, ensure_ascii=False) + "\n")
+    except Exception:  # noqa: BLE001
+        pass
+
+
 def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
     cfg = json.load(open(cfg_path, encoding="utf-8"))
     names = load_names()
@@ -177,11 +190,20 @@ def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
             elif age < cfg["realert_hours"] and price >= prev["price"] * 0.9:
                 continue
         state[key] = {"ts": ts, "price": price}
+        log_alert(ts, kind, row, score)
+        if kind in QUIET:
+            continue            # sadece ozet kaydina yazilir, Discord'a anlik gitmez
         fresh.append((kind, row, score))
     cutoff = (now - datetime.timedelta(days=3)).strftime("%Y-%m-%dT%H:%M:%SZ")
     state = {k: v for k, v in state.items() if v["ts"] >= cutoff}
     with open(state_path, "w", encoding="utf-8") as f:
         json.dump(state, f)
+    try:   # kaydi 7 gunle sinirla
+        keep = (now - datetime.timedelta(days=7)).strftime("%Y-%m-%dT%H:%M:%SZ")
+        rows = [l for l in open(LOG, encoding="utf-8") if json.loads(l)["ts"] >= keep]
+        open(LOG, "w", encoding="utf-8").writelines(rows)
+    except Exception:  # noqa: BLE001
+        pass
     return fresh
 
 
@@ -316,13 +338,14 @@ def cells(kind, r):
 def todo_lines(fresh):
     """Cok kisa 'simdi ne yap' listesi."""
     lines = []
-    for kind in ("sell", "gear", "recipe", "new", "snipe", "flip", "favor", "mat"):
+    for kind in ("sell", "gear", "recipe", "snipe", "flip", "favor", "mat"):
         items = sorted([f for f in fresh if f[0] == kind], key=lambda f: -f[2])[:1 if kind == "favor" else 2]
         for _, r, _s in items:
             if kind == "sell":
                 lines.append(f"SELL {r[0]} now ({cm(r[1])}, {r[3]} above normal)")
             elif kind == "gear":
-                lines.append(f"BUY GEAR {r[0]} at {cm(r[1])}: {r[2]} better, {r[3]} ({r[5]})")
+                gain = f"{r[2]} better than what you wear" if str(r[2]).startswith("+") else str(r[2])
+                lines.append(f"BUY GEAR {r[0]} at {cm(r[1])} ({r[3]}): {gain}. Stats: {r[5]}")
             elif kind == "recipe":
                 lines.append(f"BUY RECIPE {r[0]} at {cm(r[1])}. {r[3]}")
             elif kind == "new":
@@ -334,7 +357,7 @@ def todo_lines(fresh):
             elif kind == "favor":
                 if len(r) > 6:
                     d = r[6]
-                    lines.append(f"FAVOR buy {d['n']}x {crate_full(d['crate'])} (~{cm(money(d['crate_price']))} ea) + {d['n'] * d['qty']}x {d['mat']} (~{cm(money(d['mats'] / d['qty']))} ea) = +60 Favor, net ~{cm(money(d['total'] * d['n']))}")
+                    lines.append(f"FAVOR buy {d['n']}x {crate_full(d['crate'])} (~{cm(money(d['crate_price']))} ea) + {d['n'] * d['qty']}x {d['mat']} (~{cm(money(d['mats'] / d['qty']))} ea) = +60 Favor, net ~{cm(money(d['total'] * d['n']))} = {cm(money(d['per_favor']))} per Favor")
                 else:
                     n = r[5].split("x")[0]
                     lines.append(f"FAVOR buy {n}x {short(r[0])} crate + {r[3]} per crate")
@@ -361,7 +384,7 @@ def send_embeds(fresh, local_now, demo=False, status=None):
             if kind_ == "flip":
                 return f" ({r_[4]})\n    Mats: {r_[5]}"
             if kind_ in ("gear", "new"):
-                return f" ({r_[4]}, {r_[6]})\n    {r_[5]}" if r_[5] else ""
+                return f" ({r_[4]}, {r_[6]}): {r_[5]}" if r_[5] else ""
             if kind_ == "recipe":
                 return f"\n    {r_[3]}"
             return ""
@@ -428,6 +451,7 @@ def status(snap, series, watch, hold, need_map, route_lines, cfg_path="alerts.js
 
 
 def notify(fresh, status_lines, snap):
+    log_alert(snap["fetched_at"], "status", list(status_lines or []))
     local = datetime.datetime.strptime(snap["fetched_at"], "%Y-%m-%dT%H:%M:%SZ") + datetime.timedelta(hours=3)
     send_embeds(fresh, local, status=status_lines)
 
