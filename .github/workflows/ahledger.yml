@@ -38,6 +38,7 @@ jobs:
           MARKET: ${{ inputs.market || 'forever.rppvp.alliance.eu' }}
           PROBE: ${{ inputs.probe }}
           DETAIL: ${{ inputs.detail == '1' && '1' || '' }}
+          ALLM: ${{ inputs.probe != '' && '1' || '' }}
           NOLIST: ${{ inputs.probe != '' && inputs.detail != '1' && '1' || '' }}
         run: python ahledger_pull.py
       - name: Publish

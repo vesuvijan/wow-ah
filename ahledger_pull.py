@@ -75,13 +75,14 @@ with sync_playwright() as p:
             time.sleep(1.0)
     probe = os.environ.get("PROBE", "")
     tests = {}
-    for pid in [x for x in probe.replace(",", " ").split() if x]:
-        st, body = get(f"{API}/item/{pid}?market={MARKET}&locale=en")
+    MKTS = [f"forever.{r}.{f}.{g}" for g in ("eu", "us") for r in ("normal", "pvp", "rp", "rppvp") for f in ("alliance", "horde")]
+    for pid, mk in [(x, m) for x in probe.replace(",", " ").split() if x for m in (MKTS if os.environ.get("ALLM") else [MARKET])]:
+        st, body = get(f"{API}/item/{pid}?market={mk}&locale=en")
         if st == 200:
             j = json.loads(body)
-            tests[pid] = {"name": j.get("name"), "markets": [{k: m.get(k) for k in ("market", "listed", "minBuyout", "median", "quantity", "median7d", "median30d", "low30d", "high30d", "scans")} for m in j.get("markets", [])]}
+            tests[f"{pid}@{mk}"] = {"name": j.get("name"), "markets": [{k: m.get(k) for k in ("market", "listed", "minBuyout", "median", "quantity", "median7d", "median30d", "low30d", "high30d", "scans")} for m in j.get("markets", [])]}
         else:
-            tests[pid] = [st, body[:300]]
+            tests[f"{pid}@{mk}"] = [st, body[:300]]
         time.sleep(1.2)
     b.close()
 if os.environ.get("NOLIST"):
