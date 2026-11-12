@@ -1,0 +1,35 @@
+name: Wowhead fetch
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: "https://*.wowhead.com sayfa adresleri (bosluk ile ayri)"
+        required: true
+permissions:
+  contents: write
+jobs:
+  f:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install playwright
+        run: |
+          pip install playwright
+          playwright install --with-deps chromium
+      - name: Fetch pages
+        env:
+          URLS: ${{ inputs.urls }}
+        run: python wh_fetch.py
+      - name: Publish
+        run: |
+          git config user.name "ah-bot"
+          git config user.email "ah-bot@users.noreply.github.com"
+          git checkout --orphan whpage
+          git rm -rf --cached . > /dev/null
+          git add -f data
+          git commit -qm "whpage $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -f origin whpage
