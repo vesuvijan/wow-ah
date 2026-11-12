@@ -29,7 +29,7 @@ with sync_playwright() as p:
         return pg.evaluate(js, [u, hdr])
     out, page, pages = {}, 1, 1
     per = 100
-    while page <= pages:
+    while page <= pages and not os.environ.get("NOLIST"):
         st, body = get(f"{API}?market={MARKET}&sort=name&dir=asc&page={page}&per={per}&locale=en")
         if st != 200:
             print("hata", page, st, body[:200]); break
@@ -75,13 +75,19 @@ with sync_playwright() as p:
             time.sleep(1.0)
     probe = os.environ.get("PROBE", "")
     tests = {}
-    if probe:
-        for u in (f"{API}/item/{probe}?market={MARKET}&locale=en", f"{API}/items/{probe}?market={MARKET}&locale=en",
-                  f"{API}/{probe}?market={MARKET}&locale=en", f"{API}/history?market={MARKET}&itemId={probe}&locale=en",
-                  f"{API}/item/{probe}/history?market={MARKET}&locale=en"):
-            st, body = get(u); tests[u] = [st, body[:4000]]; time.sleep(1.5)
+    for pid in [x for x in probe.replace(",", " ").split() if x]:
+        st, body = get(f"{API}/item/{pid}?market={MARKET}&locale=en")
+        if st == 200:
+            j = json.loads(body)
+            tests[pid] = {"name": j.get("name"), "markets": [{k: m.get(k) for k in ("market", "listed", "minBuyout", "median", "quantity", "median7d", "median30d", "low30d", "high30d", "scans")} for m in j.get("markets", [])]}
+        else:
+            tests[pid] = [st, body[:300]]
+        time.sleep(1.2)
     b.close()
-json.dump(out, open(f"data/ahl_{MARKET}.json", "w"), ensure_ascii=False, separators=(",", ":"))
+if os.environ.get("NOLIST"):
+    out = old   # sadece sorgu: arsivi oldugu gibi koru
+if out:
+    json.dump(out, open(f"data/ahl_{MARKET}.json", "w"), ensure_ascii=False, separators=(",", ":"))
 json.dump({"market": MARKET, "items": len(out), "fetched": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "probe": tests,
            "source": "Prices: AHledger (https://ahledger.com) via wow.gg"}, open("data/ahl_meta.json", "w"), indent=1, ensure_ascii=False)
 print("bitti", len(out))
