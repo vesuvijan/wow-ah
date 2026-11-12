@@ -9,7 +9,7 @@ from urllib.parse import urlparse
 
 from playwright.sync_api import sync_playwright
 
-ALLOWED = ("wowhead.com", "wow.gg", "timesaver.gg", "ahledger.com", "wowbackend-production.up.railway.app")
+ALLOWED = ("wowhead.com", "wow.gg", "timesaver.gg", "icy-veins.com", "mobalytics.gg", "ahledger.com", "wowbackend-production.up.railway.app")
 RAW = ("/api/", ".json", ".csv")
 urls = [u for u in re.split(r"\s+", os.environ.get("URLS", "").strip()) if u]
 os.makedirs("data", exist_ok=True)
