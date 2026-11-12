@@ -1,10 +1,15 @@
 name: AHledger pull
 on:
+  schedule:
+    - cron: "17 */6 * * *"
   workflow_dispatch:
     inputs:
       market:
         description: "pazar"
         default: "forever.rppvp.alliance.eu"
+      detail:
+        description: "tam gecmis icin item detaylarini da cek (1/0)"
+        default: "0"
       probe:
         description: "detay endpoint denemesi icin itemId (bos olabilir)"
         default: ""
@@ -13,7 +18,7 @@ permissions:
 jobs:
   f:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 70
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -23,10 +28,16 @@ jobs:
         run: |
           pip install playwright
           playwright install --with-deps chromium
+      - name: Restore previous archive
+        run: |
+          mkdir -p data
+          M="${{ inputs.market || 'forever.rppvp.alliance.eu' }}"
+          git fetch --depth=1 origin ahledger && git show FETCH_HEAD:data/ahl_$M.json > data/prev_$M.json 2>/dev/null || true
       - name: Pull
         env:
-          MARKET: ${{ inputs.market }}
+          MARKET: ${{ inputs.market || 'forever.rppvp.alliance.eu' }}
           PROBE: ${{ inputs.probe }}
+          DETAIL: ${{ inputs.detail == '1' && '1' || '' }}
         run: python ahledger_pull.py
       - name: Publish
         run: |
@@ -34,6 +45,7 @@ jobs:
           git config user.email "ah-bot@users.noreply.github.com"
           git checkout --orphan ahledger
           git rm -rf --cached . > /dev/null
+          rm -f data/prev_*.json
           git add -f data
           git commit -qm "ahledger $(date -u +%Y-%m-%dT%H:%MZ)"
           git push -f origin ahledger

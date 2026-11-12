@@ -131,6 +131,23 @@ def main():
     series = {}
     for r in rows:
         series.setdefault(int(r[1]), []).append((r[0], float(r[2]), float(r[3]), int(r[4])))
+    # AHledger arsivi (sunucu acilisindan beri, ayni pazar): bizim ilk olcumumuzden onceki noktalari basa ekle
+    try:
+        ahl = json.load(open("data/ahl.json", encoding="utf-8"))
+        for iid in list(WATCH):
+            v = ahl.get(str(iid))
+            if not v:
+                continue
+            first = series[iid][0][0] if iid in series else "9999"
+            old = []
+            for t, med, mn, q in v.get("hist", []):
+                t = t[:19] + "Z"
+                if t < first and t >= cutoff and mn:
+                    old.append((t, float(mn), float(med or mn), int(q or 0)))
+            if old:
+                series[iid] = sorted(old) + series.get(iid, [])
+    except (OSError, ValueError):
+        pass
     stamps = sorted({r[0] for r in rows})
     out = [f"Rapor: {ts} | house {HOUSE} | {len(stamps)} olcum, {stamps[0]} -> {stamps[-1]}", ""]
     week = (now - datetime.timedelta(days=7)).strftime("%Y-%m-%dT%H:%M:%SZ")

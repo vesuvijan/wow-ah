@@ -42,6 +42,37 @@ with sync_playwright() as p:
         print("sayfa", page, "/", pages, "per", per, "toplam", len(out))
         page += 1
         time.sleep(1.5)
+    # onceki arsiv (ahledger dalindan geri yuklendi) + tam gecmis: 30 noktadan fazlasi olanlar icin detay
+    old = {}
+    try:
+        old = json.load(open(f"data/prev_{MARKET}.json"))
+    except Exception:  # noqa: BLE001
+        pass
+    for iid, v in out.items():
+        pts = {h[0]: h for h in old.get(iid, {}).get("hist", [])}
+        pts.update({h[0]: h for h in v["hist"]})
+        v["hist"] = [pts[k] for k in sorted(pts)]
+    if os.environ.get("DETAIL"):
+        need = [i for i, v in out.items() if (v.get("scans") or 0) > len(v["hist"])]
+        print("detay gerekli", len(need))
+        t0 = time.time()
+        for n, iid in enumerate(need, 1):
+            if time.time() - t0 > 50 * 60:
+                print("sure doldu, kalan", len(need) - n + 1); break
+            st, body = get(f"{API}/item/{iid}?market={MARKET}&locale=en")
+            if st == 200:
+                j = json.loads(body)
+                for m in j.get("markets", []):
+                    if m.get("market") == MARKET:
+                        pts = {h[0]: h for h in out[iid]["hist"]}
+                        pts.update({h["capturedAt"]: [h["capturedAt"], h.get("median"), h.get("minBuyout"), h.get("quantity")] for h in m.get("historyPoints", [])})
+                        out[iid]["hist"] = [pts[k] for k in sorted(pts)]
+                        out[iid]["firstSeen"] = j.get("firstSeen")
+            elif st == 429:
+                time.sleep(30)
+            if n % 100 == 0:
+                print("detay", n, "/", len(need))
+            time.sleep(1.0)
     probe = os.environ.get("PROBE", "")
     tests = {}
     if probe:
@@ -50,7 +81,7 @@ with sync_playwright() as p:
                   f"{API}/item/{probe}/history?market={MARKET}&locale=en"):
             st, body = get(u); tests[u] = [st, body[:4000]]; time.sleep(1.5)
     b.close()
-json.dump(out, open(f"data/ahl_{MARKET}.json", "w"), ensure_ascii=False)
+json.dump(out, open(f"data/ahl_{MARKET}.json", "w"), ensure_ascii=False, separators=(",", ":"))
 json.dump({"market": MARKET, "items": len(out), "fetched": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "probe": tests,
            "source": "Prices: AHledger (https://ahledger.com) via wow.gg"}, open("data/ahl_meta.json", "w"), indent=1, ensure_ascii=False)
 print("bitti", len(out))
