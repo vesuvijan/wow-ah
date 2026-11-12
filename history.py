@@ -54,6 +54,7 @@ HOLD = {
     2934: "Ruined Leather Scraps", 2318: "Light Leather", 2319: "Medium Leather", 4234: "Heavy Leather",
     4304: "Thick Leather", 8170: "Rugged Leather", 783: "Light Hide", 4232: "Medium Hide", 4235: "Heavy Hide",
     8169: "Thick Hide", 8167: "Turtle Scale", 8165: "Worn Dragonscale", 7392: "Green Whelp Scale", 15417: "Devilsaur Leather",
+    4306: "Silk Cloth", 4338: "Mageweave Cloth", 3860: "Mithril Bar",
 }
 for _i, _n in HOLD.items():
     WATCH.setdefault(_i, (_n, "H"))
