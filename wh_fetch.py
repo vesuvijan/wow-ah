@@ -57,6 +57,11 @@ with sync_playwright() as p:
             pg.wait_for_timeout(6000)
             txt = pg.inner_text("body")
             open(f"data/page_{i}.txt", "w", encoding="utf-8").write(txt[:300000])
+            try:
+                links = pg.eval_on_selector_all("a[href]", "els => els.map(e => [e.innerText.trim().slice(0,80), e.href])")
+                json.dump([l for l in links if l[0]][:1500], open(f"data/links_{i}.json", "w"), ensure_ascii=False)
+            except Exception:  # noqa: BLE001
+                pass
             json.dump(net, open(f"data/net_{i}.json", "w"), indent=1, ensure_ascii=False)
             index.append({"url": u, "status": r.status if r else None, "title": pg.title(), "chars": len(txt)})
         except Exception as e:  # noqa: BLE001
