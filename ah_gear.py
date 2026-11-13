@@ -191,7 +191,8 @@ def scan(snap, cfg, budget_s=150):
             val = G.value(r, W)
             gain = 100 * (val - cur) / TOTAL
             if gain >= want_min and ok_price(p0, gain):
-                out.append(("gear", f"gear{k}", p0, [label, money(p0), f"+{gain:.1f}%", SLOT_NAME.get(sl, sl), r["bind"] or "-", G_stats(r), f"req {r['req']}"], gain))
+                nxt = f"next cheapest {money(v['l'][1][0])}" if len(v["l"]) > 1 else (f"{q0} listed" if q0 > 1 else "only 1 listed")
+                out.append(("gear", f"gear{k}", p0, [label, money(p0), f"+{gain:.1f}%", SLOT_NAME.get(sl, sl), r["bind"] or "-", G_stats(r), f"req {r['req']}", nxt], gain))
                 if is_new and not first_run:
                     new_rows.append(("new", f"new{k}", p0, [label, money(p0), "upgrade", SLOT_NAME.get(sl, sl), "", G_stats(r), ""], gain + 100))
         elif sl in ("1H", "MH", "OH") and r.get("cls") == 2 and r["dps"]:

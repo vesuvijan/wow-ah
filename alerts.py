@@ -481,6 +481,10 @@ def cells(kind, r):
     return [r[0], cm(r[1]), cm(r[3]), cm(r[4])]   # snipe
 
 
+def _nx(t):
+    return f"next cheapest {cm(t[14:])}" if t.startswith("next cheapest ") else t
+
+
 def todo_lines(fresh):
     """Cok kisa 'simdi ne yap' listesi."""
     lines = []
@@ -493,7 +497,7 @@ def todo_lines(fresh):
                 lines.append(f"BUY MORE {r[0]} at {cm(r[1])} ({r[3]} below normal, {r[4]} listed)" + (f". {r[5]}" if len(r) > 5 and r[5] else ""))
             elif kind == "gear":
                 gain = f"{r[2]} better than what you wear" if str(r[2]).startswith("+") else str(r[2])
-                lines.append(f"BUY GEAR {r[0]} at {cm(r[1])} ({r[3]}): {gain}. Stats: {r[5]}")
+                lines.append(f"BUY GEAR {r[0]} at {cm(r[1])} ({r[3]}): {gain}. Stats: {r[5]}" + (f" ({_nx(r[7])}, buy fast)" if len(r) > 7 and r[7] else ""))
             elif kind == "recipe":
                 lines.append(f"BUY RECIPE {r[0]} at {cm(r[1])}. {r[3]}")
             elif kind == "new":
@@ -552,7 +556,7 @@ def send_embeds(fresh, local_now, demo=False, status=None):
     embeds[-1]["footer"] = {"text": f"Data: {local_now:%H:%M} (TR time)" + (" | SAMPLE DATA" if demo else "")}
     todo = todo_lines(fresh)
     body = "\n".join("\u2022 " + t for t in todo) if todo else "\u2022 Nothing to do right now - wait for a better price"
-    content = ("**SAMPLE** " if demo else "") + "**DO NOW**\n" + body
+    content = (("**SAMPLE** " if demo else "") + f"**DO NOW** (AH data {local_now:%H:%M}, Blizzard refreshes hourly; cheap listings sell fast)\n" + body)
     post({"content": content, "embeds": embeds})
 
 
