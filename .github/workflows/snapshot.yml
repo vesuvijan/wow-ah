@@ -35,11 +35,21 @@ jobs:
       - name: Wait before starting (chain mode)
         if: ${{ inputs.wait != '' && inputs.wait != '0' }}
         run: sleep ${{ inputs.wait }}
-      - name: Queue the next run (chain mode)
-        if: ${{ inputs.loop }}
+      - name: Queue the next run (chain mode, retries; schedule = watchdog restarts a dead chain)
+        if: ${{ inputs.loop || github.event_name == 'schedule' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh workflow run snapshot.yml --ref main -f loop=true -f wait=180
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            n=$(gh run list --workflow snapshot.yml --json status,databaseId -q "[.[] | select((.status==\"queued\" or .status==\"in_progress\" or .status==\"waiting\" or .status==\"pending\") and .databaseId != ${{ github.run_id }})] | length")
+            if [ "$n" != "0" ]; then echo "chain alive ($n active)"; exit 0; fi
+            echo "chain dead, restarting"
+          fi
+          for i in 1 2 3 4 5 6; do
+            gh workflow run snapshot.yml --ref main -f loop=true -f wait=180 && exit 0
+            echo "dispatch failed, retry $i"; sleep $((i * 20))
+          done
+          echo "::warning::could not queue next run"
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
