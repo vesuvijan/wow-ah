@@ -14,7 +14,7 @@ import alerts
 
 OUT = "site/data"
 os.makedirs(OUT, exist_ok=True)
-MY = "eu-15-123"
+MY = "eu-123"
 
 
 def load(p, default=None):

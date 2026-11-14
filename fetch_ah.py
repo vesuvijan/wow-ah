@@ -92,7 +92,8 @@ def snapshot_house(base, ns, ruleset, house, token):
 
 
 RULESET_NAME = {"1": "Normal", "2": "PvP", "3": "RP", "5": "Ruleset 5", "15": "RP-PvP"}
-HOUSES_BY_RULESET = {"1": (110, 113, 116), "2": (111, 114, 117), "3": (112, 115, 118), "5": (119, 120, 121), "15": (123, 124, 125)}
+# house id -> ruleset: AHledger fiyatlariyla capraz kontrol edildi (2026-11-14)
+HOUSES_BY_RULESET = {"Normal": (111, 114, 117), "PvP": (110, 113, 116), "RP": (119, 120, 121), "RP-PvP": (123, 124, 125)}
 HOUSE_NAME = {}
 for _hs in HOUSES_BY_RULESET.values():
     HOUSE_NAME.update({_hs[0]: "Alliance", _hs[1]: "Horde", _hs[2]: "Blackwater (neutral)"})
@@ -105,7 +106,7 @@ def all_markets(cid, sec):
         mk = [tuple(x.split(":")) for x in spec.split(",") if x.strip()]
     else:
         # API ruleset'i yok sayiyor; ruleset'ler house id'leriyle ayriliyor (index: 110-125)
-        mk = [(r, rs, str(h)) for r in ("eu", "us") for rs, hs in HOUSES_BY_RULESET.items() for h in hs]
+        mk = [(r, "15", str(h)) for r in ("eu", "us") for hs in HOUSES_BY_RULESET.values() for h in hs]
     os.makedirs("data/markets", exist_ok=True)
     tokens, meta = {}, []
     now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -120,10 +121,11 @@ def all_markets(cid, sec):
             continue
         if not items:
             continue
-        key = f"{region}-{rs}-{h}"
+        key = f"{region}-{h}"
+        rsname = next((n for n, hs in HOUSES_BY_RULESET.items() if int(h) in hs), rs)
         comp = {k: [v["l"][0][0], v["n"]] for k, v in items.items()}
         json.dump({"fetched_at": now, "items": comp}, open(f"data/markets/{key}.json", "w"), separators=(",", ":"))
-        meta.append({"key": key, "region": region.upper(), "ruleset": RULESET_NAME.get(rs, rs), "house": HOUSE_NAME.get(int(h), h), "items": len(comp)})
+        meta.append({"key": key, "region": region.upper(), "ruleset": rsname, "house": HOUSE_NAME.get(int(h), h), "items": len(comp)})
         print(f"market {key}: {len(comp)} item, Mithril Ore {comp.get('3858')}, Silk Cloth {comp.get('4306')}")
     json.dump({"fetched_at": now, "markets": meta}, open("data/markets/index.json", "w"), indent=1)
 
