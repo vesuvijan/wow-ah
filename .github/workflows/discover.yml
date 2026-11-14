@@ -1,0 +1,21 @@
+name: Discover houses
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  d:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - env:
+          BLIZZARD_CLIENT_ID: ${{ secrets.BLIZZARD_CLIENT_ID }}
+          BLIZZARD_CLIENT_SECRET: ${{ secrets.BLIZZARD_CLIENT_SECRET }}
+        run: mkdir -p data && python discover_houses.py
+      - run: |
+          git config user.name "ah-bot"; git config user.email "ah-bot@users.noreply.github.com"
+          git checkout --orphan discover; git rm -rf --cached . > /dev/null; git add -f data/houses.json
+          git commit -qm discover; git push -f origin discover
