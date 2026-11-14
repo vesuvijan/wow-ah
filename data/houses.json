@@ -1,0 +1,3662 @@
+{
+ "tries": [
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/index",
+   "ok": true,
+   "body": "{\"_links\": {\"self\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/?namespace=dynamic-forever-eu\"}}, \"rulesets\": [{\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/1?namespace=dynamic-forever-eu\"}, \"id\": 1}, {\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/15?namespace=dynamic-forever-eu\"}, \"id\": 15}, {\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/3?namespace=dynamic-forever-eu\"}, \"id\": 3}, {\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/2?namespace=dynamic-forever-eu\"}, \"id\": 2}]}"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/rulesets/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/connected-realm/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/realm/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/15",
+   "ok": true,
+   "body": "{\"_links\": {\"self\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/15?namespace=dynamic-forever-eu\"}}, \"id\": 15, \"name\": {\"en_US\": \"Roleplay PvP\", \"es_MX\": \"Juego de rol JcJ\", \"pt_BR\": \"Interpreta\\u00e7\\u00e3o e JxJ\", \"de_DE\": \"Rollenspiel (PvP)\", \"en_GB\": \"Roleplay PvP\", \"es_ES\": \"Juego de rol JcJ\", \"fr_FR\": \"Jeu de r\\u00f4le JcJ\", \"ru_RU\": \"\\u0420\\u043e\\u043b\\u0435\\u0432\\u0430\\u044f \\u0438\\u0433\\u0440\\u0430 \\u0441 PvP\", \"ko_KR\": \"\\ub864\\ud50c\\ub808\\uc774 PvP\", \"zh_TW\": \"\\u89d2\\u8272\\u626e\\u6f14PvP\", \"zh_CN\": \"\\u89d2\\u8272\\u626e\\u6f14PvP\"}, \"auctions\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/?namespace=dynamic-forever-eu\"}, \"status\": {\"type\": \"UP\", \"name\": {\"en_US\": \"Up\", \"es_MX\": \"Disponible\", \"pt_BR\": \"Para Cima\", \"de_DE\": \"Verf\\u00fcgbar\", \"en_GB\": \"Up\", \"es_ES\": \"Activo\", \"fr_FR\": \"En ligne\", \"it_IT\": \"Attivo\", \"ru_RU\": \"\\u0420\\u0430\\u0431\\u043e\\u0442\\u0430\\u0435\\u0442\", \"ko_KR\": \"\\uc815\\uc0c1\", \"zh_TW\": \"\\u6b63\\u5e38\", \"zh_CN\": \"\\u6b63\\u5e38\"}}}"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/15/auctions/index",
+   "ok": true,
+   "body": "{\"_links\": {\"self\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/?namespace=dynamic-forever-eu\"}}, \"auctions\": [{\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/110?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 110}, {\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/111?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 111}, {\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/112?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 112}, {\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/113?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Horde Auction House\", \"es_MX\": \"Casa de subastas: Horda\", \"pt_BR\": \"Casa de Leil\\u00f5es da Horda\", \"de_DE\": \"Auktionshaus der Horde\", \"en_GB\": \"Horde Auction House\", \"es_ES\": \"Casa de subastas de la Horda\", \"fr_FR\": \"H\\u00f4tel des ventes de la Horde\", \"it_IT\": \"Casa d'Aste dell'Orda\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u041e\\u0440\\u0434\\u044b\", \"ko_KR\": \"\\ud638\\ub4dc \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u90e8\\u843d\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/1/auctions/index",
+   "ok": true,
+   "body": "{\"_links\": {\"self\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/1/auctions/?namespace=dynamic-forever-eu\"}}, \"auctions\": [{\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/1/auctions/110?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 110}, {\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/1/auctions/111?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 111}, {\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/1/auctions/112?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 112}, {\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/1/auctions/113?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Horde Auction House\", \"es_MX\": \"Casa de subastas: Horda\", \"pt_BR\": \"Casa de Leil\\u00f5es da Horda\", \"de_DE\": \"Auktionshaus der Horde\", \"en_GB\": \"Horde Auction House\", \"es_ES\": \"Casa de subastas de la Horda\", \"fr_FR\": \"H\\u00f4tel des ventes de la Horde\", \"it_IT\": \"Casa d'Aste dell'Orda\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u041e\\u0440\\u0434\\u044b\", \"ko_KR\": \"\\ud638\\ub4dc \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u90e8\\u843d\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u90e8\\"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/2/auctions/index",
+   "ok": true,
+   "body": "{\"_links\": {\"self\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/2/auctions/?namespace=dynamic-forever-eu\"}}, \"auctions\": [{\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/2/auctions/110?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 110}, {\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/2/auctions/111?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 111}, {\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/2/auctions/112?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 112}, {\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/2/auctions/113?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Horde Auction House\", \"es_MX\": \"Casa de subastas: Horda\", \"pt_BR\": \"Casa de Leil\\u00f5es da Horda\", \"de_DE\": \"Auktionshaus der Horde\", \"en_GB\": \"Horde Auction House\", \"es_ES\": \"Casa de subastas de la Horda\", \"fr_FR\": \"H\\u00f4tel des ventes de la Horde\", \"it_IT\": \"Casa d'Aste dell'Orda\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u041e\\u0440\\u0434\\u044b\", \"ko_KR\": \"\\ud638\\ub4dc \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u90e8\\u843d\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u90e8\\"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/3/auctions/index",
+   "ok": true,
+   "body": "{\"_links\": {\"self\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/3/auctions/?namespace=dynamic-forever-eu\"}}, \"auctions\": [{\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/3/auctions/110?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 110}, {\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/3/auctions/111?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 111}, {\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/3/auctions/112?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 112}, {\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/3/auctions/113?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Horde Auction House\", \"es_MX\": \"Casa de subastas: Horda\", \"pt_BR\": \"Casa de Leil\\u00f5es da Horda\", \"de_DE\": \"Auktionshaus der Horde\", \"en_GB\": \"Horde Auction House\", \"es_ES\": \"Casa de subastas de la Horda\", \"fr_FR\": \"H\\u00f4tel des ventes de la Horde\", \"it_IT\": \"Casa d'Aste dell'Orda\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u041e\\u0440\\u0434\\u044b\", \"ko_KR\": \"\\ud638\\ub4dc \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u90e8\\u843d\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u90e8\\"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/4/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/5/auctions/index",
+   "ok": true,
+   "body": "{\"_links\": {\"self\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/5/auctions/?namespace=dynamic-forever-eu\"}}, \"auctions\": [{\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/5/auctions/110?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 110}, {\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/5/auctions/111?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 111}, {\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/5/auctions/112?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 112}, {\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/5/auctions/113?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Horde Auction House\", \"es_MX\": \"Casa de subastas: Horda\", \"pt_BR\": \"Casa de Leil\\u00f5es da Horda\", \"de_DE\": \"Auktionshaus der Horde\", \"en_GB\": \"Horde Auction House\", \"es_ES\": \"Casa de subastas de la Horda\", \"fr_FR\": \"H\\u00f4tel des ventes de la Horde\", \"it_IT\": \"Casa d'Aste dell'Orda\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u041e\\u0440\\u0434\\u044b\", \"ko_KR\": \"\\ud638\\ub4dc \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u90e8\\u843d\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u90e8\\"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/6/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/7/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/8/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/9/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/10/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/11/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/12/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/13/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/14/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/15/auctions/index",
+   "ok": true,
+   "body": "{\"_links\": {\"self\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/?namespace=dynamic-forever-eu\"}}, \"auctions\": [{\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/110?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 110}, {\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/111?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 111}, {\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/112?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 112}, {\"key\": {\"href\": \"https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/113?namespace=dynamic-forever-eu\"}, \"name\": {\"en_US\": \"Horde Auction House\", \"es_MX\": \"Casa de subastas: Horda\", \"pt_BR\": \"Casa de Leil\\u00f5es da Horda\", \"de_DE\": \"Auktionshaus der Horde\", \"en_GB\": \"Horde Auction House\", \"es_ES\": \"Casa de subastas de la Horda\", \"fr_FR\": \"H\\u00f4tel des ventes de la Horde\", \"it_IT\": \"Casa d'Aste dell'Orda\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u041e\\u0440\\u0434\\u044b\", \"ko_KR\": \"\\ud638\\ub4dc \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u90e8\\u843d\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/16/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/17/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/18/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/19/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/20/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/21/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/22/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/23/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/24/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/25/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/26/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/27/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/28/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/29/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/30/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/31/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/32/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/33/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/34/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/35/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/36/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/37/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/38/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/39/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "eu",
+   "path": "/data/wow/ruleset/40/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/index",
+   "ok": true,
+   "body": "{\"_links\": {\"self\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/?namespace=dynamic-forever-us\"}}, \"rulesets\": [{\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/1?namespace=dynamic-forever-us\"}, \"id\": 1}, {\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/15?namespace=dynamic-forever-us\"}, \"id\": 15}, {\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/3?namespace=dynamic-forever-us\"}, \"id\": 3}, {\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/2?namespace=dynamic-forever-us\"}, \"id\": 2}]}"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/rulesets/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/connected-realm/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/realm/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/15",
+   "ok": true,
+   "body": "{\"_links\": {\"self\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/15?namespace=dynamic-forever-us\"}}, \"id\": 15, \"name\": {\"en_US\": \"Roleplay PvP\", \"es_MX\": \"Juego de rol JcJ\", \"pt_BR\": \"Interpreta\\u00e7\\u00e3o e JxJ\", \"de_DE\": \"Rollenspiel (PvP)\", \"en_GB\": \"Roleplay PvP\", \"es_ES\": \"Juego de rol JcJ\", \"fr_FR\": \"Jeu de r\\u00f4le JcJ\", \"ru_RU\": \"\\u0420\\u043e\\u043b\\u0435\\u0432\\u0430\\u044f \\u0438\\u0433\\u0440\\u0430 \\u0441 PvP\", \"ko_KR\": \"\\ub864\\ud50c\\ub808\\uc774 PvP\", \"zh_TW\": \"\\u89d2\\u8272\\u626e\\u6f14PvP\", \"zh_CN\": \"\\u89d2\\u8272\\u626e\\u6f14PvP\"}, \"auctions\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/15/auctions/?namespace=dynamic-forever-us\"}, \"status\": {\"type\": \"UP\", \"name\": {\"en_US\": \"Up\", \"es_MX\": \"Disponible\", \"pt_BR\": \"Para Cima\", \"de_DE\": \"Verf\\u00fcgbar\", \"en_GB\": \"Up\", \"es_ES\": \"Activo\", \"fr_FR\": \"En ligne\", \"it_IT\": \"Attivo\", \"ru_RU\": \"\\u0420\\u0430\\u0431\\u043e\\u0442\\u0430\\u0435\\u0442\", \"ko_KR\": \"\\uc815\\uc0c1\", \"zh_TW\": \"\\u6b63\\u5e38\", \"zh_CN\": \"\\u6b63\\u5e38\"}}}"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/15/auctions/index",
+   "ok": true,
+   "body": "{\"_links\": {\"self\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/15/auctions/?namespace=dynamic-forever-us\"}}, \"auctions\": [{\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/15/auctions/110?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 110}, {\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/15/auctions/111?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 111}, {\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/15/auctions/112?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 112}, {\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/15/auctions/113?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Horde Auction House\", \"es_MX\": \"Casa de subastas: Horda\", \"pt_BR\": \"Casa de Leil\\u00f5es da Horda\", \"de_DE\": \"Auktionshaus der Horde\", \"en_GB\": \"Horde Auction House\", \"es_ES\": \"Casa de subastas de la Horda\", \"fr_FR\": \"H\\u00f4tel des ventes de la Horde\", \"it_IT\": \"Casa d'Aste dell'Orda\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u041e\\u0440\\u0434\\u044b\", \"ko_KR\": \"\\ud638\\ub4dc \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u90e8\\u843d\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/1/auctions/index",
+   "ok": true,
+   "body": "{\"_links\": {\"self\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/1/auctions/?namespace=dynamic-forever-us\"}}, \"auctions\": [{\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/1/auctions/110?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 110}, {\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/1/auctions/111?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 111}, {\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/1/auctions/112?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 112}, {\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/1/auctions/113?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Horde Auction House\", \"es_MX\": \"Casa de subastas: Horda\", \"pt_BR\": \"Casa de Leil\\u00f5es da Horda\", \"de_DE\": \"Auktionshaus der Horde\", \"en_GB\": \"Horde Auction House\", \"es_ES\": \"Casa de subastas de la Horda\", \"fr_FR\": \"H\\u00f4tel des ventes de la Horde\", \"it_IT\": \"Casa d'Aste dell'Orda\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u041e\\u0440\\u0434\\u044b\", \"ko_KR\": \"\\ud638\\ub4dc \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u90e8\\u843d\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u90e8\\"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/2/auctions/index",
+   "ok": true,
+   "body": "{\"_links\": {\"self\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/2/auctions/?namespace=dynamic-forever-us\"}}, \"auctions\": [{\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/2/auctions/110?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 110}, {\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/2/auctions/111?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 111}, {\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/2/auctions/112?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 112}, {\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/2/auctions/113?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Horde Auction House\", \"es_MX\": \"Casa de subastas: Horda\", \"pt_BR\": \"Casa de Leil\\u00f5es da Horda\", \"de_DE\": \"Auktionshaus der Horde\", \"en_GB\": \"Horde Auction House\", \"es_ES\": \"Casa de subastas de la Horda\", \"fr_FR\": \"H\\u00f4tel des ventes de la Horde\", \"it_IT\": \"Casa d'Aste dell'Orda\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u041e\\u0440\\u0434\\u044b\", \"ko_KR\": \"\\ud638\\ub4dc \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u90e8\\u843d\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u90e8\\"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/3/auctions/index",
+   "ok": true,
+   "body": "{\"_links\": {\"self\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/3/auctions/?namespace=dynamic-forever-us\"}}, \"auctions\": [{\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/3/auctions/110?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 110}, {\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/3/auctions/111?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 111}, {\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/3/auctions/112?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 112}, {\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/3/auctions/113?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Horde Auction House\", \"es_MX\": \"Casa de subastas: Horda\", \"pt_BR\": \"Casa de Leil\\u00f5es da Horda\", \"de_DE\": \"Auktionshaus der Horde\", \"en_GB\": \"Horde Auction House\", \"es_ES\": \"Casa de subastas de la Horda\", \"fr_FR\": \"H\\u00f4tel des ventes de la Horde\", \"it_IT\": \"Casa d'Aste dell'Orda\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u041e\\u0440\\u0434\\u044b\", \"ko_KR\": \"\\ud638\\ub4dc \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u90e8\\u843d\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u90e8\\"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/4/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/5/auctions/index",
+   "ok": true,
+   "body": "{\"_links\": {\"self\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/5/auctions/?namespace=dynamic-forever-us\"}}, \"auctions\": [{\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/5/auctions/110?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 110}, {\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/5/auctions/111?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 111}, {\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/5/auctions/112?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 112}, {\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/5/auctions/113?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Horde Auction House\", \"es_MX\": \"Casa de subastas: Horda\", \"pt_BR\": \"Casa de Leil\\u00f5es da Horda\", \"de_DE\": \"Auktionshaus der Horde\", \"en_GB\": \"Horde Auction House\", \"es_ES\": \"Casa de subastas de la Horda\", \"fr_FR\": \"H\\u00f4tel des ventes de la Horde\", \"it_IT\": \"Casa d'Aste dell'Orda\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u041e\\u0440\\u0434\\u044b\", \"ko_KR\": \"\\ud638\\ub4dc \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u90e8\\u843d\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u90e8\\"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/6/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/7/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/8/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/9/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/10/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/11/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/12/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/13/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/14/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/15/auctions/index",
+   "ok": true,
+   "body": "{\"_links\": {\"self\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/15/auctions/?namespace=dynamic-forever-us\"}}, \"auctions\": [{\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/15/auctions/110?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 110}, {\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/15/auctions/111?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 111}, {\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/15/auctions/112?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Alliance Auction House\", \"es_MX\": \"Casa de subastas: Alianza\", \"pt_BR\": \"Casa de Leil\\u00f5es da Alian\\u00e7a\", \"de_DE\": \"Auktionshaus der Allianz\", \"en_GB\": \"Alliance Auction House\", \"es_ES\": \"Casa de subastas de la Alianza\", \"fr_FR\": \"H\\u00f4tel des ventes de l\\u2019Alliance\", \"it_IT\": \"Casa d'Aste dell'Alleanza\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u0410\\u043b\\u044c\\u044f\\u043d\\u0441\\u0430\", \"ko_KR\": \"\\uc5bc\\ub77c\\uc774\\uc5b8\\uc2a4 \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u806f\\u76df\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u8054\\u76df\\u62cd\\u5356\\u884c\"}, \"id\": 112}, {\"key\": {\"href\": \"https://us.api.blizzard.com/data/wow/ruleset/15/auctions/113?namespace=dynamic-forever-us\"}, \"name\": {\"en_US\": \"Horde Auction House\", \"es_MX\": \"Casa de subastas: Horda\", \"pt_BR\": \"Casa de Leil\\u00f5es da Horda\", \"de_DE\": \"Auktionshaus der Horde\", \"en_GB\": \"Horde Auction House\", \"es_ES\": \"Casa de subastas de la Horda\", \"fr_FR\": \"H\\u00f4tel des ventes de la Horde\", \"it_IT\": \"Casa d'Aste dell'Orda\", \"ru_RU\": \"\\u0410\\u0443\\u043a\\u0446\\u0438\\u043e\\u043d\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u041e\\u0440\\u0434\\u044b\", \"ko_KR\": \"\\ud638\\ub4dc \\uacbd\\ub9e4\\uc7a5\", \"zh_TW\": \"\\u90e8\\u843d\\u62cd\\u8ce3\\u5834\", \"zh_CN\": \"\\u"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/16/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/17/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/18/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/19/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/20/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/21/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/22/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/23/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/24/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/25/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/26/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/27/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/28/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/29/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/30/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/31/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/32/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/33/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/34/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/35/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/36/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/37/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/38/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/39/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  },
+  {
+   "region": "us",
+   "path": "/data/wow/ruleset/40/auctions/index",
+   "ok": false,
+   "err": "HTTP Error 404: Not Found"
+  }
+ ],
+ "eu": [
+  {
+   "ruleset": 1,
+   "index": {
+    "_links": {
+     "self": {
+      "href": "https://eu.api.blizzard.com/data/wow/ruleset/1/auctions/?namespace=dynamic-forever-eu"
+     }
+    },
+    "auctions": [
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/1/auctions/110?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 110
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/1/auctions/111?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 111
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/1/auctions/112?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 112
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/1/auctions/113?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 113
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/1/auctions/114?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 114
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/1/auctions/115?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 115
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/1/auctions/116?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 116
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/1/auctions/117?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 117
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/1/auctions/118?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 118
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/1/auctions/119?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 119
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/1/auctions/120?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 120
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/1/auctions/121?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 121
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/1/auctions/123?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 123
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/1/auctions/124?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 124
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/1/auctions/125?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 125
+     }
+    ]
+   }
+  },
+  {
+   "ruleset": 2,
+   "index": {
+    "_links": {
+     "self": {
+      "href": "https://eu.api.blizzard.com/data/wow/ruleset/2/auctions/?namespace=dynamic-forever-eu"
+     }
+    },
+    "auctions": [
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/2/auctions/110?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 110
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/2/auctions/111?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 111
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/2/auctions/112?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 112
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/2/auctions/113?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 113
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/2/auctions/114?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 114
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/2/auctions/115?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 115
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/2/auctions/116?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 116
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/2/auctions/117?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 117
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/2/auctions/118?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 118
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/2/auctions/119?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 119
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/2/auctions/120?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 120
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/2/auctions/121?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 121
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/2/auctions/123?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 123
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/2/auctions/124?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 124
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/2/auctions/125?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 125
+     }
+    ]
+   }
+  },
+  {
+   "ruleset": 3,
+   "index": {
+    "_links": {
+     "self": {
+      "href": "https://eu.api.blizzard.com/data/wow/ruleset/3/auctions/?namespace=dynamic-forever-eu"
+     }
+    },
+    "auctions": [
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/3/auctions/110?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 110
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/3/auctions/111?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 111
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/3/auctions/112?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 112
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/3/auctions/113?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 113
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/3/auctions/114?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 114
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/3/auctions/115?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 115
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/3/auctions/116?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 116
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/3/auctions/117?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 117
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/3/auctions/118?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 118
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/3/auctions/119?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 119
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/3/auctions/120?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 120
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/3/auctions/121?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 121
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/3/auctions/123?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 123
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/3/auctions/124?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 124
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/3/auctions/125?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 125
+     }
+    ]
+   }
+  },
+  {
+   "ruleset": 5,
+   "index": {
+    "_links": {
+     "self": {
+      "href": "https://eu.api.blizzard.com/data/wow/ruleset/5/auctions/?namespace=dynamic-forever-eu"
+     }
+    },
+    "auctions": [
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/5/auctions/110?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 110
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/5/auctions/111?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 111
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/5/auctions/112?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 112
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/5/auctions/113?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 113
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/5/auctions/114?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 114
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/5/auctions/115?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 115
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/5/auctions/116?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 116
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/5/auctions/117?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 117
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/5/auctions/118?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 118
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/5/auctions/119?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 119
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/5/auctions/120?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 120
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/5/auctions/121?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 121
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/5/auctions/123?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 123
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/5/auctions/124?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 124
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/5/auctions/125?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 125
+     }
+    ]
+   }
+  },
+  {
+   "ruleset": 15,
+   "index": {
+    "_links": {
+     "self": {
+      "href": "https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/?namespace=dynamic-forever-eu"
+     }
+    },
+    "auctions": [
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/110?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 110
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/111?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 111
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/112?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 112
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/113?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 113
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/114?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 114
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/115?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 115
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/116?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 116
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/117?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 117
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/118?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 118
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/119?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 119
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/120?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 120
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/121?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 121
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/123?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 123
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/124?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 124
+     },
+     {
+      "key": {
+       "href": "https://eu.api.blizzard.com/data/wow/ruleset/15/auctions/125?namespace=dynamic-forever-eu"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 125
+     }
+    ]
+   }
+  }
+ ],
+ "us": [
+  {
+   "ruleset": 1,
+   "index": {
+    "_links": {
+     "self": {
+      "href": "https://us.api.blizzard.com/data/wow/ruleset/1/auctions/?namespace=dynamic-forever-us"
+     }
+    },
+    "auctions": [
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/1/auctions/110?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 110
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/1/auctions/111?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 111
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/1/auctions/112?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 112
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/1/auctions/113?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 113
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/1/auctions/114?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 114
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/1/auctions/115?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 115
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/1/auctions/116?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 116
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/1/auctions/117?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 117
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/1/auctions/118?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 118
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/1/auctions/119?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 119
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/1/auctions/120?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 120
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/1/auctions/121?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 121
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/1/auctions/123?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 123
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/1/auctions/124?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 124
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/1/auctions/125?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 125
+     }
+    ]
+   }
+  },
+  {
+   "ruleset": 2,
+   "index": {
+    "_links": {
+     "self": {
+      "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/?namespace=dynamic-forever-us"
+     }
+    },
+    "auctions": [
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/110?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 110
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/111?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 111
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/112?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 112
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/113?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 113
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/114?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 114
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/115?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 115
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/116?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 116
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/117?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 117
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/118?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 118
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/119?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 119
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/120?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 120
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/121?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 121
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/123?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 123
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/124?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 124
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/125?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 125
+     }
+    ]
+   }
+  },
+  {
+   "ruleset": 3,
+   "index": {
+    "_links": {
+     "self": {
+      "href": "https://us.api.blizzard.com/data/wow/ruleset/3/auctions/?namespace=dynamic-forever-us"
+     }
+    },
+    "auctions": [
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/3/auctions/110?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 110
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/3/auctions/111?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 111
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/3/auctions/112?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 112
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/3/auctions/113?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 113
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/3/auctions/114?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 114
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/3/auctions/115?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 115
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/3/auctions/116?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 116
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/3/auctions/117?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 117
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/3/auctions/118?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 118
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/3/auctions/119?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 119
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/3/auctions/120?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 120
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/3/auctions/121?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 121
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/3/auctions/123?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 123
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/3/auctions/124?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 124
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/3/auctions/125?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 125
+     }
+    ]
+   }
+  },
+  {
+   "ruleset": 5,
+   "index": {
+    "_links": {
+     "self": {
+      "href": "https://us.api.blizzard.com/data/wow/ruleset/5/auctions/?namespace=dynamic-forever-us"
+     }
+    },
+    "auctions": [
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/5/auctions/110?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 110
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/5/auctions/111?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 111
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/5/auctions/112?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 112
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/5/auctions/113?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 113
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/5/auctions/114?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 114
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/5/auctions/115?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 115
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/5/auctions/116?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 116
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/5/auctions/117?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 117
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/5/auctions/118?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 118
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/5/auctions/119?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 119
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/5/auctions/120?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 120
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/5/auctions/121?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 121
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/5/auctions/123?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 123
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/5/auctions/124?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 124
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/5/auctions/125?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 125
+     }
+    ]
+   }
+  },
+  {
+   "ruleset": 15,
+   "index": {
+    "_links": {
+     "self": {
+      "href": "https://us.api.blizzard.com/data/wow/ruleset/15/auctions/?namespace=dynamic-forever-us"
+     }
+    },
+    "auctions": [
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/15/auctions/110?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 110
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/15/auctions/111?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 111
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/15/auctions/112?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 112
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/15/auctions/113?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 113
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/15/auctions/114?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 114
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/15/auctions/115?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 115
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/15/auctions/116?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 116
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/15/auctions/117?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 117
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/15/auctions/118?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 118
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/15/auctions/119?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "it_IT": "Casa d'Aste dell'Alleanza",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 119
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/15/auctions/120?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "it_IT": "Casa d'Aste dell'Orda",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 120
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/15/auctions/121?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas de Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "it_IT": "Casa d'Aste di Acquanera",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 121
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/15/auctions/123?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Alliance Auction House",
+       "es_MX": "Casa de subastas: Alianza",
+       "pt_BR": "Casa de Leil\u00f5es da Alian\u00e7a",
+       "de_DE": "Auktionshaus der Allianz",
+       "en_GB": "Alliance Auction House",
+       "es_ES": "Casa de subastas de la Alianza",
+       "fr_FR": "H\u00f4tel des ventes de l\u2019Alliance",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0410\u043b\u044c\u044f\u043d\u0441\u0430",
+       "ko_KR": "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u806f\u76df\u62cd\u8ce3\u5834",
+       "zh_CN": "\u8054\u76df\u62cd\u5356\u884c"
+      },
+      "id": 123
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/15/auctions/124?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Horde Auction House",
+       "es_MX": "Casa de subastas: Horda",
+       "pt_BR": "Casa de Leil\u00f5es da Horda",
+       "de_DE": "Auktionshaus der Horde",
+       "en_GB": "Horde Auction House",
+       "es_ES": "Casa de subastas de la Horda",
+       "fr_FR": "H\u00f4tel des ventes de la Horde",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u041e\u0440\u0434\u044b",
+       "ko_KR": "\ud638\ub4dc \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u90e8\u843d\u62cd\u8ce3\u5834",
+       "zh_CN": "\u90e8\u843d\u62cd\u5356\u884c"
+      },
+      "id": 124
+     },
+     {
+      "key": {
+       "href": "https://us.api.blizzard.com/data/wow/ruleset/15/auctions/125?namespace=dynamic-forever-us"
+      },
+      "name": {
+       "en_US": "Blackwater Auction House",
+       "es_MX": "Casa de subastas: Aguasnegras",
+       "pt_BR": "Casa de Leil\u00f5es de Aguanegra",
+       "de_DE": "Auktionshaus der Schwarzmeerr\u00e4uber",
+       "en_GB": "Blackwater Auction House",
+       "es_ES": "Casa de subastas Aguasnegras",
+       "fr_FR": "H\u00f4tel des ventes des Flots noirs",
+       "ru_RU": "\u0410\u0443\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0434\u044c\u044f",
+       "ko_KR": "\uac80\uc740\ubc14\ub2e4 \uacbd\ub9e4\uc7a5",
+       "zh_TW": "\u9ed1\u6c34\u7063\u62cd\u8ce3\u5834",
+       "zh_CN": "\u9ed1\u6c34\u62cd\u5356\u884c"
+      },
+      "id": 125
+     }
+    ]
+   }
+  }
+ ]
+}
