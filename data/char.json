@@ -1,0 +1,283 @@
+{
+ "name": "Docker Tuckalot",
+ "level": 51,
+ "race": "Human",
+ "className": "Hunter",
+ "guild": "mean girls",
+ "lastLogin": 1794603643000,
+ "fetchedAt": 1794621211763,
+ "fromCache": true,
+ "averageIlvl": 46,
+ "stats": {
+  "health": 2232,
+  "power": 2025,
+  "powerType": "Mana",
+  "strength": 50,
+  "agility": 203,
+  "stamina": 138,
+  "intellect": 59,
+  "spirit": 107,
+  "spellPower": 4,
+  "healing": 4,
+  "spellCrit": 10.76,
+  "spellHaste": 0,
+  "spellPenetration": 0,
+  "manaRegen": 49,
+  "attackPower": 426,
+  "meleeCrit": 9.15,
+  "meleeHaste": 0,
+  "rangedCrit": 10.67,
+  "armor": 1462,
+  "defense": 226,
+  "dodge": 8.52,
+  "parry": 4.04,
+  "block": 0
+ },
+ "items": [
+  {
+   "slot": "HEAD",
+   "id": 9921,
+   "name": "Tracker's Headband of the Bandit",
+   "quality": "UNCOMMON",
+   "ilvl": 45,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_helmet_17.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "NECK",
+   "id": 10824,
+   "name": "Amberglow Talisman",
+   "quality": "RARE",
+   "ilvl": 44,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_necklace_07.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "SHOULDER",
+   "id": 14787,
+   "name": "Khan's Mantle",
+   "quality": "UNCOMMON",
+   "ilvl": 47,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_shoulder_23.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "CHEST",
+   "id": 11193,
+   "name": "Blazewind Breastplate",
+   "quality": "UNCOMMON",
+   "ilvl": 57,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_chest_leather_02.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "WAIST",
+   "id": 14598,
+   "name": "Warden's Waistband",
+   "quality": "UNCOMMON",
+   "ilvl": 40,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_belt_15.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "LEGS",
+   "id": 9414,
+   "name": "Oilskin Leggings",
+   "quality": "RARE",
+   "ilvl": 47,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_pants_06.jpg",
+   "enchant": "Spell Power +4 and Armor +24"
+  },
+  {
+   "slot": "FEET",
+   "id": 9630,
+   "name": "Pratt's Handcrafted Boots",
+   "quality": "UNCOMMON",
+   "ilvl": 45,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_boots_07.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "WRIST",
+   "id": 10358,
+   "name": "Duracin Bracers",
+   "quality": "UNCOMMON",
+   "ilvl": 38,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_bracer_04.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "HANDS",
+   "id": 270075,
+   "name": "Fists of Impending Doom",
+   "quality": "UNCOMMON",
+   "ilvl": 42,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_gauntlets_12.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "FINGER_1",
+   "id": 11118,
+   "name": "Archaedic Stone of Power",
+   "quality": "RARE",
+   "ilvl": 47,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_stone_15.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "FINGER_2",
+   "id": 17713,
+   "name": "Blackstone Ring",
+   "quality": "RARE",
+   "ilvl": 54,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_ring_17.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "TRINKET_1",
+   "id": 280766,
+   "name": "Satchel of Potions",
+   "quality": "UNCOMMON",
+   "ilvl": 33,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_misc_bag_08.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "TRINKET_2",
+   "id": 270226,
+   "name": "Golden Banana",
+   "quality": "UNCOMMON",
+   "ilvl": 50,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_misc_food_24.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "BACK",
+   "id": 7483,
+   "name": "Ranger Cloak of the Wolf",
+   "quality": "UNCOMMON",
+   "ilvl": 40,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_misc_cape_01.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "MAIN_HAND",
+   "id": 279474,
+   "name": "Dustwallow Dirk",
+   "quality": "RARE",
+   "ilvl": 55,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_sword_13.jpg",
+   "enchant": "Weapon Damage +3"
+  },
+  {
+   "slot": "OFF_HAND",
+   "id": 17705,
+   "name": "Thrash Blade",
+   "quality": "RARE",
+   "ilvl": 53,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_sword_36.jpg",
+   "enchant": "Weapon Damage +3"
+  },
+  {
+   "slot": "RANGED",
+   "id": 277254,
+   "name": "Truthseeker's Bow",
+   "quality": "RARE",
+   "ilvl": 45,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_weapon_bow_01.jpg",
+   "enchant": "Scope (+2 Damage)"
+  },
+  {
+   "slot": "AMMO",
+   "id": 11285,
+   "name": "Jagged Arrow",
+   "quality": "COMMON",
+   "ilvl": 45,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_weapon_shortblade_25.jpg",
+   "enchant": null
+  }
+ ],
+ "talents": [
+  {
+   "name": "Beast Mastery",
+   "points": 32,
+   "talents": [
+    [
+     "Deadly Aspects",
+     5
+    ],
+    [
+     "Endurance Training",
+     1
+    ],
+    [
+     "Focused Fire",
+     2
+    ],
+    [
+     "Improved Revive Pet",
+     2
+    ],
+    [
+     "Pathfinding",
+     2
+    ],
+    [
+     "Bestial Swiftness",
+     1
+    ],
+    [
+     "Unleashed Fury",
+     5
+    ],
+    [
+     "Ferocity",
+     5
+    ],
+    [
+     "Summon Hawk",
+     1
+    ],
+    [
+     "Intimidation",
+     1
+    ],
+    [
+     "Bestial Discipline",
+     2
+    ],
+    [
+     "Frenzy",
+     4
+    ],
+    [
+     "Bestial Wrath",
+     1
+    ]
+   ]
+  },
+  {
+   "name": "Marksmanship",
+   "points": 9,
+   "talents": [
+    [
+     "Lethal Attacks",
+     5
+    ],
+    [
+     "Improved Stings",
+     3
+    ],
+    [
+     "Careful Aim",
+     1
+    ]
+   ]
+  },
+  {
+   "name": "Survival",
+   "points": 0,
+   "talents": []
+  }
+ ]
+}
