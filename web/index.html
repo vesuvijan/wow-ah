@@ -120,6 +120,8 @@ code{background:var(--panel2);padding:1px 5px;border-radius:4px}
   <div class="wrap"><nav id="nav">
     <a href="#feed">&#xf0e7; Fırsatlar</a>
     <a href="#search">&#xf002; Item ara</a>
+    <a href="#char">&#xf007; Karakter</a>
+    <a href="#db">&#xf1c0; Item DB</a>
     <a href="#bank">&#xf19c; Banka</a>
     <a href="#watch">&#xf06e; İzleme</a>
     <a href="#plans">&#xf0c3; Meslek planları</a>
@@ -190,7 +192,7 @@ function renderAge() {
 }
 
 // ---------- router
-const VIEWS = {feed: vFeed, search: vSearch, bank: vBank, watch: vWatch, plans: vPlans, setup: vSetup};
+const VIEWS = {feed: vFeed, search: vSearch, bank: vBank, watch: vWatch, plans: vPlans, setup: vSetup, char: vChar, db: vDB};
 function route() {
   const h = (location.hash || "#feed").slice(1);
   const [name, arg] = h.startsWith("item-") ? ["search", h.slice(5)] : [h, null];
@@ -293,7 +295,8 @@ function vSearch(id) {
 async function vItem(id) {
   const it = S.now.items[id] || {}, name = S.names[id] || it.n || ("Item #" + id);
   $("#view").innerHTML = `<div class="empty">Tüm pazarlar yükleniyor…</div>`;
-  try { await loadBig(); } catch (e) { console.warn(e); }
+  try { await Promise.all([loadBig(), loadDB()]); } catch (e) { console.warn(e); }
+  const D = S.db?.items?.[id];
   const hist = (S.hist && S.hist[id]) || [];
   const W = LS.get("watch", {});
   let html = `<p><a href="#search">&#xf060; arama</a></p><div class="card"><div class="item-h"><h1 class="${qcls(it.q)}">${esc(name)}</h1>
@@ -302,6 +305,7 @@ async function vItem(id) {
     <div class="kv"><div><i>Bizim AH en ucuz</i><b>${money(it.min)}</b></div><div><i>Adet</i><b>${it.qty ?? "–"}</b></div>
     <div><i>7 gün medyan</i><b>${money(it.m7)}</b> ${pctHtml(pct(it.min, it.m7))}</div><div><i>30 gün en düşük / yüksek</i><b>${money(it.lo30)} / ${money(it.hi30)}</b></div>
     <div><i>Vendor satış</i><b>${money(it.sp)}</b></div></div>
+    ${D ? `<p><b>${esc(D.sl)}</b> ${esc(D.ty)} · seviye ${D.rq} · ${esc(D.b)} · ${esc(D.st)}${D.x?.length ? "<br><span class='muted'>" + D.x.map(esc).join("<br>") + "</span>" : ""}<br><span class="muted">Nereden:</span> ${srcHtml(D)}</p>` : ""}
     <div class="row"><span class="muted">İzle, şu fiyatın altına düşünce haber ver:</span><input class="inp" id="wt" placeholder="örn. 1g20s" value="${W[id] ? money(W[id].t, 1) : ""}">
     <button class="btn" id="wadd">${W[id] ? "&#xf00c; Güncelle" : "&#xf06e; İzle"}</button>${W[id] ? '<button class="btn" id="wdel">Kaldır</button>' : ""}</div></div>`;
   html += `<div class="two" style="margin-top:14px"><div class="card"><h2>&#xf201; Fiyat geçmişi (bizim AH, en ucuz ilan)</h2><div class="rel" id="ch">${hist.length > 1 ? "" : '<div class="empty">Geçmiş yok.</div>'}</div></div>`;
@@ -317,6 +321,120 @@ async function vItem(id) {
   if (hist.length > 1) chart($("#ch"), hist);
   $("#wadd").onclick = () => { const t = parseMoney($("#wt").value); if (!t) return toast("Fiyatı 1g20s / 45s / 80c gibi yaz."); const w = LS.get("watch", {}); w[id] = {t, n: name}; LS.set("watch", w); toast(`${name}: ${money(t, 1)} altına düşünce bildirim gelecek (sayfa açıkken).`); vItem(id); };
   const del = $("#wdel"); if (del) del.onclick = () => { const w = LS.get("watch", {}); delete w[id]; LS.set("watch", w); vItem(id); };
+}
+
+
+// ---------- karakter & item veritabani
+async function loadDB() {
+  if (!S.db) { try { S.db = await getJSON("itemdb.json"); } catch { S.db = {items: {}, w: {}, level: 50}; } }
+  if (S.char === undefined) { try { S.char = await getJSON("char.json"); } catch { S.char = null; } }
+}
+const SLOTS = [["HEAD","Kafa",["HEAD"]],["NECK","Boyun",["NECK"]],["SHOULDER","Omuz",["SHOULDER"]],["BACK","Pelerin",["BACK"]],["CHEST","Göğüs",["CHEST"]],
+  ["WRIST","Bilek",["WRIST"]],["HANDS","Eldiven",["HANDS"]],["WAIST","Kemer",["WAIST"]],["LEGS","Bacak",["LEGS"]],["FEET","Ayak",["FEET"]],
+  ["FINGER_1","Yüzük 1",["FINGER"]],["FINGER_2","Yüzük 2",["FINGER"]],["TRINKET_1","Trinket 1",["TRINKET"]],["TRINKET_2","Trinket 2",["TRINKET"]],
+  ["MAIN_HAND","Main-hand",["MH","1H","2H"]],["OFF_HAND","Off-hand",["1H","OH"]],["RANGED","Ranged",["RANGED"]]];
+const STATRE = [[/([+-]?\d+)\s*(agi|agility)/i,"agi"],[/([+-]?\d+)\s*(str|strength)/i,"str"],[/([+-]?\d+)\s*(sta|stamina)/i,"sta"],[/([+-]?\d+)\s*(int|intellect)/i,"int"],
+  [/([+-]?\d+)\s*(spi|spirit)/i,"spi"],[/([+-]?\d+)\s*(ranged ap|rap)/i,"rap"],[/([+-]?\d+)\s*(ap|attack power)\b/i,"ap"],[/([\d.]+)%?\s*crit/i,"crit"],[/([\d.]+)%?\s*hit/i,"hit"],
+  [/([\d.]+)\s*dps/i,"dps"],[/([+-]?\d+)\s*armor/i,"armor"],[/([+-]?\d+)\s*(mp5|mana)/i,"mp5"]];
+function statValue(txt, slot) {
+  const w = S.db.w || {}; let v = 0, t = String(txt);
+  for (const [re, k] of STATRE) { const m = t.match(re); if (!m) continue; t = t.replace(m[0], " ");
+    const x = parseFloat(m[1]); if (k === "dps") v += x * (slot === "OFF_HAND" ? (w.dpsoh || 12) : slot === "RANGED" ? (w.dps || 8) : (w.dpsmelee || 16)); else v += x * (w[k] || 0); }
+  return Math.round(v * 10) / 10;
+}
+function equipped() {
+  const ov = LS.get("eq", {}), out = {};
+  for (const it of (S.char?.items || [])) out[it.slot] = {id: String(it.id), name: it.name, q: it.quality, src: "armory"};
+  for (const [sl, o] of Object.entries(ov)) out[sl] = {...o, src: "elle"};
+  for (const [sl, e] of Object.entries(out)) {
+    const d = S.db.items[e.id];
+    if (e.stats) { e.v = statValue(e.stats, sl); e.st = e.stats; }
+    else if (d && !d.rnd) { e.v = sl === "OFF_HAND" && d.vo != null ? d.vo : d.v; e.st = d.st; }
+    else { e.v = null; e.st = d ? d.st + " + rastgele bonus (statları gir)" : "veritabanında yok (statları gir)"; }
+  }
+  return out;
+}
+function candidates(slot, eq, maxReq) {
+  const def = SLOTS.find(s => s[0] === slot), ok = new Set(def[2]), other = slot.endsWith("_1") ? eq[slot.replace("_1", "_2")] : slot.endsWith("_2") ? eq[slot.replace("_2", "_1")] : null;
+  const cur = eq[slot]?.v ?? 0, out = [];
+  for (const [id, d] of Object.entries(S.db.items)) {
+    if (!ok.has(d.sl) || d.rq > maxReq || d.rnd || (other && other.id === id) || eq[slot]?.id === id) continue;
+    if (slot === "MAIN_HAND" && d.sl === "2H" && eq.OFF_HAND?.id) continue;   // dual wield: 2H aday degil
+    if (slot === "MAIN_HAND" && d.sl !== "2H" && !eq.OFF_HAND?.id && S.db.items[eq.MAIN_HAND?.id]?.sl === "2H") continue;
+    const v = slot === "OFF_HAND" ? (d.vo ?? d.v) : d.v;
+    if (v > cur) out.push([id, d, v]);
+  }
+  return out.sort((a, b) => b[2] - a[2]);
+}
+function srcHtml(d) {
+  const s = (d.src || []).map(esc); if (d.ah) s.push(`AH ${money(d.ah)}`);
+  return s.length ? s.join("<br>") : '<span class="dim">kaynak bilinmiyor</span>';
+}
+async function vChar() {
+  $("#view").innerHTML = `<div class="empty">Karakter yükleniyor…</div>`;
+  await loadDB();
+  const c = S.char, lvl = c?.level || S.db.level, eq = equipped(), total = Object.values(eq).reduce((a, e) => a + (e.v || 0), 0) || 1;
+  const reach = LS.get("reach", 0);
+  let html = `<div class="two"><div class="card"><div class="item-h"><h1>${esc(c?.name || "Karakter")}</h1><span class="pill">${lvl}. seviye ${esc(c?.race || "")} ${esc(c?.className || "")}</span>${c?.guild ? `<span class="pill">&lt;${esc(c.guild)}&gt;</span>` : ""}</div>
+    <p class="muted">Armory verisi: son çıkış ${c?.lastLogin ? fmtDay(new Date(c.lastLogin)) + " " + fmtTime(new Date(c.lastLogin)) : "–"}. Blizzard bu veriyi oyundan çıkış yapınca günceller; aradaki değişiklikleri aşağıdan "değiştir" ile elle girebilirsin (bu tarayıcıda saklanır).</p>
+    ${c?.stats ? `<div class="kv">${[["Can", c.stats.health], ["Attack Power", c.stats.attackPower], ["Agility", c.stats.agility], ["Stamina", c.stats.stamina], ["Melee crit", c.stats.meleeCrit + "%"], ["Ranged crit", c.stats.rangedCrit + "%"], ["Armor", c.stats.armor], ["Dodge", c.stats.dodge + "%"]].map(([k, v]) => `<div><i>${k}</i><b>${v}</b></div>`).join("")}</div>` : ""}
+    </div><div class="card"><h2>&#xf0e8; Talentler</h2>${(c?.talents || []).map(t => `<details><summary>${esc(t.name)} <b>${t.points}</b></summary><div class="muted">${t.talents.map(([n, r]) => `${esc(n)} ${r}`).join(" · ")}</div></details>`).join("") || '<span class="muted">–</span>'}
+    <p class="muted" style="margin-top:10px">Değer: Survival hibrit (melee + ranged, PvP) ağırlıkları. 1 melee DPS ≈ 16, Agility 2.4, Stamina 2.0, %1 Hit ≈ 20.5 puan.</p></div></div>`;
+  html += `<div class="card" style="margin-top:14px"><div class="row" style="justify-content:space-between"><h2>&#xf132; Ekipman ve upgrade'ler</h2>
+    <div class="row"><span class="muted">Upgrade seviyesi:</span>${[0, 3, 5, 10].map(r => `<button class="chip ${reach === r ? "on" : ""}" data-reach="${r}">${r ? "≤ " + (lvl + r) : "şimdi (" + lvl + ")"}</button>`).join("")}</div></div><div class="tbl"><table>
+    <tr><th>Slot</th><th>Takılı</th><th class="r">Değer</th><th>En iyi upgrade</th><th class="r">Kazanç</th><th>Nereden</th><th></th></tr>`;
+  for (const [sl, label] of SLOTS) {
+    const e = eq[sl] || {}, cand = candidates(sl, eq, lvl + reach), b = cand[0];
+    const gain = b ? Math.round(1000 * (b[2] - (e.v || 0)) / total) / 10 : null;
+    html += `<tr><td class="muted">${label}</td><td>${e.id ? `<a href="#item-${e.id}" class="${qcls(e.q)}">${esc(e.name || S.db.items[e.id]?.n || "#" + e.id)}</a>` : '<span class="dim">boş</span>'}${e.src === "elle" ? ' <span class="pill">elle</span>' : ""}<div class="muted" style="font-size:12px">${esc(e.st || "")}</div></td>
+      <td class="r">${e.v == null ? '<span class="warn">?</span>' : e.v}</td>
+      <td>${b ? `<a href="#item-${b[0]}" class="${qcls(b[1].q)}">${esc(b[1].n)}</a> <span class="pill">${b[1].rq}</span><div class="muted" style="font-size:12px">${esc(b[1].st)}</div>` : '<span class="dim">yok</span>'}</td>
+      <td class="r">${gain != null ? `<span class="up">+${gain}%</span>` : ""}</td><td style="font-size:12px">${b ? srcHtml(b[1]) : ""}</td>
+      <td><button class="btn sm" data-more="${sl}">&#xf0ca;</button> <button class="btn sm" data-edit="${sl}">değiştir</button></td></tr>
+      <tr id="more-${sl}" hidden><td></td><td colspan="6">${cand.slice(1, 9).map(([id, d, v]) => `<div class="row" style="justify-content:space-between;border-bottom:1px dashed var(--line);padding:3px 0"><span><a href="#item-${id}" class="${qcls(d.q)}">${esc(d.n)}</a> <span class="pill">${d.rq}</span> <span class="muted" style="font-size:12px">${esc(d.st)}</span></span><span class="up">+${Math.round(1000 * (v - (e.v || 0)) / total) / 10}%</span><span style="font-size:12px">${srcHtml(d)}</span></div>`).join("") || '<span class="dim">başka aday yok</span>'}</td></tr>
+      <tr id="edit-${sl}" hidden><td></td><td colspan="6"><div class="row"><input class="inp" style="width:260px" placeholder="item adı (veritabanından)" data-pick="${sl}" list="dl-${sl}">
+        <datalist id="dl-${sl}">${Object.entries(S.db.items).filter(([, d]) => SLOTS.find(s => s[0] === sl)[2].includes(d.sl)).slice(0, 2500).map(([, d]) => `<option value="${esc(d.n)}">`).join("")}</datalist>
+        <input class="inp" style="width:260px" placeholder="ya da statlar: +6 agi +14 sta +16 ap" data-stats="${sl}" value="${esc(LS.get("eq", {})[sl]?.stats || "")}">
+        <button class="btn sm" data-save="${sl}">kaydet</button><button class="btn sm" data-reset="${sl}">armory'ye dön</button></div></td></tr>`;
+  }
+  html += `</table></div><p class="muted">Kazanç: toplam ekipman değerine göre yüzde. Rastgele bonuslu (… of the Bandit gibi) item'ların statları armory'den gelmiyor; "?" görürsen "değiştir" → statları yaz. Veritabanı: ${Object.keys(S.db.items).length} Hunter'ın kullanabileceği item (dungeon drop, quest, craft, reputation).</p></div>`;
+  $("#view").innerHTML = html;
+  $("#view").onclick = e => {
+    const t = e.target.closest("button"); if (!t) return;
+    if (t.dataset.reach != null) { LS.set("reach", +t.dataset.reach); return vChar(); }
+    if (t.dataset.more) { const r = $("#more-" + t.dataset.more); r.hidden = !r.hidden; }
+    if (t.dataset.edit) { const r = $("#edit-" + t.dataset.edit); r.hidden = !r.hidden; }
+    if (t.dataset.save) { const sl = t.dataset.save, ov = LS.get("eq", {}), nmv = $(`[data-pick="${sl}"]`).value.trim(), st = $(`[data-stats="${sl}"]`).value.trim();
+      const hit = nmv && Object.entries(S.db.items).find(([, d]) => d.n.toLowerCase() === nmv.toLowerCase());
+      const base = hit ? {id: hit[0], name: hit[1].n, q: hit[1].q} : (eq[sl] ? {id: eq[sl].id, name: eq[sl].name, q: eq[sl].q} : {});
+      ov[sl] = {...base, ...(st ? {stats: st} : {})}; LS.set("eq", ov); vChar(); }
+    if (t.dataset.reset) { const ov = LS.get("eq", {}); delete ov[t.dataset.reset]; LS.set("eq", ov); vChar(); }
+  };
+}
+const SRCF = {all: "hepsi", boss: "Dungeon drop", quest: "Quest", craft: "Craft", rep: "Reputation", ah: "AH'de var"};
+async function vDB() {
+  $("#view").innerHTML = `<div class="empty">Veritabanı yükleniyor…</div>`;
+  await loadDB();
+  const f = LS.get("dbf", {q: "", sl: "", mx: (S.char?.level || S.db.level) + 5, src: "all"});
+  const slots = [...new Set(Object.values(S.db.items).map(d => d.sl))].sort();
+  $("#view").innerHTML = `<div class="card"><div class="row" style="margin-bottom:10px">
+    <input class="inp" style="width:220px" id="fq" placeholder="isim / stat / dungeon" value="${esc(f.q)}">
+    <select class="inp" id="fsl"><option value="">tüm slotlar</option>${slots.map(s => `<option ${s === f.sl ? "selected" : ""}>${s}</option>`).join("")}</select>
+    <span class="muted">en fazla seviye</span><input class="inp" style="width:60px" id="fmx" type="number" value="${f.mx}">
+    <select class="inp" id="fsrc">${Object.entries(SRCF).map(([k, v]) => `<option value="${k}" ${k === f.src ? "selected" : ""}>${v}</option>`).join("")}</select></div><div class="tbl" id="dbt"></div></div>`;
+  const draw = () => {
+    const q = $("#fq").value.trim().toLowerCase(), sl = $("#fsl").value, mx = +$("#fmx").value || 60, src = $("#fsrc").value;
+    LS.set("dbf", {q, sl, mx, src});
+    const rows = Object.entries(S.db.items).filter(([id, d]) => (!sl || d.sl === sl) && d.rq <= mx
+      && (src === "all" || (src === "ah" ? d.ah : (d.src || []).some(x => x.toLowerCase().startsWith({boss: "drop", quest: "quest", craft: "craft", rep: "rep"}[src]) || (src === "quest" && x.startsWith("Dungeon quest")))))
+      && (!q || (d.n + " " + d.st + " " + (d.src || []).join(" ") + " " + d.ty).toLowerCase().includes(q)))
+      .sort((a, b) => (b[1].vo ?? b[1].v) - (a[1].vo ?? a[1].v)).slice(0, 250);
+    $("#dbt").innerHTML = `<table><tr><th>Item</th><th>Slot</th><th>Tür</th><th class="r">Sv</th><th>Statlar</th><th class="r">Değer</th><th>Nereden</th></tr>${rows.map(([id, d]) =>
+      `<tr><td><a href="#item-${id}" class="${qcls(d.q)}">${esc(d.n)}</a>${d.rnd ? ' <span class="pill">rastgele</span>' : ""} <span class="dim">${d.b}</span></td><td>${d.sl}</td><td class="muted">${esc(d.ty)}</td><td class="r">${d.rq}</td>
+       <td style="font-size:12px">${esc(d.st)}${d.x?.length ? `<div class="muted">${d.x.map(esc).join("<br>")}</div>` : ""}</td><td class="r">${d.vo != null ? `${d.v}<div class="muted" style="font-size:11px">OH ${d.vo}</div>` : d.v}</td><td style="font-size:12px">${srcHtml(d)}</td></tr>`).join("")}</table>
+      <p class="muted">${rows.length === 250 ? "İlk 250 sonuç (değere göre). Filtreyi daralt." : rows.length + " sonuç."}</p>`;
+  };
+  ["#fq", "#fsl", "#fmx", "#fsrc"].forEach(s => $(s).oninput = draw); draw();
 }
 
 // ---------- grafik

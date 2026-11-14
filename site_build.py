@@ -8,6 +8,7 @@ import glob
 import json
 import os
 import shutil
+import re
 import statistics
 
 import alerts
@@ -245,9 +246,13 @@ if tips:
             continue
         if not r.get("slot") or not G.usable(r) or not G.obtainable(r):
             continue
+        if r.get("cls") == 2 and r.get("sub") in (4, 5):      # Hunter mace kullanamaz
+            continue
+        if re.match(r"(Plans|Pattern|Schematic|Formula|Recipe|Design|Manual):", r["name"]):
+            continue
         typ = r.get("armor_type") or (WSUB.get(r.get("sub")) if r.get("cls") == 2 else "")
         e = {"n": r["name"], "q": r.get("q"), "sl": r["slot"], "rq": r["req"], "il": r.get("ilvl"), "b": r["bind"], "ty": typ or "",
-             "st": G.stat_str(r), "v": round(G.value(r, w, "MH"), 1), "src": [x for x in G.src_text(int(iid), {}) if x != "unknown source"],
+             "st": G.stat_str(r), "v": round(G.value(r, w, "MH"), 1), "src": [x.replace(" (lvl 0)", "") for x in G.src_text(int(iid), {}) if x != "unknown source"],
              "x": r.get("unscored_effects", [])[:2]}
         if r["slot"] in ("1H", "OH"):
             e["vo"] = round(G.value(r, w, "OH"), 1)
