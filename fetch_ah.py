@@ -92,7 +92,10 @@ def snapshot_house(base, ns, ruleset, house, token):
 
 
 RULESET_NAME = {"1": "Normal", "2": "PvP", "3": "RP", "5": "Ruleset 5", "15": "RP-PvP"}
-HOUSE_NAME = {123: "Alliance", 124: "Horde", 125: "Blackwater (neutral)"}
+HOUSES_BY_RULESET = {"1": (110, 113, 116), "2": (111, 114, 117), "3": (112, 115, 118), "5": (119, 120, 121), "15": (123, 124, 125)}
+HOUSE_NAME = {}
+for _hs in HOUSES_BY_RULESET.values():
+    HOUSE_NAME.update({_hs[0]: "Alliance", _hs[1]: "Horde", _hs[2]: "Blackwater (neutral)"})
 
 
 def all_markets(cid, sec):
@@ -101,7 +104,8 @@ def all_markets(cid, sec):
     if spec:
         mk = [tuple(x.split(":")) for x in spec.split(",") if x.strip()]
     else:
-        mk = [(r, rs, str(h)) for r in ("eu", "us") for rs in RULESET_NAME for h in HOUSE_NAME]
+        # API ruleset'i yok sayiyor; ruleset'ler house id'leriyle ayriliyor (index: 110-125)
+        mk = [(r, rs, str(h)) for r in ("eu", "us") for rs, hs in HOUSES_BY_RULESET.items() for h in hs]
     os.makedirs("data/markets", exist_ok=True)
     tokens, meta = {}, []
     now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
