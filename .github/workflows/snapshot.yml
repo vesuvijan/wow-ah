@@ -67,6 +67,8 @@ jobs:
         run: |
           git fetch --depth=1 origin snapshot && for f in history.csv alert_state.json last_hash.txt report.txt minhist.json tipcache.json known_items.json alert_log.jsonl writ_prev.json; do git show FETCH_HEAD:data/$f > data/$f 2>/dev/null || true; done || true
           git fetch --depth=1 origin ahledger && git show FETCH_HEAD:data/ahl_forever.rppvp.alliance.eu.json > data/ahl.json 2>/dev/null || true
+          git fetch --depth=1 origin char && git show FETCH_HEAD:data/char.json > data/char.json 2>/dev/null || true
+          git fetch --depth=1 origin tooltips && git show FETCH_HEAD:data/tooltips_ofa.json > data/tooltips_ofa.json 2>/dev/null || true
           git fetch --depth=1 origin probe && git show FETCH_HEAD:data/names.json > data/names.json 2>/dev/null && git show FETCH_HEAD:data/recipes_static-forever-eu.json > data/recipes.json 2>/dev/null || true
       - name: History, report and Discord alerts
         env:
@@ -110,7 +112,7 @@ jobs:
           path: site
       - name: Publish to snapshot branch
         run: |
-          rm -rf data/names.json data/recipes.json data/ahl.json data/markets
+          rm -rf data/names.json data/recipes.json data/ahl.json data/markets data/char.json data/tooltips_ofa.json
           git config user.name "ah-bot"
           git config user.email "ah-bot@users.noreply.github.com"
           git checkout --orphan snapshot

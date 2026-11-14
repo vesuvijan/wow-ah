@@ -223,6 +223,44 @@ for P in PLANS:
     plans.append({"title": P["title"], "steps": steps, "shop": shop, "total": total, "back": back, "net": total - back, "missing": missing})
 dump("plans.json", plans)
 
+
+# ---- karakter + item veritabani (tooltip + kaynak + deger)
+char = load("data/char.json", None)
+tips = load("data/tooltips_ofa.json", {}) or {}
+if tips:
+    import gear_score as G
+    lvl = (char or {}).get("level") or 50
+    w = G.weights(lvl)
+    # Survival hibrit (melee + ranged, PvP): AP birimi; 1 melee DPS ~ 14 AP, off-hand %75 (Predator's Edge)
+    w.update({"str": 1.0, "ap": 1.15, "rap": 0.6, "agi": 2.4, "sta": 2.0, "spi": 0.4, "int": 0.6, "mp5": 2.0,
+              "dpsmelee": 16.0, "dpsoh": 12.0, "dps": 8.0, "hit": 20.5, "crit": 19.8, "hp5": 2.0})
+    WSUB = {0: "Axe", 1: "2H Axe", 2: "Bow", 3: "Gun", 4: "Mace", 5: "2H Mace", 6: "Polearm", 7: "Sword", 8: "2H Sword", 10: "Staff",
+            13: "Fist Weapon", 15: "Dagger", 18: "Crossbow"}
+    db = {}
+    for iid, t in tips.items():
+        try:
+            r = G.parse(iid, t)
+            r["req"] = G.fix_req(r)
+        except Exception:  # noqa: BLE001
+            continue
+        if not r.get("slot") or not G.usable(r) or not G.obtainable(r):
+            continue
+        typ = r.get("armor_type") or (WSUB.get(r.get("sub")) if r.get("cls") == 2 else "")
+        e = {"n": r["name"], "q": r.get("q"), "sl": r["slot"], "rq": r["req"], "il": r.get("ilvl"), "b": r["bind"], "ty": typ or "",
+             "st": G.stat_str(r), "v": round(G.value(r, w, "MH"), 1), "src": [x for x in G.src_text(int(iid), {}) if x != "unknown source"],
+             "x": r.get("unscored_effects", [])[:2]}
+        if r["slot"] in ("1H", "OH"):
+            e["vo"] = round(G.value(r, w, "OH"), 1)
+        if r.get("random"):
+            e["rnd"] = 1
+        if iid in now:
+            e["ah"] = now[iid]["min"]
+        db[iid] = e
+    dump("itemdb.json", {"level": lvl, "w": {k: round(v, 3) for k, v in w.items()}, "items": db})
+    print("item db:", len(db))
+if char:
+    dump("char.json", char)
+
 dump("meta.json", {"fetched": fetched, "built": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
                    "items": len(now), "markets": len(mk), "ntfy": os.environ.get("NTFY_TOPIC", "")})
 
