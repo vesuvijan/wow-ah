@@ -1,0 +1,562 @@
+[
+ {
+  "url": "https://armorywowforever.com/c/forever/eu/pvp_rp/Docker-Tuckalot",
+  "status": 200,
+  "type": "text/html; charset=utf-8"
+ },
+ {
+  "url": "https://armorywowforever.com/cdn-cgi/speculation",
+  "status": 200,
+  "type": "application/speculationrules+json"
+ },
+ {
+  "url": "https://armorywowforever.com/static/a4a561e9e0/styles.css",
+  "status": 200,
+  "type": "text/css; charset=utf-8"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/viewer/viewer.css",
+  "status": 200,
+  "type": "text/css; charset=utf-8"
+ },
+ {
+  "url": "https://armorywowforever.com/static/a4a561e9e0/locales/en.js",
+  "status": 200,
+  "type": "text/javascript; charset=utf-8"
+ },
+ {
+  "url": "https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092",
+  "status": 200,
+  "type": "text/javascript;charset=UTF-8"
+ },
+ {
+  "url": "https://armorywowforever.com/static/a4a561e9e0/fonts/geist-latin.woff2",
+  "status": 200,
+  "type": "font/woff2"
+ },
+ {
+  "url": "https://armorywowforever.com/static/a4a561e9e0/character.css",
+  "status": 200,
+  "type": "text/css; charset=utf-8"
+ },
+ {
+  "url": "https://wow.zamimg.com/js/tooltips.js",
+  "status": 200,
+  "type": "text/javascript"
+ },
+ {
+  "url": "https://www.googletagmanager.com/gtm.js?id=GTM-TK2SGN63",
+  "status": 200,
+  "type": "application/javascript; charset=UTF-8"
+ },
+ {
+  "url": "https://wow.zamimg.com/css/universal.css?19",
+  "status": 200,
+  "type": "text/css"
+ },
+ {
+  "url": "https://armorywowforever.com/static/a4a561e9e0/i18n.js",
+  "status": 200,
+  "type": "text/javascript; charset=utf-8"
+ },
+ {
+  "url": "https://armorywowforever.com/static/a4a561e9e0/common.js",
+  "status": 200,
+  "type": "text/javascript; charset=utf-8"
+ },
+ {
+  "url": "https://armorywowforever.com/static/a4a561e9e0/media.js",
+  "status": 200,
+  "type": "text/javascript; charset=utf-8"
+ },
+ {
+  "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-2LV00CHQMJ&gtm=45He6bb1v9285764856za208zd9285764856xf1&_p=1794621210749&gcs=G101&gcd=13p3t3p3p5l1&npa=1&dma_cps=-&dma=0&cid=278621727.1794621211&frm=0&ngs=1&pscdl=denied&rcb=16&sr=1400x2000&uaa=x86&uab=64&uafvl=HeadlessChrome%3B159.0.8154.6%7CNot%252FA)Brand%3B8.0.0.0%7CChromium%3B159.0.8154.6&uam=&uamb=0&uap=Linux&uapv=&uaw=0&ul=en-us&_s=1&tag_exp=115616986~115938465~115938468~118897920~118897930~120385423~120412528~120420416~120469145~120469153~121049589~121246026~121246034~123785233&sid=1794621210&sct=1&seg=0&dl=https%3A%2F%2Farmorywowforever.com%2Fc%2Fforever%2Feu%2Fpvp_rp%2FDocker-Tuckalot&dt=Docker%20Tuckalot%20%E2%80%94%20Level%2050%20Human%20Hunter%2C%20RP-PvP%20(EU)%20%7C%20Armory%20WoW%20Forever&en=page_view&_fv=1&_nsi=1&_ss=1&tfd=561",
+  "status": 204,
+  "type": "text/plain"
+ },
+ {
+  "url": "https://armorywowforever.com/static/a4a561e9e0/views.js",
+  "status": 200,
+  "type": "text/javascript; charset=utf-8"
+ },
+ {
+  "url": "https://armorywowforever.com/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5a262059dc33ad6",
+  "status": 302,
+  "type": ""
+ },
+ {
+  "url": "https://armorywowforever.com/cdn-cgi/challenge-platform/h/b/scripts/jsd/f8df4d4a0cd6/main.js?ray=a5a262059dc33ad6",
+  "status": 200,
+  "type": "application/javascript; charset=UTF-8"
+ },
+ {
+  "url": "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blt195a9f74585f069a/6a95c2dc2924f56db28aa8b8/countdown-timer-bg.jpg",
+  "status": 200,
+  "type": "image/jpeg"
+ },
+ {
+  "url": "https://armorywowforever.com/cdn-cgi/challenge-platform/h/b/jsd/oneshot/f8df4d4a0cd6/0.5802933995641928:1794618334:Fr6skiaelzktGuFcCtMFHw1Ys2XCPQsTbckZ6tp1IlY/a5a262059dc33ad6",
+  "status": 200,
+  "type": "text/plain; charset=UTF-8"
+ },
+ {
+  "url": "https://render.worldofwarcraft.com/forever-eu/character/10/6739978-avatar.jpg",
+  "status": 200,
+  "type": "image/jpeg"
+ },
+ {
+  "url": "https://armorywowforever.com/cdn-cgi/rum?",
+  "status": 204,
+  "type": "text/plain"
+ },
+ {
+  "url": "https://armorywowforever.com/api/config?lang=en",
+  "status": 200,
+  "type": "application/json; charset=utf-8"
+ },
+ {
+  "url": "https://armorywowforever.com/static/a4a561e9e0/svg/emblem.svg",
+  "status": 200,
+  "type": "image/svg+xml"
+ },
+ {
+  "url": "https://armorywowforever.com/api/character/forever/eu/pvp_rp/Docker-Tuckalot?lang=en",
+  "status": 200,
+  "type": "application/json; charset=utf-8"
+ },
+ {
+  "url": "https://wow.zamimg.com/images/wow/icons/large/inv_helmet_17.jpg",
+  "status": 200,
+  "type": "image/jpeg"
+ },
+ {
+  "url": "https://wow.zamimg.com/images/wow/icons/large/inv_shoulder_28.jpg",
+  "status": 200,
+  "type": "image/jpeg"
+ },
+ {
+  "url": "https://wow.zamimg.com/images/wow/icons/large/inv_gauntlets_12.jpg",
+  "status": 200,
+  "type": "image/jpeg"
+ },
+ {
+  "url": "https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_necklace_07.jpg",
+  "status": 200,
+  "type": "image/jpeg"
+ },
+ {
+  "url": "https://wow.zamimg.com/images/wow/icons/large/inv_misc_cape_01.jpg",
+  "status": 200,
+  "type": "image/jpeg"
+ },
+ {
+  "url": "https://wow.zamimg.com/images/wow/icons/large/inv_stone_15.jpg",
+  "status": 200,
+  "type": "image/jpeg"
+ },
+ {
+  "url": "https://wow.zamimg.com/images/wow/icons/large/inv_chest_leather_07.jpg",
+  "status": 200,
+  "type": "image/jpeg"
+ },
+ {
+  "url": "https://wow.zamimg.com/images/wow/icons/large/inv_bracer_04.jpg",
+  "status": 200,
+  "type": "image/jpeg"
+ },
+ {
+  "url": "https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_ring_02.jpg",
+  "status": 200,
+  "type": "image/jpeg"
+ },
+ {
+  "url": "https://wow.zamimg.com/images/wow/icons/large/inv_belt_15.jpg",
+  "status": 200,
+  "type": "image/jpeg"
+ },
+ {
+  "url": "https://wow.zamimg.com/images/wow/icons/large/inv_weapon_bow_01.jpg",
+  "status": 200,
+  "type": "image/jpeg"
+ },
+ {
+  "url": "https://wow.zamimg.com/images/wow/icons/large/inv_misc_bag_08.jpg",
+  "status": 200,
+  "type": "image/jpeg"
+ },
+ {
+  "url": "https://wow.zamimg.com/images/wow/icons/large/inv_boots_07.jpg",
+  "status": 200,
+  "type": "image/jpeg"
+ },
+ {
+  "url": "https://wow.zamimg.com/images/wow/icons/large/inv_staff_08.jpg",
+  "status": 200,
+  "type": "image/jpeg"
+ },
+ {
+  "url": "https://wow.zamimg.com/images/wow/icons/large/inv_pants_06.jpg",
+  "status": 200,
+  "type": "image/jpeg"
+ },
+ {
+  "url": "https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blt3be5fbbd8ab0160d/6a9bc736f8f1240c84bcb8fd/paper-bg.jpg",
+  "status": 200,
+  "type": "image/jpeg"
+ },
+ {
+  "url": "https://armorywowforever.com/static/a4a561e9e0/svg/divider.svg",
+  "status": 200,
+  "type": "image/svg+xml"
+ },
+ {
+  "url": "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js",
+  "status": 200,
+  "type": "application/javascript; charset=utf-8"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/classicplus/deployment/viewer/35ee72d/viewer.min.js",
+  "status": 200,
+  "type": "application/javascript; charset=utf-8"
+ },
+ {
+  "url": "https://wow.zamimg.com/modelviewer/viewer/viewer.css",
+  "status": 200,
+  "type": "text/css"
+ },
+ {
+  "url": "https://armorywowforever.com/static/a4a561e9e0/stage-forever.png",
+  "status": 200,
+  "type": "image/png"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/meta/character/2.json",
+  "status": 200,
+  "type": "application/json; charset=utf-8"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/meta/character/2.json",
+  "status": 200,
+  "type": "application/json; charset=utf-8"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/meta/charactercustomization/2.json",
+  "status": 200,
+  "type": "application/json; charset=utf-8"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/1002470.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/1002457.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "blob:https://armorywowforever.com/fa827e68-428c-4536-b90f-72ba0f1bb977",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "blob:https://armorywowforever.com/72089fa0-990c-40dc-a268-cc417e0356eb",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/bone/1056459.bone",
+  "status": 200,
+  "type": "application/octet-stream"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/3484648.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/3571513.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "blob:https://armorywowforever.com/e5bb25b5-1189-4f66-986b-ce2cad76ae7d",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/3582291.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "blob:https://armorywowforever.com/8bd5e253-1402-4dc7-9563-87d4099c1d97",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "blob:https://armorywowforever.com/d78951b7-b051-45d8-b6e2-09ce928d9b42",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/meta/armor/7/5469.json",
+  "status": 200,
+  "type": "application/json; charset=utf-8"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/3582331.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/m2/1000764.m2",
+  "status": 200,
+  "type": "application/octet-stream"
+ },
+ {
+  "url": "blob:https://armorywowforever.com/3fb0188d-ace6-4f26-a359-0ef86594278f",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/3572544.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "blob:https://armorywowforever.com/cec12595-2cfe-4cc2-ac0e-40dce4c7ec81",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/1002492.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "blob:https://armorywowforever.com/27636032-1410-45ef-b24b-6d33ac5221aa",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/meta/item/20357.json",
+  "status": 200,
+  "type": "application/json; charset=utf-8"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/meta/armor/8/8348.json",
+  "status": 200,
+  "type": "application/json; charset=utf-8"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/157785.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/155190.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "blob:https://armorywowforever.com/076730b2-0454-484d-9aba-360c77600c57",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "blob:https://armorywowforever.com/49cd9395-0e34-43a0-a343-fbf7b08a56ae",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/m2/147547.m2",
+  "status": 200,
+  "type": "application/octet-stream"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/145114.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/152662.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "blob:https://armorywowforever.com/d210be92-71c0-4e18-a3f9-8c3ae6a5021a",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/154800.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "blob:https://armorywowforever.com/658dfc7e-d97f-40bd-b361-58d3f1797980",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "blob:https://armorywowforever.com/4855190f-fdee-4d01-b968-ede1bdbdd0c0",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/skin/491732.skin",
+  "status": 200,
+  "type": "application/octet-stream"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/144328.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/meta/armor/9/28156.json",
+  "status": 200,
+  "type": "application/json; charset=utf-8"
+ },
+ {
+  "url": "blob:https://armorywowforever.com/e27d4dc1-5eae-4f3a-a7b3-2bad6d660a98",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/meta/armor/6/7858.json",
+  "status": 200,
+  "type": "application/json; charset=utf-8"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/1002306.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "blob:https://armorywowforever.com/895294b6-3bcb-4e4e-9fc7-8dbcd40c9196",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/meta/armor/5/17635.json",
+  "status": 200,
+  "type": "application/json; charset=utf-8"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/meta/armor/1/10998.json",
+  "status": 200,
+  "type": "application/json; charset=utf-8"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/3763448.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "blob:https://armorywowforever.com/6b9acebc-405e-4189-914a-98710af3e236",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/160715.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/skin/1000778.skin",
+  "status": 200,
+  "type": "application/octet-stream"
+ },
+ {
+  "url": "blob:https://armorywowforever.com/37b68840-96f8-423f-8ded-75c384ca47b4",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/m2/138177.m2",
+  "status": 200,
+  "type": "application/octet-stream"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/149619.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/157780.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "blob:https://armorywowforever.com/11583c0e-08db-4d52-bb3c-feed1bbd356f",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/163383.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "blob:https://armorywowforever.com/7e0f7aed-2157-42bf-9ab2-9a04a205805b",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/4531022.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "blob:https://armorywowforever.com/21913f49-044e-477a-b037-430dbbf9c26d",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/3536807.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "blob:https://armorywowforever.com/62b86956-630c-4848-b25a-0ca3e72b336e",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/5210203.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "blob:https://armorywowforever.com/2674ea42-5910-4696-8e14-51b37c035ba4",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "blob:https://armorywowforever.com/eb9bc1e5-9006-4210-9660-dafae2d1f8d5",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/skin/484004.skin",
+  "status": 200,
+  "type": "application/octet-stream"
+ },
+ {
+  "url": "https://armorywowforever.com/modelviewer/v2/classicplus/textures/138192.webp",
+  "status": 200,
+  "type": "image/webp"
+ },
+ {
+  "url": "blob:https://armorywowforever.com/b87771de-ad94-4397-9ef8-58f6eccd2471",
+  "status": 200,
+  "type": ""
+ },
+ {
+  "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-2LV00CHQMJ&gtm=45He6bb1v9285764856za200zd9285764856xf1&_p=1794621210749&gcs=G101&gcd=13p3t3p3p5l1&npa=1&dma_cps=-&dma=0&_eu=AEAAAAQ&ae=a&cid=278621727.1794621211&frm=0&ngs=1&pscdl=denied&rcb=16&sr=1400x2000&uaa=x86&uab=64&uafvl=HeadlessChrome%3B159.0.8154.6%7CNot%252FA)Brand%3B8.0.0.0%7CChromium%3B159.0.8154.6&uam=&uamb=0&uap=Linux&uapv=&uaw=0&ul=en-us&_s=2&tag_exp=115616986~115938465~115938468~118897920~118897930~120385423~120412528~120420416~120469145~120469153~121049589~121246026~121246034~123785233&sid=1794621210&sct=1&seg=0&dl=https%3A%2F%2Farmorywowforever.com%2Fc%2Fforever%2Feu%2Fpvp_rp%2FDocker-Tuckalot&dt=Docker%20Tuckalot%20%E2%80%94%20Level%2050%20Human%20Hunter%2C%20RP-PvP%20(EU)%20%7C%20Armory%20WoW%20Forever&en=scroll&epn.percent_scrolled=90&_et=4&tfd=5600",
+  "status": 204,
+  "type": "text/plain"
+ }
+]
