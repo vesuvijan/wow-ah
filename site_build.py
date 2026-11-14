@@ -113,6 +113,9 @@ names_all = {i: nm(i) for i in set(x) | set(now)}
 dump("x.json", {"fetched": idx.get("fetched_at"), "markets": mk, "mine": next((k for k, m in enumerate(mk) if m["key"] == MY), None), "items": x})
 dump("names.json", names_all)
 
+byname_all = {}
+for i, n in names_all.items():
+    byname_all.setdefault(n.lower(), i)
 # ---- firsat akisi (son 7 gun), ayni anahtar tekrar etmez
 feed, status, writmkt = [], [], []
 SKIP = {"status", "writmkt", "new", "recipe"}
@@ -134,8 +137,12 @@ try:
             txt = alerts.todo_lines([(j["kind"], j["row"], j.get("score", 0))])
         except Exception:  # noqa: BLE001
             txt = []
-        feed.append({"ts": j["ts"], "k": j["kind"], "t": txt[0] if txt else " | ".join(str(c) for c in j["row"][:4]), "s": j.get("score", 0),
-                     "item": j["row"][0] if j["row"] else ""})
+        row = j["row"]
+        item = str(row[0]) if row else ""
+        base = re.sub(r" \(random-stat variant\)$| #\S+$| \((Journeyman|Expert|Artisan)\)$", "", item)
+        fv = row[6] if j["kind"] == "favor" and len(row) > 6 and isinstance(row[6], dict) else None
+        feed.append({"ts": j["ts"], "k": j["kind"], "t": txt[0] if txt else " | ".join(str(c) for c in row[:4]), "s": j.get("score", 0),
+                     "item": item, "id": byname_all.get(base.lower()), "r": [c for c in row if not isinstance(c, dict)], "fv": fv})
 except OSError:
     pass
 feed.sort(key=lambda f: f["ts"], reverse=True)

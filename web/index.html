@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -106,6 +106,15 @@ tr.mine td{background:var(--panel2)}
 .q0{color:var(--q0)}.q1{color:var(--q1)}.q2{color:var(--q2)}.q3{color:var(--q3)}.q4{color:var(--q4)}.q5{color:var(--q5)}
 .toast{position:fixed;right:16px;bottom:16px;background:var(--panel2);border:1px solid var(--acc);border-radius:8px;padding:10px 14px;z-index:20;max-width:min(420px,calc(100vw - 32px))}
 details summary{cursor:pointer;color:var(--mute)}
+.feedbar{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.feedbar .row{flex-wrap:wrap}
+.jump .chip{font-size:12px}
+.cat-h{display:flex;gap:6px 14px;align-items:baseline;flex-wrap:wrap;margin-bottom:8px}.cat-h h2{margin:0}
+td.small,.small{font-size:12px}
+tr.done td{opacity:.4}tr.gone td{opacity:.5}
+.side{align-content:start}
+.stat-line{padding:6px 0;border-bottom:1px solid var(--line);font-size:12.5px}
+@media(min-width:900px){.two{grid-template-columns:minmax(0,3fr) minmax(0,1.3fr)}}
 code{background:var(--panel2);padding:1px 5px;border-radius:4px}
 </style>
 </head>
@@ -113,22 +122,22 @@ code{background:var(--panel2);padding:1px 5px;border-radius:4px}
 <header>
   <div class="wrap top">
     <div class="brand"><span class="ic">&#xf0d6;</span> Docker's AH Desk <span class="pill">RP-PvP · Alliance · EU</span></div>
-    <div class="age" id="age"><span class="dot"></span>yükleniyor…</div>
+    <div class="age" id="age"><span class="dot"></span>loading…</div>
     <div class="spacer"></div>
-    <div class="row"><button class="btn" id="notif">&#xf0f3; Bildirim</button><button class="btn" id="theme" title="Tema">&#xf186;</button></div>
+    <div class="row"><button class="btn" id="notif">&#xf0f3; Alerts</button><button class="btn" id="theme" title="Theme">&#xf186;</button></div>
   </div>
   <div class="wrap"><nav id="nav">
-    <a href="#feed">&#xf0e7; Fırsatlar</a>
-    <a href="#search">&#xf002; Item ara</a>
-    <a href="#char">&#xf007; Karakter</a>
+    <a href="#feed">&#xf0e7; Opportunities</a>
+    <a href="#search">&#xf002; Search</a>
+    <a href="#char">&#xf007; Character</a>
     <a href="#db">&#xf1c0; Item DB</a>
-    <a href="#bank">&#xf19c; Banka</a>
-    <a href="#watch">&#xf06e; İzleme</a>
-    <a href="#plans">&#xf0c3; Meslek planları</a>
-    <a href="#setup">&#xf013; Ayarlar</a>
+    <a href="#bank">&#xf19c; Bank</a>
+    <a href="#watch">&#xf06e; Watchlist</a>
+    <a href="#plans">&#xf0c3; Professions</a>
+    <a href="#setup">&#xf013; Settings</a>
   </nav></div>
 </header>
-<main class="wrap" id="view"><div class="empty">Yükleniyor…</div></main>
+<main class="wrap" id="view"><div class="empty">Loading…</div></main>
 <div class="tip" id="tip" hidden></div>
 <script>
 "use strict";
@@ -140,8 +149,8 @@ const LS = {
 };
 const S = { meta: null, now: null, feed: null, bank: null, plans: null, names: null, x: null, hist: null };
 const KIND = {
-  sell: ["&#xf062; SELL", "Sat"], dip: ["&#xf063; BUY MORE", "Ucuzladı"], gear: ["&#xf132; GEAR", "Gear"], snipe: ["&#xf0e7; SNIPE", "Snipe"],
-  flip: ["&#xf021; FLIP", "Flip"], favor: ["&#xf005; FAVOR", "Favor"], writ: ["&#xf15c; WRIT", "Writ"], gamble: ["&#xf128; GAMBLE", "Writ gamble"], mat: ["&#xf07a; MAT", "Malzeme"]
+  sell: ["&#xf062; SELL", "Sell"], dip: ["&#xf063; BUY MORE", "Dip"], gear: ["&#xf132; GEAR", "Gear"], snipe: ["&#xf0e7; SNIPE", "Snipe"],
+  flip: ["&#xf021; FLIP", "Flip"], favor: ["&#xf005; FAVOR", "Favor"], writ: ["&#xf15c; WRIT", "Writ"], gamble: ["&#xf128; GAMBLE", "Writ gamble"], mat: ["&#xf07a; MAT", "Mat"]
 };
 
 // ---------- para
@@ -188,7 +197,7 @@ function renderAge() {
   const el = $("#age"); if (!S.meta) return;
   const d = tr(S.meta.fetched), mins = Math.round((Date.now() - d) / 60000);
   const cls = mins > 150 ? "dead" : mins > 80 ? "stale" : "";
-  el.innerHTML = `<span class="dot ${cls}"></span>AH verisi <b>${fmtTime(d)}</b> (${mins} dk önce) · ${S.meta.items} item · ${S.meta.markets} pazar · Blizzard saatte bir günceller`;
+  el.innerHTML = `<span class="dot ${cls}"></span>AH data <b>${fmtTime(d)}</b> (${mins} min ago) · ${S.meta.items} items · ${S.meta.markets} markets · Blizzard updates hourly`;
 }
 
 // ---------- router
@@ -201,47 +210,96 @@ function route() {
   window.scrollTo(0, 0);
 }
 
-// ---------- firsatlar
-function doneKey(a) { return a.ts + "|" + a.t.slice(0, 80); }
+// ---------- opportunities
+const M = t => parseMoney(String(t || "").replace(/^~/, "")) ;
+const CATS = [
+  {id: "sell", title: "&#xf062; Sell now: price spikes", hint: "Price is well above its usual level. List what you hold.", kinds: ["sell"],
+   cols: ["Item", "Alert price", "Normal", "Change", "Listed", "You hold", "Live now"],
+   row: r => [M(r[1]), M(r[2]), r[3], r[4], hold(r[5])], live: "up"},
+  {id: "dip", title: "&#xf063; Buy cheap: price dips", hint: "Well below its usual price. Good moment to stock up.", kinds: ["dip"],
+   cols: ["Item", "Alert price", "Normal", "Change", "Listed", "You hold", "Live now"],
+   row: r => [M(r[1]), M(r[2]), r[3], r[4], hold(r[5])], live: "down"},
+  {id: "gear", title: "&#xf132; Gear upgrades", hint: "Cheap items that beat what you wear.", kinds: ["gear"],
+   cols: ["Item", "Price", "Gain", "Slot", "Stats", "Backup", "Live now"],
+   row: r => [M(r[1]), r[2], r[3], r[5], (r[7] || "").replace(/^next cheapest /, "next ")], live: "down"},
+  {id: "snipe", title: "&#xf0e7; Snipes", hint: "Listed far below normal. Buy and relist.", kinds: ["snipe"],
+   cols: ["Item", "Price", "Qty", "Resell at", "Profit", "", "Live now"],
+   row: r => [M(r[1]), r[2], M(r[3]), M(r[4]), ""], live: "down"},
+  {id: "flip", title: "&#xf021; Vendor flips", hint: "Buy mats on the AH, craft, sell to a vendor.", kinds: ["flip"],
+   cols: ["Recipe", "Mat cost", "Vendor", "Profit", "Profession", "Mats", ""],
+   row: r => [M(r[1]), M(r[2]), M(r[3]), r[4], r[5]], live: null},
+  {id: "writ", title: "&#xf15c; Reputation: writs", hint: "Azeroth Commerce Authority rep without crafting.", kinds: ["writ", "gamble"],
+   cols: ["Writ", "Price", "Rep", "Cost / rep", "Needs", "", "Live now"],
+   row: r => [M(r[1]), r[2], r[3], r[4], ""], live: "down"},
+  {id: "favor", title: "&#xf005; Merchant's Favor", hint: "Cheapest Favor: buy the crate and the mats, hand in to Marcy Baker.", kinds: ["favor"],
+   cols: ["Crate", "Per Favor", "Favor", "Fill with", "Crate price", "Plan", ""],
+   row: r => [M(r[1]), r[2], r[3], M(r[4]), r[5]], live: null},
+  {id: "mat", title: "&#xf07a; Materials for your routes", hint: "Cheaper than usual and needed for a profession route.", kinds: ["mat"],
+   cols: ["Item", "Price", "Normal", "Change", "Listed", "Route needs", "Live now"],
+   row: r => [M(r[1]), M(r[2]), String(r[3]).replace("-%", "-") + (String(r[3]).includes("%") ? "" : ""), r[4], r[5]], live: "down"},
+];
+const hold = t => { const m = String(t || "").match(/hold (\d+): about (.*?) at/); return m ? `${m[1]} (≈ ${m[2].replace(/(\d+)c$/, "").replace(/s$/, "s")})` : "–"; };
+const cell = v => typeof v === "number" ? money(v) : (v == null || v === "" ? '<span class="dim">–</span>' : esc(v));
+function liveState(a, cat) {
+  if (!cat.live || !a.id) return ["", null];
+  const it = S.now.items[a.id]; if (!it) return ['<span class="dim">not listed</span>', "gone"];
+  const ap = M(a.r[1]); if (!ap) return [money(it.min), null];
+  const ok = cat.live === "up" ? it.min >= ap * 0.9 : it.min <= ap * 1.1;
+  return [`${money(it.min)} ${ok ? '<span class="up">&#xf00c;</span>' : '<span class="bad" title="price moved">&#xf00d;</span>'}`, ok ? "ok" : "gone"];
+}
 function vFeed() {
-  const done = new Set(LS.get("done", [])), seen = LS.get("seenTs", "");
-  const kinds = LS.get("kinds", null);
-  const items = S.feed.items.filter(a => !kinds || kinds.includes(a.k));
-  const counts = {}; S.feed.items.forEach(a => counts[a.k] = (counts[a.k] || 0) + 1);
-  let html = `<div class="two"><div>`;
-  html += `<div class="chips">${Object.keys(KIND).filter(k => counts[k]).map(k => `<button class="chip ${!kinds || kinds.includes(k) ? "on" : ""}" data-k="${k}">${KIND[k][1]} ${counts[k]}</button>`).join("")}
-    <button class="chip" id="allk">hepsi</button><button class="chip" id="hidedone">${LS.get("hideDone", false) ? "yapılanları göster" : "yapılanları gizle"}</button></div>`;
-  const hideDone = LS.get("hideDone", false);
-  const runs = {};
-  items.forEach(a => { if (hideDone && done.has(doneKey(a))) return; (runs[a.ts] = runs[a.ts] || []).push(a); });
-  const keys = Object.keys(runs).sort().reverse();
-  if (!keys.length) html += `<div class="empty">Seçili filtrede fırsat yok.</div>`;
-  for (const ts of keys.slice(0, 60)) {
-    const d = tr(ts);
-    html += `<div class="feed-run"><div class="run-h">${fmtDay(d)} ${fmtTime(d)}</div>`;
-    for (const a of runs[ts].sort((x, y) => (y.s || 0) - (x.s || 0))) {
-      const id = S.byName[(a.item || "").toLowerCase().replace(/ \(.*\)$/, "")];
-      const isNew = seen && a.ts > seen, isDone = done.has(doneKey(a));
-      html += `<div class="alert k-${a.k} ${isNew ? "new" : ""} ${isDone ? "done" : ""}">
-        <div class="tag">${KIND[a.k]?.[0] || a.k}</div>
-        <div class="txt">${esc(a.t)}${id ? ` <a href="#item-${id}">&#xf201;</a>` : ""}</div>
-        <button class="btn sm" data-done="${esc(doneKey(a))}" title="Yaptım / geri al">${isDone ? "&#xf0e2;" : "&#xf00c;"}</button></div>`;
+  const done = new Set(LS.get("done", [])), win = LS.get("win", 24), showGone = LS.get("showGone", false);
+  const cutoff = Date.now() - win * 3600e3;
+  const latest = {};
+  for (const a of S.feed.items) { if (tr(a.ts) < cutoff) continue; const k = a.k + "|" + a.item; if (!latest[k] || a.ts > latest[k].ts) latest[k] = a; }
+  const all = Object.values(latest);
+  let body = "", total = 0;
+  const nav = [];
+  for (const cat of CATS) {
+    let rows = all.filter(a => cat.kinds.includes(a.k)).map(a => { const [lv, st] = liveState(a, cat); return {a, lv, st}; });
+    const gone = rows.filter(x => x.st === "gone").length;
+    if (!showGone) rows = rows.filter(x => x.st !== "gone");
+    rows.sort((x, y) => (y.a.s || 0) - (x.a.s || 0));
+    if (!rows.length) continue;
+    total += rows.length; nav.push(`<a href="#feed" data-jump="${cat.id}" class="chip on">${cat.title.replace(/&#x[0-9a-f]+;\s*/, "")} ${rows.length}</a>`);
+    const cols = cat.cols.filter(c => c !== "");
+    body += `<section class="card cat" id="cat-${cat.id}"><div class="cat-h"><h2>${cat.title}</h2><span class="muted">${cat.hint}${gone && !showGone ? ` · ${gone} expired hidden` : ""}</span></div><div class="tbl"><table>
+      <tr>${cols.map((c, i) => `<th class="${i && i < cols.length && !["Stats", "Mats", "Fill with", "Plan", "Needs", "Profession", "Slot", "Backup"].includes(c) ? "r" : ""}">${c}</th>`).join("")}<th>Seen</th><th></th></tr>`;
+    for (const {a, lv, st} of rows) {
+      const vals = cat.row(a.r), isDone = done.has(doneKey(a));
+      const name = a.id ? `<a href="#item-${a.id}" class="${qcls(S.now.items[a.id]?.q)}">${esc(a.item)}</a>` : esc(a.item);
+      const tds = [name, ...vals.map((v, i) => { const c = cat.cols[i + 1]; return c === "" ? null : `<td class="${["Stats", "Mats", "Fill with", "Plan", "Needs", "Profession", "Slot", "Backup"].includes(c) ? "small" : "r"}">${c === "Change" || c === "Gain" ? chg(v) : cell(v)}</td>`; }).filter(Boolean)];
+      if (cat.live) tds.push(`<td class="r">${lv}</td>`);
+      const d = tr(a.ts);
+      body += `<tr class="${isDone ? "done" : ""} ${st === "gone" ? "gone" : ""}" title="${esc(a.t)}"><td>${tds[0]}</td>${tds.slice(1).join("")}<td class="muted small">${ago(d)}</td><td><button class="btn sm" data-done="${esc(doneKey(a))}" title="Mark done">${isDone ? "&#xf0e2;" : "&#xf00c;"}</button></td></tr>`;
     }
-    html += `</div>`;
+    body += `</table></div></section>`;
   }
-  html += `</div><div class="grid">`;
-  html += `<div class="card"><h2>&#xf017; Durum</h2>${S.feed.status?.length ? `<ul class="status">${S.feed.status.filter(Boolean).map(l => `<li>${esc(l)}</li>`).join("")}</ul>` : '<div class="muted">–</div>'}</div>`;
-  if (S.feed.writmkt?.length) html += `<div class="card"><h2>&#xf15c; Writ pazarı</h2><ul class="status">${S.feed.writmkt.map(l => `<li>${esc(l)}</li>`).join("")}</ul></div>`;
-  html += `<div class="card"><h2>&#xf19c; Banka özeti</h2>${bankMini()}</div></div></div>`;
+  const html = `<div class="feedbar"><div class="row">${[6, 24, 72, 168].map(h => `<button class="chip ${win === h ? "on" : ""}" data-win="${h}">${h < 72 ? h + "h" : h / 24 + "d"}</button>`).join("")}
+      <button class="chip ${showGone ? "on" : ""}" id="gone">show expired</button></div><div class="row jump">${nav.join("")}</div></div>
+    <div class="two"><div class="grid">${body || `<div class="card empty">Nothing in the last ${win}h. Widen the window above.</div>`}</div>
+    <div class="grid side">${statusCard()}<div class="card"><h2>&#xf19c; Bank</h2>${bankMini()}</div></div></div>`;
   $("#view").innerHTML = html;
   if (S.feed.items[0]) LS.set("seenTs", S.feed.items[0].ts);
   $("#view").onclick = e => {
-    const b = e.target.closest("[data-done]"), c = e.target.closest(".chip[data-k]");
-    if (b) { const s = new Set(LS.get("done", [])); const k = b.dataset.done; s.has(k) ? s.delete(k) : s.add(k); LS.set("done", [...s].slice(-800)); vFeed(); }
-    else if (c) { let ks = LS.get("kinds", null) || Object.keys(KIND); ks = ks.includes(c.dataset.k) ? ks.filter(x => x !== c.dataset.k) : [...ks, c.dataset.k]; LS.set("kinds", ks); vFeed(); }
-    else if (e.target.id === "allk") { LS.set("kinds", null); vFeed(); }
-    else if (e.target.id === "hidedone") { LS.set("hideDone", !LS.get("hideDone", false)); vFeed(); }
+    const b = e.target.closest("[data-done]"), w = e.target.closest("[data-win]"), j = e.target.closest("[data-jump]");
+    if (b) { const st = new Set(LS.get("done", [])); const k = b.dataset.done; st.has(k) ? st.delete(k) : st.add(k); LS.set("done", [...st].slice(-800)); vFeed(); }
+    else if (w) { LS.set("win", +w.dataset.win); vFeed(); }
+    else if (e.target.id === "gone") { LS.set("showGone", !showGone); vFeed(); }
+    else if (j) { e.preventDefault(); $("#cat-" + j.dataset.jump)?.scrollIntoView({behavior: "smooth", block: "start"}); }
   };
+}
+function doneKey(a) { return a.ts + "|" + a.t.slice(0, 80); }
+function chg(v) { const m = String(v).match(/([+-]?)%?(\d+(\.\d+)?)%?/); if (!m) return esc(v); const neg = String(v).includes("-"); return `<span class="${neg ? "down" : "up"}">${neg ? "-" : "+"}${m[2]}%</span>`; }
+function ago(d) { const m = Math.round((Date.now() - d) / 60000); return m < 60 ? m + "m ago" : m < 1440 ? Math.round(m / 60) + "h ago" : Math.round(m / 1440) + "d ago"; }
+function statusCard() {
+  const st = (S.feed.status || []).filter(Boolean);
+  const routes = [], other = [];
+  for (const l of st) { const m = l.match(/^(\w+) route: (.*?) now \(7d low (.*?)\)/); if (m) routes.push(m); else other.push(l); }
+  return `<div class="card"><h2>&#xf017; Status</h2>
+    ${routes.length ? `<table><tr><th>Profession route</th><th class="r">Now</th><th class="r">7d low</th></tr>${routes.map(m => `<tr><td>${m[1]}</td><td class="r">${cell(M(m[2]) || m[2])}</td><td class="r">${cell(M(m[3]) || m[3])}</td></tr>`).join("")}</table>` : ""}
+    ${other.map(l => { const [k, ...v] = l.split(": "); return `<div class="stat-line"><span class="muted">${esc(k)}</span><div>${esc(v.join(": "))}</div></div>`; }).join("")}
+    ${S.feed.writmkt?.length ? `<details><summary>Writ market</summary>${S.feed.writmkt.map(l => `<div class="small muted">${esc(l)}</div>`).join("")}</details>` : ""}</div>`;
 }
 
 // ---------- banka
@@ -250,15 +308,15 @@ function holdings() {
   return S.bank.map(b => ({...b, cnt: local && local[b.n] != null ? local[b.n] : b.cnt}));
 }
 function verdict(b) {
-  if (b.min == null) return '<span class="dim">AH’de yok</span>';
-  if (b.m7 && b.min >= b.m7 * 1.15) return '<span class="up">&#xf062; Satış zamanı</span>';
-  if (b.m7 && b.min <= b.m7 * 0.85) return '<span class="down">&#xf063; Ucuz, bekle</span>';
+  if (b.min == null) return '<span class="dim">not on AH</span>';
+  if (b.m7 && b.min >= b.m7 * 1.15) return '<span class="up">&#xf062; Sell now</span>';
+  if (b.m7 && b.min <= b.m7 * 0.85) return '<span class="down">&#xf063; Cheap, hold</span>';
   return '<span class="muted">Normal</span>';
 }
 function bankMini() {
   const H = holdings(); let tot = 0;
   const rows = H.map(b => { const v = (b.min || 0) * b.cnt; tot += v; return `<tr><td><a href="#item-${b.id}">${esc(b.n)}</a></td><td class="r">${b.cnt}</td><td class="r">${money(v)}</td><td>${verdict(b)}</td></tr>`; }).join("");
-  return `<div class="tbl"><table>${rows}<tr><td class="muted">Toplam</td><td></td><td class="r">${money(tot)}</td><td></td></tr></table></div>`;
+  return `<div class="tbl"><table>${rows}<tr><td class="muted">Total</td><td></td><td class="r">${money(tot)}</td><td></td></tr></table></div>`;
 }
 function vBank() {
   const H = holdings(); let tot = 0, totV = 0;
@@ -268,10 +326,10 @@ function vBank() {
       <td class="r">${money(b.min)}</td><td class="r">${money(b.m7)}</td><td class="r">${pctHtml(pct(b.min, b.m7))}</td><td class="r">${pctHtml(b.d24)}</td>
       <td class="r">${money(b.lo30)} – ${money(b.hi30)}</td><td class="r">${money(v)}</td><td class="r">${money(vv)}</td><td>${verdict(b)}</td></tr>`;
   }).join("");
-  $("#view").innerHTML = `<div class="card"><h2>&#xf19c; Bankadakiler</h2><div class="tbl"><table>
-    <tr><th>Item</th><th class="r">Adet</th><th class="r">Şimdi</th><th class="r">7 gün medyan</th><th class="r">Normale göre</th><th class="r">24 saat</th><th class="r">30 gün aralık</th><th class="r">AH değeri</th><th class="r">Vendor değeri</th><th></th></tr>
-    ${rows}<tr><td class="muted">Toplam</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="r">${money(tot)}</td><td class="r">${money(totV)}</td><td></td></tr></table></div>
-    <p class="muted">Adetleri burada değiştirebilirsin (bu tarayıcıda saklanır). Telefona gelen SAT / BUY MORE bildirimlerinin de yeni adetleri kullanması için Claude'a söyle. Satış uyarıları: fiyat 7 günlük medyanın %15 üstündeyse "Satış zamanı".</p></div>`;
+  $("#view").innerHTML = `<div class="card"><h2>&#xf19c; Bank</h2><div class="tbl"><table>
+    <tr><th>Item</th><th class="r">Count</th><th class="r">Now</th><th class="r">7d median</th><th class="r">vs normal</th><th class="r">24h</th><th class="r">30d range</th><th class="r">AH value</th><th class="r">Vendor value</th><th></th></tr>
+    ${rows}<tr><td class="muted">Total</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="r">${money(tot)}</td><td class="r">${money(totV)}</td><td></td></tr></table></div>
+    <p class="muted">Edit counts here (saved in this browser). Tell Claude the new counts so phone alerts use them too. "Sell now" = price at least 15% above its 7-day median.</p></div>`;
   $("#view").onchange = e => { const i = e.target.closest("[data-h]"); if (!i) return; const h = LS.get("holdings", {}) || {}; h[i.dataset.h] = Math.max(0, parseInt(i.value) || 0); LS.set("holdings", h); vBank(); };
 }
 
@@ -279,47 +337,47 @@ function vBank() {
 function vSearch(id) {
   if (id) return vItem(id);
   const q0 = LS.get("lastQ", "");
-  $("#view").innerHTML = `<div class="search"><input id="q" placeholder="Item adı yaz: Mithril Ore, Swiftness Potion…" autocomplete="off" value="${esc(q0)}"></div><div class="card res" id="res"></div>`;
+  $("#view").innerHTML = `<div class="search"><input id="q" placeholder="Item name: Mithril Ore, Swiftness Potion…" autocomplete="off" value="${esc(q0)}"></div><div class="card res" id="res"></div>`;
   const q = $("#q"); q.focus();
   const run = () => {
     const t = q.value.trim().toLowerCase(); LS.set("lastQ", q.value);
-    if (t.length < 2) { $("#res").innerHTML = `<div class="empty">En az 2 harf. ${Object.keys(S.names).length} item aranabilir (tüm Forever pazarları).</div>`; return; }
+    if (t.length < 2) { $("#res").innerHTML = `<div class="empty">Type at least 2 letters. ${Object.keys(S.names).length} searchable items (all Forever markets).</div>`; return; }
     const hits = [];
     for (const [id, n] of Object.entries(S.names)) { const l = n.toLowerCase(), i = l.indexOf(t); if (i >= 0) hits.push([id, n, (i === 0 ? 0 : 1) + (S.now.items[id] ? 0 : 2), n.length]); }
     hits.sort((a, b) => a[2] - b[2] || a[3] - b[3]);
     $("#res").innerHTML = hits.length ? hits.slice(0, 40).map(([id, n]) => { const it = S.now.items[id];
-      return `<a href="#item-${id}"><span class="${qcls(it?.q)}">${esc(n)}</span><span class="r">${it ? money(it.min) : '<span class="dim">bizim AH’de yok</span>'}</span><span class="muted">${it ? it.qty + " adet" : ""}</span></a>`; }).join("") : `<div class="empty">Bulunamadı.</div>`;
+      return `<a href="#item-${id}"><span class="${qcls(it?.q)}">${esc(n)}</span><span class="r">${it ? money(it.min) : '<span class="dim">not on our AH</span>'}</span><span class="muted">${it ? it.qty + " listed" : ""}</span></a>`; }).join("") : `<div class="empty">No match.</div>`;
   };
   q.oninput = run; run();
 }
 async function vItem(id) {
   const it = S.now.items[id] || {}, name = S.names[id] || it.n || ("Item #" + id);
-  $("#view").innerHTML = `<div class="empty">Tüm pazarlar yükleniyor…</div>`;
+  $("#view").innerHTML = `<div class="empty">Loading all markets…</div>`;
   try { await Promise.all([loadBig(), loadDB()]); } catch (e) { console.warn(e); }
   const D = S.db?.items?.[id];
   const hist = (S.hist && S.hist[id]) || [];
   const W = LS.get("watch", {});
-  let html = `<p><a href="#search">&#xf060; arama</a></p><div class="card"><div class="item-h"><h1 class="${qcls(it.q)}">${esc(name)}</h1>
+  let html = `<p><a href="#search">&#xf060; search</a></p><div class="card"><div class="item-h"><h1 class="${qcls(it.q)}">${esc(name)}</h1>
     <span class="pill">#${id}</span><a href="https://www.wowhead.com/forever/item=${id}" target="_blank" rel="noopener">Wowhead &#xf08e;</a>
     ${it.c ? `<span class="pill">${esc(it.c)}</span>` : ""}</div>
-    <div class="kv"><div><i>Bizim AH en ucuz</i><b>${money(it.min)}</b></div><div><i>Adet</i><b>${it.qty ?? "–"}</b></div>
-    <div><i>7 gün medyan</i><b>${money(it.m7)}</b> ${pctHtml(pct(it.min, it.m7))}</div><div><i>30 gün en düşük / yüksek</i><b>${money(it.lo30)} / ${money(it.hi30)}</b></div>
-    <div><i>Vendor satış</i><b>${money(it.sp)}</b></div></div>
-    ${D ? `<p><b>${esc(D.sl)}</b> ${esc(D.ty)} · seviye ${D.rq} · ${esc(D.b)} · ${esc(D.st)}${D.x?.length ? "<br><span class='muted'>" + D.x.map(esc).join("<br>") + "</span>" : ""}<br><span class="muted">Nereden:</span> ${srcHtml(D)}</p>` : ""}
-    <div class="row"><span class="muted">İzle, şu fiyatın altına düşünce haber ver:</span><input class="inp" id="wt" placeholder="örn. 1g20s" value="${W[id] ? money(W[id].t, 1) : ""}">
-    <button class="btn" id="wadd">${W[id] ? "&#xf00c; Güncelle" : "&#xf06e; İzle"}</button>${W[id] ? '<button class="btn" id="wdel">Kaldır</button>' : ""}</div></div>`;
-  html += `<div class="two" style="margin-top:14px"><div class="card"><h2>&#xf201; Fiyat geçmişi (bizim AH, en ucuz ilan)</h2><div class="rel" id="ch">${hist.length > 1 ? "" : '<div class="empty">Geçmiş yok.</div>'}</div></div>`;
-  html += `<div class="card"><h2>&#xf0e3; Bizim AH’deki ilanlar</h2>${it.lv?.length ? `<div class="tbl"><table><tr><th class="r">Fiyat</th><th class="r">Adet</th><th class="r">Kümülatif</th></tr>${(() => { let c = 0, t = 0; return it.lv.map(([p, q]) => { c += q; t += p * q; return `<tr><td class="r">${money(p)}</td><td class="r">${q}</td><td class="r">${c} adet · ort. ${money(t / c)}</td></tr>`; }).join(""); })()}</table></div>` : '<div class="muted">Şu an ilan yok.</div>'}</div></div>`;
+    <div class="kv"><div><i>Our AH lowest</i><b>${money(it.min)}</b></div><div><i>Listed</i><b>${it.qty ?? "–"}</b></div>
+    <div><i>7d median</i><b>${money(it.m7)}</b> ${pctHtml(pct(it.min, it.m7))}</div><div><i>30d low / high</i><b>${money(it.lo30)} / ${money(it.hi30)}</b></div>
+    <div><i>Vendor sell</i><b>${money(it.sp)}</b></div></div>
+    ${D ? `<p><b>${esc(D.sl)}</b> ${esc(D.ty)} · level ${D.rq} · ${esc(D.b)} · ${esc(D.st)}${D.x?.length ? "<br><span class='muted'>" + D.x.map(esc).join("<br>") + "</span>" : ""}<br><span class="muted">Source:</span> ${srcHtml(D)}</p>` : ""}
+    <div class="row"><span class="muted">Alert me when it drops below:</span><input class="inp" id="wt" placeholder="e.g. 1g20s" value="${W[id] ? money(W[id].t, 1) : ""}">
+    <button class="btn" id="wadd">${W[id] ? "&#xf00c; Update" : "&#xf06e; Watch"}</button>${W[id] ? '<button class="btn" id="wdel">Remove</button>' : ""}</div></div>`;
+  html += `<div class="two" style="margin-top:14px"><div class="card"><h2>&#xf201; Price history (our AH, lowest listing)</h2><div class="rel" id="ch">${hist.length > 1 ? "" : '<div class="empty">No history.</div>'}</div></div>`;
+  html += `<div class="card"><h2>&#xf0e3; Listings on our AH</h2>${it.lv?.length ? `<div class="tbl"><table><tr><th class="r">Price</th><th class="r">Qty</th><th class="r">Cumulative</th></tr>${(() => { let c = 0, t = 0; return it.lv.map(([p, q]) => { c += q; t += p * q; return `<tr><td class="r">${money(p)}</td><td class="r">${q}</td><td class="r">${c} units · avg ${money(t / c)}</td></tr>`; }).join(""); })()}</table></div>` : '<div class="muted">No listings right now.</div>'}</div></div>`;
   // tum pazarlar
   const X = S.x; let rows = "";
   if (X && X.items[id]) {
     const ent = Object.entries(X.items[id]).map(([mi, v]) => [X.markets[mi], v, +mi]).sort((a, b) => a[1][0] - b[1][0]);
-    rows = ent.map(([m, [p, q], mi]) => `<tr class="${mi === X.mine ? "mine" : ""}"><td>${m.region}</td><td>${esc(m.ruleset)}</td><td>${esc(m.house)}${mi === X.mine ? ' <span class="pill">biz</span>' : ""}</td><td class="r">${money(p)}</td><td class="r">${q}</td><td class="r">${pctHtml(it.min ? pct(p, it.min) : null)}</td></tr>`).join("");
+    rows = ent.map(([m, [p, q], mi]) => `<tr class="${mi === X.mine ? "mine" : ""}"><td>${m.region}</td><td>${esc(m.ruleset)}</td><td>${esc(m.house)}${mi === X.mine ? ' <span class="pill">us</span>' : ""}</td><td class="r">${money(p)}</td><td class="r">${q}</td><td class="r">${pctHtml(it.min ? pct(p, it.min) : null)}</td></tr>`).join("");
   }
-  html += `<div class="card" style="margin-top:14px"><h2>&#xf0ac; Tüm Forever pazarları ${X ? `<span class="dim">(${fmtTime(tr(X.fetched || S.meta.fetched))})</span>` : ""}</h2>${rows ? `<div class="tbl"><table><tr><th>Bölge</th><th>Ruleset</th><th>AH</th><th class="r">En ucuz</th><th class="r">Adet</th><th class="r">Bize göre</th></tr>${rows}</table></div>` : '<div class="muted">Diğer pazarlarda bu item yok ya da veri henüz gelmedi.</div>'}</div>`;
+  html += `<div class="card" style="margin-top:14px"><h2>&#xf0ac; All Forever markets ${X ? `<span class="dim">(${fmtTime(tr(X.fetched || S.meta.fetched))})</span>` : ""}</h2>${rows ? `<div class="tbl"><table><tr><th>Region</th><th>Ruleset</th><th>AH</th><th class="r">Lowest</th><th class="r">Qty</th><th class="r">vs ours</th></tr>${rows}</table></div>` : '<div class="muted">Not listed on other markets, or data not in yet.</div>'}</div>`;
   $("#view").innerHTML = html;
   if (hist.length > 1) chart($("#ch"), hist);
-  $("#wadd").onclick = () => { const t = parseMoney($("#wt").value); if (!t) return toast("Fiyatı 1g20s / 45s / 80c gibi yaz."); const w = LS.get("watch", {}); w[id] = {t, n: name}; LS.set("watch", w); toast(`${name}: ${money(t, 1)} altına düşünce bildirim gelecek (sayfa açıkken).`); vItem(id); };
+  $("#wadd").onclick = () => { const t = parseMoney($("#wt").value); if (!t) return toast("Write the price like 1g20s / 45s / 80c."); const w = LS.get("watch", {}); w[id] = {t, n: name}; LS.set("watch", w); toast(`${name}: alert below ${money(t, 1)} (while this page is open).`); vItem(id); };
   const del = $("#wdel"); if (del) del.onclick = () => { const w = LS.get("watch", {}); delete w[id]; LS.set("watch", w); vItem(id); };
 }
 
@@ -329,9 +387,9 @@ async function loadDB() {
   if (!S.db) { try { S.db = await getJSON("itemdb.json"); } catch { S.db = {items: {}, w: {}, level: 50}; } }
   if (S.char === undefined) { try { S.char = await getJSON("char.json"); } catch { S.char = null; } }
 }
-const SLOTS = [["HEAD","Kafa",["HEAD"]],["NECK","Boyun",["NECK"]],["SHOULDER","Omuz",["SHOULDER"]],["BACK","Pelerin",["BACK"]],["CHEST","Göğüs",["CHEST"]],
-  ["WRIST","Bilek",["WRIST"]],["HANDS","Eldiven",["HANDS"]],["WAIST","Kemer",["WAIST"]],["LEGS","Bacak",["LEGS"]],["FEET","Ayak",["FEET"]],
-  ["FINGER_1","Yüzük 1",["FINGER"]],["FINGER_2","Yüzük 2",["FINGER"]],["TRINKET_1","Trinket 1",["TRINKET"]],["TRINKET_2","Trinket 2",["TRINKET"]],
+const SLOTS = [["HEAD","Head",["HEAD"]],["NECK","Neck",["NECK"]],["SHOULDER","Shoulder",["SHOULDER"]],["BACK","Back",["BACK"]],["CHEST","Chest",["CHEST"]],
+  ["WRIST","Wrist",["WRIST"]],["HANDS","Hands",["HANDS"]],["WAIST","Waist",["WAIST"]],["LEGS","Legs",["LEGS"]],["FEET","Feet",["FEET"]],
+  ["FINGER_1","Ring 1",["FINGER"]],["FINGER_2","Ring 2",["FINGER"]],["TRINKET_1","Trinket 1",["TRINKET"]],["TRINKET_2","Trinket 2",["TRINKET"]],
   ["MAIN_HAND","Main-hand",["MH","1H","2H"]],["OFF_HAND","Off-hand",["1H","OH"]],["RANGED","Ranged",["RANGED"]]];
 const STATRE = [[/([+-]?\d+)\s*(agi|agility)/i,"agi"],[/([+-]?\d+)\s*(str|strength)/i,"str"],[/([+-]?\d+)\s*(sta|stamina)/i,"sta"],[/([+-]?\d+)\s*(int|intellect)/i,"int"],
   [/([+-]?\d+)\s*(spi|spirit)/i,"spi"],[/([+-]?\d+)\s*(ranged ap|rap)/i,"rap"],[/([+-]?\d+)\s*(ap|attack power)\b/i,"ap"],[/([\d.]+)%?\s*crit/i,"crit"],[/([\d.]+)%?\s*hit/i,"hit"],
@@ -345,12 +403,12 @@ function statValue(txt, slot) {
 function equipped() {
   const ov = LS.get("eq", {}), out = {};
   for (const it of (S.char?.items || [])) out[it.slot] = {id: String(it.id), name: it.name, q: it.quality, src: "armory"};
-  for (const [sl, o] of Object.entries(ov)) out[sl] = {...o, src: "elle"};
+  for (const [sl, o] of Object.entries(ov)) out[sl] = {...o, src: "manual"};
   for (const [sl, e] of Object.entries(out)) {
     const d = S.db.items[e.id];
     if (e.stats) { e.v = statValue(e.stats, sl); e.st = e.stats; }
     else if (d && !d.rnd) { e.v = sl === "OFF_HAND" && d.vo != null ? d.vo : d.v; e.st = d.st; }
-    else { e.v = null; e.st = d ? d.st + " + rastgele bonus (statları gir)" : "veritabanında yok (statları gir)"; }
+    else { e.v = null; e.st = d ? d.st + " + random suffix (enter stats)" : "not in database (enter stats)"; }
   }
   return out;
 }
@@ -368,36 +426,36 @@ function candidates(slot, eq, maxReq) {
 }
 function srcHtml(d) {
   const s = (d.src || []).map(esc); if (d.ah) s.push(`AH ${money(d.ah)}`);
-  return s.length ? s.join("<br>") : '<span class="dim">kaynak bilinmiyor</span>';
+  return s.length ? s.join("<br>") : '<span class="dim">unknown source</span>';
 }
 async function vChar() {
-  $("#view").innerHTML = `<div class="empty">Karakter yükleniyor…</div>`;
+  $("#view").innerHTML = `<div class="empty">Karakter loading…</div>`;
   await loadDB();
   const c = S.char, lvl = c?.level || S.db.level, eq = equipped(), total = Object.values(eq).reduce((a, e) => a + (e.v || 0), 0) || 1;
   const reach = LS.get("reach", 0);
-  let html = `<div class="two"><div class="card"><div class="item-h"><h1>${esc(c?.name || "Karakter")}</h1><span class="pill">${lvl}. seviye ${esc(c?.race || "")} ${esc(c?.className || "")}</span>${c?.guild ? `<span class="pill">&lt;${esc(c.guild)}&gt;</span>` : ""}</div>
-    <p class="muted">Armory verisi: son çıkış ${c?.lastLogin ? fmtDay(new Date(c.lastLogin)) + " " + fmtTime(new Date(c.lastLogin)) : "–"}. Blizzard bu veriyi oyundan çıkış yapınca günceller; aradaki değişiklikleri aşağıdan "değiştir" ile elle girebilirsin (bu tarayıcıda saklanır).</p>
-    ${c?.stats ? `<div class="kv">${[["Can", c.stats.health], ["Attack Power", c.stats.attackPower], ["Agility", c.stats.agility], ["Stamina", c.stats.stamina], ["Melee crit", c.stats.meleeCrit + "%"], ["Ranged crit", c.stats.rangedCrit + "%"], ["Armor", c.stats.armor], ["Dodge", c.stats.dodge + "%"]].map(([k, v]) => `<div><i>${k}</i><b>${v}</b></div>`).join("")}</div>` : ""}
-    </div><div class="card"><h2>&#xf0e8; Talentler</h2>${(c?.talents || []).map(t => `<details><summary>${esc(t.name)} <b>${t.points}</b></summary><div class="muted">${t.talents.map(([n, r]) => `${esc(n)} ${r}`).join(" · ")}</div></details>`).join("") || '<span class="muted">–</span>'}
-    <p class="muted" style="margin-top:10px">Değer: Survival hibrit (melee + ranged, PvP) ağırlıkları. 1 melee DPS ≈ 16, Agility 2.4, Stamina 2.0, %1 Hit ≈ 20.5 puan.</p></div></div>`;
-  html += `<div class="card" style="margin-top:14px"><div class="row" style="justify-content:space-between"><h2>&#xf132; Ekipman ve upgrade'ler</h2>
-    <div class="row"><span class="muted">Upgrade seviyesi:</span>${[0, 3, 5, 10].map(r => `<button class="chip ${reach === r ? "on" : ""}" data-reach="${r}">${r ? "≤ " + (lvl + r) : "şimdi (" + lvl + ")"}</button>`).join("")}</div></div><div class="tbl"><table>
-    <tr><th>Slot</th><th>Takılı</th><th class="r">Değer</th><th>En iyi upgrade</th><th class="r">Kazanç</th><th>Nereden</th><th></th></tr>`;
+  let html = `<div class="two"><div class="card"><div class="item-h"><h1>${esc(c?.name || "Character")}</h1><span class="pill">${lvl} level ${esc(c?.race || "")} ${esc(c?.className || "")}</span>${c?.guild ? `<span class="pill">&lt;${esc(c.guild)}&gt;</span>` : ""}</div>
+    <p class="muted">Armory data: last logout ${c?.lastLogin ? fmtDay(new Date(c.lastLogin)) + " " + fmtTime(new Date(c.lastLogin)) : "–"}. Blizzard refreshes this on logout; use "edit" below for anything you changed since (saved in this browser).</p>
+    ${c?.stats ? `<div class="kv">${[["Health", c.stats.health], ["Attack Power", c.stats.attackPower], ["Agility", c.stats.agility], ["Stamina", c.stats.stamina], ["Melee crit", c.stats.meleeCrit + "%"], ["Ranged crit", c.stats.rangedCrit + "%"], ["Armor", c.stats.armor], ["Dodge", c.stats.dodge + "%"]].map(([k, v]) => `<div><i>${k}</i><b>${v}</b></div>`).join("")}</div>` : ""}
+    </div><div class="card"><h2>&#xf0e8; Talents</h2>${(c?.talents || []).map(t => `<details><summary>${esc(t.name)} <b>${t.points}</b></summary><div class="muted">${t.talents.map(([n, r]) => `${esc(n)} ${r}`).join(" · ")}</div></details>`).join("") || '<span class="muted">–</span>'}
+    <p class="muted" style="margin-top:10px">Value: Survival hybrid weights (melee + ranged, PvP). 1 melee DPS ≈ 16, Agility 2.4, Stamina 2.0, 1% Hit ≈ 20.5 points.</p></div></div>`;
+  html += `<div class="card" style="margin-top:14px"><div class="row" style="justify-content:space-between"><h2>&#xf132; Gear and upgrades</h2>
+    <div class="row"><span class="muted">Upgrades up to level:</span>${[0, 3, 5, 10].map(r => `<button class="chip ${reach === r ? "on" : ""}" data-reach="${r}">${r ? "≤ " + (lvl + r) : "now (" + lvl + ")"}</button>`).join("")}</div></div><div class="tbl"><table>
+    <tr><th>Slot</th><th>Equipped</th><th class="r">Value</th><th>Best upgrade</th><th class="r">Gain</th><th>Source</th><th></th></tr>`;
   for (const [sl, label] of SLOTS) {
     const e = eq[sl] || {}, cand = candidates(sl, eq, lvl + reach), b = cand[0];
     const gain = b ? Math.round(1000 * (b[2] - (e.v || 0)) / total) / 10 : null;
-    html += `<tr><td class="muted">${label}</td><td>${e.id ? `<a href="#item-${e.id}" class="${qcls(e.q)}">${esc(e.name || S.db.items[e.id]?.n || "#" + e.id)}</a>` : '<span class="dim">boş</span>'}${e.src === "elle" ? ' <span class="pill">elle</span>' : ""}<div class="muted" style="font-size:12px">${esc(e.st || "")}</div></td>
+    html += `<tr><td class="muted">${label}</td><td>${e.id ? `<a href="#item-${e.id}" class="${qcls(e.q)}">${esc(e.name || S.db.items[e.id]?.n || "#" + e.id)}</a>` : '<span class="dim">empty</span>'}${e.src === "manual" ? ' <span class="pill">manual</span>' : ""}<div class="muted" style="font-size:12px">${esc(e.st || "")}</div></td>
       <td class="r">${e.v == null ? '<span class="warn">?</span>' : e.v}</td>
-      <td>${b ? `<a href="#item-${b[0]}" class="${qcls(b[1].q)}">${esc(b[1].n)}</a> <span class="pill">${b[1].rq}</span><div class="muted" style="font-size:12px">${esc(b[1].st)}</div>` : '<span class="dim">yok</span>'}</td>
+      <td>${b ? `<a href="#item-${b[0]}" class="${qcls(b[1].q)}">${esc(b[1].n)}</a> <span class="pill">${b[1].rq}</span><div class="muted" style="font-size:12px">${esc(b[1].st)}</div>` : '<span class="dim">none</span>'}</td>
       <td class="r">${gain != null ? `<span class="up">+${gain}%</span>` : ""}</td><td style="font-size:12px">${b ? srcHtml(b[1]) : ""}</td>
-      <td><button class="btn sm" data-more="${sl}">&#xf0ca;</button> <button class="btn sm" data-edit="${sl}">değiştir</button></td></tr>
-      <tr id="more-${sl}" hidden><td></td><td colspan="6">${cand.slice(1, 9).map(([id, d, v]) => `<div class="row" style="justify-content:space-between;border-bottom:1px dashed var(--line);padding:3px 0"><span><a href="#item-${id}" class="${qcls(d.q)}">${esc(d.n)}</a> <span class="pill">${d.rq}</span> <span class="muted" style="font-size:12px">${esc(d.st)}</span></span><span class="up">+${Math.round(1000 * (v - (e.v || 0)) / total) / 10}%</span><span style="font-size:12px">${srcHtml(d)}</span></div>`).join("") || '<span class="dim">başka aday yok</span>'}</td></tr>
-      <tr id="edit-${sl}" hidden><td></td><td colspan="6"><div class="row"><input class="inp" style="width:260px" placeholder="item adı (veritabanından)" data-pick="${sl}" list="dl-${sl}">
+      <td><button class="btn sm" data-more="${sl}">&#xf0ca;</button> <button class="btn sm" data-edit="${sl}">edit</button></td></tr>
+      <tr id="more-${sl}" hidden><td></td><td colspan="6">${cand.slice(1, 9).map(([id, d, v]) => `<div class="row" style="justify-content:space-between;border-bottom:1px dashed var(--line);padding:3px 0"><span><a href="#item-${id}" class="${qcls(d.q)}">${esc(d.n)}</a> <span class="pill">${d.rq}</span> <span class="muted" style="font-size:12px">${esc(d.st)}</span></span><span class="up">+${Math.round(1000 * (v - (e.v || 0)) / total) / 10}%</span><span style="font-size:12px">${srcHtml(d)}</span></div>`).join("") || '<span class="dim">no other candidates</span>'}</td></tr>
+      <tr id="edit-${sl}" hidden><td></td><td colspan="6"><div class="row"><input class="inp" style="width:260px" placeholder="item name (from database)" data-pick="${sl}" list="dl-${sl}">
         <datalist id="dl-${sl}">${Object.entries(S.db.items).filter(([, d]) => SLOTS.find(s => s[0] === sl)[2].includes(d.sl)).slice(0, 2500).map(([, d]) => `<option value="${esc(d.n)}">`).join("")}</datalist>
-        <input class="inp" style="width:260px" placeholder="ya da statlar: +6 agi +14 sta +16 ap" data-stats="${sl}" value="${esc(LS.get("eq", {})[sl]?.stats || "")}">
-        <button class="btn sm" data-save="${sl}">kaydet</button><button class="btn sm" data-reset="${sl}">armory'ye dön</button></div></td></tr>`;
+        <input class="inp" style="width:260px" placeholder="or stats: +6 agi +14 sta +16 ap" data-stats="${sl}" value="${esc(LS.get("eq", {})[sl]?.stats || "")}">
+        <button class="btn sm" data-save="${sl}">save</button><button class="btn sm" data-reset="${sl}">reset to armory</button></div></td></tr>`;
   }
-  html += `</table></div><p class="muted">Kazanç: toplam ekipman değerine göre yüzde. Rastgele bonuslu (… of the Bandit gibi) item'ların statları armory'den gelmiyor; "?" görürsen "değiştir" → statları yaz. Veritabanı: ${Object.keys(S.db.items).length} Hunter'ın kullanabileceği item (dungeon drop, quest, craft, reputation).</p></div>`;
+  html += `</table></div><p class="muted">Gain = % of total gear value. Random-suffix items (… of the Bandit) come without stats from the armory; if you see "?", use "edit" and type the stats. Database: ${Object.keys(S.db.items).length} items a Hunter can use (dungeon drops, quests, crafts, reputation).</p></div>`;
   $("#view").innerHTML = html;
   $("#view").onclick = e => {
     const t = e.target.closest("button"); if (!t) return;
@@ -411,16 +469,16 @@ async function vChar() {
     if (t.dataset.reset) { const ov = LS.get("eq", {}); delete ov[t.dataset.reset]; LS.set("eq", ov); vChar(); }
   };
 }
-const SRCF = {all: "hepsi", boss: "Dungeon drop", quest: "Quest", craft: "Craft", rep: "Reputation", ah: "AH'de var"};
+const SRCF = {all: "all sources", boss: "Dungeon drop", quest: "Quest", craft: "Craft", rep: "Reputation", ah: "On the AH"};
 async function vDB() {
-  $("#view").innerHTML = `<div class="empty">Veritabanı yükleniyor…</div>`;
+  $("#view").innerHTML = `<div class="empty">Loading database…</div>`;
   await loadDB();
   const f = LS.get("dbf", {q: "", sl: "", mx: (S.char?.level || S.db.level) + 5, src: "all"});
   const slots = [...new Set(Object.values(S.db.items).map(d => d.sl))].sort();
   $("#view").innerHTML = `<div class="card"><div class="row" style="margin-bottom:10px">
-    <input class="inp" style="width:220px" id="fq" placeholder="isim / stat / dungeon" value="${esc(f.q)}">
-    <select class="inp" id="fsl"><option value="">tüm slotlar</option>${slots.map(s => `<option ${s === f.sl ? "selected" : ""}>${s}</option>`).join("")}</select>
-    <span class="muted">en fazla seviye</span><input class="inp" style="width:60px" id="fmx" type="number" value="${f.mx}">
+    <input class="inp" style="width:220px" id="fq" placeholder="name / stat / dungeon" value="${esc(f.q)}">
+    <select class="inp" id="fsl"><option value="">all slots</option>${slots.map(s => `<option ${s === f.sl ? "selected" : ""}>${s}</option>`).join("")}</select>
+    <span class="muted">max level</span><input class="inp" style="width:60px" id="fmx" type="number" value="${f.mx}">
     <select class="inp" id="fsrc">${Object.entries(SRCF).map(([k, v]) => `<option value="${k}" ${k === f.src ? "selected" : ""}>${v}</option>`).join("")}</select></div><div class="tbl" id="dbt"></div></div>`;
   const draw = () => {
     const q = $("#fq").value.trim().toLowerCase(), sl = $("#fsl").value, mx = +$("#fmx").value || 60, src = $("#fsrc").value;
@@ -429,10 +487,10 @@ async function vDB() {
       && (src === "all" || (src === "ah" ? d.ah : (d.src || []).some(x => x.toLowerCase().startsWith({boss: "drop", quest: "quest", craft: "craft", rep: "rep"}[src]) || (src === "quest" && x.startsWith("Dungeon quest")))))
       && (!q || (d.n + " " + d.st + " " + (d.src || []).join(" ") + " " + d.ty).toLowerCase().includes(q)))
       .sort((a, b) => (b[1].vo ?? b[1].v) - (a[1].vo ?? a[1].v)).slice(0, 250);
-    $("#dbt").innerHTML = `<table><tr><th>Item</th><th>Slot</th><th>Tür</th><th class="r">Sv</th><th>Statlar</th><th class="r">Değer</th><th>Nereden</th></tr>${rows.map(([id, d]) =>
-      `<tr><td><a href="#item-${id}" class="${qcls(d.q)}">${esc(d.n)}</a>${d.rnd ? ' <span class="pill">rastgele</span>' : ""} <span class="dim">${d.b}</span></td><td>${d.sl}</td><td class="muted">${esc(d.ty)}</td><td class="r">${d.rq}</td>
+    $("#dbt").innerHTML = `<table><tr><th>Item</th><th>Slot</th><th>Type</th><th class="r">Lvl</th><th>Stats</th><th class="r">Value</th><th>Source</th></tr>${rows.map(([id, d]) =>
+      `<tr><td><a href="#item-${id}" class="${qcls(d.q)}">${esc(d.n)}</a>${d.rnd ? ' <span class="pill">random</span>' : ""} <span class="dim">${d.b}</span></td><td>${d.sl}</td><td class="muted">${esc(d.ty)}</td><td class="r">${d.rq}</td>
        <td style="font-size:12px">${esc(d.st)}${d.x?.length ? `<div class="muted">${d.x.map(esc).join("<br>")}</div>` : ""}</td><td class="r">${d.vo != null ? `${d.v}<div class="muted" style="font-size:11px">OH ${d.vo}</div>` : d.v}</td><td style="font-size:12px">${srcHtml(d)}</td></tr>`).join("")}</table>
-      <p class="muted">${rows.length === 250 ? "İlk 250 sonuç (değere göre). Filtreyi daralt." : rows.length + " sonuç."}</p>`;
+      <p class="muted">${rows.length === 250 ? "Top 250 by value. Narrow the filter." : rows.length + " results."}</p>`;
   };
   ["#fq", "#fsl", "#fmx", "#fsrc"].forEach(s => $(s).oninput = draw); draw();
 }
@@ -450,7 +508,7 @@ function chart(el, pts) {
   const days = Math.ceil((x1 - x0) / 24);
   for (let h = Math.ceil(x0 / 24) * 24; h <= x1; h += 24 * Math.max(1, Math.ceil(days / 8))) { const x = X(h); g += `<text x="${x}" y="${H - 6}" text-anchor="middle">${new Date(h * 3600e3).toLocaleDateString("tr-TR", {day: "numeric", month: "short"})}</text>`; }
   const d = pts.map((p, i) => `${i ? "L" : "M"}${X(p[0]).toFixed(1)},${Y(p[1]).toFixed(1)}`).join("");
-  el.innerHTML = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Fiyat geçmişi">${g}<path class="ar" d="${d}L${X(x1)},${Y(0)}L${X(x0)},${Y(0)}Z"/><path class="ln" d="${d}"/><line class="hv" id="hv" y1="${P.t}" y2="${H - P.b}" visibility="hidden"/></svg>`;
+  el.innerHTML = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Price history">${g}<path class="ar" d="${d}L${X(x1)},${Y(0)}L${X(x0)},${Y(0)}Z"/><path class="ln" d="${d}"/><line class="hv" id="hv" y1="${P.t}" y2="${H - P.b}" visibility="hidden"/></svg>`;
   const svg = el.querySelector("svg"), tip = $("#tip"), hv = el.querySelector("#hv");
   svg.onpointermove = e => {
     const r = svg.getBoundingClientRect(), xv = x0 + ((e.clientX - r.left) * W / r.width - P.l) / (W - P.l - P.r) * (x1 - x0);
@@ -467,33 +525,33 @@ function chart(el, pts) {
 function vWatch() {
   const w = LS.get("watch", {}), ids = Object.keys(w);
   const rows = ids.map(id => { const it = S.now.items[id] || {}, hit = it.min != null && it.min <= w[id].t;
-    return `<tr><td><a href="#item-${id}">${esc(w[id].n)}</a></td><td class="r">${money(it.min)}</td><td class="r">${it.qty ?? "–"}</td><td class="r">${money(w[id].t)}</td><td>${hit ? '<span class="up">&#xf00c; Hedefte, al!</span>' : '<span class="muted">bekleniyor</span>'}</td><td><button class="btn sm" data-del="${id}">&#xf00d;</button></td></tr>`; }).join("");
-  $("#view").innerHTML = `<div class="card"><h2>&#xf06e; İzleme listesi</h2>${ids.length ? `<div class="tbl"><table><tr><th>Item</th><th class="r">Şimdi</th><th class="r">Adet</th><th class="r">Hedef</th><th></th><th></th></tr>${rows}</table></div>` : '<div class="empty">Liste boş. Bir item arat, sayfasından "İzle" ile hedef fiyat koy.</div>'}
-  <p class="muted">İzleme listesi bu tarayıcıda saklanır. Sayfa açıkken hedefe inen item için tarayıcı bildirimi gelir. Telefona da gelmesi için Claude'a "şu item'ı şu fiyatta izle" de.</p></div>`;
+    return `<tr><td><a href="#item-${id}">${esc(w[id].n)}</a></td><td class="r">${money(it.min)}</td><td class="r">${it.qty ?? "–"}</td><td class="r">${money(w[id].t)}</td><td>${hit ? '<span class="up">&#xf00c; At target, buy!</span>' : '<span class="muted">waiting</span>'}</td><td><button class="btn sm" data-del="${id}">&#xf00d;</button></td></tr>`; }).join("");
+  $("#view").innerHTML = `<div class="card"><h2>&#xf06e; Watchlist</h2>${ids.length ? `<div class="tbl"><table><tr><th>Item</th><th class="r">Now</th><th class="r">Listed</th><th class="r">Target</th><th></th><th></th></tr>${rows}</table></div>` : '<div class="empty">Empty. Search an item and set a target with "Watch".</div>'}
+  <p class="muted">Saved in this browser; alerts fire while the page is open. For phone alerts, ask Claude to watch the item.</p></div>`;
   $("#view").onclick = e => { const b = e.target.closest("[data-del]"); if (!b) return; const w2 = LS.get("watch", {}); delete w2[b.dataset.del]; LS.set("watch", w2); vWatch(); };
 }
 
 // ---------- meslek planlari
 function vPlans() {
   $("#view").innerHTML = `<div class="grid">${S.plans.map(p => `<div class="card"><h2>&#xf0c3; ${esc(p.title)}</h2>
-    <div class="kv"><div><i>Malzeme (şimdiki fiyat)</i><b>${money(p.total)}</b></div><div><i>Vendor'a geri</i><b>${money(p.back)}</b></div><div><i>Net maliyet</i><b>${money(p.net)}</b></div></div>
-    ${p.missing.length ? `<p class="warn">&#xf071; AH’de yeterli stok yok: ${p.missing.map(esc).join(", ")}</p>` : ""}
-    <div class="two"><div class="tbl"><table><tr><th>Skill</th><th>Tarif</th><th class="r">Craft</th><th>Malzeme (her craft)</th></tr>
+    <div class="kv"><div><i>Materials (current prices)</i><b>${money(p.total)}</b></div><div><i>Back from vendor</i><b>${money(p.back)}</b></div><div><i>Net cost</i><b>${money(p.net)}</b></div></div>
+    ${p.missing.length ? `<p class="warn">&#xf071; Not enough on the AH: ${p.missing.map(esc).join(", ")}</p>` : ""}
+    <div class="two"><div class="tbl"><table><tr><th>Skill</th><th>Recipe</th><th class="r">Crafts</th><th>Mats (per craft)</th></tr>
     ${p.steps.map(s => `<tr><td>${s.range}</td><td>${esc(s.recipe)}</td><td class="r">${s.n}</td><td class="muted">${Object.entries(s.mats).map(([m, q]) => `${q}× ${esc(m)}`).join(", ")}</td></tr>`).join("")}</table></div>
-    <div class="tbl"><table><tr><th>Alışveriş</th><th class="r">Adet</th><th class="r">Birim</th><th class="r">7 gün</th><th class="r">Toplam</th></tr>
+    <div class="tbl"><table><tr><th>Shopping list</th><th class="r">Qty</th><th class="r">Unit</th><th class="r">7d</th><th class="r">Total</th></tr>
     ${p.shop.map(s => { const id = S.byName[s.n.toLowerCase()]; return `<tr><td>${id ? `<a href="#item-${id}">${esc(s.n)}</a>` : esc(s.n)}${s.src === "vendor" ? ' <span class="pill">vendor</span>' : ""}</td><td class="r">${s.qty}${s.got < s.qty && s.src !== "vendor" ? ` <span class="warn">(${s.got})</span>` : ""}</td><td class="r">${money(s.unit)}</td><td class="r">${money(s.m7)}</td><td class="r">${money(s.cost)}</td></tr>`; }).join("")}</table></div></div></div>`).join("")}</div>`;
 }
 
 // ---------- ayarlar
 function vSetup() {
   const topic = S.meta.ntfy;
-  $("#view").innerHTML = `<div class="grid"><div class="card"><h2>&#xf10b; Telefona anlık bildirim (ntfy)</h2>
-    ${topic ? `<ol><li>Telefona <b>ntfy</b> uygulamasını kur (App Store / Google Play, ücretsiz, hesap gerekmez).</li>
-    <li>Uygulamada <b>+</b> → konu adı: <code id="tp">${esc(topic)}</code> <button class="btn sm" id="cp">kopyala</button> → Subscribe.</li>
-    <li>Her yeni fırsatta telefonun çalar, bildirime dokununca bu sayfa açılır.</li></ol>` : '<p class="muted">Henüz ayarlanmadı.</p>'}</div>
-    <div class="card"><h2>&#xf0f3; Tarayıcı bildirimi</h2><p>Bu sayfa açıkken yeni fırsatlar ve izleme hedefleri için bildirim. Durum: <b>${"Notification" in window ? Notification.permission : "desteklenmiyor"}</b></p></div>
-    <div class="card"><h2>&#xf05a; Veri</h2><p class="muted">Bizim AH ve tüm Forever pazarları Blizzard API'sinden saatte bir. Fiyat geçmişi sunucu açılışından beri (AHledger arşivi + kendi taramalarımız). Bu sayfa her 3 dakikada yeni veri var mı bakar.</p></div></div>`;
-  const cp = $("#cp"); if (cp) cp.onclick = () => navigator.clipboard?.writeText(topic).then(() => toast("Kopyalandı"), () => toast(topic));
+  $("#view").innerHTML = `<div class="grid"><div class="card"><h2>&#xf10b; Phone alerts (ntfy)</h2>
+    ${topic ? `<ol><li>Install the <b>ntfy</b> app (App Store / Google Play, free, no account).</li>
+    <li>Tap <b>+</b> → topic: <code id="tp">${esc(topic)}</code> <button class="btn sm" id="cp">copy</button> → Subscribe.</li>
+    <li>Every new opportunity pings your phone; tapping it opens this page.</li></ol>` : '<p class="muted">Not set up yet.</p>'}</div>
+    <div class="card"><h2>&#xf0f3; Browser alerts</h2><p>Alerts for new opportunities and watch targets while this page is open. Status: <b>${"Notification" in window ? Notification.permission : "unsupported"}</b></p></div>
+    <div class="card"><h2>&#xf05a; Data</h2><p class="muted">Our AH and every Forever market come from the Blizzard API hourly. Price history since server launch (AHledger archive + our own scans). This page checks for new data every 3 minutes.</p></div></div>`;
+  const cp = $("#cp"); if (cp) cp.onclick = () => navigator.clipboard?.writeText(topic).then(() => toast("Copied"), () => toast(topic));
 }
 
 // ---------- bildirim & yenileme
@@ -501,10 +559,10 @@ function toast(msg) { const t = document.createElement("div"); t.className = "to
 function notify(title, body, tag) { try { if ("Notification" in window && Notification.permission === "granted") new Notification(title, {body, tag}); } catch {} }
 function checkNew(prevTs) {
   const fresh = S.feed.items.filter(a => prevTs && a.ts > prevTs);
-  if (fresh.length) notify(`${fresh.length} yeni fırsat`, fresh.slice(0, 4).map(a => a.t).join("\n"), "feed-" + fresh[0].ts);
+  if (fresh.length) notify(`${fresh.length} new opportunities`, fresh.slice(0, 4).map(a => a.t).join("\n"), "feed-" + fresh[0].ts);
   const w = LS.get("watch", {}), fired = LS.get("watchFired", {});
   for (const [id, v] of Object.entries(w)) { const it = S.now.items[id];
-    if (it && it.min <= v.t && fired[id] !== S.meta.fetched) { notify(`${v.n} hedefte`, `${money(it.min, 1)} (hedef ${money(v.t, 1)}), ${it.qty} adet`, "w" + id); fired[id] = S.meta.fetched; } }
+    if (it && it.min <= v.t && fired[id] !== S.meta.fetched) { notify(`${v.n} at target`, `${money(it.min, 1)} (target ${money(v.t, 1)}), ${it.qty} listed`, "w" + id); fired[id] = S.meta.fetched; } }
   LS.set("watchFired", fired);
 }
 async function poll() {
@@ -517,13 +575,13 @@ async function poll() {
   } catch (e) { console.warn(e); }
   renderAge();
 }
-function notifBtn() { const b = $("#notif"); const p = "Notification" in window ? Notification.permission : "denied"; b.classList.toggle("on", p === "granted"); b.innerHTML = p === "granted" ? "&#xf0f3; Bildirim açık" : "&#xf1f6; Bildirim kapalı"; }
-$("#notif").onclick = async () => { if (!("Notification" in window)) return toast("Bu tarayıcı bildirim desteklemiyor."); await Notification.requestPermission(); notifBtn(); if (Notification.permission === "granted") notify("Bildirimler açık", "Yeni fırsatlar burada görünecek."); };
+function notifBtn() { const b = $("#notif"); const p = "Notification" in window ? Notification.permission : "denied"; b.classList.toggle("on", p === "granted"); b.innerHTML = p === "granted" ? "&#xf0f3; Alerts on" : "&#xf1f6; Alerts off"; }
+$("#notif").onclick = async () => { if (!("Notification" in window)) return toast("This browser does not support notifications."); await Notification.requestPermission(); notifBtn(); if (Notification.permission === "granted") notify("Alerts on", "New opportunities will show up here."); };
 const th = LS.get("theme", null); if (th) document.documentElement.dataset.theme = th;
 $("#theme").onclick = () => { const cur = document.documentElement.dataset.theme || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"); const n = cur === "dark" ? "light" : "dark"; document.documentElement.dataset.theme = n; LS.set("theme", n); };
 window.addEventListener("hashchange", route);
 (async () => {
-  try { await loadCore(); } catch (e) { $("#view").innerHTML = `<div class="empty">Veri yüklenemedi: ${esc(e.message)}</div>`; return; }
+  try { await loadCore(); } catch (e) { $("#view").innerHTML = `<div class="empty">Could not load data: ${esc(e.message)}</div>`; return; }
   renderAge(); notifBtn(); route(); checkNew(LS.get("seenTs", ""));
   setInterval(poll, 180000); setInterval(renderAge, 60000);
 })();
