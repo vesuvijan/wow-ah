@@ -34,6 +34,9 @@ def load_names():
     return out
 
 
+# yatirim sepeti: cloth / ore / leather / hide / scale — dusukken AL, firlayinca SAT
+INVEST = {2589, 2592, 4306, 4338, 14047, 2770, 2771, 2772, 2775, 2776, 3858, 7911, 10620, 2318, 2319, 4234, 4304, 8170,
+          783, 4232, 4235, 8169, 2934, 8154, 8167, 8146, 4231, 4233, 4236, 8172, 3860}
 QUIET = {"new", "recipe", "move"}   # move: elinde olmayan itemda fiyat hareketi (sadece dashboard)
 try:   # elindeki adetler: holdings.json  {"Tigerseye": 12, ...}
     HOLDINGS = {k.lower(): v for k, v in json.load(open("holdings.json", encoding="utf-8")).items()}
@@ -125,9 +128,15 @@ def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
                 med8 = statistics.median([x[1] for x in s[-8:-1]])
                 if cur <= med8 * cfg.get("dip_jump", 0.75):
                     dip = med8
+            if dip is None and iid in INVEST and len(w7) >= cfg["min_samples"]:
+                # yatirim sepeti: daha hassas esik (hafif ucuzlama bile al-firsati), stok varsa
+                med = statistics.median(w7)
+                rank = sum(1 for v in w7 if v < cur) / len(w7)
+                if cur <= med * cfg.get("invest_dip_vs_median", 0.8) and rank <= 0.1 and cur >= 25:
+                    dip = med
             if dip:
                 dn = round(100 - 100 * cur / dip)
-                found.append(("dip" if have else "move", f"dip{iid}", cur, [nm, money(cur), money(dip), f"-{dn}%", str(s[-1][3]), have_txt], dn))
+                found.append(("dip" if (have or iid in INVEST) else "move", f"dip{iid}", cur, [nm, money(cur), money(dip), f"-{dn}%", str(s[-1][3]), have_txt], dn))
 
     # 1c) vendor flip: craft -> NPC'ye sat
     try:
@@ -502,7 +511,7 @@ def todo_lines(fresh):
             if kind == "sell":
                 lines.append(f"SELL {r[0]} now ({cm(r[1])}, {r[3]} above normal)" + (f". {r[5]}" if len(r) > 5 and r[5] else ""))
             elif kind == "dip":
-                lines.append(f"BUY MORE {r[0]} at {cm(r[1])} ({r[3]} below normal, {r[4]} listed)" + (f". {r[5]}" if len(r) > 5 and r[5] else ""))
+                lines.append(f"{'BUY MORE' if len(r) > 5 and r[5] else 'BUY LOW'} {r[0]} at {cm(r[1])} ({r[3]} below normal, {r[4]} listed)" + (f". {r[5]}" if len(r) > 5 and r[5] else ""))
             elif kind == "gear":
                 gain = f"{r[2]} better than what you wear" if str(r[2]).startswith("+") else str(r[2])
                 lines.append(f"BUY GEAR {r[0]} at {cm(r[1])} ({r[3]}): {gain}. Stats: {r[5]}" + (f" ({_nx(r[7])}, buy fast)" if len(r) > 7 and r[7] else ""))
