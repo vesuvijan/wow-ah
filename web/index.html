@@ -407,8 +407,10 @@ const SLOTS = [["HEAD","Head",["HEAD"]],["NECK","Neck",["NECK"]],["SHOULDER","Sh
 const STATRE = [[/([+-]?\d+)\s*(agi|agility)/i,"agi"],[/([+-]?\d+)\s*(str|strength)/i,"str"],[/([+-]?\d+)\s*(sta|stamina)/i,"sta"],[/([+-]?\d+)\s*(int|intellect)/i,"int"],
   [/([+-]?\d+)\s*(spi|spirit)/i,"spi"],[/([+-]?\d+)\s*(ranged ap|rap)/i,"rap"],[/([+-]?\d+)\s*(ap|attack power)\b/i,"ap"],[/([\d.]+)%?\s*crit/i,"crit"],[/([\d.]+)%?\s*hit/i,"hit"],
   [/([\d.]+)\s*dps/i,"dps"],[/([+-]?\d+)\s*armor/i,"armor"],[/([+-]?\d+)\s*(mp5|mana)/i,"mp5"]];
+const SPEC = () => LS.get("spec", "bm");
+const VAL = (d, oh) => SPEC() === "bm" ? (oh && d.vbo != null ? d.vbo : (d.vb ?? d.v)) : (oh && d.vo != null ? d.vo : d.v);
 function statValue(txt, slot) {
-  const w = S.db.w || {}; let v = 0, t = String(txt);
+  const w = (SPEC() === "bm" ? S.db.wb : S.db.w) || {}; let v = 0, t = String(txt);
   for (const [re, k] of STATRE) { const m = t.match(re); if (!m) continue; t = t.replace(m[0], " ");
     const x = parseFloat(m[1]); if (k === "dps") v += x * (slot === "OFF_HAND" ? (w.dpsoh || 12) : slot === "RANGED" ? (w.dps || 8) : (w.dpsmelee || 16)); else v += x * (w[k] || 0); }
   return Math.round(v * 10) / 10;
@@ -420,7 +422,7 @@ function equipped() {
   for (const [sl, e] of Object.entries(out)) {
     const d = S.db.items[e.id];
     if (e.stats) { e.v = statValue(e.stats, sl); e.st = e.stats; }
-    else if (d && !d.rnd) { e.v = sl === "OFF_HAND" && d.vo != null ? d.vo : d.v; e.st = d.st; }
+    else if (d && !d.rnd) { e.v = VAL(d, sl === "OFF_HAND"); e.st = d.st; }
     else { e.v = null; e.st = d ? d.st + " + random suffix (enter stats)" : "not in database (enter stats)"; }
   }
   return out;
@@ -432,7 +434,7 @@ function candidates(slot, eq, maxReq) {
     if (!ok.has(d.sl) || d.rq > maxReq || d.rnd || (other && other.id === id) || eq[slot]?.id === id) continue;
     if (slot === "MAIN_HAND" && d.sl === "2H" && eq.OFF_HAND?.id) continue;   // dual wield: 2H aday degil
     if (slot === "MAIN_HAND" && d.sl !== "2H" && !eq.OFF_HAND?.id && S.db.items[eq.MAIN_HAND?.id]?.sl === "2H") continue;
-    const v = slot === "OFF_HAND" ? (d.vo ?? d.v) : d.v;
+    const v = VAL(d, slot === "OFF_HAND");
     if (v > cur) out.push([id, d, v]);
   }
   return out.sort((a, b) => b[2] - a[2]);
@@ -450,7 +452,8 @@ async function vChar() {
     <p class="muted">Armory data: last logout ${c?.lastLogin ? fmtDay(new Date(c.lastLogin)) + " " + fmtTime(new Date(c.lastLogin)) : "–"}. Blizzard refreshes this on logout; use "edit" below for anything you changed since (saved in this browser).</p>
     ${c?.stats ? `<div class="kv">${[["Health", c.stats.health], ["Attack Power", c.stats.attackPower], ["Agility", c.stats.agility], ["Stamina", c.stats.stamina], ["Melee crit", c.stats.meleeCrit + "%"], ["Ranged crit", c.stats.rangedCrit + "%"], ["Armor", c.stats.armor], ["Dodge", c.stats.dodge + "%"]].map(([k, v]) => `<div><i>${k}</i><b>${v}</b></div>`).join("")}</div>` : ""}
     </div><div class="card"><h2>&#xf0e8; Talents</h2>${(c?.talents || []).map(t => `<details><summary>${esc(t.name)} <b>${t.points}</b></summary><div class="muted">${t.talents.map(([n, r]) => `${esc(n)} ${r}`).join(" · ")}</div></details>`).join("") || '<span class="muted">–</span>'}
-    <p class="muted" style="margin-top:10px">Value: Survival hybrid weights (melee + ranged, PvP). 1 melee DPS ≈ 16, Agility 2.4, Stamina 2.0, 1% Hit ≈ 20.5 points.</p></div></div>`;
+    <div class="row" style="margin-top:10px"><span class="muted">Value weights:</span>${[["bm", "Beast Mastery (ranged, Careful Aim)"], ["surv", "Survival hybrid (melee + ranged, PvP)"]].map(([k, l]) => `<button class="chip ${SPEC() === k ? "on" : ""}" data-spec="${k}">${l}</button>`).join("")}</div>
+    <p class="muted small">${SPEC() === "bm" ? "BM: ranged weapon DPS and Agility first, Intellect counts via Careful Aim (1 Int ≈ 0.6 AP)." : "Survival: 1 melee DPS ≈ 16, Agility 2.4, Stamina 2.0, 1% Hit ≈ 20.5 points."}</p></div></div>`;
   html += `<div class="card" style="margin-top:14px"><div class="row" style="justify-content:space-between"><h2>&#xf132; Gear and upgrades</h2>
     <div class="row"><span class="muted">Upgrades up to level:</span>${[0, 3, 5, 10].map(r => `<button class="chip ${reach === r ? "on" : ""}" data-reach="${r}">${r ? "≤ " + (lvl + r) : "now (" + lvl + ")"}</button>`).join("")}</div></div><div class="tbl"><table>
     <tr><th>Slot</th><th>Equipped</th><th class="r">Value</th><th>Best upgrade</th><th class="r">Gain</th><th>Source</th><th></th></tr>`;
@@ -473,6 +476,7 @@ async function vChar() {
   $("#view").onclick = e => {
     const t = e.target.closest("button"); if (!t) return;
     if (t.dataset.reach != null) { LS.set("reach", +t.dataset.reach); return vChar(); }
+    if (t.dataset.spec) { LS.set("spec", t.dataset.spec); return vChar(); }
     if (t.dataset.more) { const r = $("#more-" + t.dataset.more); r.hidden = !r.hidden; }
     if (t.dataset.edit) { const r = $("#edit-" + t.dataset.edit); r.hidden = !r.hidden; }
     if (t.dataset.save) { const sl = t.dataset.save, ov = LS.get("eq", {}), nmv = $(`[data-pick="${sl}"]`).value.trim(), st = $(`[data-stats="${sl}"]`).value.trim();
@@ -499,10 +503,10 @@ async function vDB() {
     const rows = Object.entries(S.db.items).filter(([id, d]) => (!sl || d.sl === sl) && d.rq <= mx
       && (src === "all" || (src === "ah" ? d.ah : (d.src || []).some(x => x.toLowerCase().startsWith({boss: "drop", quest: "quest", craft: "craft", rep: "rep"}[src]) || (src === "quest" && x.startsWith("Dungeon quest")))))
       && (!q || (d.n + " " + d.st + " " + (d.src || []).join(" ") + " " + d.ty).toLowerCase().includes(q)))
-      .sort((a, b) => (b[1].vo ?? b[1].v) - (a[1].vo ?? a[1].v)).slice(0, 250);
+      .sort((a, b) => VAL(b[1], b[1].sl === "OH") - VAL(a[1], a[1].sl === "OH")).slice(0, 250);
     $("#dbt").innerHTML = `<table><tr><th>Item</th><th>Slot</th><th>Type</th><th class="r">Lvl</th><th>Stats</th><th class="r">Value</th><th>Source</th></tr>${rows.map(([id, d]) =>
       `<tr><td><a href="#item-${id}" class="${qcls(d.q)}">${esc(d.n)}</a>${d.rnd ? ' <span class="pill">random</span>' : ""} <span class="dim">${d.b}</span></td><td>${d.sl}</td><td class="muted">${esc(d.ty)}</td><td class="r">${d.rq}</td>
-       <td style="font-size:12px">${esc(d.st)}${d.x?.length ? `<div class="muted">${d.x.map(esc).join("<br>")}</div>` : ""}</td><td class="r">${d.vo != null ? `${d.v}<div class="muted" style="font-size:11px">OH ${d.vo}</div>` : d.v}</td><td style="font-size:12px">${srcHtml(d)}</td></tr>`).join("")}</table>
+       <td style="font-size:12px">${esc(d.st)}${d.x?.length ? `<div class="muted">${d.x.map(esc).join("<br>")}</div>` : ""}</td><td class="r">${VAL(d)}${(SPEC() === "bm" ? d.vbo : d.vo) != null ? `<div class="muted" style="font-size:11px">OH ${VAL(d, true)}</div>` : ""}</td><td style="font-size:12px">${srcHtml(d)}</td></tr>`).join("")}</table>
       <p class="muted">${rows.length === 250 ? "Top 250 by value. Narrow the filter." : rows.length + " results."}</p>`;
   };
   ["#fq", "#fsl", "#fmx", "#fsrc"].forEach(s => $(s).oninput = draw); draw();

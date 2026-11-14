@@ -238,6 +238,9 @@ tips = load("data/tooltips_ofa.json", {}) or {}
 if tips:
     import gear_score as G
     lvl = (char or {}).get("level") or 50
+    wb = G.weights(lvl)
+    # Beast Mastery (ranged leveling) + Careful Aim 3/5: 1 Intellect = 0.6 Attack Power
+    wb["int"] = wb.get("int", 0) + 0.6 * wb.get("rap", 1.0)
     w = G.weights(lvl)
     # Survival hibrit (melee + ranged, PvP): AP birimi; 1 melee DPS ~ 14 AP, off-hand %75 (Predator's Edge)
     w.update({"str": 1.0, "ap": 1.15, "rap": 0.6, "agi": 2.4, "sta": 2.0, "spi": 0.4, "int": 0.6, "mp5": 2.0,
@@ -259,16 +262,17 @@ if tips:
             continue
         typ = r.get("armor_type") or (WSUB.get(r.get("sub")) if r.get("cls") == 2 else "")
         e = {"n": r["name"], "q": r.get("q"), "sl": r["slot"], "rq": r["req"], "il": r.get("ilvl"), "b": r["bind"], "ty": typ or "",
-             "st": G.stat_str(r), "v": round(G.value(r, w, "MH"), 1), "src": [x.replace(" (lvl 0)", "") for x in G.src_text(int(iid), {}) if x != "unknown source"],
+             "st": G.stat_str(r), "v": round(G.value(r, w, "MH"), 1), "vb": round(G.value(r, wb, "MH"), 1), "src": [x.replace(" (lvl 0)", "") for x in G.src_text(int(iid), {}) if x != "unknown source"],
              "x": r.get("unscored_effects", [])[:2]}
         if r["slot"] in ("1H", "OH"):
             e["vo"] = round(G.value(r, w, "OH"), 1)
+            e["vbo"] = round(G.value(r, wb, "OH"), 1)
         if r.get("random"):
             e["rnd"] = 1
         if iid in now:
             e["ah"] = now[iid]["min"]
         db[iid] = e
-    dump("itemdb.json", {"level": lvl, "w": {k: round(v, 3) for k, v in w.items()}, "items": db})
+    dump("itemdb.json", {"level": lvl, "w": {k: round(v, 3) for k, v in w.items()}, "wb": {k: round(v, 3) for k, v in wb.items()}, "items": db})
     print("item db:", len(db))
 if char:
     dump("char.json", char)
