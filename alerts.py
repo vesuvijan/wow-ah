@@ -628,8 +628,25 @@ def notify(fresh, status_lines, snap):
     local = datetime.datetime.strptime(snap["fetched_at"], "%Y-%m-%dT%H:%M:%SZ") + datetime.timedelta(hours=3)
     if os.environ.get("NTFY_TOPIC"):
         push(fresh, local)
-    elif os.environ.get("DISCORD_WEBHOOK_URL"):
-        send_embeds(fresh, local, status=None)
+    if os.environ.get("DISCORD_WEBHOOK_URL"):
+        discord_short(fresh, local)
+
+
+IMPORTANT = ("sell", "gear", "snipe", "dip", "favor")
+
+
+def discord_short(fresh, local):
+    """Discord: sadece onemli firsatlar, kisa. Detay dashboard'da."""
+    imp = [f for f in fresh if f[0] in IMPORTANT]
+    if not imp:
+        return
+    lines = todo_lines(imp)[:6]
+    lines = [(l[:157] + "...") if len(l) > 160 else l for l in lines]
+    site = os.environ.get("SITE_URL", "")
+    more = len(fresh) - len(imp)
+    head = f"**AH {local:%H:%M}**" + (f" · <{site}#feed>" if site else "")
+    tail = f"\n_+{more} more on the dashboard_" if more > 0 else ""
+    post({"content": head + "\n" + "\n".join("• " + l for l in lines) + tail})
 
 
 URGENT = {"gear", "snipe", "sell"}

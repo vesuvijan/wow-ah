@@ -80,6 +80,7 @@ jobs:
           FORCE: ${{ inputs.force && '1' || '' }}
           NTFY_TOPIC: docker-ah-f53611966a
           SITE_URL: https://vesuvijan.github.io/wow-ah/
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: python history.py
       - name: Discord test message
         if: ${{ inputs.test_discord }}
@@ -116,6 +117,7 @@ jobs:
           NTFY_TOPIC: docker-ah-f53611966a
           SITE_URL: https://vesuvijan.github.io/wow-ah/
           FORCE_STATUS: ${{ inputs.status_now && '1' || '' }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: python status_push.py
       - name: Upload dashboard
         uses: actions/upload-pages-artifact@v3

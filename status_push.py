@@ -81,6 +81,11 @@ hdr = {"Title": title, "Tags": "bar_chart", "Priority": "low", "User-Agent": "wo
 if site:
     hdr["Click"] = site
 urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{topic}", data="\n".join(lines).encode(), headers=hdr), timeout=30).read()
+hook = os.environ.get("DISCORD_WEBHOOK_URL")
+if hook:
+    body = f"**{title}**" + (f" · <{site}>" if site else "") + "\n" + "\n".join("• " + l for l in lines)
+    urllib.request.urlopen(urllib.request.Request(hook, data=json.dumps({"content": body[:1900]}).encode(),
+                                                  headers={"Content-Type": "application/json", "User-Agent": "wow-ah-bot/1.0"}), timeout=30).read()
 sent["last"] = key
 json.dump(sent, open("data/status_sent.json", "w"))
 print("durum gonderildi:", title)
