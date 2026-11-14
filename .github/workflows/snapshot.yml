@@ -12,6 +12,10 @@ on:
         description: "Kendini 15 dk sonra tekrar tetikle (zincir)"
         type: boolean
         default: false
+      status_now:
+        description: "send the status summary now"
+        type: boolean
+        default: false
       force:
         description: "Veri degismese de calistir (tek seferlik)"
         type: boolean
@@ -65,7 +69,7 @@ jobs:
         run: python fetch_ah.py
       - name: Restore history and item names
         run: |
-          git fetch --depth=1 origin snapshot && for f in history.csv alert_state.json last_hash.txt report.txt minhist.json tipcache.json known_items.json alert_log.jsonl writ_prev.json; do git show FETCH_HEAD:data/$f > data/$f 2>/dev/null || true; done || true
+          git fetch --depth=1 origin snapshot && for f in history.csv alert_state.json last_hash.txt report.txt minhist.json tipcache.json known_items.json alert_log.jsonl writ_prev.json status_sent.json; do git show FETCH_HEAD:data/$f > data/$f 2>/dev/null || true; done || true
           git fetch --depth=1 origin ahledger && git show FETCH_HEAD:data/ahl_forever.rppvp.alliance.eu.json > data/ahl.json 2>/dev/null || true
           git fetch --depth=1 origin char && git show FETCH_HEAD:data/char.json > data/char.json 2>/dev/null || true
           git fetch --depth=1 origin tooltips && git show FETCH_HEAD:data/tooltips_ofa.json > data/tooltips_ofa.json 2>/dev/null || true
@@ -106,6 +110,13 @@ jobs:
         env:
           NTFY_TOPIC: docker-ah-f53611966a
         run: python site_build.py
+      - name: Status push (09:00 / 21:00)
+        continue-on-error: true
+        env:
+          NTFY_TOPIC: docker-ah-f53611966a
+          SITE_URL: https://vesuvijan.github.io/wow-ah/
+          FORCE_STATUS: ${{ inputs.status_now && '1' || '' }}
+        run: python status_push.py
       - name: Upload dashboard
         uses: actions/upload-pages-artifact@v3
         with:

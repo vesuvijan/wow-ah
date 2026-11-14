@@ -15,6 +15,17 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install playwright && playwright install --with-deps chromium
+      - name: Data watchdog (phone alert if AH data is older than 3 hours)
+        continue-on-error: true
+        run: |
+          git fetch --depth=1 origin snapshot
+          ts=$(git show FETCH_HEAD:data/house_123.json | python -c "import json,sys;print(json.load(sys.stdin)['fetched_at'])")
+          age=$(( ( $(date -u +%s) - $(date -u -d "$ts" +%s) ) / 60 ))
+          echo "AH data age: $age min"
+          if [ "$age" -gt 180 ]; then
+            curl -s -H "Title: AH dashboard data is ${age} min old" -H "Priority: high" -H "Tags: warning" \
+              -d "The hourly AH scan has stopped. Claude can restart it." https://ntfy.sh/docker-ah-f53611966a
+          fi
       - run: python char_pull.py
       - run: |
           git config user.name "ah-bot"; git config user.email "ah-bot@users.noreply.github.com"
