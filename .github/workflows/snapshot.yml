@@ -23,6 +23,8 @@ on:
 permissions:
   contents: write
   actions: write
+  pages: write
+  id-token: write
 concurrency:
   group: snapshot-${{ inputs.loop && 'loop' || github.run_id }}
   cancel-in-progress: false
@@ -70,7 +72,8 @@ jobs:
         env:
           HOUSES: "123"
           FORCE: ${{ inputs.force && '1' || '' }}
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          NTFY_TOPIC: docker-ah-f53611966a
+          SITE_URL: https://vesuvijan.github.io/wow-ah/
         run: python history.py
       - name: Discord test message
         if: ${{ inputs.test_discord }}
@@ -78,9 +81,36 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
           python -c "import alerts, json; alerts.demo()"
+      - name: Fetch all Forever markets (EU + US)
+        continue-on-error: true
+        timeout-minutes: 10
+        env:
+          BLIZZARD_CLIENT_ID: ${{ secrets.BLIZZARD_CLIENT_ID }}
+          BLIZZARD_CLIENT_SECRET: ${{ secrets.BLIZZARD_CLIENT_SECRET }}
+          ALL_MARKETS: "1"
+        run: python fetch_ah.py
+      - name: Fonts (JetBrains Mono Nerd Font)
+        uses: actions/cache@v4
+        id: fontcache
+        with:
+          path: site/fonts
+          key: jbm-nerd-3.2.1
+      - name: Download fonts
+        if: steps.fontcache.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p site/fonts && curl -sSL -o /tmp/jbm.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip
+          unzip -o -q /tmp/jbm.zip JetBrainsMonoNerdFont-Regular.ttf JetBrainsMonoNerdFont-Bold.ttf -d site/fonts
+      - name: Build dashboard
+        env:
+          NTFY_TOPIC: docker-ah-f53611966a
+        run: python site_build.py
+      - name: Upload dashboard
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
       - name: Publish to snapshot branch
         run: |
-          rm -f data/names.json data/recipes.json data/ahl.json
+          rm -rf data/names.json data/recipes.json data/ahl.json data/markets
           git config user.name "ah-bot"
           git config user.email "ah-bot@users.noreply.github.com"
           git checkout --orphan snapshot
@@ -88,3 +118,15 @@ jobs:
           git add -f data
           git commit -m "snapshot $(date -u +%Y-%m-%dT%H:%MZ)"
           git push -f origin snapshot
+  deploy:
+    needs: snapshot
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.d.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - id: d
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Docker's AH Desk</title>
+<meta name="theme-color" content="#0f1311">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23e3b341'/%3E%3Ctext x='32' y='42' font-size='30' text-anchor='middle' font-family='monospace' fill='%230f1311'%3Eg%3C/text%3E%3C/svg%3E">
+<style>
+@font-face{font-family:"JBNerd";src:url("fonts/JetBrainsMonoNerdFont-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"JBNerd";src:url("fonts/JetBrainsMonoNerdFont-Bold.ttf") format("truetype");font-weight:700;font-display:swap}
+:root{
+  --bg:#0f1311;--panel:#161b18;--panel2:#1d2420;--line:#2a332d;--fg:#dfe6e1;--mute:#8a978e;--dim:#5d6a61;
+  --gold:#e3b341;--silver:#b8c2cc;--copper:#c9824f;
+  --up:#4cc38a;--down:#5aa9ff;--warn:#f0a646;--bad:#ff7b72;--acc:#e3b341;
+  --q0:#9d9d9d;--q1:#e6e6e6;--q2:#3fd35b;--q3:#3d8cff;--q4:#b65cff;--q5:#ff8000;
+  --font:"JBNerd","JetBrainsMono Nerd Font","JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  color-scheme:dark
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#f4f1e8;--panel:#fffdf7;--panel2:#efe9da;--line:#dcd3bf;--fg:#22251f;--mute:#6b6a5c;--dim:#9a9684;
+  --gold:#a77a07;--silver:#5d6b78;--copper:#9a5524;--up:#13824d;--down:#1d63c4;--warn:#a85f00;--bad:#c0362c;--acc:#a77a07;
+  --q0:#7a7a7a;--q1:#3a3a3a;--q2:#16862a;--q3:#1e5fc4;--q4:#8a2fd0;--q5:#c25f00;color-scheme:light}}
+:root[data-theme="light"]{
+  --bg:#f4f1e8;--panel:#fffdf7;--panel2:#efe9da;--line:#dcd3bf;--fg:#22251f;--mute:#6b6a5c;--dim:#9a9684;
+  --gold:#a77a07;--silver:#5d6b78;--copper:#9a5524;--up:#13824d;--down:#1d63c4;--warn:#a85f00;--bad:#c0362c;--acc:#a77a07;
+  --q0:#7a7a7a;--q1:#3a3a3a;--q2:#16862a;--q3:#1e5fc4;--q4:#8a2fd0;--q5:#c25f00;color-scheme:light}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:13.5px;line-height:1.5;
+  padding-bottom:max(40px,env(safe-area-inset-bottom,0px))}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+button,input,select{font:inherit;color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.top{display:flex;align-items:center;gap:6px 12px;flex-wrap:wrap;padding-block:10px}
+.row{flex-wrap:nowrap}
+.brand{font-weight:700;letter-spacing:.02em;display:flex;gap:8px;align-items:center}
+.brand .ic{color:var(--gold);font-size:18px}
+.age{color:var(--mute);font-size:12px}
+.age b{color:var(--fg);font-weight:400}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--up);margin-right:6px;vertical-align:middle}
+.dot.stale{background:var(--warn)}.dot.dead{background:var(--bad)}
+.spacer{flex:1}
+.btn{background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:5px 10px;cursor:pointer;white-space:nowrap}
+.btn:hover{border-color:var(--acc)}
+.btn.on{border-color:var(--up);color:var(--up)}
+.btn.sm{padding:2px 7px;font-size:12px}
+nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav a{padding:8px 12px;color:var(--mute);border-bottom:2px solid transparent;white-space:nowrap}
+nav a.on{color:var(--fg);border-color:var(--acc)}
+nav a:hover{text-decoration:none;color:var(--fg)}
+main{padding-block:18px}
+.grid{display:grid;gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px;min-width:0}
+.card h2{margin:0 0 10px;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);font-weight:700}
+.muted{color:var(--mute)}.dim{color:var(--dim)}
+.g{color:var(--gold)}.s{color:var(--silver)}.c{color:var(--copper)}
+.money{white-space:nowrap;font-variant-numeric:tabular-nums}
+.up{color:var(--up)}.down{color:var(--down)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.chip{border:1px solid var(--line);border-radius:999px;padding:2px 10px;cursor:pointer;color:var(--mute);background:transparent}
+.chip.on{color:var(--fg);border-color:var(--acc);background:var(--panel2)}
+.feed-run{margin-bottom:16px}
+.run-h{color:var(--mute);font-size:12px;margin:0 0 6px;display:flex;gap:8px;align-items:center}
+.run-h::after{content:"";flex:1;border-top:1px dashed var(--line)}
+.alert{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:start;padding:9px 10px;border:1px solid var(--line);border-left:3px solid var(--k,var(--line));border-radius:6px;background:var(--panel);margin-bottom:6px}
+.alert.new{box-shadow:0 0 0 1px var(--acc) inset}
+.alert.done{opacity:.42}
+.alert .tag{font-weight:700;font-size:11.5px;color:var(--k);white-space:nowrap;min-width:72px}
+.alert .txt{min-width:0;overflow-wrap:anywhere}
+.k-sell{--k:var(--up)}.k-dip{--k:var(--down)}.k-gear{--k:var(--q4)}.k-snipe{--k:var(--warn)}.k-flip{--k:var(--gold)}
+.k-favor{--k:var(--gold)}.k-writ{--k:var(--q3)}.k-gamble{--k:var(--bad)}.k-mat{--k:var(--silver)}
+.status li{margin-bottom:4px}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th,td{padding:5px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--mute);font-weight:400;font-size:12px;white-space:nowrap}
+td.r,th.r{text-align:right}
+tr.mine td{background:var(--panel2)}
+.tbl{overflow-x:auto}
+.search{display:flex;gap:8px;margin-bottom:12px}
+.search input{flex:1;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:15px}
+.search input:focus{outline:none;border-color:var(--acc)}
+.res a{display:grid;grid-template-columns:1fr auto auto;gap:12px;padding:7px 10px;border-bottom:1px solid var(--line);color:var(--fg)}
+.res a:hover{background:var(--panel2);text-decoration:none}
+.item-h{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin-bottom:6px}
+.item-h h1{margin:0;font-size:20px}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:12px 0}
+.kv div{background:var(--panel2);border-radius:6px;padding:8px 10px}
+.kv i{display:block;font-style:normal;font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
+.kv b{font-weight:400;font-size:15px}
+.chart{width:100%;height:220px;display:block}
+.chart text{fill:var(--mute);font-size:10.5px;font-family:var(--font)}
+.chart .ln{fill:none;stroke:var(--acc);stroke-width:1.6}
+.chart .ar{fill:var(--acc);opacity:.08}
+.chart .gl{stroke:var(--line);stroke-width:1}
+.chart .hv{stroke:var(--mute);stroke-dasharray:3 3}
+.tip{position:absolute;pointer-events:none;background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:4px 8px;font-size:12px;white-space:nowrap}
+.rel{position:relative}
+.two{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:900px){.two{grid-template-columns:3fr 2fr}}
+.pill{font-size:11px;border:1px solid var(--line);border-radius:999px;padding:0 7px;color:var(--mute)}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.inp{background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:5px 8px;width:110px}
+.empty{color:var(--mute);padding:18px;text-align:center}
+.q0{color:var(--q0)}.q1{color:var(--q1)}.q2{color:var(--q2)}.q3{color:var(--q3)}.q4{color:var(--q4)}.q5{color:var(--q5)}
+.toast{position:fixed;right:16px;bottom:16px;background:var(--panel2);border:1px solid var(--acc);border-radius:8px;padding:10px 14px;z-index:20;max-width:min(420px,calc(100vw - 32px))}
+details summary{cursor:pointer;color:var(--mute)}
+code{background:var(--panel2);padding:1px 5px;border-radius:4px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap top">
+    <div class="brand"><span class="ic">&#xf0d6;</span> Docker's AH Desk <span class="pill">RP-PvP · Alliance · EU</span></div>
+    <div class="age" id="age"><span class="dot"></span>yükleniyor…</div>
+    <div class="spacer"></div>
+    <div class="row"><button class="btn" id="notif">&#xf0f3; Bildirim</button><button class="btn" id="theme" title="Tema">&#xf186;</button></div>
+  </div>
+  <div class="wrap"><nav id="nav">
+    <a href="#feed">&#xf0e7; Fırsatlar</a>
+    <a href="#search">&#xf002; Item ara</a>
+    <a href="#bank">&#xf19c; Banka</a>
+    <a href="#watch">&#xf06e; İzleme</a>
+    <a href="#plans">&#xf0c3; Meslek planları</a>
+    <a href="#setup">&#xf013; Ayarlar</a>
+  </nav></div>
+</header>
+<main class="wrap" id="view"><div class="empty">Yükleniyor…</div></main>
+<div class="tip" id="tip" hidden></div>
+<script>
+"use strict";
+const $ = (s, el = document) => el.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const LS = {
+  get(k, d) { try { const v = localStorage.getItem("ahd." + k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem("ahd." + k, JSON.stringify(v)); } catch {} }
+};
+const S = { meta: null, now: null, feed: null, bank: null, plans: null, names: null, x: null, hist: null };
+const KIND = {
+  sell: ["&#xf062; SELL", "Sat"], dip: ["&#xf063; BUY MORE", "Ucuzladı"], gear: ["&#xf132; GEAR", "Gear"], snipe: ["&#xf0e7; SNIPE", "Snipe"],
+  flip: ["&#xf021; FLIP", "Flip"], favor: ["&#xf005; FAVOR", "Favor"], writ: ["&#xf15c; WRIT", "Writ"], gamble: ["&#xf128; GAMBLE", "Writ gamble"], mat: ["&#xf07a; MAT", "Malzeme"]
+};
+
+// ---------- para
+function money(c, plain) {
+  if (c == null || isNaN(c)) return '<span class="dim">–</span>';
+  c = Math.round(c); const neg = c < 0; c = Math.abs(c);
+  const g = Math.floor(c / 10000), s = Math.floor(c / 100) % 100, k = c % 100;
+  if (plain) return (neg ? "-" : "") + (g ? g + "g " : "") + (g || s ? s + "s " : "") + k + "c";
+  let o = "";
+  if (g) o += `${g}<span class="g">g</span> `;
+  if (g || s) o += `${s}<span class="s">s</span> `;
+  if (!g) o += `${k}<span class="c">c</span>`;
+  return `<span class="money">${neg ? "-" : ""}${o.trim()}</span>`;
+}
+function parseMoney(t) {
+  t = String(t).trim().toLowerCase().replace(",", "."); if (!t) return null;
+  let c = 0, m, any = false;
+  for (const [re, mul] of [[/([\d.]+)\s*g/, 10000], [/([\d.]+)\s*s/, 100], [/([\d.]+)\s*c/, 1]]) if ((m = t.match(re))) { c += parseFloat(m[1]) * mul; any = true; }
+  if (!any && /^[\d.]+$/.test(t)) c = parseFloat(t) * 100; // sade sayi = silver
+  return Math.round(c) || null;
+}
+const pct = (a, b) => (a == null || !b) ? null : Math.round(100 * a / b - 100);
+const pctHtml = p => p == null ? '<span class="dim">–</span>' : `<span class="${p > 0 ? "up" : p < 0 ? "down" : "muted"}">${p > 0 ? "+" : ""}${p}%</span>`;
+const tr = ts => { const d = new Date(ts.endsWith("Z") ? ts : ts + "Z"); return d; };
+const fmtTime = d => d.toLocaleTimeString("tr-TR", {hour: "2-digit", minute: "2-digit", timeZone: "Europe/Istanbul"});
+const fmtDay = d => d.toLocaleDateString("tr-TR", {day: "numeric", month: "short", weekday: "short", timeZone: "Europe/Istanbul"});
+const qcls = q => { const m = {POOR:0,COMMON:1,UNCOMMON:2,RARE:3,EPIC:4,LEGENDARY:5}; const v = typeof q === "number" ? q : m[String(q || "").toUpperCase()]; return v == null ? "" : "q" + v; };
+
+// ---------- veri
+async function getJSON(p) { const r = await fetch(`data/${p}?v=${Date.now()}`, {cache: "no-store"}); if (!r.ok) throw new Error(p + " " + r.status); return r.json(); }
+async function loadCore() {
+  const [meta, now, feed, bank, plans, names] = await Promise.all(["meta.json", "now.json", "feed.json", "bank.json", "plans.json", "names.json"].map(getJSON));
+  Object.assign(S, {meta, now, feed, bank, plans, names});
+  S.byName = {}; for (const [id, n] of Object.entries(names)) S.byName[n.toLowerCase()] = id;
+  S.x = null; S.hist = null;
+}
+async function loadBig() {
+  if (!S.x) S.x = await getJSON("x.json");
+  if (!S.hist) S.hist = await getJSON("hist.json");
+}
+
+// ---------- ust bar
+function renderAge() {
+  const el = $("#age"); if (!S.meta) return;
+  const d = tr(S.meta.fetched), mins = Math.round((Date.now() - d) / 60000);
+  const cls = mins > 150 ? "dead" : mins > 80 ? "stale" : "";
+  el.innerHTML = `<span class="dot ${cls}"></span>AH verisi <b>${fmtTime(d)}</b> (${mins} dk önce) · ${S.meta.items} item · ${S.meta.markets} pazar · Blizzard saatte bir günceller`;
+}
+
+// ---------- router
+const VIEWS = {feed: vFeed, search: vSearch, bank: vBank, watch: vWatch, plans: vPlans, setup: vSetup};
+function route() {
+  const h = (location.hash || "#feed").slice(1);
+  const [name, arg] = h.startsWith("item-") ? ["search", h.slice(5)] : [h, null];
+  document.querySelectorAll("#nav a").forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + name));
+  (VIEWS[name] || vFeed)(arg);
+  window.scrollTo(0, 0);
+}
+
+// ---------- firsatlar
+function doneKey(a) { return a.ts + "|" + a.t.slice(0, 80); }
+function vFeed() {
+  const done = new Set(LS.get("done", [])), seen = LS.get("seenTs", "");
+  const kinds = LS.get("kinds", null);
+  const items = S.feed.items.filter(a => !kinds || kinds.includes(a.k));
+  const counts = {}; S.feed.items.forEach(a => counts[a.k] = (counts[a.k] || 0) + 1);
+  let html = `<div class="two"><div>`;
+  html += `<div class="chips">${Object.keys(KIND).filter(k => counts[k]).map(k => `<button class="chip ${!kinds || kinds.includes(k) ? "on" : ""}" data-k="${k}">${KIND[k][1]} ${counts[k]}</button>`).join("")}
+    <button class="chip" id="allk">hepsi</button><button class="chip" id="hidedone">${LS.get("hideDone", false) ? "yapılanları göster" : "yapılanları gizle"}</button></div>`;
+  const hideDone = LS.get("hideDone", false);
+  const runs = {};
+  items.forEach(a => { if (hideDone && done.has(doneKey(a))) return; (runs[a.ts] = runs[a.ts] || []).push(a); });
+  const keys = Object.keys(runs).sort().reverse();
+  if (!keys.length) html += `<div class="empty">Seçili filtrede fırsat yok.</div>`;
+  for (const ts of keys.slice(0, 60)) {
+    const d = tr(ts);
+    html += `<div class="feed-run"><div class="run-h">${fmtDay(d)} ${fmtTime(d)}</div>`;
+    for (const a of runs[ts].sort((x, y) => (y.s || 0) - (x.s || 0))) {
+      const id = S.byName[(a.item || "").toLowerCase().replace(/ \(.*\)$/, "")];
+      const isNew = seen && a.ts > seen, isDone = done.has(doneKey(a));
+      html += `<div class="alert k-${a.k} ${isNew ? "new" : ""} ${isDone ? "done" : ""}">
+        <div class="tag">${KIND[a.k]?.[0] || a.k}</div>
+        <div class="txt">${esc(a.t)}${id ? ` <a href="#item-${id}">&#xf201;</a>` : ""}</div>
+        <button class="btn sm" data-done="${esc(doneKey(a))}" title="Yaptım / geri al">${isDone ? "&#xf0e2;" : "&#xf00c;"}</button></div>`;
+    }
+    html += `</div>`;
+  }
+  html += `</div><div class="grid">`;
+  html += `<div class="card"><h2>&#xf017; Durum</h2>${S.feed.status?.length ? `<ul class="status">${S.feed.status.filter(Boolean).map(l => `<li>${esc(l)}</li>`).join("")}</ul>` : '<div class="muted">–</div>'}</div>`;
+  if (S.feed.writmkt?.length) html += `<div class="card"><h2>&#xf15c; Writ pazarı</h2><ul class="status">${S.feed.writmkt.map(l => `<li>${esc(l)}</li>`).join("")}</ul></div>`;
+  html += `<div class="card"><h2>&#xf19c; Banka özeti</h2>${bankMini()}</div></div></div>`;
+  $("#view").innerHTML = html;
+  if (S.feed.items[0]) LS.set("seenTs", S.feed.items[0].ts);
+  $("#view").onclick = e => {
+    const b = e.target.closest("[data-done]"), c = e.target.closest(".chip[data-k]");
+    if (b) { const s = new Set(LS.get("done", [])); const k = b.dataset.done; s.has(k) ? s.delete(k) : s.add(k); LS.set("done", [...s].slice(-800)); vFeed(); }
+    else if (c) { let ks = LS.get("kinds", null) || Object.keys(KIND); ks = ks.includes(c.dataset.k) ? ks.filter(x => x !== c.dataset.k) : [...ks, c.dataset.k]; LS.set("kinds", ks); vFeed(); }
+    else if (e.target.id === "allk") { LS.set("kinds", null); vFeed(); }
+    else if (e.target.id === "hidedone") { LS.set("hideDone", !LS.get("hideDone", false)); vFeed(); }
+  };
+}
+
+// ---------- banka
+function holdings() {
+  const local = LS.get("holdings", null);
+  return S.bank.map(b => ({...b, cnt: local && local[b.n] != null ? local[b.n] : b.cnt}));
+}
+function verdict(b) {
+  if (b.min == null) return '<span class="dim">AH’de yok</span>';
+  if (b.m7 && b.min >= b.m7 * 1.15) return '<span class="up">&#xf062; Satış zamanı</span>';
+  if (b.m7 && b.min <= b.m7 * 0.85) return '<span class="down">&#xf063; Ucuz, bekle</span>';
+  return '<span class="muted">Normal</span>';
+}
+function bankMini() {
+  const H = holdings(); let tot = 0;
+  const rows = H.map(b => { const v = (b.min || 0) * b.cnt; tot += v; return `<tr><td><a href="#item-${b.id}">${esc(b.n)}</a></td><td class="r">${b.cnt}</td><td class="r">${money(v)}</td><td>${verdict(b)}</td></tr>`; }).join("");
+  return `<div class="tbl"><table>${rows}<tr><td class="muted">Toplam</td><td></td><td class="r">${money(tot)}</td><td></td></tr></table></div>`;
+}
+function vBank() {
+  const H = holdings(); let tot = 0, totV = 0;
+  let rows = H.map(b => {
+    const v = (b.min || 0) * b.cnt, vv = (b.sp || 0) * b.cnt; tot += v; totV += vv;
+    return `<tr><td><a href="#item-${b.id}">${esc(b.n)}</a></td><td class="r"><input class="inp" style="width:70px" data-h="${esc(b.n)}" value="${b.cnt}"></td>
+      <td class="r">${money(b.min)}</td><td class="r">${money(b.m7)}</td><td class="r">${pctHtml(pct(b.min, b.m7))}</td><td class="r">${pctHtml(b.d24)}</td>
+      <td class="r">${money(b.lo30)} – ${money(b.hi30)}</td><td class="r">${money(v)}</td><td class="r">${money(vv)}</td><td>${verdict(b)}</td></tr>`;
+  }).join("");
+  $("#view").innerHTML = `<div class="card"><h2>&#xf19c; Bankadakiler</h2><div class="tbl"><table>
+    <tr><th>Item</th><th class="r">Adet</th><th class="r">Şimdi</th><th class="r">7 gün medyan</th><th class="r">Normale göre</th><th class="r">24 saat</th><th class="r">30 gün aralık</th><th class="r">AH değeri</th><th class="r">Vendor değeri</th><th></th></tr>
+    ${rows}<tr><td class="muted">Toplam</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="r">${money(tot)}</td><td class="r">${money(totV)}</td><td></td></tr></table></div>
+    <p class="muted">Adetleri burada değiştirebilirsin (bu tarayıcıda saklanır). Telefona gelen SAT / BUY MORE bildirimlerinin de yeni adetleri kullanması için Claude'a söyle. Satış uyarıları: fiyat 7 günlük medyanın %15 üstündeyse "Satış zamanı".</p></div>`;
+  $("#view").onchange = e => { const i = e.target.closest("[data-h]"); if (!i) return; const h = LS.get("holdings", {}) || {}; h[i.dataset.h] = Math.max(0, parseInt(i.value) || 0); LS.set("holdings", h); vBank(); };
+}
+
+// ---------- arama ve item sayfasi
+function vSearch(id) {
+  if (id) return vItem(id);
+  const q0 = LS.get("lastQ", "");
+  $("#view").innerHTML = `<div class="search"><input id="q" placeholder="Item adı yaz: Mithril Ore, Swiftness Potion…" autocomplete="off" value="${esc(q0)}"></div><div class="card res" id="res"></div>`;
+  const q = $("#q"); q.focus();
+  const run = () => {
+    const t = q.value.trim().toLowerCase(); LS.set("lastQ", q.value);
+    if (t.length < 2) { $("#res").innerHTML = `<div class="empty">En az 2 harf. ${Object.keys(S.names).length} item aranabilir (tüm Forever pazarları).</div>`; return; }
+    const hits = [];
+    for (const [id, n] of Object.entries(S.names)) { const l = n.toLowerCase(), i = l.indexOf(t); if (i >= 0) hits.push([id, n, (i === 0 ? 0 : 1) + (S.now.items[id] ? 0 : 2), n.length]); }
+    hits.sort((a, b) => a[2] - b[2] || a[3] - b[3]);
+    $("#res").innerHTML = hits.length ? hits.slice(0, 40).map(([id, n]) => { const it = S.now.items[id];
+      return `<a href="#item-${id}"><span class="${qcls(it?.q)}">${esc(n)}</span><span class="r">${it ? money(it.min) : '<span class="dim">bizim AH’de yok</span>'}</span><span class="muted">${it ? it.qty + " adet" : ""}</span></a>`; }).join("") : `<div class="empty">Bulunamadı.</div>`;
+  };
+  q.oninput = run; run();
+}
+async function vItem(id) {
+  const it = S.now.items[id] || {}, name = S.names[id] || it.n || ("Item #" + id);
+  $("#view").innerHTML = `<div class="empty">Tüm pazarlar yükleniyor…</div>`;
+  try { await loadBig(); } catch (e) { console.warn(e); }
+  const hist = (S.hist && S.hist[id]) || [];
+  const W = LS.get("watch", {});
+  let html = `<p><a href="#search">&#xf060; arama</a></p><div class="card"><div class="item-h"><h1 class="${qcls(it.q)}">${esc(name)}</h1>
+    <span class="pill">#${id}</span><a href="https://www.wowhead.com/forever/item=${id}" target="_blank" rel="noopener">Wowhead &#xf08e;</a>
+    ${it.c ? `<span class="pill">${esc(it.c)}</span>` : ""}</div>
+    <div class="kv"><div><i>Bizim AH en ucuz</i><b>${money(it.min)}</b></div><div><i>Adet</i><b>${it.qty ?? "–"}</b></div>
+    <div><i>7 gün medyan</i><b>${money(it.m7)}</b> ${pctHtml(pct(it.min, it.m7))}</div><div><i>30 gün en düşük / yüksek</i><b>${money(it.lo30)} / ${money(it.hi30)}</b></div>
+    <div><i>Vendor satış</i><b>${money(it.sp)}</b></div></div>
+    <div class="row"><span class="muted">İzle, şu fiyatın altına düşünce haber ver:</span><input class="inp" id="wt" placeholder="örn. 1g20s" value="${W[id] ? money(W[id].t, 1) : ""}">
+    <button class="btn" id="wadd">${W[id] ? "&#xf00c; Güncelle" : "&#xf06e; İzle"}</button>${W[id] ? '<button class="btn" id="wdel">Kaldır</button>' : ""}</div></div>`;
+  html += `<div class="two" style="margin-top:14px"><div class="card"><h2>&#xf201; Fiyat geçmişi (bizim AH, en ucuz ilan)</h2><div class="rel" id="ch">${hist.length > 1 ? "" : '<div class="empty">Geçmiş yok.</div>'}</div></div>`;
+  html += `<div class="card"><h2>&#xf0e3; Bizim AH’deki ilanlar</h2>${it.lv?.length ? `<div class="tbl"><table><tr><th class="r">Fiyat</th><th class="r">Adet</th><th class="r">Kümülatif</th></tr>${(() => { let c = 0, t = 0; return it.lv.map(([p, q]) => { c += q; t += p * q; return `<tr><td class="r">${money(p)}</td><td class="r">${q}</td><td class="r">${c} adet · ort. ${money(t / c)}</td></tr>`; }).join(""); })()}</table></div>` : '<div class="muted">Şu an ilan yok.</div>'}</div></div>`;
+  // tum pazarlar
+  const X = S.x; let rows = "";
+  if (X && X.items[id]) {
+    const ent = Object.entries(X.items[id]).map(([mi, v]) => [X.markets[mi], v, +mi]).sort((a, b) => a[1][0] - b[1][0]);
+    rows = ent.map(([m, [p, q], mi]) => `<tr class="${mi === X.mine ? "mine" : ""}"><td>${m.region}</td><td>${esc(m.ruleset)}</td><td>${esc(m.house)}${mi === X.mine ? ' <span class="pill">biz</span>' : ""}</td><td class="r">${money(p)}</td><td class="r">${q}</td><td class="r">${pctHtml(it.min ? pct(p, it.min) : null)}</td></tr>`).join("");
+  }
+  html += `<div class="card" style="margin-top:14px"><h2>&#xf0ac; Tüm Forever pazarları ${X ? `<span class="dim">(${fmtTime(tr(X.fetched || S.meta.fetched))})</span>` : ""}</h2>${rows ? `<div class="tbl"><table><tr><th>Bölge</th><th>Ruleset</th><th>AH</th><th class="r">En ucuz</th><th class="r">Adet</th><th class="r">Bize göre</th></tr>${rows}</table></div>` : '<div class="muted">Diğer pazarlarda bu item yok ya da veri henüz gelmedi.</div>'}</div>`;
+  $("#view").innerHTML = html;
+  if (hist.length > 1) chart($("#ch"), hist);
+  $("#wadd").onclick = () => { const t = parseMoney($("#wt").value); if (!t) return toast("Fiyatı 1g20s / 45s / 80c gibi yaz."); const w = LS.get("watch", {}); w[id] = {t, n: name}; LS.set("watch", w); toast(`${name}: ${money(t, 1)} altına düşünce bildirim gelecek (sayfa açıkken).`); vItem(id); };
+  const del = $("#wdel"); if (del) del.onclick = () => { const w = LS.get("watch", {}); delete w[id]; LS.set("watch", w); vItem(id); };
+}
+
+// ---------- grafik
+function chart(el, pts) {
+  const W = el.clientWidth || 600, H = 220, P = {l: 62, r: 10, t: 10, b: 24};
+  const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]);
+  const x0 = Math.min(...xs), x1 = Math.max(...xs);
+  const sorted = [...ys].sort((a, b) => a - b), cap = sorted[Math.floor(sorted.length * 0.97)] * 1.15;
+  const y0 = 0, y1 = Math.max(1, Math.min(Math.max(...ys), cap));
+  const X = v => P.l + (v - x0) / (x1 - x0 || 1) * (W - P.l - P.r), Y = v => H - P.b - (Math.min(v, y1) - y0) / (y1 - y0) * (H - P.t - P.b);
+  let g = "";
+  for (let i = 0; i <= 4; i++) { const v = y1 * i / 4, y = Y(v); g += `<line class="gl" x1="${P.l}" x2="${W - P.r}" y1="${y}" y2="${y}"/><text x="${P.l - 6}" y="${y + 3}" text-anchor="end">${money(v, 1).replace(/ 0c$/, "")}</text>`; }
+  const days = Math.ceil((x1 - x0) / 24);
+  for (let h = Math.ceil(x0 / 24) * 24; h <= x1; h += 24 * Math.max(1, Math.ceil(days / 8))) { const x = X(h); g += `<text x="${x}" y="${H - 6}" text-anchor="middle">${new Date(h * 3600e3).toLocaleDateString("tr-TR", {day: "numeric", month: "short"})}</text>`; }
+  const d = pts.map((p, i) => `${i ? "L" : "M"}${X(p[0]).toFixed(1)},${Y(p[1]).toFixed(1)}`).join("");
+  el.innerHTML = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Fiyat geçmişi">${g}<path class="ar" d="${d}L${X(x1)},${Y(0)}L${X(x0)},${Y(0)}Z"/><path class="ln" d="${d}"/><line class="hv" id="hv" y1="${P.t}" y2="${H - P.b}" visibility="hidden"/></svg>`;
+  const svg = el.querySelector("svg"), tip = $("#tip"), hv = el.querySelector("#hv");
+  svg.onpointermove = e => {
+    const r = svg.getBoundingClientRect(), xv = x0 + ((e.clientX - r.left) * W / r.width - P.l) / (W - P.l - P.r) * (x1 - x0);
+    let best = pts[0]; for (const p of pts) if (Math.abs(p[0] - xv) < Math.abs(best[0] - xv)) best = p;
+    hv.setAttribute("x1", X(best[0])); hv.setAttribute("x2", X(best[0])); hv.setAttribute("visibility", "visible");
+    const dt = new Date(best[0] * 3600e3);
+    tip.innerHTML = `${fmtDay(dt)} ${fmtTime(dt)} · ${money(best[1])}`; tip.hidden = false;
+    tip.style.left = Math.min(e.pageX + 12, document.documentElement.clientWidth - tip.offsetWidth - 8) + "px"; tip.style.top = (e.pageY - 34) + "px";
+  };
+  svg.onpointerleave = () => { tip.hidden = true; hv.setAttribute("visibility", "hidden"); };
+}
+
+// ---------- izleme
+function vWatch() {
+  const w = LS.get("watch", {}), ids = Object.keys(w);
+  const rows = ids.map(id => { const it = S.now.items[id] || {}, hit = it.min != null && it.min <= w[id].t;
+    return `<tr><td><a href="#item-${id}">${esc(w[id].n)}</a></td><td class="r">${money(it.min)}</td><td class="r">${it.qty ?? "–"}</td><td class="r">${money(w[id].t)}</td><td>${hit ? '<span class="up">&#xf00c; Hedefte, al!</span>' : '<span class="muted">bekleniyor</span>'}</td><td><button class="btn sm" data-del="${id}">&#xf00d;</button></td></tr>`; }).join("");
+  $("#view").innerHTML = `<div class="card"><h2>&#xf06e; İzleme listesi</h2>${ids.length ? `<div class="tbl"><table><tr><th>Item</th><th class="r">Şimdi</th><th class="r">Adet</th><th class="r">Hedef</th><th></th><th></th></tr>${rows}</table></div>` : '<div class="empty">Liste boş. Bir item arat, sayfasından "İzle" ile hedef fiyat koy.</div>'}
+  <p class="muted">İzleme listesi bu tarayıcıda saklanır. Sayfa açıkken hedefe inen item için tarayıcı bildirimi gelir. Telefona da gelmesi için Claude'a "şu item'ı şu fiyatta izle" de.</p></div>`;
+  $("#view").onclick = e => { const b = e.target.closest("[data-del]"); if (!b) return; const w2 = LS.get("watch", {}); delete w2[b.dataset.del]; LS.set("watch", w2); vWatch(); };
+}
+
+// ---------- meslek planlari
+function vPlans() {
+  $("#view").innerHTML = `<div class="grid">${S.plans.map(p => `<div class="card"><h2>&#xf0c3; ${esc(p.title)}</h2>
+    <div class="kv"><div><i>Malzeme (şimdiki fiyat)</i><b>${money(p.total)}</b></div><div><i>Vendor'a geri</i><b>${money(p.back)}</b></div><div><i>Net maliyet</i><b>${money(p.net)}</b></div></div>
+    ${p.missing.length ? `<p class="warn">&#xf071; AH’de yeterli stok yok: ${p.missing.map(esc).join(", ")}</p>` : ""}
+    <div class="two"><div class="tbl"><table><tr><th>Skill</th><th>Tarif</th><th class="r">Craft</th><th>Malzeme (her craft)</th></tr>
+    ${p.steps.map(s => `<tr><td>${s.range}</td><td>${esc(s.recipe)}</td><td class="r">${s.n}</td><td class="muted">${Object.entries(s.mats).map(([m, q]) => `${q}× ${esc(m)}`).join(", ")}</td></tr>`).join("")}</table></div>
+    <div class="tbl"><table><tr><th>Alışveriş</th><th class="r">Adet</th><th class="r">Birim</th><th class="r">7 gün</th><th class="r">Toplam</th></tr>
+    ${p.shop.map(s => { const id = S.byName[s.n.toLowerCase()]; return `<tr><td>${id ? `<a href="#item-${id}">${esc(s.n)}</a>` : esc(s.n)}${s.src === "vendor" ? ' <span class="pill">vendor</span>' : ""}</td><td class="r">${s.qty}${s.got < s.qty && s.src !== "vendor" ? ` <span class="warn">(${s.got})</span>` : ""}</td><td class="r">${money(s.unit)}</td><td class="r">${money(s.m7)}</td><td class="r">${money(s.cost)}</td></tr>`; }).join("")}</table></div></div></div>`).join("")}</div>`;
+}
+
+// ---------- ayarlar
+function vSetup() {
+  const topic = S.meta.ntfy;
+  $("#view").innerHTML = `<div class="grid"><div class="card"><h2>&#xf10b; Telefona anlık bildirim (ntfy)</h2>
+    ${topic ? `<ol><li>Telefona <b>ntfy</b> uygulamasını kur (App Store / Google Play, ücretsiz, hesap gerekmez).</li>
+    <li>Uygulamada <b>+</b> → konu adı: <code id="tp">${esc(topic)}</code> <button class="btn sm" id="cp">kopyala</button> → Subscribe.</li>
+    <li>Her yeni fırsatta telefonun çalar, bildirime dokununca bu sayfa açılır.</li></ol>` : '<p class="muted">Henüz ayarlanmadı.</p>'}</div>
+    <div class="card"><h2>&#xf0f3; Tarayıcı bildirimi</h2><p>Bu sayfa açıkken yeni fırsatlar ve izleme hedefleri için bildirim. Durum: <b>${"Notification" in window ? Notification.permission : "desteklenmiyor"}</b></p></div>
+    <div class="card"><h2>&#xf05a; Veri</h2><p class="muted">Bizim AH ve tüm Forever pazarları Blizzard API'sinden saatte bir. Fiyat geçmişi sunucu açılışından beri (AHledger arşivi + kendi taramalarımız). Bu sayfa her 3 dakikada yeni veri var mı bakar.</p></div></div>`;
+  const cp = $("#cp"); if (cp) cp.onclick = () => navigator.clipboard?.writeText(topic).then(() => toast("Kopyalandı"), () => toast(topic));
+}
+
+// ---------- bildirim & yenileme
+function toast(msg) { const t = document.createElement("div"); t.className = "toast"; t.innerHTML = msg; document.body.appendChild(t); setTimeout(() => t.remove(), 5000); }
+function notify(title, body, tag) { try { if ("Notification" in window && Notification.permission === "granted") new Notification(title, {body, tag}); } catch {} }
+function checkNew(prevTs) {
+  const fresh = S.feed.items.filter(a => prevTs && a.ts > prevTs);
+  if (fresh.length) notify(`${fresh.length} yeni fırsat`, fresh.slice(0, 4).map(a => a.t).join("\n"), "feed-" + fresh[0].ts);
+  const w = LS.get("watch", {}), fired = LS.get("watchFired", {});
+  for (const [id, v] of Object.entries(w)) { const it = S.now.items[id];
+    if (it && it.min <= v.t && fired[id] !== S.meta.fetched) { notify(`${v.n} hedefte`, `${money(it.min, 1)} (hedef ${money(v.t, 1)}), ${it.qty} adet`, "w" + id); fired[id] = S.meta.fetched; } }
+  LS.set("watchFired", fired);
+}
+async function poll() {
+  try {
+    const m = await getJSON("meta.json");
+    if (!S.meta || m.built !== S.meta.built) {
+      const prev = S.feed?.items[0]?.ts; await loadCore(); checkNew(prev);
+      if (!/^#(search|item-)/.test(location.hash) || !$("#q")) route();
+    }
+  } catch (e) { console.warn(e); }
+  renderAge();
+}
+function notifBtn() { const b = $("#notif"); const p = "Notification" in window ? Notification.permission : "denied"; b.classList.toggle("on", p === "granted"); b.innerHTML = p === "granted" ? "&#xf0f3; Bildirim açık" : "&#xf1f6; Bildirim kapalı"; }
+$("#notif").onclick = async () => { if (!("Notification" in window)) return toast("Bu tarayıcı bildirim desteklemiyor."); await Notification.requestPermission(); notifBtn(); if (Notification.permission === "granted") notify("Bildirimler açık", "Yeni fırsatlar burada görünecek."); };
+const th = LS.get("theme", null); if (th) document.documentElement.dataset.theme = th;
+$("#theme").onclick = () => { const cur = document.documentElement.dataset.theme || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"); const n = cur === "dark" ? "light" : "dark"; document.documentElement.dataset.theme = n; LS.set("theme", n); };
+window.addEventListener("hashchange", route);
+(async () => {
+  try { await loadCore(); } catch (e) { $("#view").innerHTML = `<div class="empty">Veri yüklenemedi: ${esc(e.message)}</div>`; return; }
+  renderAge(); notifBtn(); route(); checkNew(LS.get("seenTs", ""));
+  setInterval(poll, 180000); setInterval(renderAge, 60000);
+})();
+</script>
+</body>
+</html>

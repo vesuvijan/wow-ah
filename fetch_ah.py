@@ -91,7 +91,42 @@ def snapshot_house(base, ns, ruleset, house, token):
     return items, variants, keys_seen, samples
 
 
+RULESET_NAME = {"1": "Normal", "2": "PvP", "3": "RP", "5": "Ruleset 5", "15": "RP-PvP"}
+HOUSE_NAME = {123: "Alliance", 124: "Horde", 125: "Blackwater (neutral)"}
+
+
+def all_markets(cid, sec):
+    """MARKETS=eu:15:123,... (bos: tum bolge x ruleset x house) -> data/markets/<bolge>-<ruleset>-<house>.json {id: [min, adet]}"""
+    spec = os.environ.get("MARKETS", "")
+    if spec:
+        mk = [tuple(x.split(":")) for x in spec.split(",") if x.strip()]
+    else:
+        mk = [(r, rs, str(h)) for r in ("eu", "us") for rs in RULESET_NAME for h in HOUSE_NAME]
+    os.makedirs("data/markets", exist_ok=True)
+    tokens, meta = {}, []
+    now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    for region, rs, h in mk:
+        if region not in tokens:
+            tokens[region] = get_token(cid, sec)
+        base, ns = f"https://{region}.api.blizzard.com", f"dynamic-forever-{region}"
+        try:
+            items, _v, _k, _s = snapshot_house(base, ns, rs, int(h), tokens[region])
+        except Exception as e:  # noqa: BLE001
+            print(f"market {region}-{rs}-{h}: hata {e}", file=sys.stderr)
+            continue
+        if not items:
+            continue
+        key = f"{region}-{rs}-{h}"
+        comp = {k: [v["l"][0][0], v["n"]] for k, v in items.items()}
+        json.dump({"fetched_at": now, "items": comp}, open(f"data/markets/{key}.json", "w"), separators=(",", ":"))
+        meta.append({"key": key, "region": region.upper(), "ruleset": RULESET_NAME.get(rs, rs), "house": HOUSE_NAME.get(int(h), h), "items": len(comp)})
+        print(f"market {key}: {len(comp)} item")
+    json.dump({"fetched_at": now, "markets": meta}, open("data/markets/index.json", "w"), indent=1)
+
+
 def main():
+    if os.environ.get("ALL_MARKETS"):
+        return all_markets(os.environ["BLIZZARD_CLIENT_ID"], os.environ["BLIZZARD_CLIENT_SECRET"])
     cid, sec = os.environ.get("BLIZZARD_CLIENT_ID"), os.environ.get("BLIZZARD_CLIENT_SECRET")
     if not cid or not sec:
         sys.exit("BLIZZARD_CLIENT_ID / BLIZZARD_CLIENT_SECRET tanimli degil")

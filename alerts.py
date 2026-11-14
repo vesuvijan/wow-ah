@@ -626,7 +626,33 @@ def notify(fresh, status_lines, snap):
     if not fresh:
         return
     local = datetime.datetime.strptime(snap["fetched_at"], "%Y-%m-%dT%H:%M:%SZ") + datetime.timedelta(hours=3)
-    send_embeds(fresh, local, status=None)
+    if os.environ.get("NTFY_TOPIC"):
+        push(fresh, local)
+    elif os.environ.get("DISCORD_WEBHOOK_URL"):
+        send_embeds(fresh, local, status=None)
+
+
+URGENT = {"gear", "snipe", "sell"}
+
+
+def push(fresh, local):
+    """Telefona anlik bildirim (ntfy.sh). Dashboard linkiyle."""
+    lines = todo_lines(fresh)
+    if not lines:
+        return
+    topic, site = os.environ["NTFY_TOPIC"], os.environ.get("SITE_URL", "")
+    kinds = {f[0] for f in fresh}
+    title = f"AH {local:%H:%M}: " + ", ".join(sorted(k.upper() for k in kinds if k not in QUIET))[:120]
+    body = "\n".join("- " + l for l in lines)
+    hdr = {"Title": title.encode("ascii", "ignore").decode(), "Tags": "moneybag",
+           "Priority": "high" if kinds & URGENT else "default", "User-Agent": "wow-ah-bot/1.0"}
+    if site:
+        hdr["Click"] = site + "#feed"
+    try:
+        urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{topic}", data=body.encode("utf-8"), headers=hdr), timeout=30).read()
+        print("ntfy gonderildi:", title)
+    except Exception as e:  # noqa: BLE001
+        print("ntfy gonderilemedi:", e)
 
 
 def digest(snap, route_lines, force=False):
