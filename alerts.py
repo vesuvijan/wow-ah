@@ -22,13 +22,19 @@ def money(c):
 
 
 def load_names():
-    try:
-        return {int(k): v.get("n", "") for k, v in json.load(open("data/names.json", encoding="utf-8")).items()}
+    out = {}
+    try:   # AHledger arsivindeki isimler (yeni Forever itemlari dahil)
+        out.update({int(k): v.get("name", "") for k, v in json.load(open("data/ahl.json", encoding="utf-8")).items() if v.get("name")})
     except Exception:  # noqa: BLE001
-        return {}
+        pass
+    try:
+        out.update({int(k): v.get("n", "") for k, v in json.load(open("data/names.json", encoding="utf-8")).items() if v.get("n")})
+    except Exception:  # noqa: BLE001
+        pass
+    return out
 
 
-QUIET = {"new", "recipe"}
+QUIET = {"new", "recipe", "move"}   # move: elinde olmayan itemda fiyat hareketi (sadece dashboard)
 try:   # elindeki adetler: holdings.json  {"Tigerseye": 12, ...}
     HOLDINGS = {k.lower(): v for k, v in json.load(open("holdings.json", encoding="utf-8")).items()}
 except Exception:  # noqa: BLE001
@@ -106,7 +112,7 @@ def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
         have_txt = f"you hold {have}: about {cm(money(cur * have))} at this price" if have else ""
         if spike:
             up = round(100 * cur / spike - 100)
-            found.append(("sell", f"sell{iid}", cur, [nm, money(cur), money(spike), f"+{up}%", str(s[-1][3]), have_txt], up))
+            found.append(("sell" if have else "move", f"sell{iid}", cur, [nm, money(cur), money(spike), f"+{up}%", str(s[-1][3]), have_txt], up))
         else:
             # dusus: kendi gecmisine gore ucuzladiysa -> stoguna ekle
             dip = None
@@ -121,7 +127,7 @@ def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
                     dip = med8
             if dip:
                 dn = round(100 - 100 * cur / dip)
-                found.append(("dip", f"dip{iid}", cur, [nm, money(cur), money(dip), f"-{dn}%", str(s[-1][3]), have_txt], dn))
+                found.append(("dip" if have else "move", f"dip{iid}", cur, [nm, money(cur), money(dip), f"-{dn}%", str(s[-1][3]), have_txt], dn))
 
     # 1c) vendor flip: craft -> NPC'ye sat
     try:
@@ -211,9 +217,11 @@ def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
             snipes.append(((ref - p0) * q0, k, p0, q0, ref, v["n"]))
     for gain, k, p0, q0, nxt, n in sorted(snipes, reverse=True)[:6]:
         iid = int(k.split(":")[0])
-        nm = names.get(iid) or f"item {iid}"
+        nm = names.get(iid)
+        if not nm:
+            continue            # adini bilmedigimiz item: aksiyon alinamaz, mesaj yok
         if ":" in k:
-            nm += " #" + k.split(":")[1]
+            nm += " (random-stat variant)"
         row = [nm, money(p0), f"x{q0}", money(nxt), "~" + money(gain), str(n)]
         found.append(("snipe", f"snipe{k}", p0, row, gain))
 
@@ -641,7 +649,7 @@ def discord_short(fresh, local):
     if not imp:
         return
     lines = todo_lines(imp)[:6]
-    lines = [(l[:157] + "...") if len(l) > 160 else l for l in lines]
+    lines = [(l[:237] + "...") if len(l) > 240 else l for l in lines]
     site = os.environ.get("SITE_URL", "")
     more = len(fresh) - len(imp)
     head = f"**AH {local:%H:%M}**" + (f" · <{site}#feed>" if site else "")
