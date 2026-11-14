@@ -124,7 +124,7 @@ def all_markets(cid, sec):
         comp = {k: [v["l"][0][0], v["n"]] for k, v in items.items()}
         json.dump({"fetched_at": now, "items": comp}, open(f"data/markets/{key}.json", "w"), separators=(",", ":"))
         meta.append({"key": key, "region": region.upper(), "ruleset": RULESET_NAME.get(rs, rs), "house": HOUSE_NAME.get(int(h), h), "items": len(comp)})
-        print(f"market {key}: {len(comp)} item")
+        print(f"market {key}: {len(comp)} item, Mithril Ore {comp.get('3858')}, Silk Cloth {comp.get('4306')}")
     json.dump({"fetched_at": now, "markets": meta}, open("data/markets/index.json", "w"), indent=1)
 
 
