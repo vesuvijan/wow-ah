@@ -329,7 +329,12 @@ function valid(a) {
     if (!it) return false; const p = pct(it.min, it.m7); if (p == null) return false;
     return a.k === "sell" ? p >= 10 : a.k === "move" ? Math.abs(p) >= 10 : p <= -10;
   }
-  if (["gear", "snipe", "writ", "gamble"].includes(a.k)) { if (!a.id) return true; if (!it) return false; return !ap || it.min <= ap * 1.1; }
+  if (["gear", "snipe", "writ", "gamble"].includes(a.k)) {
+    const age = (Date.now() - tr(a.ts)) / 60000;
+    // random-stat variants share one item id, so the scan cannot confirm that exact one is still listed: trust it for 90 minutes only
+    if (/random-stat variant/.test(a.item || "") || !a.id) return age <= 90;
+    if (!it) return false; return !ap || it.min <= ap * 1.1;
+  }
   return true;
 }
 function summary(a) {
