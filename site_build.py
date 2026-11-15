@@ -95,7 +95,7 @@ for i, v in snap["items"].items():
     a = ahl.get(i, {})
     now[i] = {
         "n": nm(i), "c": meta.get("c") or a.get("itemClass"), "q": a.get("quality"),
-        "min": round(v["l"][0][0]), "qty": v["n"], "lv": [[round(p), q] for p, q in v["l"][:8]],
+        "min": round(v["l"][0][0]), "qty": v["n"], "lv": [[round(p), q] for p, q in v["l"][:25]],
         "m7": med_days(i, 7), "lo30": a.get("low30d"), "hi30": a.get("high30d"),
         "sp": meta.get("sp") if meta.get("sp") is not None else a.get("vendorSell"),
     }

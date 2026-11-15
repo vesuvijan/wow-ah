@@ -6,6 +6,7 @@ import json
 import re
 import os
 import statistics
+from history import avg_cheapest
 import urllib.request
 
 try:
@@ -117,26 +118,29 @@ def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
             up = round(100 * cur / spike - 100)
             found.append(("sell" if have else "move", f"sell{iid}", cur, [nm, money(cur), money(spike), f"+{up}%", str(s[-1][3]), have_txt], up))
         else:
-            # dusus: kendi gecmisine gore ucuzladiysa -> stoguna ekle
+            # dusus -> AL. Tek bir ucuz ilan yaniltir: fiyat olarak "anlamli bir lot"un ortalama maliyetini kullan
+            # (ilan sayisinin %5'i, 20-200 adet) ve son 3 gunun gunluk diplerine yakin olmasini sart kos.
+            lst = sorted(snap["items"].get(str(iid), {}).get("l", []))
+            total = sum(q for _, q in lst)
+            lot = max(20, min(200, round(total * 0.05)))
+            lotp = avg_cheapest(lst, lot) if total >= lot else None
+            days = {}
+            for x in s[:-1]:
+                if x[0] >= week:
+                    days[x[0][:10]] = min(days.get(x[0][:10], x[1]), x[1])
+            lows = [days[d] for d in sorted(days)[-3:]]
             dip = None
-            if len(w7) >= cfg["min_samples"]:
+            if lotp and len(w7) >= cfg["min_samples"] and len(lows) >= 2 and lotp >= 25:
                 med = statistics.median(w7)
-                rank = sum(1 for v in w7 if v < cur) / len(w7)
-                if cur <= med * cfg.get("dip_vs_median", 0.85) and rank <= 0.1:
-                    dip = med
-            if dip is None and len(s) >= 8:
-                med8 = statistics.median([x[1] for x in s[-8:-1]])
-                if cur <= med8 * cfg.get("dip_jump", 0.75):
-                    dip = med8
-            if dip is None and iid in INVEST and len(w7) >= cfg["min_samples"]:
-                # yatirim sepeti: daha hassas esik (hafif ucuzlama bile al-firsati), stok varsa
-                med = statistics.median(w7)
-                rank = sum(1 for v in w7 if v < cur) / len(w7)
-                if cur <= med * cfg.get("invest_dip_vs_median", 0.8) and rank <= 0.1 and cur >= 25:
+                near_low = lotp <= statistics.median(lows) * cfg.get("dip_near_daily_low", 1.1)
+                thr = cfg.get("invest_dip_vs_median", 0.8) if iid in INVEST else cfg.get("dip_vs_median", 0.85)
+                if lotp <= med * thr and near_low:
                     dip = med
             if dip:
-                dn = round(100 - 100 * cur / dip)
-                found.append(("dip" if (have or iid in INVEST) else "move", f"dip{iid}", cur, [nm, money(cur), money(dip), f"-{dn}%", str(s[-1][3]), have_txt], dn))
+                dn = round(100 - 100 * lotp / dip)
+                cheap = sum(q for p_, q in lst if p_ <= dip * 0.85)
+                found.append(("dip" if (have or iid in INVEST) else "move", f"dip{iid}", lotp,
+                              [nm, money(lotp), money(dip), f"-{dn}%", str(cheap), have_txt, lot], dn))
 
     # 1c) vendor flip: craft -> NPC'ye sat
     try:
@@ -511,7 +515,7 @@ def todo_lines(fresh):
             if kind == "sell":
                 lines.append(f"SELL {r[0]} now ({cm(r[1])}, {r[3]} above normal)" + (f". {r[5]}" if len(r) > 5 and r[5] else ""))
             elif kind == "dip":
-                lines.append(f"{'BUY MORE' if len(r) > 5 and r[5] else 'BUY LOW'} {r[0]} at {cm(r[1])} ({r[3]} below normal, {r[4]} listed)" + (f". {r[5]}" if len(r) > 5 and r[5] else ""))
+                lines.append(f"{'BUY MORE' if r[5] else 'BUY LOW'} {r[0]}: first {r[6] if len(r) > 6 else '?'} cost {cm(r[1])} each on average (normal {cm(r[2])}, {r[3]}), {r[4]} cheap ones listed" + (f". {r[5]}" if r[5] else ""))
             elif kind == "gear":
                 gain = f"{r[2]} better than what you wear" if str(r[2]).startswith("+") else str(r[2])
                 lines.append(f"BUY GEAR {r[0]} at {cm(r[1])} ({r[3]}): {gain}. Stats: {r[5]}" + (f" ({_nx(r[7])}, buy fast)" if len(r) > 7 and r[7] else ""))
