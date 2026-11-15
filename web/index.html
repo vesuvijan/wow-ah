@@ -339,25 +339,25 @@ function valid(a) {
 }
 function summary(a) {
   const r = a.r, it = liveOf(a), p = it ? pct(it.min, it.m7) : null, n = a.id ? heldCount(a.id) : 0;
-  const pc = p == null ? "" : `${Math.abs(p)}% ${p < 0 ? "below" : "above"} normal`;
+  const pc = p == null ? "" : `${p > 0 ? "+" : ""}${p}% vs 7d`, J = (...x) => x.filter(Boolean).join(" · ");
   switch (a.k) {
-    case "sell": return [it?.min, `${pc}${n ? `. You hold ${n}, worth ${money(it.min * n, 1)}` : ""}`];
-    case "dip": return [it?.min, `${pc}, ${it?.qty ?? "?"} listed${n ? `. You hold ${n}` : ""}`];
-    case "move": return [it?.min, `${pc}, ${it?.qty ?? "?"} listed`];
-    case "mat": return [it?.min, `${pc}. Route needs ${r[5] || "?"}`];
-    case "gear": return [M(r[1]), `${r[3]}: ${String(r[2]).startsWith("+") ? r[2] + " better than equipped" : r[2]}. ${r[5] || ""}`];
-    case "snipe": return [M(r[1]), `${String(r[2]).replace(/^x/, "")} listed at this price. Resell around ${money(M(r[3]), 1)} each, ${money(M(r[4]), 1)} profit in total`];
-    case "favor": { const f = a.fv; if (!f) return [M(r[1]), `per Favor. Fill with ${r[3]}, crate ${r[4]}`];
-      return [f.per_favor, `per Favor. Buy Waylaid Crate: ${f.crate} at ${money(f.crate_price, 1)}, fill it with ${f.qty} ${f.mat} at about ${money(f.mats / f.qty, 1)} each (${money(f.mats, 1)}), hand in to Marcy Baker: +${f.favor} Favor${f.reward ? " and " + money(f.reward, 1) + " back" : ""}. Stock for ${f.n} crate${f.n > 1 ? "s" : ""} at this price`]; }
-    case "flip": return [M(r[3]), `profit per craft (${r[4]}). Mats ${money(M(r[1]), 1)}, vendor pays ${money(M(r[2]), 1)}`];
-    default: return [M(r[1]), [r[2], r[3], r[4]].filter(Boolean).join(" · ")];
+    case "sell": return [it?.min, J(pc, n && `hold ${n} = ${money(it.min * n, 1)}`)];
+    case "dip": return [it?.min, J(pc, `${it?.qty ?? "?"} listed`, n && `hold ${n}`)];
+    case "move": return [it?.min, J(pc, `${it?.qty ?? "?"} listed`)];
+    case "mat": return [it?.min, J(pc, `need ${r[5] || "?"}`)];
+    case "gear": return [M(r[1]), J(`${r[3]} ${r[2]}`, r[5])];
+    case "snipe": return [M(r[1]), J(`${String(r[2]).replace(/^x/, "")} listed`, `resell ${money(M(r[3]), 1)}`, `profit ${money(M(r[4]), 1)}`)];
+    case "favor": { const f = a.fv; if (!f) return [M(r[1]), J("per Favor", r[3], `crate ${r[4]}`)];
+      return [f.per_favor, J("per Favor", `crate ${money(f.crate_price, 1)}`, `${f.qty} ${f.mat} @ ${money(f.mats / f.qty, 1)}`, `+${f.favor} Favor`, f.reward && `${money(f.reward, 1)} back`, `${f.n} crate${f.n > 1 ? "s" : ""}`)]; }
+    case "flip": return [M(r[3]), J("profit per craft", r[4], `mats ${money(M(r[1]), 1)}`, `vendor ${money(M(r[2]), 1)}`)];
+    default: return [M(r[1]), J(r[2], r[3], r[4])];
   }
 }
 const doneKey = a => a.ts + "|" + a.t.slice(0, 80);
 function actionRow(a, done) {
   const [price, why] = summary(a), v = VERB[a.k] || ["", "muted"], isDone = done.has(doneKey(a));
   return `<div class="arow ${isDone ? "done" : ""}">
-    <span class="verb ${v[1]}">${v[0]}</span><span class="nm">${itemLink(a.id, a.k === "favor" ? "Waylaid Crate: " + a.item : a.item)}</span>
+    <span class="verb ${v[1]}">${v[0]}</span><span class="nm">${itemLink(a.id, a.item)}</span>
     <span class="pr">${money(price)}</span><span class="ago">${ago(tr(a.ts))}</span>
     <button class="ico ok" data-done="${esc(doneKey(a))}" title="${isDone ? "Mark as open again" : "Done, hide it"}" aria-label="Done">${isDone ? "&#xf0e2;" : "&#xf00c;"}</button>
     <span class="why">${esc(why)}</span></div>`;
