@@ -1,0 +1,8 @@
+## Interface: 16001
+## Title: AH Desk
+## Notes: Karakter verisini (canta, banka, gear, stat, meslek, auction) kaydeder; AH Desk mesajlarini ve alertleri oyunda gosterir. /ahd
+## Author: Docker Tuckalot
+## Version: 0.1.0
+## SavedVariables: AHDeskDB
+Inbox.lua
+AHDesk.lua
