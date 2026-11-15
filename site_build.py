@@ -278,7 +278,7 @@ if char:
     dump("char.json", char)
 
 dump("meta.json", {"fetched": fetched, "built": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-                   "items": len(now), "markets": len(mk), "ntfy": os.environ.get("NTFY_TOPIC", "")})
+                   "items": len(now), "markets": len(mk), "ntfy": os.environ.get("NTFY_TOPIC", ""), "invest": sorted(alerts.INVEST)})
 
 for f in glob.glob("web/*"):
     if os.path.isfile(f):
