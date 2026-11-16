@@ -316,13 +316,62 @@ local function send(text)
   refresh()
 end
 
+
+-- ---------------------------------------------------------------- chat tab
+local TAB = "AH Desk"
+local function findTab()
+  for i = 1, (NUM_CHAT_WINDOWS or 10) do
+    local name = GetChatWindowInfo and GetChatWindowInfo(i)
+    if name == TAB then return _G["ChatFrame" .. i] end
+  end
+end
+
+local function buildTab()
+  if ui.chat then return ui.chat end
+  local cf = findTab()
+  if not cf and FCF_OpenNewWindow then
+    cf = FCF_OpenNewWindow(TAB)
+  end
+  if not cf then return end
+  if ChatFrame_RemoveAllMessageGroups then ChatFrame_RemoveAllMessageGroups(cf) end
+  if ChatFrame_RemoveAllChannels then ChatFrame_RemoveAllChannels(cf) end
+  ui.chat = cf
+  -- typing in this tab goes to the outbox, never to /say
+  local eb = cf.editBox or _G[cf:GetName() .. "EditBox"]
+  if eb and not eb.ahdHooked then
+    eb.ahdHooked = true
+    local orig = eb:GetScript("OnEnterPressed")
+    eb:SetScript("OnEnterPressed", function(self, ...)
+      if self.chatFrame == cf or (ChatEdit_GetActiveWindow and ChatEdit_GetActiveWindow() == self and SELECTED_CHAT_FRAME == cf) then
+        local t = self:GetText()
+        self:SetText("")
+        if ChatEdit_DeactivateChat then ChatEdit_DeactivateChat(self) end
+        if t and t ~= "" then
+          cf:AddMessage(string.format("|cff5b616c%s|r %sYou:|r %s", stamp(now()), COLORS.me, t))
+          send(t)
+          cf:AddMessage("|cff5b616cqueued - leaves the game on /reload (or /ahd sync)|r")
+        end
+      elseif orig then
+        return orig(self, ...)
+      end
+    end)
+  end
+  return cf
+end
+
+local function say(text, who)
+  local cf = ui.chat or buildTab()
+  local line = string.format("|cff5b616c%s|r %s%s:|r %s", stamp(now()), COLORS[who or "alert"], LABEL[who or "alert"], text)
+  if cf then cf:AddMessage(line) else DEFAULT_CHAT_FRAME:AddMessage(PREFIX .. text) end
+end
+
 local function announceNew()
   local d, fresh = db(), 0
   for _, m in ipairs(inbox()) do
     if m.id and not d.seen[m.id] then
       d.seen[m.id] = now()
       fresh = fresh + 1
-      DEFAULT_CHAT_FRAME:AddMessage(PREFIX .. (m.k == "alert" and "|cffe0a23a" or "|cff6aaef0") .. (m.text or "") .. "|r")
+      say(m.text or "", m.k == "alert" and "alert" or "claude")
     end
   end
   if fresh > 0 and PlaySound then safe(PlaySound, 3081) end
@@ -465,7 +514,7 @@ f:SetScript("OnEvent", function(_, event, arg1)
     safe(buildButton)
     if GameTooltip and GameTooltip.HookScript then safe(GameTooltip.HookScript, GameTooltip, "OnTooltipSetItem", onTooltipItem) end
     if C_Timer and C_Timer.After then
-      C_Timer.After(4, function() safe(snapshot); safe(announceNew) end)
+      C_Timer.After(4, function() safe(buildTab); safe(snapshot); safe(announceNew) end)
     else
       safe(snapshot); safe(announceNew)
     end
@@ -493,6 +542,12 @@ SlashCmdList["AHDESK"] = function(msg)
     toggle()
   elseif cmd == "sync" then
     snapshot(); ReloadUI()
+  elseif cmd == "debug" then
+    local function has(n) return _G[n] and "yes" or "NO" end
+    DEFAULT_CHAT_FRAME:AddMessage(PREFIX .. "GetNumSkillLines " .. has("GetNumSkillLines") .. ", GetSkillLineInfo " .. has("GetSkillLineInfo") ..
+      ", GetNumTalentTabs " .. has("GetNumTalentTabs") .. ", GetTalentInfo " .. has("GetTalentInfo") ..
+      ", C_SkillLine " .. (C_SkillLine and "yes" or "NO") .. ", C_ClassTalents " .. (C_ClassTalents and "yes" or "NO") ..
+      ", C_SpecializationInfo " .. (C_SpecializationInfo and "yes" or "NO") .. ", GetNumSkillLines()=" .. tostring(GetNumSkillLines and GetNumSkillLines()))
   elseif cmd == "status" then
     local c = char()
     DEFAULT_CHAT_FRAME:AddMessage(PREFIX .. string.format("bags %s, bank %s, auctions %s, outbox %d. Inbox built %s.",
