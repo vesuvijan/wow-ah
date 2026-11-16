@@ -421,6 +421,10 @@ local function announceNew()
     say(m.text or "", m.k == "alert" and "alert" or "claude")
   end
   if first > 1 then say((first - 1) .. " older messages: open the AH button window", "claude") end
+  if fresh > 0 then
+    DEFAULT_CHAT_FRAME:AddMessage(PREFIX .. "|cffffd100" .. fresh .. " new message" .. (fresh > 1 and "s" or "") ..
+      " - check the AH Desk tab (or click the AH button)|r")
+  end
   if fresh > 0 and PlaySound then safe(PlaySound, 3081) end
   if ui.badge then ui.badge:SetText(fresh > 0 and tostring(fresh) or "") end
 end

@@ -114,6 +114,14 @@ def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
         nm = watch[iid][0]
         have = HOLDINGS.get(nm.lower())
         have_txt = f"you hold {have}: about {cm(money(cur * have))} at this price" if have else ""
+        if spike is None and have and len(s) >= 48:
+            # hedef: 30 gunluk araligin %60'i ve 7 gunluk medyanin en az %15 ustu
+            vals = [x[1] for x in s[-720:]]
+            lo30, hi30 = min(vals), max(vals)
+            if hi30 > lo30 * 1.5 and w7:
+                med7 = statistics.median(w7)
+                if cur >= lo30 + 0.6 * (hi30 - lo30) and cur >= med7 * 1.15:
+                    spike = med7
         if spike:
             up = round(100 * cur / spike - 100)
             found.append(("sell" if have else "move", f"sell{iid}", cur, [nm, money(cur), money(spike), f"+{up}%", str(s[-1][3]), have_txt], up))
