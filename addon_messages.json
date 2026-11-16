@@ -1,1 +1,12 @@
-[{"id": "c1", "t": 1794785100, "text": "Addon kuruldu. Bankayi ve AH'de Auctions sekmesini bir kez ac, sonra /ahd sync yaz. Buraya yazdiklarin bir sonraki /reload ile bana gelir."}]
+[
+ {
+  "id": "c1",
+  "t": 1794785100,
+  "text": "Addon kuruldu. Bankayi ve AH'de Auctions sekmesini bir kez ac, sonra /ahd sync yaz. Buraya yazdiklarin bir sonraki /reload ile bana gelir."
+ },
+ {
+  "id": "c2",
+  "t": 1794821728,
+  "text": "Karakter verin geldi (gear, statlar, meslekler). Cooking 150/150'de tavanda: Expert Cooking'i bir cooking eğitmeninden öğren, yoksa Agility yemekleri skill vermez. Mining 267/300: Thorium Ore için 8 puan kaldı."
+ }
+]
