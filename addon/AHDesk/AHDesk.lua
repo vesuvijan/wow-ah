@@ -554,6 +554,73 @@ end
 
 -- ---------------------------------------------------------------- events
 local f = CreateFrame("Frame")
+
+-- ---------------------------------------------------------------- upgrade check (live, no reload needed)
+local WEIGHTS = {
+  ITEM_MOD_AGILITY_SHORT = 1.0, ITEM_MOD_STAMINA_SHORT = 0.4, ITEM_MOD_INTELLECT_SHORT = 0.5,
+  ITEM_MOD_ATTACK_POWER_SHORT = 0.5, ITEM_MOD_RANGED_ATTACK_POWER_SHORT = 0.5,
+  ITEM_MOD_CRIT_RATING_SHORT = 1.0, ITEM_MOD_HIT_RATING_SHORT = 1.0, ITEM_MOD_STRENGTH_SHORT = 0.05,
+  RESISTANCE0_NAME = 0.02,
+}
+local SLOT_OF = {
+  INVTYPE_HEAD = { 1 }, INVTYPE_NECK = { 2 }, INVTYPE_SHOULDER = { 3 }, INVTYPE_CHEST = { 5 }, INVTYPE_ROBE = { 5 },
+  INVTYPE_WAIST = { 6 }, INVTYPE_LEGS = { 7 }, INVTYPE_FEET = { 8 }, INVTYPE_WRIST = { 9 }, INVTYPE_HAND = { 10 },
+  INVTYPE_FINGER = { 11, 12 }, INVTYPE_CLOAK = { 15 },
+}
+local function itemStats(link)
+  local fn = (C_Item and C_Item.GetItemStats) or GetItemStats
+  return link and fn and fn(link) or nil
+end
+local function score(link)
+  local st, total = itemStats(link), 0
+  if not st then return nil end
+  for k, w in pairs(WEIGHTS) do total = total + (st[k] or 0) * w end
+  return total
+end
+local function checkUpgrades()
+  local d = db()
+  d.upg = d.upg or {}
+  local lvl = UnitLevel("player")
+  for bag = 0, 4 do
+    local slots = (C_Container and C_Container.GetContainerNumSlots or GetContainerNumSlots)(bag) or 0
+    for slot = 1, slots do
+      local link = (C_Container and C_Container.GetContainerItemLink or GetContainerItemLink)(bag, slot)
+      if link then
+        local id = tonumber(link:match("item:(%d+)"))
+        if id and not d.upg[id] then
+          local _, _, _, _, reqLevel, _, _, _, equipLoc, _, _, classID, subClass = GetItemInfo(link)
+          local slotIds = equipLoc and SLOT_OF[equipLoc]
+          local okType = classID == 4 and (subClass == 0 or subClass == 1 and equipLoc == "INVTYPE_CLOAK" or subClass == 2 or subClass == 3)
+          if slotIds and okType and (reqLevel or 0) <= lvl then
+            local new = score(link)
+            if new then
+              local worst, worstLink
+              for _, sid in ipairs(slotIds) do
+                local cur = GetInventoryItemLink("player", sid)
+                local sc = cur and score(cur) or 0
+                if not worst or sc < worst then worst, worstLink = sc, cur end
+              end
+              d.upg[id] = now()
+              if worst and new - worst >= 1.5 then
+                local name = GetItemInfo(link) or link
+                local oldName = worstLink and (GetItemInfo(worstLink) or worstLink) or "empty slot"
+                say("Upgrade: " .. name .. " is better than your " .. oldName .. " (+" .. string.format("%.1f", new - worst) ..
+                  " score). Equip it.", "alert")
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end
+local upgPending = false
+local function queueUpgrades()
+  if upgPending then return end
+  upgPending = true
+  C_Timer.After(3, function() upgPending = false; safe(checkUpgrades) end)
+end
+
 local events = { "ADDON_LOADED", "PLAYER_LOGIN", "PLAYER_LOGOUT", "BANKFRAME_OPENED", "BANKFRAME_CLOSED", "BAG_UPDATE_DELAYED",
   "PLAYERBANKSLOTS_CHANGED", "AUCTION_OWNED_LIST_UPDATE", "MAIL_INBOX_UPDATE" }
 for _, e in ipairs(events) do safe(f.RegisterEvent, f, e) end
@@ -566,6 +633,7 @@ f:SetScript("OnEvent", function(_, event, arg1)
     if GameTooltip and GameTooltip.HookScript then safe(GameTooltip.HookScript, GameTooltip, "OnTooltipSetItem", onTooltipItem) end
     if C_Timer and C_Timer.After then
       C_Timer.After(4, function() safe(buildTab); safe(snapshot); safe(announceNew) end)
+      C_Timer.After(8, function() safe(checkUpgrades) end)
       C_Timer.After(12, function() if ui.chat then safe(ensureDocked, ui.chat) end end)
       C_Timer.After(25, function() if ui.chat then safe(ensureDocked, ui.chat) end end)
     else
@@ -579,6 +647,7 @@ f:SetScript("OnEvent", function(_, event, arg1)
     safe(scanBank); bankOpen = false
   elseif event == "PLAYERBANKSLOTS_CHANGED" or event == "BAG_UPDATE_DELAYED" then
     if bankOpen then safe(scanBank) end
+    if event == "BAG_UPDATE_DELAYED" then queueUpgrades() end
   elseif event == "AUCTION_OWNED_LIST_UPDATE" then
     safe(scanAuctions)
   elseif event == "MAIL_INBOX_UPDATE" then
