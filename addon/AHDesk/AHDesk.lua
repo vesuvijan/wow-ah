@@ -578,6 +578,7 @@ end)
 
 SLASH_AHDESK1 = "/ahd"
 SLASH_AHDESK2 = "/ahdesk"
+SLASH_AHDESK3 = "/ah"
 SlashCmdList["AHDESK"] = function(msg)
   msg = msg or ""
   local cmd = msg:lower():match("^%s*(%S*)") or ""
@@ -602,6 +603,7 @@ SlashCmdList["AHDESK"] = function(msg)
       (AHDeskInbox and AHDeskInbox.built) and stamp(AHDeskInbox.built) or "none"))
   else
     send(msg)
-    DEFAULT_CHAT_FRAME:AddMessage(PREFIX .. "queued. It leaves the game on the next /reload (/ahd sync).")
+    say(msg, "me")
+    say("queued - Claude reads it after /reload (or /ahd sync)", "claude")
   end
 end
