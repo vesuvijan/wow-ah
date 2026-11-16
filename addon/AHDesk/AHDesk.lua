@@ -375,7 +375,8 @@ local function say(text, who)
   if cf and not cf:IsShown() then ensureDocked(cf) end
   local line = string.format("|cff5b616c%s|r %s%s:|r %s", stamp(now()), COLORS[who or "alert"], LABEL[who or "alert"], text)
   if cf then cf:AddMessage(line) end
-  if not cf or not cf:IsShown() then DEFAULT_CHAT_FRAME:AddMessage(PREFIX .. text) end
+  -- always mirror to the main chat too: tab can be hidden by chat addons (hover-tabs)
+  DEFAULT_CHAT_FRAME:AddMessage(PREFIX .. (who == "alert" and "|cffe0a23a" or "|cff6aaef0") .. text .. "|r")
 end
 
 local function announceNew()
