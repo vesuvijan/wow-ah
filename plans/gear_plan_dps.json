@@ -3925,124 +3925,140 @@
  ],
  "equipped": [
   {
-   "slot": "HEAD",
-   "name": "Tracker's Headband of the Bandit",
-   "ilvl": 45,
-   "q": "UNCOMMON",
-   "id": 9921,
-   "enchant": null
-  },
-  {
    "slot": "NECK",
    "name": "Amberglow Talisman",
+   "id": 10824,
    "ilvl": 44,
    "q": "RARE",
-   "id": 10824,
-   "enchant": null
-  },
-  {
-   "slot": "SHOULDER",
-   "name": "Fleshhide Shoulders",
-   "ilvl": 42,
-   "q": "RARE",
-   "id": 10774,
    "enchant": null
   },
   {
    "slot": "CHEST",
-   "name": "Tunic of Westfall",
-   "ilvl": 24,
-   "q": "RARE",
-   "id": 2041,
+   "name": "Fungus Shroud Armor",
+   "id": 17742,
+   "ilvl": null,
+   "q": null,
    "enchant": null
   },
   {
-   "slot": "WAIST",
-   "name": "Warden's Waistband",
-   "ilvl": 40,
-   "q": "UNCOMMON",
-   "id": 14598,
-   "enchant": null
-  },
-  {
-   "slot": "LEGS",
-   "name": "Oilskin Leggings",
-   "ilvl": 47,
-   "q": "RARE",
-   "id": 9414,
-   "enchant": null
-  },
-  {
-   "slot": "FEET",
-   "name": "Excelsior Boots",
-   "ilvl": 41,
-   "q": "UNCOMMON",
-   "id": 4109,
-   "enchant": null
-  },
-  {
-   "slot": "WRIST",
-   "name": "Duracin Bracers",
-   "ilvl": 38,
-   "q": "UNCOMMON",
-   "id": 10358,
+   "slot": "TRINKET_1",
+   "name": "Carrot on a Stick",
+   "id": 11122,
+   "ilvl": null,
+   "q": null,
    "enchant": null
   },
   {
    "slot": "HANDS",
-   "name": "Fists of Impending Doom",
-   "ilvl": 42,
-   "q": "UNCOMMON",
-   "id": 270075,
+   "name": "Rockgrip Gauntlets",
+   "id": 17736,
+   "ilvl": null,
+   "q": null,
+   "enchant": null
+  },
+  {
+   "slot": "WRIST",
+   "name": "Bracers of the Stone Princess",
+   "id": 17714,
+   "ilvl": null,
+   "q": null,
+   "enchant": null
+  },
+  {
+   "slot": "RANGED",
+   "name": "Megashot Rifle",
+   "id": 17717,
+   "ilvl": null,
+   "q": null,
    "enchant": null
   },
   {
    "slot": "FINGER_1",
    "name": "Archaedic Stone of Power",
+   "id": 11118,
    "ilvl": 47,
    "q": "RARE",
-   "id": 11118,
-   "enchant": null
-  },
-  {
-   "slot": "FINGER_2",
-   "name": "Field Researcher's Loop",
-   "ilvl": 35,
-   "q": "RARE",
-   "id": 281634,
-   "enchant": null
-  },
-  {
-   "slot": "TRINKET_1",
-   "name": "Satchel of Potions",
-   "ilvl": 33,
-   "q": "UNCOMMON",
-   "id": 280766,
    "enchant": null
   },
   {
    "slot": "BACK",
    "name": "Ranger Cloak of the Wolf",
+   "id": 7483,
    "ilvl": 40,
    "q": "UNCOMMON",
-   "id": 7483,
+   "enchant": null
+  },
+  {
+   "slot": "OFF_HAND",
+   "name": "Dustwallow Dirk",
+   "id": 279474,
+   "ilvl": null,
+   "q": null,
+   "enchant": null
+  },
+  {
+   "slot": "FEET",
+   "name": "Albino Crocscale Boots",
+   "id": 17728,
+   "ilvl": null,
+   "q": null,
+   "enchant": null
+  },
+  {
+   "slot": "TRINKET_2",
+   "name": "Devilsaur Eye",
+   "id": 19991,
+   "ilvl": null,
+   "q": null,
    "enchant": null
   },
   {
    "slot": "MAIN_HAND",
-   "name": "Guardian Staff",
-   "ilvl": 42,
-   "q": "UNCOMMON",
-   "id": 270078,
+   "name": "Thrash Blade",
+   "id": 17705,
+   "ilvl": null,
+   "q": null,
    "enchant": null
   },
   {
-   "slot": "RANGED",
-   "name": "Truthseeker's Bow",
-   "ilvl": 45,
+   "slot": "HEAD",
+   "name": "Shapeshifter's Helm",
+   "id": 270117,
+   "ilvl": null,
+   "q": null,
+   "enchant": null
+  },
+  {
+   "slot": "WAIST",
+   "name": "Seared Mail Girdle",
+   "id": 19125,
+   "ilvl": null,
+   "q": null,
+   "enchant": null
+  },
+  {
+   "slot": "FINGER_2",
+   "name": "Blackstone Ring",
+   "id": 17713,
+   "ilvl": null,
+   "q": null,
+   "enchant": null
+  },
+  {
+   "slot": "LEGS",
+   "name": "Oilskin Leggings",
+   "id": 9414,
+   "ilvl": 47,
    "q": "RARE",
-   "id": 277254,
-   "enchant": "Scope (+2 Damage)"
+   "enchant": null
+  },
+  {
+   "slot": "SHOULDER",
+   "name": "Khan's Mantle",
+   "id": 14787,
+   "ilvl": null,
+   "q": null,
+   "enchant": null
   },
   {
    "slot": "AMMO",
@@ -4072,7 +4088,7 @@
  },
  "total": 624.3,
  "meta": {
-  "level": 46,
+  "level": 55,
   "plan_max": 60,
   "tooltips": 5125,
   "candidates": 2366,
