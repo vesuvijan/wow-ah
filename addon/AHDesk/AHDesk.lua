@@ -382,8 +382,6 @@ local function ensureDocked(cf)
     safe(FCF_DockFrame, cf, #FCFDock_GetChatFrames(GENERAL_CHAT_DOCK) + 1, false)
   end
   if FCF_SetWindowName then safe(FCF_SetWindowName, cf, TAB) end
-  if SetChatWindowShown then local id = cf:GetID(); if id then safe(SetChatWindowShown, id, true) end end
-  cf:Show()
 end
 
 local function buildTab()
@@ -402,23 +400,30 @@ end
 
 local function say(text, who)
   local cf = ui.chat or buildTab()
-  if cf and not cf:IsShown() then ensureDocked(cf) end
   local line = string.format("|cff5b616c%s|r %s%s:|r %s", stamp(now()), COLORS[who or "alert"], LABEL[who or "alert"], text)
-  if cf then cf:AddMessage(line) end
+  if cf then cf:AddMessage(line) else DEFAULT_CHAT_FRAME:AddMessage(PREFIX .. (who == "alert" and "|cffe0a23a" or "|cff6aaef0") .. text .. "|r") end
+end
   -- always mirror to the main chat too: tab can be hidden by chat addons (hover-tabs)
   DEFAULT_CHAT_FRAME:AddMessage(PREFIX .. (who == "alert" and "|cffe0a23a" or "|cff6aaef0") .. text .. "|r")
 end
 
 
 local function announceNew()
-  local d, fresh = db(), 0
+  local d, fresh, list = db(), 0, {}
   for _, m in ipairs(inbox()) do
     if m.id and not d.seen[m.id] then
       d.seen[m.id] = now()
       fresh = fresh + 1
-      say(m.text or "", m.k == "alert" and "alert" or "claude")
+      list[#list + 1] = m
     end
   end
+  table.sort(list, function(x, y) return (x.t or 0) < (y.t or 0) end)
+  local first = math.max(1, #list - 5)   -- show only the newest 6 in chat; the rest stays in the AH window
+  for i = first, #list do
+    local m = list[i]
+    say(m.text or "", m.k == "alert" and "alert" or "claude")
+  end
+  if first > 1 then say((first - 1) .. " older messages: open the AH button window", "claude") end
   if fresh > 0 and PlaySound then safe(PlaySound, 3081) end
   if ui.badge then ui.badge:SetText(fresh > 0 and tostring(fresh) or "") end
 end
