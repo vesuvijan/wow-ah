@@ -347,26 +347,6 @@ local function buildTab()
   if ChatFrame_RemoveAllChannels then ChatFrame_RemoveAllChannels(cf) end
   ui.chat = cf
   ensureDocked(cf)
-  -- typing in this tab goes to the outbox, never to /say
-  local eb = cf.editBox or _G[cf:GetName() .. "EditBox"]
-  if eb and not eb.ahdHooked then
-    eb.ahdHooked = true
-    local orig = eb:GetScript("OnEnterPressed")
-    eb:SetScript("OnEnterPressed", function(self, ...)
-      if self.chatFrame == cf or (ChatEdit_GetActiveWindow and ChatEdit_GetActiveWindow() == self and SELECTED_CHAT_FRAME == cf) then
-        local t = self:GetText()
-        self:SetText("")
-        if ChatEdit_DeactivateChat then ChatEdit_DeactivateChat(self) end
-        if t and t ~= "" then
-          cf:AddMessage(string.format("|cff5b616c%s|r %sYou:|r %s", stamp(now()), COLORS.me, t))
-          send(t)
-          cf:AddMessage("|cff5b616cqueued - leaves the game on /reload (or /ahd sync)|r")
-        end
-      elseif orig then
-        return orig(self, ...)
-      end
-    end)
-  end
   return cf
 end
 
@@ -379,32 +359,6 @@ local function say(text, who)
   DEFAULT_CHAT_FRAME:AddMessage(PREFIX .. (who == "alert" and "|cffe0a23a" or "|cff6aaef0") .. text .. "|r")
 end
 
-
--- Safety net: anything typed with the AH Desk tab selected goes to the outbox, never to the game chat.
-local origSend = SendChatMessage
-local function guardedSend(msg, chatType, ...)
-  local cf = ui.chat
-  if cf and msg and SELECTED_CHAT_FRAME == cf then
-    local eb = ChatEdit_GetActiveWindow and ChatEdit_GetActiveWindow() or (ChatEdit_GetLastActiveWindow and ChatEdit_GetLastActiveWindow())
-    if eb and (eb.chatFrame == cf or eb == (cf.editBox or _G[cf:GetName() .. "EditBox"])) then
-      cf:AddMessage(string.format("|cff5b616c%s|r %sYou:|r %s", stamp(now()), COLORS.me, msg))
-      send(msg)
-      cf:AddMessage("|cff5b616cqueued - leaves the game on /reload (or /ahd sync)|r")
-      return
-    end
-  end
-  return origSend(msg, chatType, ...)
-end
-if origSend then SendChatMessage = guardedSend end
-if C_ChatInfo and C_ChatInfo.SendChatMessage and not ui.guardedC then
-  local o = C_ChatInfo.SendChatMessage
-  C_ChatInfo.SendChatMessage = function(msg, chatType, ...)
-    local cf = ui.chat
-    if cf and msg and SELECTED_CHAT_FRAME == cf then return guardedSend(msg, chatType, ...) end
-    return o(msg, chatType, ...)
-  end
-  ui.guardedC = true
-end
 
 local function announceNew()
   local d, fresh = db(), 0
