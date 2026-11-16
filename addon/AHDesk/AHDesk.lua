@@ -326,6 +326,16 @@ local function findTab()
   end
 end
 
+local function ensureDocked(cf)
+  if not cf then return end
+  if FCF_DockFrame and GENERAL_CHAT_DOCK and FCFDock_GetChatFrames and not cf.isDocked then
+    safe(FCF_DockFrame, cf, #FCFDock_GetChatFrames(GENERAL_CHAT_DOCK) + 1, false)
+  end
+  if FCF_SetWindowName then safe(FCF_SetWindowName, cf, TAB) end
+  if SetChatWindowShown then local id = cf:GetID(); if id then safe(SetChatWindowShown, id, true) end end
+  cf:Show()
+end
+
 local function buildTab()
   if ui.chat then return ui.chat end
   local cf = findTab()
@@ -336,6 +346,7 @@ local function buildTab()
   if ChatFrame_RemoveAllMessageGroups then ChatFrame_RemoveAllMessageGroups(cf) end
   if ChatFrame_RemoveAllChannels then ChatFrame_RemoveAllChannels(cf) end
   ui.chat = cf
+  ensureDocked(cf)
   -- typing in this tab goes to the outbox, never to /say
   local eb = cf.editBox or _G[cf:GetName() .. "EditBox"]
   if eb and not eb.ahdHooked then
@@ -361,8 +372,10 @@ end
 
 local function say(text, who)
   local cf = ui.chat or buildTab()
+  if cf and not cf:IsShown() then ensureDocked(cf) end
   local line = string.format("|cff5b616c%s|r %s%s:|r %s", stamp(now()), COLORS[who or "alert"], LABEL[who or "alert"], text)
-  if cf then cf:AddMessage(line) else DEFAULT_CHAT_FRAME:AddMessage(PREFIX .. text) end
+  if cf then cf:AddMessage(line) end
+  if not cf or not cf:IsShown() then DEFAULT_CHAT_FRAME:AddMessage(PREFIX .. text) end
 end
 
 local function announceNew()
@@ -515,6 +528,8 @@ f:SetScript("OnEvent", function(_, event, arg1)
     if GameTooltip and GameTooltip.HookScript then safe(GameTooltip.HookScript, GameTooltip, "OnTooltipSetItem", onTooltipItem) end
     if C_Timer and C_Timer.After then
       C_Timer.After(4, function() safe(buildTab); safe(snapshot); safe(announceNew) end)
+      C_Timer.After(12, function() if ui.chat then safe(ensureDocked, ui.chat) end end)
+      C_Timer.After(25, function() if ui.chat then safe(ensureDocked, ui.chat) end end)
     else
       safe(snapshot); safe(announceNew)
     end
@@ -542,6 +557,9 @@ SlashCmdList["AHDESK"] = function(msg)
     toggle()
   elseif cmd == "sync" then
     snapshot(); ReloadUI()
+  elseif cmd == "chat" then
+    ui.chat = nil; safe(buildTab)
+    if ui.chat then ensureDocked(ui.chat); say("chat tab ready", "claude") else DEFAULT_CHAT_FRAME:AddMessage(PREFIX .. "could not create the chat tab") end
   elseif cmd == "debug" then
     local function has(n) return _G[n] and "yes" or "NO" end
     DEFAULT_CHAT_FRAME:AddMessage(PREFIX .. "GetNumSkillLines " .. has("GetNumSkillLines") .. ", GetSkillLineInfo " .. has("GetSkillLineInfo") ..
