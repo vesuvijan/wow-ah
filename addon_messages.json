@@ -8,5 +8,10 @@
   "id": "c2",
   "t": 1794821728,
   "text": "Karakter verin geldi (gear, statlar, meslekler). Cooking 150/150'de tavanda: Expert Cooking'i bir cooking eğitmeninden öğren, yoksa Agility yemekleri skill vermez. Mining 267/300: Thorium Ore için 8 puan kaldı."
+ },
+ {
+  "id": "c3",
+  "t": 1794822760,
+  "text": "Mesajların bana ulaştı: \"yo sup\", \"all good dog?\". Hepsi iyi, çalışıyor. AH penceresinden yazdığın mesajlar /reload ile bana geliyor."
  }
 ]
