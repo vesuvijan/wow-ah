@@ -169,7 +169,57 @@ local function scanStats()
   end
 end
 
+local function scanProfessions()
+  local c, out = char(), {}
+  if GetProfessions and GetProfessionInfo then
+    for _, idx in pairs({ GetProfessions() }) do
+      if idx then
+        local name, _, rank, maxRank, _, _, skillLine = GetProfessionInfo(idx)
+        if name then out[#out + 1] = { n = name, r = rank, m = maxRank, id = skillLine } end
+      end
+    end
+  end
+  if #out == 0 and C_TradeSkillUI and C_TradeSkillUI.GetAllProfessionTradeSkillLines then
+    for _, id in ipairs(C_TradeSkillUI.GetAllProfessionTradeSkillLines() or {}) do
+      local i = C_TradeSkillUI.GetProfessionInfoBySkillLineID and C_TradeSkillUI.GetProfessionInfoBySkillLineID(id)
+      if i and i.professionName then out[#out + 1] = { n = i.professionName, r = i.skillLevel, m = i.maxSkillLevel, id = id } end
+    end
+  end
+  c.professions = out
+end
+
+local function scanSpecs()
+  local c = char()
+  local out = {}
+  if C_SpecializationInfo and C_SpecializationInfo.GetSpecialization then
+    out.active = C_SpecializationInfo.GetSpecialization()
+    if GetSpecializationInfo and out.active then out.activeName = select(2, GetSpecializationInfo(out.active)) end
+  end
+  if C_ClassTalents and C_Traits and C_ClassTalents.GetActiveConfigID then
+    local cfg = C_ClassTalents.GetActiveConfigID()
+    if cfg then
+      local info = C_Traits.GetConfigInfo(cfg)
+      local picked = {}
+      for _, tree in ipairs(info and info.treeIDs or {}) do
+        for _, node in ipairs(C_Traits.GetTreeNodes(tree) or {}) do
+          local ni = C_Traits.GetNodeInfo(cfg, node)
+          if ni and ni.ranksPurchased and ni.ranksPurchased > 0 and ni.activeEntry then
+            local e = C_Traits.GetEntryInfo(cfg, ni.activeEntry.entryID)
+            local d = e and e.definitionID and C_Traits.GetDefinitionInfo(e.definitionID)
+            local name = d and d.overrideName
+            if not name and d and d.spellID and C_Spell and C_Spell.GetSpellName then name = C_Spell.GetSpellName(d.spellID) end
+            picked[#picked + 1] = { n = name or tostring(node), r = ni.ranksPurchased, m = ni.maxRanks }
+          end
+        end
+      end
+      out.talents = picked
+    end
+  end
+  c.specs = out
+end
+
 local function scanSkills()
+  safe(scanProfessions); safe(scanSpecs)
   if not GetNumSkillLines then return end
   local c, out, header = char(), {}, nil
   for i = 1, GetNumSkillLines() do
@@ -544,11 +594,15 @@ SlashCmdList["AHDESK"] = function(msg)
     ui.chat = nil; safe(buildTab)
     if ui.chat then ensureDocked(ui.chat); say("chat tab ready", "claude") else DEFAULT_CHAT_FRAME:AddMessage(PREFIX .. "could not create the chat tab") end
   elseif cmd == "debug" then
+    safe(scanSkills)
     local function has(n) return _G[n] and "yes" or "NO" end
     DEFAULT_CHAT_FRAME:AddMessage(PREFIX .. "GetNumSkillLines " .. has("GetNumSkillLines") .. ", GetSkillLineInfo " .. has("GetSkillLineInfo") ..
       ", GetNumTalentTabs " .. has("GetNumTalentTabs") .. ", GetTalentInfo " .. has("GetTalentInfo") ..
       ", C_SkillLine " .. (C_SkillLine and "yes" or "NO") .. ", C_ClassTalents " .. (C_ClassTalents and "yes" or "NO") ..
-      ", C_SpecializationInfo " .. (C_SpecializationInfo and "yes" or "NO") .. ", GetNumSkillLines()=" .. tostring(GetNumSkillLines and GetNumSkillLines()))
+      ", C_SpecializationInfo " .. (C_SpecializationInfo and "yes" or "NO") .. ", GetProfessions " .. has("GetProfessions") .. ", C_Traits " .. (C_Traits and "yes" or "NO") ..
+      ", C_TradeSkillUI " .. (C_TradeSkillUI and "yes" or "NO"))
+    local c = char()
+    DEFAULT_CHAT_FRAME:AddMessage(PREFIX .. "professions " .. #(c.professions or {}) .. ", talents " .. #((c.specs or {}).talents or {}) .. ", spec " .. tostring((c.specs or {}).activeName))
   elseif cmd == "status" then
     local c = char()
     DEFAULT_CHAT_FRAME:AddMessage(PREFIX .. string.format("bags %s, bank %s, auctions %s, outbox %d. Inbox built %s.",
