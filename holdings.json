@@ -1,11 +1,11 @@
 {
- "Mithril Ore": 155,
+ "Mithril Ore": 180,
  "Solid Stone": 198,
  "Mageweave Cloth": 264,
  "Silk Cloth": 264,
  "Dense Stone": 19,
- "Truesilver Ore": 23,
- "Thorium Ore": 15,
+ "Truesilver Ore": 25,
+ "Thorium Ore": 178,
  "Iron Ore": 85,
  "Gold Ore": 13,
  "Rugged Leather": 49,
@@ -15,5 +15,8 @@
  "Wicked Claw": 1,
  "Heavy Hide": 4,
  "Thick Hide": 9,
- "Linen Cloth": 18
+ "Linen Cloth": 18,
+ "Heavy Thorium Ore": 23,
+ "Dark Iron Ore": 11,
+ "Arcane Crystal": 1
 }
