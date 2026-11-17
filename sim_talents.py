@@ -8,6 +8,7 @@ import sim_survival as S
 
 W = S.W
 W["Frenzied Striker"].update(hit=2)
+W["Distracting Dagger"] = dict(min=37, max=69, spd=1.30, ap=0, agi=3, str=0, crit=0, hit=0, hand="oh")
 W["Bloodseeker"] = dict(min=85, max=128, spd=3.30, ap=0, rap=0, agi=7, str=8, crit=0, hit=0)
 
 # mevcut (char_live.json) talent rank'lari: statlarda zaten ISLENMIS
@@ -97,7 +98,13 @@ def dps(tal, melee_w=("2h", "Frenzied Striker"), ranged="Bloodseeker", uptime=0.
     mb_d = (A["mb_flat"] + A["mb_ap"] * ap) * sav * arm
     out["Mongoose Bite"] = mb_n * ex(mb_d, cr, cm_m, 0.0) * (1 + 0.4 * tal["lacerating"]) * lw
     mh_sw = max(Tm / mh["spd"] - rs_n, 0)
-    out["Melee swings"] = mh_sw * ex(wd(mh) * sav * arm, cr, A["crit_mult"], miss) * lw
+    dwx = A["dw_extra_miss"] if melee_w[0] == "dw" else 0.0
+    miss_w = max(0.0, A["miss_base"] + dwx - hit / 100)
+    out["Melee swings"] = mh_sw * ex(wd(mh) * sav * arm, cr, A["crit_mult"], miss_w) * lw
+    if melee_w[0] == "dw":
+        oh = c["weapons"][1]
+        oh_d = wd(oh) * 0.5 * (1 + 0.10 * tal["predator_edge"]) * sav * arm
+        out["Off hand swings"] = (Tm / oh["spd"]) * ex(oh_d, cr, A["crit_mult"], miss_w) * lw
     tot = sum(out.values()) / T
     return (tot, {k: v / T for k, v in out.items()}) if detail else tot
 
