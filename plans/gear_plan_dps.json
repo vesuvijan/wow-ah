@@ -3926,24 +3926,24 @@
  "equipped": [
   {
    "slot": "NECK",
-   "name": "Amberglow Talisman",
-   "id": 10824,
-   "ilvl": 44,
-   "q": "RARE",
+   "name": "Imperial Jewel",
+   "id": 11933,
+   "ilvl": null,
+   "q": null,
    "enchant": null
   },
   {
-   "slot": "CHEST",
-   "name": "Fungus Shroud Armor",
-   "id": 17742,
+   "slot": "HEAD",
+   "name": "Backwood Helm",
+   "id": 18421,
    "ilvl": null,
    "q": null,
    "enchant": null
   },
   {
    "slot": "TRINKET_1",
-   "name": "Carrot on a Stick",
-   "id": 11122,
+   "name": "Thaelemaches' Talisman",
+   "id": 276337,
    "ilvl": null,
    "q": null,
    "enchant": null
@@ -3966,8 +3966,8 @@
   },
   {
    "slot": "RANGED",
-   "name": "Megashot Rifle",
-   "id": 17717,
+   "name": "Bloodseeker",
+   "id": 19107,
    "ilvl": null,
    "q": null,
    "enchant": null
@@ -3982,56 +3982,48 @@
   },
   {
    "slot": "BACK",
-   "name": "Ranger Cloak of the Wolf",
-   "id": 7483,
-   "ilvl": 40,
-   "q": "UNCOMMON",
-   "enchant": null
-  },
-  {
-   "slot": "OFF_HAND",
-   "name": "Dustwallow Dirk",
-   "id": 279474,
-   "ilvl": null,
-   "q": null,
-   "enchant": null
-  },
-  {
-   "slot": "FEET",
-   "name": "Albino Crocscale Boots",
-   "id": 17728,
-   "ilvl": null,
-   "q": null,
-   "enchant": null
-  },
-  {
-   "slot": "TRINKET_2",
-   "name": "Devilsaur Eye",
-   "id": 19991,
+   "name": "Staghide Drape",
+   "id": 274035,
    "ilvl": null,
    "q": null,
    "enchant": null
   },
   {
    "slot": "MAIN_HAND",
-   "name": "Thrash Blade",
-   "id": 17705,
+   "name": "Frenzied Striker",
+   "id": 13056,
    "ilvl": null,
    "q": null,
    "enchant": null
   },
   {
-   "slot": "HEAD",
-   "name": "Shapeshifter's Helm",
-   "id": 270117,
+   "slot": "LEGS",
+   "name": "Searingscale Leggings",
+   "id": 11749,
+   "ilvl": null,
+   "q": null,
+   "enchant": null
+  },
+  {
+   "slot": "FEET",
+   "name": "Fleetfoot Greaves",
+   "id": 11627,
+   "ilvl": null,
+   "q": null,
+   "enchant": null
+  },
+  {
+   "slot": "CHEST",
+   "name": "Fungus Shroud Armor",
+   "id": 17742,
    "ilvl": null,
    "q": null,
    "enchant": null
   },
   {
    "slot": "WAIST",
-   "name": "Seared Mail Girdle",
-   "id": 19125,
+   "name": "Sash of the Grand Hunt",
+   "id": 22207,
    "ilvl": null,
    "q": null,
    "enchant": null
@@ -4045,11 +4037,11 @@
    "enchant": null
   },
   {
-   "slot": "LEGS",
-   "name": "Oilskin Leggings",
-   "id": 9414,
-   "ilvl": 47,
-   "q": "RARE",
+   "slot": "TRINKET_2",
+   "name": "Devilsaur Eye",
+   "id": 19991,
+   "ilvl": null,
+   "q": null,
    "enchant": null
   },
   {
@@ -4088,7 +4080,7 @@
  },
  "total": 624.3,
  "meta": {
-  "level": 55,
+  "level": 60,
   "plan_max": 60,
   "tooltips": 5125,
   "candidates": 2366,
