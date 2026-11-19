@@ -125,6 +125,7 @@ jobs:
           path: site
       - name: Publish to snapshot branch
         run: |
+          python markets_sel.py || true
           rm -rf data/names.json data/recipes.json data/ahl.json data/markets data/char.json data/tooltips_ofa.json
           git config user.name "ah-bot"
           git config user.email "ah-bot@users.noreply.github.com"
