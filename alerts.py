@@ -150,6 +150,24 @@ def run(snap, series, watch, hold=(), need_map=None, cfg_path="alerts.json"):
                 found.append(("dip" if (have or iid in INVEST) else "move", f"dip{iid}", lotp,
                               [nm, money(lotp), money(dip), f"-{dn}%", str(cheap), have_txt, lot], dn))
 
+    # 1b2) alim hedefleri (alerts.json: buy_targets {item_id: [bakir esikler]}): en ucuz ilan esigin altina inince "dip" olarak uyar
+    try:
+        for iid_s, thrs in (cfg.get("buy_targets") or {}).items():
+            lst_ = sorted((p_, q_) for p_, q_ in snap["items"].get(str(iid_s), {}).get("l", []))
+            if not lst_:
+                continue
+            p0, q0 = lst_[0]
+            hit = [t for t in thrs if p0 <= t]
+            if not hit:
+                continue
+            tgt_ = min(hit)                      # en siki esik: o kadar ucuz = daha guclu sinyal
+            nm_ = names.get(int(iid_s), iid_s)
+            cheap_ = sum(q for p_, q in lst_ if p_ <= max(thrs))
+            found.append(("dip", f"buy{iid_s}_{tgt_}", p0,
+                          [nm_, money(p0), money(max(thrs)), "target", str(cheap_), "", f"{q0} listed at {money(p0)}"], 100 - round(100 * p0 / max(thrs))))
+    except Exception as e:  # noqa: BLE001
+        print("buy_targets hatasi:", e)
+
     # 1c) vendor flip: craft -> NPC'ye sat
     try:
         for r in vendor_flips(snap, cfg):
