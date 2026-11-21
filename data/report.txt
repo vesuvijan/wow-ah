@@ -1,0 +1,119 @@
+Rapor: 2026-11-21T13:25:40Z | house 123 | 236 olcum, 2026-11-11T19:22:14Z -> 2026-11-21T13:25:40Z
+
+== TAILORING ==
+item                                   simdi   24s ort  7g medyan    7g min   stok  sinyal
+Linen Cloth                              25c       28c        27c       15c   3016  AL
+Wool Cloth                            2s 95c    1s 39c     1s 25c       56c   1375  BEKLE
+Silk Cloth                            1s 96c    1s 90c     1s 95c    1s 49c   3367  BEKLE
+Mageweave Cloth                       5s 12c    5s 31c      5s 0c    3s 68c   2759  normal
+Bolt of Linen                            58c       61c        62c       42c    314  normal
+Bolt of Woolen                        4s 99c    6s 52c     4s 50c    2s 99c    734  BEKLE
+Bolt of Silk                          8s 71c    8s 92c     8s 72c    7s 40c     92  normal
+Bolt of Mageweave                    21s 31c   26s 58c    25s 62c   15s 89c    305  AL
+Coarse Thread                            90c       71c        20c       11c    610  BEKLE
+Fine Thread                              98c       97c     1s 25c       85c      7  AL
+Silken Thread                         7s 78c    7s 75c     7s 46c    3s 98c    164  BEKLE
+Heavy Silken Thread                  24s 99c   30s 95c     25s 0c     8s 0c     55  normal
+Red Dye                                2s 0c     2s 5c     1s 20c       30c    115  BEKLE
+Elixir of Wisdom                      1s 44c    1s 31c     1s 41c       92c    101  normal
+Gloves of Meditation (satis)         14s 98c   16s 83c    13s 80c    8s 99c     30  normal
+Magenta Dye                           29s 0c    27s 9c     24s 0c   14s 90c    122  normal
+Cerulean Dye                         49s 87c   53s 85c    39s 95c   25s 26c    133  BEKLE
+Mageweave Reagent Bag (satis)      3g 60s 0c3g 42s 58c  3g 49s 0c 2g 50s 0c      2  BEKLE
+
+== ENGINEERING ==
+item                                   simdi   24s ort  7g medyan    7g min   stok  sinyal
+Rough Stone                               9c        9c         9c        3c   1312  normal
+Coarse Stone                          2s 50c    1s 63c        87c       45c   1423  BEKLE
+Heavy Stone                           2s 67c    3s 83c     3s 70c     1s 0c   1279  AL
+Solid Stone                           1s 83c    1s 73c     2s 36c     1s 0c   1281  AL
+Copper Bar                            1s 39c    1s 56c     1s 16c       66c   1586  BEKLE
+Bronze Bar                            1s 79c    1s 85c     1s 92c    1s 25c   1627  normal
+Silver Bar                             8s 0c    7s 64c     6s 18c    3s 43c     98  BEKLE
+Steel Bar                            10s 98c    9s 58c     9s 79c    7s 10c    713  BEKLE
+Mithril Bar                          15s 45c   16s 61c    14s 44c     9s 0c    557  BEKLE
+Medium Leather                         1s 0c    1s 16c      1s 5c       65c   2002  normal
+Weak Flux                             1s 18c    1s 17c     1s 30c       99c     19  AL
+Moss Agate                            5s 90c    6s 41c      7s 0c    4s 89c    101  AL
+Copper Ore                            1s 11c    1s 51c     1s 10c       77c   2359  normal
+Mithril Ore                          15s 97c    16s 2c    12s 86c    7s 99c   1295  BEKLE
+
+== FAVOR ==
+item                                   simdi   24s ort  7g medyan    7g min   stok  sinyal
+Crate Journeyman Herbs               20s 97c   21s 68c    17s 99c     1s 0c     23  BEKLE
+Crate Journeyman Parts               18s 69c   16s 96c     21s 0c     5s 0c     43  normal
+Crate Journeyman Textiles            11s 73c   16s 39c    13s 78c    5s 20c     84  normal
+Crate Journeyman Fabrics             59s 99c   55s 57c     45s 0c    15s 0c     42  BEKLE
+Crate Apprentice Herbs                18s 0c   16s 51c     11s 0c     3s 0c     39  BEKLE
+Bronze Framework                     10s 92c   12s 85c    11s 40c     8s 0c    124  normal
+Bruiseweed                               94c     1s 3c     1s 35c       77c    626  AL
+Silverleaf                               21c       18c        20c       12c   2099  normal
+Stranglekelp                          4s 71c    5s 78c     2s 68c    1s 26c   2121  BEKLE
+
+== ALCHEMY ==
+item                                   simdi   24s ort  7g medyan    7g min   stok  sinyal
+Peacebloom                             3s 0c    1s 99c        70c       40c   1768  BEKLE
+Mageroyal                                65c       83c        79c       33c   1063  normal
+Earthroot                                90c    1s 19c        69c       38c   1025  BEKLE
+Briarthorn                            3s 25c    1s 79c     1s 29c       90c    664  BEKLE
+Firefin Snapper                          75c       45c        36c       10c   1926  BEKLE
+Kingsblood                             1s 0c    1s 15c     1s 30c       69c   1297  AL
+Liferoot                              2s 50c    2s 65c     2s 33c       99c    905  normal
+Empty Vial                                6c       33c         8c        4c     26  AL
+Leaded Vial                              88c     1s 0c     1s 55c       87c    229  AL
+
+== ENCHANTING ==
+item                                   simdi   24s ort  7g medyan    7g min   stok  sinyal
+Strange Dust                             90c    1s 10c     1s 14c       84c   2008  AL
+Soul Dust                             4s 70c    6s 59c     4s 39c    2s 99c   1345  normal
+Vision Dust                           8s 88c    8s 94c    10s 50c    4s 87c    191  AL
+Lesser Magic Essence                  1s 97c    2s 26c      2s 0c     1s 1c   1379  normal
+Greater Astral Essence               39s 97c   37s 75c    17s 25c   12s 20c    274  BEKLE
+Mote of Magic                             6c        9c        22c        4c    237  AL
+Maple Seed                            4s 50c    5s 22c     5s 84c    4s 50c     95  AL
+
+== ELINDEKILER (mining/skinning) ==
+item                                   simdi   24s ort  7g medyan    7g min   stok  sinyal
+Tin Ore                               1s 35c    1s 53c     1s 50c       50c    799  normal
+Iron Ore                              2s 96c    2s 95c     2s 98c    1s 88c    894  normal
+Silver Ore                            12s 2c    9s 25c     6s 72c    4s 73c    577  BEKLE
+Gold Ore                              9s 98c   10s 28c    11s 40c    5s 91c    218  normal
+Malachite                                15c       23c        17c       10c    196  AL
+Tigerseye                              1s 8c    1s 20c     1s 22c       98c    229  normal
+Shadowgem                             2s 92c    2s 93c     2s 95c    1s 78c    140  normal
+Lesser Moonstone                      20s 0c   11s 17c     6s 29c    5s 18c    133  BEKLE
+Jade                                  7s 42c    7s 66c     7s 49c     5s 0c    104  normal
+Citrine                               10s 0c    9s 94c     10s 1c    7s 99c     46  normal
+Aquamarine                            14s 0c    15s 2c    16s 98c    10s 0c     58  AL
+Star Ruby                             55s 0c   65s 24c    63s 94c    50s 0c     83  AL
+Azerothian Diamond                2g 69s 99c3g 37s 41c 3g 55s 92c  1g 0s 3c     34  normal
+Ruined Leather Scraps                    18c       20c        19c        9c   1171  normal
+Light Leather                            45c       57c        58c       35c   1263  AL
+Heavy Leather                         4s 84c    3s 58c     2s 98c    1s 79c   1268  BEKLE
+Thick Leather                         6s 25c    5s 98c     6s 99c    4s 22c   1224  normal
+Rugged Leather                       20s 46c   21s 96c    19s 58c    6s 40c   1578  BEKLE
+Light Hide                            1s 49c    1s 34c     1s 52c       50c     97  normal
+Medium Hide                           2s 50c    3s 60c     3s 22c    1s 83c    240  normal
+Heavy Hide                           14s 37c   13s 59c    13s 25c    3s 80c    116  BEKLE
+Thick Hide                            5s 11c     5s 7c      6s 0c    4s 90c     33  normal
+Turtle Scale                          6s 15c     9s 3c    18s 99c    6s 15c    452  AL
+Worn Dragonscale                      5s 22c    5s 43c     7s 58c     5s 0c     74  AL
+Green Whelp Scale                     20s 0c   16s 66c    15s 96c   12s 99c     15  BEKLE
+Devilsaur Leather                     84s 0c 1g 4s 32c  1g 30s 0c   38s 98c    217  AL
+Runecloth                             6s 97c    7s 98c     6s 92c    4s 22c   4350  normal
+Truesilver Ore                       19s 74c   20s 23c    19s 27c   11s 99c    445  normal
+Thorium Ore                           17s 0c   19s 82c     22s 0c   13s 93c    712  AL
+Scorpid Scale                        17s 50c   18s 17c    19s 70c    3s 89c    129  normal
+Wicked Claw                           8s 19c    7s 56c     8s 65c    4s 99c     90  normal
+Cured Light Hide                       2s 6c    2s 83c     2s 46c    1s 29c    291  normal
+Cured Medium Hide                     5s 44c    6s 42c     5s 25c    2s 50c    411  normal
+Cured Heavy Hide                     20s 99c   22s 25c    19s 90c   10s 49c    177  normal
+Cured Thick Hide                     39s 49c   39s 99c     25s 0c   11s 50c    161  BEKLE
+
+== ROTA MALIYETI (ort. en ucuz 200 birim fiyatiyla) ==
+Tailoring 1->190 (kumas): simdi 32g 12s 25c | 7g medyan 24g 51s 42c | 7g en ucuz 18g 12s 87c
+Engineering 1->225 (hammadde): simdi 28g 46s 2c | 7g medyan 26g 38s 50c | 7g en ucuz 17g 2s 12c
+Alchemy 1->225 (herb, sise): simdi 13g 64s 61c | 7g medyan 8g 6s 51c | 7g en ucuz 4g 42s 34c
+Enchanting 1->225 (tozlar): simdi - | 7g medyan - | 7g en ucuz -
+
+Not: AL = fiyat son 7 gunun en ucuz %20'lik dilimi; en az 12 olcum (12 saat) sonra anlamli.
