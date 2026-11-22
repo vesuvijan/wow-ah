@@ -9,6 +9,10 @@ on:
         description: "tiklanacak sekmeler (virgulle, orn. Skinning)"
         required: false
         default: ""
+      click:
+        description: "tiklanacak metinler (virgulle, orn. Hunter)"
+        required: false
+        default: ""
       next:
         description: "drops listesinde Next ile 2. sayfa (1)"
         required: false
@@ -33,6 +37,7 @@ jobs:
           URLS: ${{ inputs.urls }}
           TABS: ${{ inputs.tabs }}
           NEXT: ${{ inputs.next }}
+          CLICK: ${{ inputs.click }}
         run: python wh_fetch.py
       - name: Publish
         run: |

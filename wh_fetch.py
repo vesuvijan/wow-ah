@@ -9,7 +9,7 @@ from urllib.parse import urlparse
 
 from playwright.sync_api import sync_playwright
 
-ALLOWED = ("wowhead.com", "wow.gg", "timesaver.gg", "icy-veins.com", "mobalytics.gg", "ahledger.com", "wowbackend-production.up.railway.app")
+ALLOWED = ("wowhead.com", "wow.gg", "timesaver.gg", "icy-veins.com", "mobalytics.gg", "ahledger.com", "wowbackend-production.up.railway.app", "mythicsim.com")
 RAW = ("/api/", ".json", ".csv")
 urls = [u for u in re.split(r"\s+", os.environ.get("URLS", "").strip()) if u]
 os.makedirs("data", exist_ok=True)
@@ -46,7 +46,7 @@ with sync_playwright() as p:
                 ct = resp.headers.get("content-type", "")
                 if resp.request.resource_type in ("xhr", "fetch") or "json" in ct or "csv" in ct:
                     body = resp.text()
-                    full = "railway.app" in resp.url
+                    full = "railway.app" in resp.url or "mythicsim" in resp.url
                     net.append({"url": resp.url, "status": resp.status, "ct": ct, "len": len(body), "head": body if full else body[:3000],
                                 "req_headers": resp.request.all_headers() if full else None})
             except Exception:  # noqa: BLE001
@@ -55,6 +55,14 @@ with sync_playwright() as p:
         try:
             r = pg.goto(u, wait_until="domcontentloaded", timeout=60000)
             pg.wait_for_timeout(6000)
+            txt = pg.inner_text("body")
+            open(f"data/page_{i}.txt", "w", encoding="utf-8").write(txt[:300000])
+            for cn in [c for c in os.environ.get("CLICK", "").split(",") if c]:   # metne gore tikla (orn. Hunter)
+                try:
+                    pg.get_by_text(cn, exact=True).first.click(timeout=8000)
+                    pg.wait_for_timeout(4000)
+                except Exception as e:  # noqa: BLE001
+                    print("click hatasi", cn, str(e)[:100])
             txt = pg.inner_text("body")
             open(f"data/page_{i}.txt", "w", encoding="utf-8").write(txt[:300000])
             for tn in [t for t in os.environ.get("TABS", "").split(",") if t]:   # sekme tikla (orn. Skinning) ve metni kaydet
