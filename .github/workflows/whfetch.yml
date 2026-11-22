@@ -5,6 +5,14 @@ on:
       urls:
         description: "https://*.wowhead.com sayfa adresleri (bosluk ile ayri)"
         required: true
+      tabs:
+        description: "tiklanacak sekmeler (virgulle, orn. Skinning)"
+        required: false
+        default: ""
+      next:
+        description: "drops listesinde Next ile 2. sayfa (1)"
+        required: false
+        default: ""
 permissions:
   contents: write
 jobs:
@@ -23,6 +31,8 @@ jobs:
       - name: Fetch pages
         env:
           URLS: ${{ inputs.urls }}
+          TABS: ${{ inputs.tabs }}
+          NEXT: ${{ inputs.next }}
         run: python wh_fetch.py
       - name: Publish
         run: |

@@ -57,6 +57,20 @@ with sync_playwright() as p:
             pg.wait_for_timeout(6000)
             txt = pg.inner_text("body")
             open(f"data/page_{i}.txt", "w", encoding="utf-8").write(txt[:300000])
+            for tn in [t for t in os.environ.get("TABS", "").split(",") if t]:   # sekme tikla (orn. Skinning) ve metni kaydet
+                try:
+                    pg.get_by_text(re.compile(r"^" + re.escape(tn) + r" \("), exact=False).first.click(timeout=8000)
+                    pg.wait_for_timeout(2500)
+                    open(f"data/page_{i}_{tn}.txt", "w", encoding="utf-8").write(pg.inner_text("body")[:300000])
+                except Exception as e:  # noqa: BLE001
+                    open(f"data/page_{i}_{tn}.txt", "w").write("tab hatasi: " + str(e)[:200])
+            if os.environ.get("NEXT"):                 # drops listesinde 'Next' ile 2. sayfa
+                try:
+                    pg.get_by_text("Next ›", exact=True).first.click(timeout=8000)
+                    pg.wait_for_timeout(2500)
+                    open(f"data/page_{i}_next.txt", "w", encoding="utf-8").write(pg.inner_text("body")[:300000])
+                except Exception as e:  # noqa: BLE001
+                    open(f"data/page_{i}_next.txt", "w").write("next hatasi: " + str(e)[:200])
             try:
                 links = pg.eval_on_selector_all("a[href]", "els => els.map(e => [e.innerText.trim().slice(0,80), e.href])")
                 json.dump([l for l in links if l[0]][:1500], open(f"data/links_{i}.json", "w"), ensure_ascii=False)
