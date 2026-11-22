@@ -69,7 +69,7 @@ jobs:
         run: python fetch_ah.py
       - name: Restore history and item names
         run: |
-          git fetch --depth=1 origin snapshot && for f in history.csv alert_state.json last_hash.txt report.txt minhist.json tipcache.json known_items.json alert_log.jsonl writ_prev.json status_sent.json flow.csv; do git show FETCH_HEAD:data/$f > data/$f 2>/dev/null || true; done || true
+          git fetch --depth=1 origin snapshot && for f in history.csv alert_state.json last_hash.txt report.txt minhist.json tipcache.json known_items.json alert_log.jsonl writ_prev.json status_sent.json flow.csv blue_seen.json; do git show FETCH_HEAD:data/$f > data/$f 2>/dev/null || true; done || true
           git show FETCH_HEAD:data/house_123.json > data/house_prev.json 2>/dev/null || true
           git fetch --depth=1 origin ahledger && git show FETCH_HEAD:data/ahl_forever.rppvp.alliance.eu.json > data/ahl.json 2>/dev/null || true
           git fetch --depth=1 origin char && git show FETCH_HEAD:data/char.json > data/char.json 2>/dev/null || true
@@ -86,6 +86,14 @@ jobs:
       - name: Sales flow (snapshot diff)
         continue-on-error: true
         run: python flow.py
+      - name: Blizzard blue posts / hotfixes (instant push)
+        continue-on-error: true
+        timeout-minutes: 3
+        env:
+          NTFY_TOPIC: docker-ah-f53611966a
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          BLUE_FORCE: ${{ inputs.test_discord && '1' || '' }}
+        run: python bluewatch.py
       - name: Discord test message
         if: ${{ inputs.test_discord }}
         env:
