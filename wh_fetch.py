@@ -72,7 +72,7 @@ with sync_playwright() as p:
                 except Exception as e:  # noqa: BLE001
                     open(f"data/page_{i}_next.txt", "w").write("next hatasi: " + str(e)[:200])
             try:
-                links = pg.eval_on_selector_all("a[href]", "els => els.map(e => [e.innerText.trim().slice(0,80), e.href])")
+                links = pg.eval_on_selector_all("a[href]", "els => els.map(e => [e.innerText.trim().slice(0,80), e.href, e.className])")
                 json.dump([l for l in links if l[0]][:1500], open(f"data/links_{i}.json", "w"), ensure_ascii=False)
             except Exception:  # noqa: BLE001
                 pass
