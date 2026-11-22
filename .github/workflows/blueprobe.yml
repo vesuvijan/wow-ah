@@ -15,16 +15,12 @@ jobs:
           UA="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120 Safari/537.36"
           i=0
           for u in \
-            "https://us.forums.blizzard.com/en/wow/c/wow-forever/346.json" \
-            "https://eu.forums.blizzard.com/en/wow/c/wow-forever/359.json" \
-            "https://us.forums.blizzard.com/en/wow/posts.json" \
-            "https://eu.forums.blizzard.com/en/wow/posts.json" \
-            "https://us.forums.blizzard.com/en/wow/c/wow-forever/346/l/latest.json" \
-            "https://us.forums.blizzard.com/en/wow/groups/blizzard-entertainment.json" \
-            "https://us.forums.blizzard.com/en/wow/latest.json" \
-            "https://news.blizzard.com/en-us/blog/list?community=wow&pageNum=1&pageSize=15" \
-            "https://www.warcrafttavern.com/forever/news/feed/" \
-            "https://www.warcrafttavern.com/blue-tracker/forever" ; do
+            "https://blue-tracker.warcrafttavern.com/rss/all" \
+            "https://blue-tracker.warcrafttavern.com/rss/forever" \
+            "https://blue-tracker.warcrafttavern.com/forever" \
+            "https://blue-tracker.warcrafttavern.com/" \
+            "https://www.warcrafttavern.com/blue-tracker/forever" \
+            "https://news.blizzard.com/en-us/world-of-warcraft" ; do
             i=$((i+1))
             code=$(curl -s -m 30 -A "$UA" -L -o out/p$i.txt -w "%{http_code} %{size_download}" "$u")
             echo "$i $code $u" | tee -a out/index.txt
