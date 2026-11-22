@@ -3942,8 +3942,8 @@
   },
   {
    "slot": "TRINKET_1",
-   "name": "Thaelemaches' Talisman",
-   "id": 276337,
+   "name": "Heart of Wyrmthalak",
+   "id": 22321,
    "ilvl": null,
    "q": null,
    "enchant": null
@@ -3982,16 +3982,16 @@
   },
   {
    "slot": "BACK",
-   "name": "Staghide Drape",
-   "id": 274035,
+   "name": "Stoneskin Gargoyle Cape",
+   "id": 13397,
    "ilvl": null,
    "q": null,
    "enchant": null
   },
   {
    "slot": "MAIN_HAND",
-   "name": "Frenzied Striker",
-   "id": 13056,
+   "name": "Peacemaker",
+   "id": 18725,
    "ilvl": null,
    "q": null,
    "enchant": null
@@ -4005,9 +4005,9 @@
    "enchant": null
   },
   {
-   "slot": "FEET",
-   "name": "Fleetfoot Greaves",
-   "id": 11627,
+   "slot": "TRINKET_2",
+   "name": "Blackhand's Breadth",
+   "id": 13965,
    "ilvl": null,
    "q": null,
    "enchant": null
@@ -4037,17 +4037,17 @@
    "enchant": null
   },
   {
-   "slot": "TRINKET_2",
-   "name": "Devilsaur Eye",
-   "id": 19991,
+   "slot": "FEET",
+   "name": "Beaststalker's Boots",
+   "id": 16675,
    "ilvl": null,
    "q": null,
    "enchant": null
   },
   {
    "slot": "SHOULDER",
-   "name": "Khan's Mantle",
-   "id": 14787,
+   "name": "Bone Golem Shoulders",
+   "id": 18686,
    "ilvl": null,
    "q": null,
    "enchant": null
