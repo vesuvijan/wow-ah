@@ -1,0 +1,36 @@
+name: Blue probe
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  p:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Probe sources
+        run: |
+          mkdir -p out
+          UA="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120 Safari/537.36"
+          i=0
+          for u in \
+            "https://news.blizzard.com/en-us/world-of-warcraft" \
+            "https://news.blizzard.com/en-us/feed" \
+            "https://us.forums.blizzard.com/en/wow/categories.json" \
+            "https://us.forums.blizzard.com/en/wow/c/blizzard-posts/l/latest.json" \
+            "https://eu.forums.blizzard.com/en/wow/categories.json" \
+            "https://www.wowhead.com/blue-tracker" \
+            "https://www.wowhead.com/blue-tracker/forever" \
+            "https://www.wowhead.com/forever/blue-tracker" \
+            "https://www.warcrafttavern.com/forever/news/" \
+            "https://www.warcrafttavern.com/feed/" ; do
+            i=$((i+1))
+            code=$(curl -s -m 30 -A "$UA" -L -o out/p$i.txt -w "%{http_code} %{size_download}" "$u")
+            echo "$i $code $u" | tee -a out/index.txt
+          done
+      - name: Publish
+        run: |
+          git config user.name ah-bot; git config user.email ah-bot@users.noreply.github.com
+          git checkout --orphan blueprobe; git rm -rf --cached . >/dev/null
+          git add -f out; git commit -qm probe; git push -f origin blueprobe
