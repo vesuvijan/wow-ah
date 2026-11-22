@@ -1,0 +1,6 @@
+1 200 17302 https://blue-tracker.warcrafttavern.com/rss/all
+2 404 9 https://blue-tracker.warcrafttavern.com/rss/forever
+3 404 9 https://blue-tracker.warcrafttavern.com/forever
+4 404 9 https://blue-tracker.warcrafttavern.com/
+5 200 236011 https://www.warcrafttavern.com/blue-tracker/forever
+6 200 2360100 https://news.blizzard.com/en-us/world-of-warcraft

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Warcraft Tavern Blue Tracker</title>
+    <link>https://www.warcrafttavern.com/blue-tracker</link>
+    <description>World of Warcraft Blue Post Tracker</description>
+    <language>en-us</language>
+    <ttl>5</ttl>
+    <lastBuildDate>Sun, 22 Nov 2026 23:00:45 GMT</lastBuildDate>
+    <item>
+      <title>WoW: Forever Hotfixes - November 19, 2026</title>
+      <link>https://www.warcrafttavern.com/blue-tracker/forever/post/eu/639885</link>
+      <description>November 20, 2026 
+Classes 
+
+Rogue
+
+Combat
+
+Blade Flurry will now correctly cause Shank’s damage to hit an additional target.
+
+
+
+
+Warlock
+
+Demonology
+
+Fixed a bug where the effects of the Demonic Aegis talent could be snapshotted into your Demon Armor or Demon Skin and then untalented to retain the ...</description>
+      <guid isPermaLink="false">forum-6522387</guid>
+      <category>eu</category>
+      <pubDate>Sat, 21 Nov 2026 05:19:23 GMT</pubDate>
+    </item>
+    <item>
+      <title>WoW: Forever Hotfixes - November 20, 2026</title>
+      <link>https://www.warcrafttavern.com/blue-tracker/forever/post/us/2403040</link>
+      <description>November 20, 2026 
+Classes 
+
+Rogue
+
+Combat
+
+Blade Flurry will now correctly cause Shank’s damage to hit an additional target.
+
+
+
+
+Warlock
+
+Demonology
+
+Fixed a bug where the effects of the Demonic Aegis talent could be snapshotted into your Demon Armor or Demon Skin and then untalented to retain the ...</description>
+      <guid isPermaLink="false">forum-31002979</guid>
+      <category>us</category>
+      <pubDate>Sat, 21 Nov 2026 05:18:29 GMT</pubDate>
+    </item>
+    <item>
+      <title>WoW: Forever Class Design, Echoes of the Worldcore, and More in WoW Weekly</title>
+      <link>https://www.warcrafttavern.com/blue-tracker/retail/post/eu/644663</link>
+      <description>&lt;a href="https://bnetcmsus-a.akamaihd.net/cms/blog_header/31/310HCMOPURA51795196528506.png"&gt;[WoW: Forever Class Design, Echoes of the Worldcore, and More in WoW Weekly]&lt;/a&gt; From the WoW: Forever Podcast&amp;#39;s focus on class design to the 1 December arrival of Midnight: Echoes of the Worldcore, Talebound&amp;#39;s macabre rewards, Mythic 2/6 gear in the Labyrinth of Kino&amp;#39;jan, and the World of Warcraft 22nd...</description>
+      <guid isPermaLink="false">forum-6521783</guid>
+      <category>eu</category>
+      <pubDate>Fri, 20 Nov 2026 23:00:13 GMT</pubDate>
+    </item>
+    <item>
+      <title>WoW: Forever Class Design, Echoes of the Worldcore, and More in WoW Weekly</title>
+      <link>https://www.warcrafttavern.com/blue-tracker/retail/post/eu/644662</link>
+      <description>&lt;a href="https://bnetcmsus-a.akamaihd.net/cms/blog_header/31/310HCMOPURA51795196528506.png"&gt;[WoW: Forever Class Design, Echoes of the Worldcore, and More in WoW Weekly]&lt;/a&gt; From the WoW: Forever Podcast&amp;#39;s focus on class design to the 1 December arrival of Midnight: Echoes of the Worldcore, Talebound&amp;#39;s macabre rewards, Mythic 2/6 gear in the Labyrinth of Kino&amp;#39;jan, and the World of Warcraft 22nd...</description>
+      <guid isPermaLink="false">forum-6521781</guid>
+      <category>eu</category>
+      <pubDate>Fri, 20 Nov 2026 23:00:11 GMT</pubDate>
+    </item>
+    <item>
+      <title>WoW: Forever Class Design, Echoes of the Worldcore, and More in WoW Weekly</title>
+      <link>https://www.warcrafttavern.com/blue-tracker/retail/post/us/2423714</link>
+      <description>&lt;a href="https://bnetcmsus-a.akamaihd.net/cms/blog_header/31/310HCMOPURA51795196528506.png"&gt;[WoW: Forever Class Design, Echoes of the Worldcore, and More in WoW Weekly]&lt;/a&gt; From the WoW: Forever Podcast&amp;#39;s focus on class design to the December 1 arrival of Midnight: Echoes of the Worldcore, Talebound&amp;#39;s macabre rewards, Mythic 2/6 gear in the Labyrinth of Kino&amp;#39;jan, and the World of Warcraft 22nd...</description>
+      <guid isPermaLink="false">forum-30998278</guid>
+      <category>us</category>
+      <pubDate>Fri, 20 Nov 2026 23:00:10 GMT</pubDate>
+    </item>
+    <item>
+      <title>WoW: Forever Class Design, Echoes of the Worldcore, and More in WoW Weekly</title>
+      <link>https://news.blizzard.com/en-gb/article/24317681/wow-forever-class-design-echoes-of-the-worldcore-and-more-in-wow-weekly</link>
+      <description>From the WoW: Forever Podcast's focus on class design to the 1 December arrival of Midnight: Echoes of the Worldcore, Talebound's macabre rewards, Mythic 2/6 gear in the Labyrinth of Kino'jan, and the World of Warcraft 22nd Anniversary Celebration, this week's news is packed with fresh stories, new challenges, and festive adventures across Azeroth. </description>
+      <guid isPermaLink="false">blog-24317681</guid>
+      <category>eu</category>
+      <pubDate>Fri, 20 Nov 2026 23:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Macabre Rewards Await in Talebound</title>
+      <link>https://www.warcrafttavern.com/blue-tracker/retail/post/eu/644361</link>
+      <description>&lt;a href="https://bnetcmsus-a.akamaihd.net/cms/blog_header/g4/G4A2V7IQCWEU1794608006650.jpg"&gt;[Macabre Rewards Await in Talebound]&lt;/a&gt; Madness stirs in Talebound’s darkest stories, and a telling tale isn’t without its just reward. Outfit yourself with a dark trove of cosmetic rewards using Bound Silver, a Warband-bound currency earned by completing quests, achievements, and progress in the Tales...</description>
+      <guid isPermaLink="false">forum-6519318</guid>
+      <category>eu</category>
+      <pubDate>Thu, 19 Nov 2026 23:00:17 GMT</pubDate>
+    </item>
+    <item>
+      <title>Macabre Rewards Await in Talebound</title>
+      <link>https://www.warcrafttavern.com/blue-tracker/retail/post/us/2422557</link>
+      <description>&lt;a href="https://bnetcmsus-a.akamaihd.net/cms/blog_header/g4/G4A2V7IQCWEU1794608006650.jpg"&gt;[Macabre Rewards Await in Talebound]&lt;/a&gt; Madness stirs in Talebound’s darkest stories, and a telling tale isn’t without its just reward. Outfit yourself with a dark trove of cosmetic rewards using Bound Silver, a Warband-bound currency earned by completing quests, achievements, and progress in the Tales...</description>
+      <guid isPermaLink="false">forum-30984954</guid>
+      <category>us</category>
+      <pubDate>Thu, 19 Nov 2026 23:00:16 GMT</pubDate>
+    </item>
+    <item>
+      <title>Macabre Rewards Await in Talebound</title>
+      <link>https://news.blizzard.com/en-gb/article/24317867/macabre-rewards-await-in-talebound</link>
+      <description>Madness stirs in Talebound’s darkest stories, and a telling tale isn’t without its just reward. Outfit yourself with a dark trove of cosmetic rewards using Bound Silver, a Warband-bound currency earned by completing quests, achievements, and progress in the Tales of the Storyteller. </description>
+      <guid isPermaLink="false">blog-24317867</guid>
+      <category>eu</category>
+      <pubDate>Thu, 19 Nov 2026 23:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>The WoW Forever Podcast: Episode 8 - Catching Up On Classes</title>
+      <link>https://www.warcrafttavern.com/blue-tracker/forever/post/eu/644354</link>
+      <description>&lt;a href="https://www.youtube.com/watch?v=67dDe3QgJtM" target="_blank" class="video-thumbnail" rel="noopener"&gt;
+    [Catching Up On Classes | Episode 8 - The WoW: Forever Podcast]
+  &lt;/a&gt;</description>
+      <guid isPermaLink="false">forum-6519271</guid>
+      <category>eu</category>
+      <pubDate>Thu, 19 Nov 2026 22:35:20 GMT</pubDate>
+    </item>
+    <item>
+      <title>The WoW Forever Podcast: Episode 8 - Catching Up On Classes</title>
+      <link>https://www.warcrafttavern.com/blue-tracker/forever/post/us/2422535</link>
+      <description>&lt;a href="https://www.youtube.com/watch?v=67dDe3QgJtM" target="_blank" class="video-thumbnail" rel="noopener"&gt;
+    [Catching Up On Classes | Episode 8 - The WoW: Forever Podcast]
+  &lt;/a&gt;</description>
+      <guid isPermaLink="false">forum-30984557</guid>
+      <category>us</category>
+      <pubDate>Thu, 19 Nov 2026 22:35:02 GMT</pubDate>
+    </item>
+    <item>
+      <title>Watch the WoW: Forever Podcast – Catching up on Classes</title>
+      <link>https://news.blizzard.com/en-us/article/24317086/watch-the-wow-forever-podcast-catching-up-on-classes</link>
+      <description>Join WoW: Forever Podcast host Countdown To Classic for a conversation with Senior Game Designer Aidan Moon and Principal Game Designer Kris Zierhut as they take careful aim on class design. </description>
+      <guid isPermaLink="false">blog-24317086</guid>
+      <category>us</category>
+      <pubDate>Thu, 19 Nov 2026 22:15:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Actions For Blackmaw Hold Abuse - 17 November</title>
+      <link>https://www.warcrafttavern.com/blue-tracker/forever/post/eu/643759</link>
+      <description>As players continue their journey into WoW Forever’s higher-level content, we are closely monitoring the game economy to ensure that gold sources and costs are well balanced. Finding efficient farming spots has always been part of the game, and is how most players have earned their epic mounts since...</description>
+      <guid isPermaLink="false">forum-6513699</guid>
+      <category>eu</category>
+      <pubDate>Tue, 17 Nov 2026 23:38:30 GMT</pubDate>
+    </item>
+    <item>
+      <title>Actions For Blackmaw Hold Abuse - November 17</title>
+      <link>https://www.warcrafttavern.com/blue-tracker/forever/post/us/2419757</link>
+      <description>As players continue their journey into WoW Forever’s higher-level content, we are closely monitoring the game economy to ensure that gold sources and costs are well balanced. Finding efficient farming spots has always been part of the game, and is how most players have earned their epic mounts since...</description>
+      <guid isPermaLink="false">forum-30953089</guid>
+      <category>us</category>
+      <pubDate>Tue, 17 Nov 2026 23:38:11 GMT</pubDate>
+    </item>
+    <item>
+      <title>Join the World of Warcraft 22nd Anniversary Celebration</title>
+      <link>https://www.warcrafttavern.com/blue-tracker/retail/post/us/2419659</link>
+      <description>&lt;a href="https://bnetcmsus-a.akamaihd.net/cms/blog_header/t8/T8OJTHYRZC9B1762889373861.png"&gt;[Join the World of Warcraft 22nd Anniversary Celebration]&lt;/a&gt; Join the celebration as World of Warcraft marks its 22nd Anniversary with a variety of activities and plenty of ways to earn currency to buy a wide range of items.  &lt;a href="https://worldofwarcraft.com/en-us/news/24316098"&gt;View Full Article&lt;/a&gt;</description>
+      <guid isPermaLink="false">forum-30952323</guid>
+      <category>us</category>
+      <pubDate>Tue, 17 Nov 2026 23:00:07 GMT</pubDate>
+    </item>
+    <item>
+      <title>Join the World of Warcraft 22nd Anniversary Celebration</title>
+      <link>https://www.warcrafttavern.com/blue-tracker/retail/post/us/2419660</link>
+      <description>&lt;a href="https://bnetcmsus-a.akamaihd.net/cms/blog_header/t8/T8OJTHYRZC9B1762889373861.png"&gt;[Join the World of Warcraft 22nd Anniversary Celebration]&lt;/a&gt; Join the celebration as World of Warcraft marks its 22nd Anniversary with a variety of activities and plenty of ways to earn currency to buy a wide range of items.  &lt;a href="https://worldofwarcraft.com/en-us/news/24316098"&gt;View Full Article&lt;/a&gt;</description>
+      <guid isPermaLink="false">forum-30952324</guid>
+      <category>us</category>
+      <pubDate>Tue, 17 Nov 2026 23:00:07 GMT</pubDate>
+    </item>
+    <item>
+      <title>Midnight: Echoes of the Worldcore Arrives on 1 December</title>
+      <link>https://www.warcrafttavern.com/blue-tracker/retail/post/eu/643740</link>
+      <description>&lt;a href="https://bnetcmsus-a.akamaihd.net/cms/blog_header/qt/QT4VNJYOTJO61794603658091.png"&gt;[Midnight: Echoes of the Worldcore Arrives on 1 December]&lt;/a&gt; Azeroth’s history is waiting beneath the Coreway. Return to Dornogal, face the Storyteller’s macabre tales in Talebound, and join Li Li Stormstout for a Lorewalk through the stories that shaped Azeroth.  &lt;a href="https://worldofwarcraft.com/en-gb/news/24317679"&gt;View Full Article&lt;/a&gt;</description>
+      <guid isPermaLink="false">forum-6513607</guid>
+      <category>eu</category>
+      <pubDate>Tue, 17 Nov 2026 23:00:04 GMT</pubDate>
+    </item>
+    <item>
+      <title>Midnight: Echoes of the Worldcore Arrives on December 1</title>
+      <link>https://www.warcrafttavern.com/blue-tracker/retail/post/us/2419657</link>
+      <description>&lt;a href="https://bnetcmsus-a.akamaihd.net/cms/blog_header/qt/QT4VNJYOTJO61794603658091.png"&gt;[Midnight: Echoes of the Worldcore Arrives on December 1]&lt;/a&gt; Azeroth’s history is waiting beneath the Coreway. Return to Dornogal, face the Storyteller’s macabre tales in Talebound, and join Li Li Stormstout for a Lorewalk through the stories that shaped Azeroth.  &lt;a href="https://worldofwarcraft.com/en-us/news/24317679"&gt;View Full Article&lt;/a&gt;</description>
+      <guid isPermaLink="false">forum-30952321</guid>
+      <category>us</category>
+      <pubDate>Tue, 17 Nov 2026 23:00:04 GMT</pubDate>
+    </item>
+    <item>
+      <title>Midnight: Echoes of the Worldcore Arrives on 1 December</title>
+      <link>https://news.blizzard.com/en-gb/article/24317679/midnight-echoes-of-the-worldcore-arrives-on-1-december</link>
+      <description>Azeroth’s history is waiting beneath the Coreway. Return to Dornogal, face the Storyteller’s macabre tales in Talebound, and join Li Li Stormstout for a Lorewalk through the stories that shaped Azeroth. </description>
+      <guid isPermaLink="false">blog-24317679</guid>
+      <category>eu</category>
+      <pubDate>Tue, 17 Nov 2026 23:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Talebound’s Twisted Tales and Deadly Fates Arrive December 1</title>
+      <link>https://www.warcrafttavern.com/blue-tracker/retail/post/eu/643739</link>
+      <description>&lt;a href="https://bnetcmsus-a.akamaihd.net/cms/blog_header/8u/8UFMC8UHQKJV1794498536521.jpg"&gt;[Talebound’s Twisted Tales and Deadly Fates Arrive December 1]&lt;/a&gt; Step into the macabre world of Talebound, where you become part of the dark chronicles of a mysterious Storyteller, chillingly brought to life.  &lt;a href="https://worldofwarcraft.com/en-gb/news/24316569"&gt;View Full Article&lt;/a&gt;</description>
+      <guid isPermaLink="false">forum-6513603</guid>
+      <category>eu</category>
+      <pubDate>Tue, 17 Nov 2026 22:59:14 GMT</pubDate>
+    </item>
+    <item>
+      <title>Talebound’s Twisted Tales and Deadly Fates Arrive December 1</title>
+      <link>https://www.warcrafttavern.com/blue-tracker/retail/post/us/2419653</link>
+      <description>&lt;a href="https://bnetcmsus-a.akamaihd.net/cms/blog_header/8u/8UFMC8UHQKJV1794498536521.jpg"&gt;[Talebound’s Twisted Tales and Deadly Fates Arrive December 1]&lt;/a&gt; Step into the macabre world of Talebound, where you become part of the dark chronicles of a mysterious Storyteller, chillingly brought to life.  &lt;a href="https://worldofwarcraft.com/en-us/news/24316569"&gt;View Full Article&lt;/a&gt;</description>
+      <guid isPermaLink="false">forum-30952294</guid>
+      <category>us</category>
+      <pubDate>Tue, 17 Nov 2026 22:59:09 GMT</pubDate>
+    </item>
+    <item>
+      <title>Talebound’s Twisted Tales and Deadly Fates Arrive December 1</title>
+      <link>https://news.blizzard.com/en-gb/article/24316569/talebounds-twisted-tales-and-deadly-fates-arrive-december-1</link>
+      <description>Step into the macabre world of Talebound, where you become part of the dark chronicles of a mysterious Storyteller, chillingly brought to life. </description>
+      <guid isPermaLink="false">blog-24316569</guid>
+      <category>eu</category>
+      <pubDate>Tue, 17 Nov 2026 22:59:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Join the World of Warcraft 22nd Anniversary Celebration</title>
+      <link>https://www.warcrafttavern.com/blue-tracker/retail/post/eu/643574</link>
+      <description>&lt;a href="https://bnetcmsus-a.akamaihd.net/cms/blog_header/t8/T8OJTHYRZC9B1762889373861.png"&gt;[Join the World of Warcraft 22nd Anniversary Celebration]&lt;/a&gt; Join the celebration as World of Warcraft marks its 22nd Anniversary with a variety of activities and plenty of ways to earn currency to buy a wide range of items.  &lt;a href="https://worldofwarcraft.com/en-gb/news/24316098"&gt;View Full Article&lt;/a&gt;</description>
+      <guid isPermaLink="false">forum-6511666</guid>
+      <category>eu</category>
+      <pubDate>Tue, 17 Nov 2026 14:00:06 GMT</pubDate>
+    </item>
+    <item>
+      <title>Join the World of Warcraft 22nd Anniversary Celebration</title>
+      <link>https://news.blizzard.com/en-gb/article/24316098/join-the-world-of-warcraft-22nd-anniversary-celebration</link>
+      <description>Join the celebration as World of Warcraft marks its 22nd Anniversary with a variety of activities and plenty of ways to earn currency to buy a wide range of items. </description>
+      <guid isPermaLink="false">blog-24316098</guid>
+      <category>eu</category>
+      <pubDate>Tue, 17 Nov 2026 14:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
