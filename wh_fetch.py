@@ -17,7 +17,7 @@ index = []
 with sync_playwright() as p:
     b = p.chromium.launch()
     ctx = b.new_context(user_agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120 Safari/537.36", viewport={"width": 1400, "height": 2000})
-    for i, u in enumerate(urls[:12], 1):
+    for i, u in enumerate(urls[:30], 1):
         host = (urlparse(u).hostname or "").lower()
         if not any(host == d or host.endswith("." + d) for d in ALLOWED) or urlparse(u).scheme != "https":
             index.append({"url": u, "error": "host izinli degil"}); continue
