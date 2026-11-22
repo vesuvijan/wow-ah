@@ -69,7 +69,8 @@ jobs:
         run: python fetch_ah.py
       - name: Restore history and item names
         run: |
-          git fetch --depth=1 origin snapshot && for f in history.csv alert_state.json last_hash.txt report.txt minhist.json tipcache.json known_items.json alert_log.jsonl writ_prev.json status_sent.json; do git show FETCH_HEAD:data/$f > data/$f 2>/dev/null || true; done || true
+          git fetch --depth=1 origin snapshot && for f in history.csv alert_state.json last_hash.txt report.txt minhist.json tipcache.json known_items.json alert_log.jsonl writ_prev.json status_sent.json flow.csv; do git show FETCH_HEAD:data/$f > data/$f 2>/dev/null || true; done || true
+          git show FETCH_HEAD:data/house_123.json > data/house_prev.json 2>/dev/null || true
           git fetch --depth=1 origin ahledger && git show FETCH_HEAD:data/ahl_forever.rppvp.alliance.eu.json > data/ahl.json 2>/dev/null || true
           git fetch --depth=1 origin char && git show FETCH_HEAD:data/char.json > data/char.json 2>/dev/null || true
           git fetch --depth=1 origin tooltips && git show FETCH_HEAD:data/tooltips_ofa.json > data/tooltips_ofa.json 2>/dev/null || true
@@ -82,6 +83,9 @@ jobs:
           SITE_URL: https://vesuvijan.github.io/wow-ah/
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: python history.py
+      - name: Sales flow (snapshot diff)
+        continue-on-error: true
+        run: python flow.py
       - name: Discord test message
         if: ${{ inputs.test_discord }}
         env:
@@ -126,6 +130,7 @@ jobs:
       - name: Publish to snapshot branch
         run: |
           python markets_sel.py || true
+          rm -f data/house_prev.json
           rm -rf data/names.json data/recipes.json data/ahl.json data/markets data/char.json data/tooltips_ofa.json
           git config user.name "ah-bot"
           git config user.email "ah-bot@users.noreply.github.com"
