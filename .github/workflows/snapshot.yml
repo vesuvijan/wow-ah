@@ -20,6 +20,10 @@ on:
         description: "Veri degismese de calistir (tek seferlik)"
         type: boolean
         default: false
+      blue_test:
+        description: "Blue post bildirimini test et (son 2 postu yolla)"
+        type: boolean
+        default: false
       wait:
         description: "Baslamadan once beklenecek saniye"
         type: string
@@ -92,7 +96,7 @@ jobs:
         env:
           NTFY_TOPIC: docker-ah-f53611966a
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          BLUE_FORCE: ${{ inputs.test_discord && '1' || '' }}
+          BLUE_FORCE: ${{ inputs.blue_test && '1' || '' }}
         run: python bluewatch.py
       - name: Discord test message
         if: ${{ inputs.test_discord }}

@@ -766,13 +766,13 @@ def post(payload):
 
 def demo():
     fresh = [
-        ("favor", ["Journeyman Parts", "1s 18c/F", "20", "4x Bronze Framework", "7s 10c", "3x ~70s 80c"], -118),
-        ("favor", ["Journeyman Herbs", "1s 38c/F", "10", "10x Bruiseweed", "8s 28c", "6x ~82s 80c"], -138),
-        ("mat", ["Silk Cloth", "1s 52c", "1s 90c", "-%20", "3525", "640"], 20),
-        ("mat", ["Bronze Bar", "1s 70c", "2s 10c", "-%19", "1869", "110"], 19),
-        ("flip", ["Iron Grenade", "4s 10c", "5s 0c", "90c", "Eng", ""], 9000),
-        ("sell", ["Mithril Ore", "1g 85s", "1g 30s", "+42%", "530", ""], 42),
-        ("snipe", ["Plans: Mithril Spurs", "5g 99s", "x2", "9g 99s", "~8g", "5"], 80000),
+        ("favor", ["[SAMPLE] Journeyman Parts", "1s 18c/F", "20", "4x Bronze Framework", "7s 10c", "3x ~70s 80c"], -118),
+        ("favor", ["[SAMPLE] Journeyman Herbs", "1s 38c/F", "10", "10x Bruiseweed", "8s 28c", "6x ~82s 80c"], -138),
+        ("mat", ["[SAMPLE] Silk Cloth", "1s 52c", "1s 90c", "-%20", "3525", "640"], 20),
+        ("mat", ["[SAMPLE] Bronze Bar", "1s 70c", "2s 10c", "-%19", "1869", "110"], 19),
+        ("flip", ["[SAMPLE] Iron Grenade", "4s 10c", "5s 0c", "90c", "Eng", ""], 9000),
+        ("sell", ["[SAMPLE] Mithril Ore", "1g 85s", "1g 30s", "+42%", "530", ""], 42),
+        ("snipe", ["[SAMPLE] Plans: Mithril Spurs", "5g 99s", "x2", "9g 99s", "~8g", "5"], 80000),
     ]
     send_embeds(fresh, datetime.datetime.utcnow() + datetime.timedelta(hours=3), demo=True,
                 status=["Favor best: Jrny Parts 1s27c/F (buy <= 1s20c)", "Tailoring route: 22g now (7d low 20g)", "Cheapest vs 7d: Silk 1s89c (p35)", "Holdings: top Iron Ore +8%, low Heavy Leather -3%"])
