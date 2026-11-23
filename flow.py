@@ -14,8 +14,12 @@ def load(p):
     except Exception:
         return None
 
+# her zaman izlenecekler: Devilsaur Leggings/Gauntlets + hammaddeler (Cured Rugged Hide, Devilsaur Leather, Rugged Leather)
+EXTRA = {15062, 15063, 15407, 15417, 8170}
+
+
 def tracked():
-    ids = set()
+    ids = set(EXTRA)
     try:
         import re
         m = re.search(r"SEL = \{([^}]*)\}", open("markets_sel.py").read())
