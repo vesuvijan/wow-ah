@@ -1,0 +1,291 @@
+{
+ "name": "Docker Tuckalot",
+ "level": 60,
+ "race": "Human",
+ "className": "Hunter",
+ "guild": "mean girls",
+ "lastLogin": 1795726878000,
+ "fetchedAt": 1795744151921,
+ "fromCache": true,
+ "averageIlvl": 61,
+ "stats": {
+  "health": 3207,
+  "power": 3120,
+  "powerType": "Mana",
+  "strength": 63,
+  "agility": 309,
+  "stamina": 192,
+  "intellect": 112,
+  "spirit": 129,
+  "spellPower": 0,
+  "healing": 0,
+  "spellCrit": 14.45,
+  "spellHaste": 0,
+  "spellPenetration": 0,
+  "manaRegen": 55,
+  "attackPower": 648,
+  "meleeCrit": 15.84,
+  "meleeHaste": 0,
+  "rangedCrit": 15.84,
+  "armor": 2513,
+  "defense": 299,
+  "dodge": 11.61,
+  "parry": 4.96,
+  "block": 0
+ },
+ "items": [
+  {
+   "slot": "HEAD",
+   "id": 18421,
+   "name": "Backwood Helm",
+   "quality": "RARE",
+   "ilvl": 63,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_helmet_19.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "NECK",
+   "id": 15411,
+   "name": "Mark of Fordring",
+   "quality": "RARE",
+   "ilvl": 63,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_talisman_07.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "SHOULDER",
+   "id": 275737,
+   "name": "Hermit's Pauldron",
+   "quality": "RARE",
+   "ilvl": 61,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_shoulder_11.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "CHEST",
+   "id": 275708,
+   "name": "Ghansurok Hide Tunic",
+   "quality": "RARE",
+   "ilvl": 61,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_chest_leather_10.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "WAIST",
+   "id": 272397,
+   "name": "Ranger's Belt",
+   "quality": "EPIC",
+   "ilvl": 60,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_belt_25.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "LEGS",
+   "id": 11749,
+   "name": "Searingscale Leggings",
+   "quality": "RARE",
+   "ilvl": 53,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_pants_03.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "FEET",
+   "id": 16675,
+   "name": "Beaststalker's Boots",
+   "quality": "RARE",
+   "ilvl": 59,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_boots_plate_07.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "WRIST",
+   "id": 13211,
+   "name": "Slashclaw Bracers",
+   "quality": "RARE",
+   "ilvl": 60,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_bracer_07.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "HANDS",
+   "id": 16676,
+   "name": "Beaststalker's Gloves",
+   "quality": "RARE",
+   "ilvl": 59,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_gauntlets_10.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "FINGER_1",
+   "id": 13098,
+   "name": "Painweaver Band",
+   "quality": "RARE",
+   "ilvl": 63,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_ring_18.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "FINGER_2",
+   "id": 272408,
+   "name": "Cutthroat's Signet",
+   "quality": "RARE",
+   "ilvl": 65,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_ring_01.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "TRINKET_1",
+   "id": 22321,
+   "name": "Heart of Wyrmthalak",
+   "quality": "RARE",
+   "ilvl": 61,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_misc_gem_bloodstone_01.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "TRINKET_2",
+   "id": 13965,
+   "name": "Blackhand's Breadth",
+   "quality": "RARE",
+   "ilvl": 63,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_misc_armorkit_09.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "BACK",
+   "id": 22269,
+   "name": "Shadow Prowler's Cloak",
+   "quality": "RARE",
+   "ilvl": 63,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_misc_cape_20.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "MAIN_HAND",
+   "id": 279910,
+   "name": "Beastslayer's Trident",
+   "quality": "RARE",
+   "ilvl": 62,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_spear_04.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "RANGED",
+   "id": 19107,
+   "name": "Bloodseeker",
+   "quality": "RARE",
+   "ilvl": 63,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_weapon_crossbow_07.jpg",
+   "enchant": "Scope (+5 Damage)"
+  },
+  {
+   "slot": "TABARD",
+   "id": 5976,
+   "name": "Guild Tabard",
+   "quality": "COMMON",
+   "ilvl": 1,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_shirt_guildtabard_01.jpg",
+   "enchant": null
+  },
+  {
+   "slot": "AMMO",
+   "id": 11285,
+   "name": "Jagged Arrow",
+   "quality": "COMMON",
+   "ilvl": 45,
+   "icon": "https://wow.zamimg.com/images/wow/icons/large/inv_weapon_shortblade_25.jpg",
+   "enchant": null
+  }
+ ],
+ "talents": [
+  {
+   "name": "Beast Mastery",
+   "points": 31,
+   "talents": [
+    [
+     "Deadly Aspects",
+     5
+    ],
+    [
+     "Endurance Training",
+     1
+    ],
+    [
+     "Focused Fire",
+     2
+    ],
+    [
+     "Improved Revive Pet",
+     2
+    ],
+    [
+     "Bestial Swiftness",
+     1
+    ],
+    [
+     "Unleashed Fury",
+     5
+    ],
+    [
+     "Improved Mend Pet",
+     2
+    ],
+    [
+     "Ferocity",
+     5
+    ],
+    [
+     "Intimidation",
+     1
+    ],
+    [
+     "Bestial Discipline",
+     2
+    ],
+    [
+     "Frenzy",
+     4
+    ],
+    [
+     "Bestial Wrath",
+     1
+    ]
+   ]
+  },
+  {
+   "name": "Marksmanship",
+   "points": 20,
+   "talents": [
+    [
+     "Lethal Attacks",
+     5
+    ],
+    [
+     "Improved Stings",
+     3
+    ],
+    [
+     "Careful Aim",
+     5
+    ],
+    [
+     "Rapid Killing",
+     2
+    ],
+    [
+     "Trueshot Aura",
+     1
+    ],
+    [
+     "Mortal Shots",
+     4
+    ]
+   ]
+  },
+  {
+   "name": "Survival",
+   "points": 0,
+   "talents": []
+  }
+ ]
+}
